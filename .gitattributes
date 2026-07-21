@@ -1,2 +1,10 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# JavaScript immer mit LF speichern
+*.js text eol=lf
+*.user.js text eol=lf
+
+# Dokumentation
+*.md text eol=lf
+*.txt text eol=lf
