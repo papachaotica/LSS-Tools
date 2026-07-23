@@ -11,8 +11,8 @@
 // @grant        GM_getValue
 // @grant        GM_xmlhttpRequest
 // @connect      api.lss-manager.de
-// @downloadURL  https://github.com/papachaotica/LSS-Tools/dist/raw/refs/heads/main/FirstResponder.user.js
-// @updateURL    https://github.com/papachaotica/LSS-Tools/dist/raw/refs/heads/main/FirstResponder.user.js
+// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/FirstResponder.user.js
+// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/FirstResponder.user.js
 // ==/UserScript==
 
 /*
