@@ -1,0 +1,16 @@
+// ==UserScript==
+// @name         [LSS] Ersthelfer
+// @namespace    papachaotica.leitstellenspiel.de
+// @version      ${VERSION}
+// @license      AGPL-3.0-or-later
+// @author       BOS-Ernie (Orginal) / papachaotica (Erweiterung)
+// @description  Wählt das nächstliegende Ersthelferfahrzeug aus; Fahrzeuge können über ein Menü konfiguriert werden.
+// @run-at       document-idle
+// @match        https://*.leitstellenspiel.de/*
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_xmlhttpRequest
+// @connect      api.lss-manager.de
+// @downloadURL  https://github.com/papachaotica/LSS-Tools/dist/raw/refs/heads/main/FirstResponder.user.js
+// @updateURL    https://github.com/papachaotica/LSS-Tools/dist/raw/refs/heads/main/FirstResponder.user.js
+// ==/UserScript==
