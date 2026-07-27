@@ -1,0 +1,11 @@
+{
+	"name":    "[LSS] Ersthelfer",
+	"version": "2.0.0",
+	"headers": {
+		"main": "headers/FirstResponder.main.header.txt",
+		"dev":  "headers/FirstResponder.dev.header.txt"
+	},
+	"files": [
+		   "src/FirstResponder/FirstResponder.js"
+	]
+}
