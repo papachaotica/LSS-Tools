@@ -1,10 +1,9 @@
 // ==UserScript==
 // @name         [LSS] Layout 04
 // @namespace    papachaotica.leitstellenspiel.de
-// @version      1.0.0
-// @description  Kompaktes Layout für das Leitstellenspiel
-// @author       Marcel
-// @license      AGPL-3.0-or-later
+// @version      1.0.5
+// @description  Kompaktes Layout für das Leitstellenspiel (Basiert auf LSSM v3)
+// @author       papachaotica (Original: LSSM v3 Team)
 // @match        https://www.leitstellenspiel.de/*
 // @run-at       document-idle
 // ==/UserScript==
@@ -12,10 +11,12 @@
 (function () {
     'use strict';
     $(function() {
+        // Kartenspalte im Grid verkleinern
         $('#map_outer').removeClass('col-sm-8').addClass('col-sm-4');
 
+        // Layout-CSS in den Head einfügen (sofern noch nicht vorhanden)
         if (!$('#lss-layout-04-style').length) {
-            $('body').prepend(
+            $('head').append(
                 '<style type="text/css" id="lss-layout-04-style">' +
                 '#map_outer{height:calc(100vh - 90px)!important;padding-left:0!important;padding-right:0!important;margin-left:20px;width: 33.33333333% !important;}' +
                 '#missions_outer{height:49vh!important;padding-left:0;width:calc(66.66666667% - 30px);margin-left:10px;padding-right:10px}' +
@@ -35,11 +36,14 @@
                 '#anti-abuse-warning strong{display:none!important}' +
                 '#missions .btn-group{margin-left:11px}' +
                 '#buildings_outer,#chat_outer,#radio_outer{margin-left:5px}' +
-                '.alliance_events_buttons{margin-bottom:0!important}' +
+                '/* Position & Styling für Verbands-Buttons im Einsatz-Panel */' +
+                '.alliance_events_buttons{position:static!important;float:none!important;display:inline-block!important;margin:0 5px 0 0!important;padding:0!important;vertical-align:middle!important}' +
+                '.alliance_events_buttons .btn{padding:2px 6px!important;font-size:11px!important;height:auto!important;line-height:normal!important}' +
                 '.alliance_true .btn-group{float:right}' +
                 '#chat_outer{padding:0}' +
                 '#radio_outer{width:calc(16.66666667% - 40px)}' +
                 '#buildings{overflow:hidden}' +
+                '/* Reihenfolge der Einsatzlisten (Flexbox Order) */' +
                 '#mission_list{order:1}' +
                 '#mission_list_krankentransporte,#mission_list_krankentransporte_alliance{order:2}' +
                 '#mission_list_alliance{order:3}' +
@@ -52,8 +56,10 @@
             );
         }
 
-        $('.alliance_events_buttons').insertAfter('.filters-info');
+        // Verbands-Event-Buttons in den Kopfbereich der Einsätze verschieben
+        $('.alliance_events_buttons').prependTo('#missions-panel-head');
 
+        // Bootstrap-Spaltenbreiten der Layout-Elemente anpassen
         $(
             '#missions_outer, #buildings_outer, #radio_outer, #chat_outer'
         ).removeClass('col-sm-4');
@@ -61,8 +67,12 @@
         $('#buildings_outer').addClass('col-sm-3');
         $('#chat_outer').addClass('col-sm-3');
         $('#radio_outer').addClass('col-md-2');
+
+        // Event-Banner & KTW-Meldungen verschieben
         $('#eventInfo').prependTo('#content');
         $('#ktw_no_transports').prependTo('#mission_list_krankentransporte');
+
+        // Kartendarstellung bei Leaflet erzwingen
         if ('undefined' != typeof mapkit) {} else map.invalidateSize(true);
-    })();
+    });
 })();
