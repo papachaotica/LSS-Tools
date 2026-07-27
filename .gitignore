@@ -5,6 +5,3 @@
 *.swo
 *.swn
 *.un~
-
-#ebuild
-*.tmp
