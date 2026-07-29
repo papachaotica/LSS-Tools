@@ -1,0 +1,228 @@
+// ==UserScript==
+
+// @name         Mein Userscript
+// Anzeigename des Scripts im Tampermonkey-Dashboard.
+
+// @namespace    https://github.com/Benutzername/MeinScript
+// Eindeutiger Namensraum zur Unterscheidung von Scripts mit gleichem Namen.
+
+// @version      1.0.0
+// Versionsnummer des Scripts; wird für Updates und die Anzeige verwendet.
+
+// @description  Kurze Beschreibung meines Userscripts
+// Kurzbeschreibung, die im Tampermonkey-Dashboard angezeigt wird.
+
+// @author       Mein Name
+// Name oder Alias des Autors.
+
+// @homepage     https://github.com/Benutzername/MeinScript
+// Allgemeine Projekt- oder Startseite des Scripts.
+
+// @homepageURL  https://github.com/Benutzername/MeinScript
+// Alternative Schreibweise für die Projekt- oder Startseite.
+
+// @website      https://example.com
+// Webseite des Autors oder Projekts.
+
+// @source       https://github.com/Benutzername/MeinScript
+// Quellcode- oder Repository-Adresse des Scripts.
+
+// @icon         https://example.com/icon.png
+// URL eines Icons für die Anzeige im Tampermonkey-Dashboard.
+
+// @iconURL      https://example.com/icon.png
+// Alternative Schreibweise für die Icon-URL.
+
+// @defaulticon  https://example.com/default-icon.png
+// Fallback-Icon, falls kein anderes Icon verwendet werden kann.
+
+// @icon64       data:image/png;base64,...
+// Icon direkt als Base64-Daten statt über eine externe URL.
+
+// @icon64URL    data:image/png;base64,...
+// Alternative Schreibweise für ein Base64-kodiertes Icon.
+
+// @updateURL    https://example.com/MeinScript.user.js
+// URL, unter der Tampermonkey nach einer neuen Version sucht.
+
+// @downloadURL  https://example.com/MeinScript.user.js
+// URL, von der die neue Scriptdatei heruntergeladen wird.
+
+// @supportURL   https://github.com/Benutzername/MeinScript/issues
+// URL für Fehlerberichte, Fragen oder Support.
+
+// @include      https://example.com/*
+// Führt das Script auf URLs aus, die diesem Muster entsprechen.
+
+// @include      /^https:\/\/example\.com\/seite\/\d+$/
+// Regulärer Ausdruck als URL-Muster; wird nur auf exakt passende URLs angewendet.
+
+// @match        https://example.com/*
+// Moderne und meist bevorzugte URL-Beschränkung mit klar definierten Regeln.
+
+// @exclude      https://example.com/admin/*
+// Schließt bestimmte URLs aus, obwohl sie auf @match oder @include passen.
+
+// @exclude-match https://example.com/private/*
+// Schließt URLs mithilfe eines Match-Musters aus.
+
+// @require      https://example.com/lib/meine-bibliothek.js
+// Lädt eine externe JavaScript-Bibliothek vor dem eigentlichen Script.
+
+// @require      https://code.jquery.com/jquery-3.7.1.min.js
+// Beispiel: Lädt jQuery als externe Abhängigkeit.
+
+// @resource     MEINE_CSS https://example.com/style.css
+// Lädt eine externe Ressource und weist ihr einen internen Namen zu.
+
+// @resource     MEIN_ICON https://example.com/icon.png
+// Beispiel für ein Bild oder Icon, das per GM_getResourceURL genutzt werden kann.
+
+// @connect      example.com
+// Erlaubt GM_xmlhttpRequest-Anfragen an diese Domain.
+
+// @connect      api.example.com
+// Erlaubt Anfragen an eine zusätzliche API-Domain.
+
+// @connect      *
+// Erlaubt Anfragen an beliebige Domains; möglichst nur verwenden, wenn nötig.
+
+// @grant        none
+// Führt das Script ohne Tampermonkey-Sandbox aus und stellt keine GM-APIs bereit.
+
+// @grant        unsafeWindow
+// Ermöglicht den Zugriff auf das JavaScript-Fenster der eigentlichen Webseite.
+
+// @grant        GM_getValue
+// Liest einen persistent gespeicherten Wert aus dem Tampermonkey-Speicher.
+
+// @grant        GM_setValue
+// Speichert einen Wert dauerhaft im Tampermonkey-Speicher.
+
+// @grant        GM_deleteValue
+// Löscht einen gespeicherten Wert aus dem Tampermonkey-Speicher.
+
+// @grant        GM_listValues
+// Gibt die Namen aller gespeicherten Werte des Scripts zurück.
+
+// @grant        GM_addValueChangeListener
+// Reagiert darauf, wenn sich ein gespeicherter Wert ändert.
+
+// @grant        GM_removeValueChangeListener
+// Entfernt einen zuvor registrierten Value-Change-Listener.
+
+// @grant        GM_getResourceText
+// Liest den Text einer mit @resource eingebundenen Ressource.
+
+// @grant        GM_getResourceURL
+// Liefert eine verwendbare URL für eine mit @resource eingebundene Datei.
+
+// @grant        GM_addStyle
+// Fügt CSS direkt in die aktuelle Webseite ein.
+
+// @grant        GM_addElement
+// Erstellt und fügt HTML- oder DOM-Elemente mit erweiterten Möglichkeiten ein.
+
+// @grant        GM_registerMenuCommand
+// Fügt einen eigenen Menüpunkt zum Tampermonkey-Menü hinzu.
+
+// @grant        GM_unregisterMenuCommand
+// Entfernt einen zuvor registrierten Tampermonkey-Menüpunkt.
+
+// @grant        GM_openInTab
+// Öffnet eine URL in einem neuen Browser-Tab.
+
+// @grant        GM_xmlhttpRequest
+// Führt HTTP-Anfragen unabhängig von den normalen CORS-Beschränkungen aus.
+
+// @grant        GM_download
+// Lädt eine Datei über Tampermonkey herunter.
+
+// @grant        GM_notification
+// Zeigt eine Browser- oder Systembenachrichtigung an.
+
+// @grant        GM_setClipboard
+// Schreibt Text in die Zwischenablage.
+
+// @grant        GM_info
+// Liefert Informationen über das Script, Tampermonkey und die Laufzeitumgebung.
+
+// @grant        GM_log
+// Schreibt Meldungen über die Tampermonkey-API in die Konsole.
+
+// @grant        GM_webRequest
+// Ermöglicht das Beobachten oder Verarbeiten bestimmter Netzwerkanfragen.
+
+// @grant        GM_cookie
+// Ermöglicht Zugriff auf Browser-Cookies über die Tampermonkey-API.
+
+// @grant        GM_saveTab
+// Speichert Tab-bezogene Daten innerhalb von Tampermonkey.
+
+// @grant        GM_getTab
+// Liest zuvor gespeicherte Tab-Daten aus.
+
+// @grant        GM_webRequest
+// Stellt Funktionen zum Beobachten oder Beeinflussen von Webanfragen bereit.
+
+// @run-at       document-start
+// Startet das Script möglichst früh, noch bevor die Seite aufgebaut wird.
+
+// @run-at       document-body
+// Startet das Script, sobald das <body>-Element verfügbar ist.
+
+// @run-at       document-end
+// Startet das Script nach dem Parsen des HTML-Dokuments.
+
+// @run-at       document-idle
+// Startet das Script, wenn der Browser die Seite weitgehend verarbeitet hat.
+
+// @run-in       normal-tabs
+// Führt das Script nur in normalen Browser-Tabs aus.
+
+// @run-in       incognito-tabs
+// Führt das Script nur in Inkognito- oder privaten Tabs aus.
+
+// @run-in       container-id-1
+// Führt das Script nur in einem bestimmten Firefox-Container aus.
+
+// @noframes
+// Verhindert die Ausführung innerhalb von eingebetteten Frames und iframes.
+
+// @unwrap
+// Entfernt die Userscript-Sandbox; hauptsächlich für ältere Kompatibilität relevant.
+
+// @nocompat     Chrome
+// Aktiviert eine spezielle Kompatibilitätsbehandlung für den angegebenen Browser.
+
+// @antifeature  ads
+// Kennzeichnet, dass das Script Werbung enthält.
+
+// @antifeature  tracking
+// Kennzeichnet, dass das Script Nutzeraktivitäten verfolgt.
+
+// @antifeature  miner
+// Kennzeichnet, dass das Script Kryptowährungs-Mining ausführt.
+
+// @compatible   firefox
+// Gibt an, dass das Script mit Firefox kompatibel ist.
+
+// @compatible   chrome
+// Gibt an, dass das Script mit Google Chrome kompatibel ist.
+
+// @compatible   tampermonkey
+// Gibt an, dass das Script für Tampermonkey vorgesehen ist.
+
+// @incompatible chrome
+// Gibt an, dass das Script mit Chrome nicht kompatibel ist.
+
+// @contributionURL https://example.com/spenden
+// Verweist auf eine Seite für freiwillige Spenden.
+
+// @contributor  Beispielname
+// Nennt eine Person, die zum Script beigetragen hat.
+
+// @license      AGPL-3.0-or-later
+// Legt die Lizenz fest, unter der das Script veröffentlicht wird.
+
+// ==/UserScript==
