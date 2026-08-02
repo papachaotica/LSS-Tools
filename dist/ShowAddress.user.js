@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         [LSS] showAddress
-// @version      0.7.33.202608022100
+// @version      0.7.34.202608022316
 // @description  zeigt die Adresse der Wache im Gebäude an
 // @license      AGPL-3.0-or-later
 // @author       papachaotica
@@ -78,6 +78,7 @@
         const buildingData = { 
             lon: building.longitude, 
             lat: building.latitude,
+            house_number: osm.address.house_number,
             road: osm.address.road,
             postcode: osm.address.postcode,
             city: osm.address.city ||
@@ -103,14 +104,15 @@
 
     // ui set address in website
     function ui (cache) {
-        const state = cache.state,
+        const state = cache.state ? cache.state : '',
             county = cache.county ? ` - ${cache.county}` : '',
             city = cache.city,
             postcode = cache.postcode,
             road = cache.road,
-            html = `<span class="label label-info" style="cursor:default;margin-left:2em">${ road }</span>
-                   <span class="label label-primary" style="cursor:default;margin-left:1em">${ postcode } ${ city }${ county }</span>
-                   <span class="label label-info" style="cursor:default;margin-left:2em">${ state }</span>`;
+            house_number = cache.house_number ? cache.house_number : ' ',
+            html = `<span class="label label-info" style="cursor:default;margin-left:1em">${road} ${house_number}</span>
+                   <span class="label label-primary" style="cursor:default;margin-left:1em">${postcode} ${city}${county}</span>
+                   <span class="label label-info" style="cursor:default;margin-left:1em">${state}</span>`;
         $(".active:first").after(html);
     }
     ui(cache);
