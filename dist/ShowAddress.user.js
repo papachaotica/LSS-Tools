@@ -1,13 +1,15 @@
 // ==UserScript==
 // @name         [LSS] showAddress
-// @version      0.7.33.202608022033
+// @version      0.7.33.202608022100
 // @description  zeigt die Adresse der Wache im Gebäude an
+// @license      AGPL-3.0-or-later
 // @author       papachaotica
 // @match        https://*.leitstellenspiel.de/buildings/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @connect      nominatim.openstreetmap.org
+// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/dev/dist/ShowAddress.user.js
 // ==/UserScript==
 
 (async function () {
