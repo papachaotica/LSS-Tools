@@ -9,6 +9,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @connect      nominatim.openstreetmap.org
+// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/dev/dist/ShowAddress.user.js
 // @updateURL    http://raw.github.com/papachaotica/LSS-Tools/dev/dist/ShowAddress.user.js
 // ==/UserScript==
 
