@@ -1,0 +1,5433 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-08-14T22:17:32Z",
+    "timestamp_areas_base": "2026-08-13T22:37:06Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 104124209,
+      "lat": 53.6716536,
+      "lon": 10.233819,
+      "tags": {
+        "addr:city": "Ahrensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "5",
+        "addr:postcode": "22926",
+        "addr:street": "An der Reitbahn",
+        "amenity": "police",
+        "email": "ahrensburg.pr@polizei.landsh.de",
+        "fax": "+494102809119",
+        "name": "Polizei-Zentralstation Ahrensburg",
+        "opening_hours": "24/7",
+        "phone": "+49 4102 8090",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 192131908,
+      "lat": 54.3241853,
+      "lon": 10.1399047,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "24103",
+        "addr:street": "Falckstraße",
+        "amenity": "police",
+        "check_date": "2024-09-19",
+        "contact:fax": "+49 431 160 1219",
+        "contact:phone": "+49 431 160 1210",
+        "name": "2. Polizeirevier Kiel",
+        "operator": "Polizeidirektion Kiel",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 243980574,
+      "lat": 54.7740186,
+      "lon": 8.9709459,
+      "tags": {
+        "addr:city": "Leck",
+        "addr:country": "DE",
+        "addr:housenumber": "7-9",
+        "addr:postcode": "25917",
+        "addr:street": "Marktstraße",
+        "amenity": "police",
+        "check_date": "2025-04-30",
+        "name": "Polizei-Zentralstation Leck",
+        "phone": "+49 4662 891260",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 249745998,
+      "lat": 53.6836303,
+      "lon": 9.6596311,
+      "tags": {
+        "addr:city": "Uetersen",
+        "addr:country": "DE",
+        "addr:housenumber": "34",
+        "addr:postcode": "25436",
+        "addr:street": "Marktstraße",
+        "amenity": "police",
+        "name": "Polizeistation Uetersen",
+        "phone": "+49 4122 70530",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 257394045,
+      "lat": 53.9627238,
+      "lon": 10.8604046,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2024-08-17",
+        "name": "Polizeistation Travemünde"
+      }
+    },
+    {
+      "type": "node",
+      "id": 260953248,
+      "lat": 54.7576207,
+      "lon": 9.4004054,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "32",
+        "addr:postcode": "24941",
+        "addr:street": "Ochsenweg",
+        "amenity": "police",
+        "name": "Polizeistation Weiche",
+        "phone": "+49 461 909091-0"
+      }
+    },
+    {
+      "type": "node",
+      "id": 263851679,
+      "lat": 53.4934579,
+      "lon": 10.3604095,
+      "tags": {
+        "addr:housenumber": "2",
+        "addr:street": "Am Wendel",
+        "amenity": "police",
+        "name": "Polizeistation Dassendorf",
+        "phone": "+49 4104 2757"
+      }
+    },
+    {
+      "type": "node",
+      "id": 269602358,
+      "lat": 53.8322316,
+      "lon": 10.691499,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Lübeck Sankt Jürgen",
+        "phone": "+49 451 1317430",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 271282168,
+      "lat": 53.784839,
+      "lon": 10.4225591,
+      "tags": {
+        "addr:city": "Bad Oldesloe",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "23843",
+        "addr:street": "Steinkamp",
+        "amenity": "police",
+        "contact:fax": "+49 4531 1706-19",
+        "contact:phone": "+49 4531 1706-0",
+        "name": "Polizei-Autobahn- und Bezirksrevier Bad Oldesloe FD BAB",
+        "opening_hours": "24/7"
+      }
+    },
+    {
+      "type": "node",
+      "id": 272860674,
+      "lat": 54.7977142,
+      "lon": 9.4266645,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "30",
+        "addr:postcode": "24939",
+        "addr:street": "Neustadt",
+        "amenity": "police",
+        "check_date": "2025-04-30",
+        "name": "Polizei-Bezirksrevier Flensburg",
+        "phone": "+49 461 484 0",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 273091433,
+      "lat": 54.7870609,
+      "lon": 9.4361186,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24937",
+        "addr:street": "Norderhofenden",
+        "amenity": "police",
+        "check_date": "2025-07-22",
+        "name": "Bezirkskriminalinspektion Flensburg",
+        "phone": "+49 461 484 0",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 283777659,
+      "lat": 53.8640667,
+      "lon": 10.2481442,
+      "tags": {
+        "addr:city": "Leezen",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "23816",
+        "addr:street": "Raiffeisenstraße",
+        "amenity": "police",
+        "name": "Polizeistation Leezen",
+        "phone": "+49 4552 610"
+      }
+    },
+    {
+      "type": "node",
+      "id": 288558356,
+      "lat": 54.2124952,
+      "lon": 8.9252331,
+      "tags": {
+        "addr:city": "Wesselburen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "25764",
+        "addr:street": "Wulf-Isebrand-Straße",
+        "amenity": "police",
+        "check_date": "2024-03-25",
+        "name": "Polizeistation Wesselburen",
+        "phone": "+49 4833 42875"
+      }
+    },
+    {
+      "type": "node",
+      "id": 288874367,
+      "lat": 54.7993661,
+      "lon": 9.3943238,
+      "tags": {
+        "addr:city": "Harrislee",
+        "addr:country": "DE",
+        "addr:housenumber": "20",
+        "addr:postcode": "24955",
+        "addr:street": "Geheimrat-Dr.-Schaedel-Straße",
+        "amenity": "police",
+        "name": "Polizeizentralstation Harrislee",
+        "opening_hours": "Mo-Fr 08:00-12:00, 14:00-18:00",
+        "phone": "+49 461 707095"
+      }
+    },
+    {
+      "type": "node",
+      "id": 289675414,
+      "lat": 54.8378997,
+      "lon": 9.5458109,
+      "tags": {
+        "addr:city": "Glücksburg",
+        "addr:country": "DE",
+        "addr:housenumber": "33",
+        "addr:postcode": "24960",
+        "addr:street": "Collenburger Straße",
+        "amenity": "police",
+        "check_date": "2024-09-02",
+        "name": "Polizeidienststelle Glücksburg",
+        "phone": "+49 4631 4050120",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 291280243,
+      "lat": 53.8648666,
+      "lon": 10.6691567,
+      "tags": {
+        "amenity": "police",
+        "name": "2. Polizeirevier"
+      }
+    },
+    {
+      "type": "node",
+      "id": 295241124,
+      "lat": 54.1455978,
+      "lon": 9.2889772,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Albersdorf",
+        "phone": "+49 4835 310"
+      }
+    },
+    {
+      "type": "node",
+      "id": 308016853,
+      "lat": 53.6645419,
+      "lon": 9.9047946,
+      "tags": {
+        "addr:city": "Bönningstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "103",
+        "addr:postcode": "25474",
+        "addr:street": "Kieler Straße",
+        "amenity": "police",
+        "name": "Polizeistation Bönningstedt",
+        "phone": "+49 40 35627520",
+        "website": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/POLIZEI/eRevier/Dienststellensuche/tabellarische_Suche/tabellarischeSuche_node.html?keyword=B%C3%B6nningstedt#start",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 308455087,
+      "lat": 54.3255995,
+      "lon": 10.0577274,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:housenumber": "251",
+        "addr:postcode": "24109",
+        "addr:street": "Skandinaviendamm",
+        "amenity": "police",
+        "description": "nicht Tag und Nacht bestzt",
+        "name": "Polizeistation Mettenhof",
+        "opening_hours": "Mo-Fr 08:00-18:00",
+        "operator": "3. Polizeirevier Kiel",
+        "phone": "+49 431 1601372",
+        "website": "http://www.onlinewache.schleswig-holstein.de",
+        "wheelchair": "yes",
+        "wheelchair:description": "Zugang über eine Rampe auf der Rückseite"
+      }
+    },
+    {
+      "type": "node",
+      "id": 309707878,
+      "lat": 54.0177799,
+      "lon": 10.7534028,
+      "tags": {
+        "addr:city": "Scharbeutz",
+        "addr:country": "DE",
+        "addr:housenumber": "39",
+        "addr:postcode": "23683",
+        "addr:street": "Kammerweg",
+        "amenity": "police",
+        "name": "Polizeistation Scharbeutz",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 309741780,
+      "lat": 54.4287602,
+      "lon": 9.7017865,
+      "tags": {
+        "addr:city": "Ascheffel",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "24358",
+        "addr:street": "Schulberg",
+        "amenity": "police",
+        "name": "Polizeistation Ascheffel",
+        "phone": "+49 4353 4799960"
+      }
+    },
+    {
+      "type": "node",
+      "id": 313659858,
+      "lat": 53.852746,
+      "lon": 10.6808024,
+      "tags": {
+        "amenity": "police",
+        "name": "Kriminalpolizeistelle Lübeck"
+      }
+    },
+    {
+      "type": "node",
+      "id": 321455425,
+      "lat": 53.7082168,
+      "lon": 9.9907966,
+      "tags": {
+        "addr:housenumber": "78",
+        "addr:street": "Rathausallee",
+        "amenity": "police",
+        "check_date": "2026-02-01",
+        "contact:phone": "+49405353620",
+        "name": "Norderstedt-Mitte",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 330808546,
+      "lat": 53.8884715,
+      "lon": 10.6498318,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2025-01-31",
+        "contact:fax": "+49 451 49856-20",
+        "contact:phone": "+49 451 49856-0",
+        "name": "Polizeistation Stockelsdorf",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 331273554,
+      "lat": 53.8587868,
+      "lon": 10.6987088,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2026-04-19",
+        "name": "Polizeistation Hüxtertor"
+      }
+    },
+    {
+      "type": "node",
+      "id": 352757650,
+      "lat": 54.3324931,
+      "lon": 10.1902057,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "27",
+        "addr:postcode": "24149",
+        "addr:street": "Ivensring",
+        "amenity": "police",
+        "contact:fax": "+49 431 160-1469",
+        "contact:phone": "+49 431 160-1452",
+        "name": "Polizeistation Kiel-Dietrichsdorf"
+      }
+    },
+    {
+      "type": "node",
+      "id": 353857366,
+      "lat": 54.1474198,
+      "lon": 10.9523928,
+      "tags": {
+        "addr:city": "Grömitz",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "23743",
+        "addr:street": "Gildestraße",
+        "amenity": "police",
+        "name": "Polizeistation Grömitz",
+        "phone": "+49 4562 22000",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 360846743,
+      "lat": 54.1568751,
+      "lon": 10.4112767,
+      "tags": {
+        "addr:city": "Plön",
+        "addr:country": "DE",
+        "addr:housenumber": "30",
+        "addr:postcode": "24306",
+        "addr:street": "Hamburger Straße",
+        "amenity": "police",
+        "check_date": "2026-05-25",
+        "name": "Polizei-Bezirksrevier Plön",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 361055222,
+      "lat": 53.887991,
+      "lon": 10.7988343,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2026-06-25",
+        "fax": "+49 451 690416",
+        "name": "Polizeistation Schlutup",
+        "phone": "+49 451 690203",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 365985732,
+      "lat": 53.5689582,
+      "lon": 10.1632007,
+      "tags": {
+        "addr:city": "Barsbüttel",
+        "addr:housenumber": "38e",
+        "addr:postcode": "22885",
+        "addr:street": "Hauptstraße",
+        "amenity": "police",
+        "email": "barsbuettel.pst@polizei.landsh.de",
+        "fax": "+49 40 67078058",
+        "name": "Polizeistation Barsbüttel",
+        "opening_hours": "Mo-Sa 07:00-19:00",
+        "phone": "+49 40 67078056",
+        "website": "https://www.schleswig-holstein.de/DE/Landesregierung/POLIZEI/Polizei_node.html",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 371176537,
+      "lat": 54.2329447,
+      "lon": 10.2783492,
+      "tags": {
+        "addr:city": "Preetz",
+        "addr:country": "DE",
+        "addr:housenumber": "11",
+        "addr:postcode": "24211",
+        "addr:street": "Gasstraße",
+        "amenity": "police",
+        "check_date": "2025-08-08",
+        "fax": "+49 4342 1077 66",
+        "name": "Polizeistation Preetz",
+        "phone": "+49 4342 10770",
+        "website": "https://www.polizei.schleswig-holstein.de/internet/DE/Organisation/__downloads/dienststellenverzeichnis-pd-kiel,templateId=raw,property=publicationFile.pdf",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 371633246,
+      "lat": 54.4745373,
+      "lon": 10.0756322,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Surendorf",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 373145419,
+      "lat": 54.7870915,
+      "lon": 9.4362807,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24937",
+        "addr:street": "Norderhofenden",
+        "amenity": "police",
+        "check_date": "2026-03-18",
+        "email": "pressestelle.flensburg@polizei.landsh.de",
+        "image": "https://commons.wikimedia.org/wiki/File:Norderhofenden_1,_Flensburg.jpg",
+        "name": "Polizeidirektion Flensburg",
+        "phone": "+49 461 4840",
+        "wheelchair": "yes",
+        "wikidata": "Q23899615",
+        "wikimedia_commons": "File:Norderhofenden_1,_Flensburg.jpg",
+        "wikipedia": "de:Polizeidirektion Flensburg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 374161562,
+      "lat": 54.49258,
+      "lon": 9.5535982,
+      "tags": {
+        "addr:city": "Busdorf",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24866",
+        "addr:street": "Schulstraße",
+        "amenity": "police",
+        "name": "Polizeistation Busdorf",
+        "phone": "+49 4621 32953"
+      }
+    },
+    {
+      "type": "node",
+      "id": 375957534,
+      "lat": 54.2346485,
+      "lon": 9.6724191,
+      "tags": {
+        "addr:city": "Jevenstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "18",
+        "addr:postcode": "24808",
+        "addr:street": "Schwaber Straße",
+        "amenity": "police",
+        "name": "Polizeistation Jevenstedt",
+        "phone": "+49 4337 410"
+      }
+    },
+    {
+      "type": "node",
+      "id": 379546401,
+      "lat": 54.2905029,
+      "lon": 10.4284112,
+      "tags": {
+        "addr:city": "Selent",
+        "addr:country": "DE",
+        "addr:housenumber": "18",
+        "addr:postcode": "24238",
+        "addr:street": "Kieler Straße",
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "node",
+      "id": 393208647,
+      "lat": 53.6665592,
+      "lon": 9.7944973,
+      "tags": {
+        "addr:city": "Pinneberg",
+        "addr:housenumber": "40",
+        "addr:postcode": "25421",
+        "addr:street": "Elmshorner Straße",
+        "amenity": "police",
+        "check_date": "2024-08-19",
+        "name": "Polizeirevier Pinneberg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 412958182,
+      "lat": 53.7874358,
+      "lon": 9.4185738,
+      "tags": {
+        "addr:city": "Glückstadt",
+        "addr:country": "DE",
+        "addr:housenumber": "39",
+        "addr:postcode": "25348",
+        "addr:street": "Königstraße",
+        "amenity": "police",
+        "check_date": "2025-12-17",
+        "name": "Polizeizentralstation Glückstadt"
+      }
+    },
+    {
+      "type": "node",
+      "id": 436110013,
+      "lat": 53.7563281,
+      "lon": 9.9393873,
+      "tags": {
+        "addr:city": "Ellerau",
+        "addr:housenumber": "110",
+        "addr:postcode": "25479",
+        "addr:street": "Brombeerweg",
+        "amenity": "police",
+        "name": "Polizeistation Ellerau",
+        "opening_hours": "Mo-Fr 08:00-21:00",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 441315456,
+      "lat": 54.0466044,
+      "lon": 9.4876431,
+      "tags": {
+        "addr:city": "Schenefeld",
+        "addr:housenumber": "16a",
+        "addr:postcode": "25560",
+        "addr:street": "Bahnhofstraße",
+        "amenity": "police",
+        "name": "Polizeistation Schenefeld",
+        "phone": "+49 4892 899260"
+      }
+    },
+    {
+      "type": "node",
+      "id": 448096438,
+      "lat": 54.3688871,
+      "lon": 11.0846318,
+      "tags": {
+        "addr:city": "Großenbrode",
+        "addr:country": "DE",
+        "addr:housenumber": "2a",
+        "addr:postcode": "23775",
+        "addr:street": "Strandstraße",
+        "amenity": "police",
+        "check_date": "2024-04-10",
+        "name": "Polizeistation Großenbrode",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 448137441,
+      "lat": 54.0891037,
+      "lon": 10.4751229,
+      "tags": {
+        "addr:city": "Bosau",
+        "addr:country": "DE",
+        "addr:housenumber": "4-6",
+        "addr:postcode": "23715",
+        "addr:street": "Wöbser Straße",
+        "addr:suburb": "Hutzfeld",
+        "amenity": "police",
+        "name": "Polizeistation Hutzfeld",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 454872466,
+      "lat": 54.0792681,
+      "lon": 10.711282,
+      "tags": {
+        "addr:city": "Süsel",
+        "addr:housenumber": "36-38",
+        "addr:postcode": "23701",
+        "addr:street": "An der Bäderstraße",
+        "amenity": "police",
+        "name": "Polizeistation Süsel",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 455912866,
+      "lat": 54.3151604,
+      "lon": 8.9418354,
+      "tags": {
+        "addr:city": "Tönning",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "25832",
+        "addr:street": "Schloßgarten",
+        "amenity": "police",
+        "name": "Polizei-Station Tönning",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "phone": "+49 4861 327",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 461083840,
+      "lat": 54.1902088,
+      "lon": 10.6370448,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeischule"
+      }
+    },
+    {
+      "type": "node",
+      "id": 476682304,
+      "lat": 53.3737543,
+      "lon": 10.5552506,
+      "tags": {
+        "addr:city": "Lauenburg/Elbe",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "21481",
+        "addr:street": "Alte Wache",
+        "amenity": "police",
+        "name": "Polizeistation",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 513876267,
+      "lat": 53.5408234,
+      "lon": 10.2145287,
+      "tags": {
+        "addr:city": "Glinde",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "21509",
+        "addr:street": "Oher Weg",
+        "amenity": "police",
+        "check_date": "2024-09-24",
+        "fax": "+49 40 710903 19",
+        "name": "Polizei-Zentralstation Glinde",
+        "phone": "+49 40 710903 0",
+        "source": "visits",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 515660000,
+      "lat": 53.8749591,
+      "lon": 10.5179095,
+      "tags": {
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "node",
+      "id": 524101924,
+      "lat": 54.3107944,
+      "lon": 10.1395556,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "217",
+        "addr:postcode": "24143",
+        "addr:street": "Werftstraße",
+        "amenity": "police",
+        "check_date": "2025-03-16",
+        "name": "4. Polizeirevier Gaarden",
+        "phone": "+49 431 160 1410",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 530638869,
+      "lat": 54.2283835,
+      "lon": 11.0357291,
+      "tags": {
+        "addr:city": "Grube",
+        "addr:country": "DE",
+        "addr:housenumber": "69",
+        "addr:postcode": "23749",
+        "addr:street": "Hauptstraße",
+        "amenity": "police",
+        "name": "Polizeistation Grube"
+      }
+    },
+    {
+      "type": "node",
+      "id": 538491017,
+      "lat": 54.7869339,
+      "lon": 9.4356177,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "2a",
+        "addr:postcode": "24937",
+        "addr:street": "Rathausstraße",
+        "amenity": "police",
+        "check_date": "2024-08-06",
+        "name": "Kriminalpolizeistelle Flensburg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 548115175,
+      "lat": 54.8022394,
+      "lon": 9.4568266,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24943",
+        "addr:street": "Fichtestraße",
+        "amenity": "police",
+        "name": "Polizeistation Mürwik / Fruerlund",
+        "phone": "+49 461 484 4220"
+      }
+    },
+    {
+      "type": "node",
+      "id": 559496648,
+      "lat": 53.9083286,
+      "lon": 9.4831449,
+      "tags": {
+        "addr:city": "Itzehoe",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "25524",
+        "addr:street": "Lübscher Kamp",
+        "amenity": "police",
+        "name": "Polizeistation Wellenkamp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 567026602,
+      "lat": 54.0761951,
+      "lon": 9.9806565,
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:housenumber": "2",
+        "addr:postcode": "24534",
+        "addr:street": "Konrad-Adenauer-Platz",
+        "amenity": "police",
+        "name": "Bundespolizeirevier Neumünster",
+        "short_name": "BPOLR NMS"
+      }
+    },
+    {
+      "type": "node",
+      "id": 568245962,
+      "lat": 54.7547142,
+      "lon": 9.7603533,
+      "tags": {
+        "addr:city": "Steinbergkirche",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24972",
+        "addr:street": "Nordstraße",
+        "amenity": "police",
+        "name": "Polizeistation Steinbergkirche",
+        "phone": "+49 4632 8560"
+      }
+    },
+    {
+      "type": "node",
+      "id": 570749549,
+      "lat": 54.3741986,
+      "lon": 10.9741474,
+      "tags": {
+        "addr:city": "Heiligenhafen",
+        "addr:housenumber": "13",
+        "addr:postcode": "23774",
+        "addr:street": "Lauritz-Maßmann-Straße",
+        "amenity": "police",
+        "check_date": "2024-08-11",
+        "email": "heiligenhafen.pr@polizei.landsh.de",
+        "name": "Polizeirevier Heiligenhafen",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 592633942,
+      "lat": 54.5180017,
+      "lon": 9.3688983,
+      "tags": {
+        "addr:city": "Silberstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "41",
+        "addr:postcode": "24887",
+        "addr:street": "Hauptstraße",
+        "amenity": "police",
+        "name": "Polizeistation Silberstedt",
+        "phone": "+49 4626 310"
+      }
+    },
+    {
+      "type": "node",
+      "id": 609053806,
+      "lat": 54.5699818,
+      "lon": 9.9576248,
+      "tags": {
+        "addr:city": "Damp",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "24351",
+        "addr:street": "Auf der Höhe",
+        "addr:suburb": "Vogelsang-Grünholz",
+        "amenity": "police",
+        "check_date": "2025-06-23",
+        "name": "Polizeistation Damp",
+        "phone": "+49 4352 2310",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 621416963,
+      "lat": 53.8111711,
+      "lon": 10.3803239,
+      "tags": {
+        "addr:city": "Bad Oldesloe",
+        "addr:country": "DE",
+        "addr:housenumber": "27",
+        "addr:postcode": "23843",
+        "addr:street": "Berliner Ring",
+        "amenity": "police",
+        "fax": "+49 4531 501 276",
+        "name": "Polizei-Zentralstation Bad Oldesloe",
+        "phone": "+49 4531 5010",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 655302609,
+      "lat": 54.7901832,
+      "lon": 9.4693849,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "24943",
+        "addr:street": "Franz-Schubert-Hof",
+        "amenity": "police",
+        "name": "Polizeistation Engelsby/Tarup",
+        "phone": "+49 461 6740074",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 655320262,
+      "lat": 54.7805257,
+      "lon": 9.4182184,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "22",
+        "addr:postcode": "24937",
+        "addr:street": "Thomas-Mann-Straße",
+        "amenity": "police",
+        "check_date": "2024-04-25",
+        "name": "Polizeistation Friesischer Berg/ Westliche Höhe",
+        "phone": "+49 461 5700773"
+      }
+    },
+    {
+      "type": "node",
+      "id": 659738987,
+      "lat": 54.3724637,
+      "lon": 10.2132258,
+      "tags": {
+        "addr:city": "Heikendorf",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24226",
+        "addr:street": "Grasweg",
+        "amenity": "police",
+        "name": "Polizeistation Heikendorf",
+        "opening_hours": "Mo-Fr 08:00-16:00",
+        "phone": "+49 431 5601320"
+      }
+    },
+    {
+      "type": "node",
+      "id": 660330538,
+      "lat": 53.685107,
+      "lon": 9.9875666,
+      "tags": {
+        "addr:city": "Norderstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "24",
+        "addr:postcode": "22850",
+        "addr:street": "Europaallee",
+        "amenity": "police",
+        "check_date": "2025-04-04",
+        "fax": "+49 40 52806209",
+        "name": "Polizeirevier Norderstedt",
+        "phone": "+49 40 528060",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 660578740,
+      "lat": 54.7871853,
+      "lon": 9.4337343,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "16",
+        "addr:postcode": "24937",
+        "addr:street": "Große Straße",
+        "amenity": "police",
+        "check_date": "2025-07-21",
+        "name": "Polizeistation Flensburg Mitte",
+        "opening_hours": "Mo-Fr 08:00-17:00",
+        "phone": "+49 461 4844240",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 670499856,
+      "lat": 53.6928732,
+      "lon": 9.7914076,
+      "tags": {
+        "addr:city": "Kummerfeld",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "25495",
+        "addr:street": "Dorfstraße",
+        "amenity": "police",
+        "name": "Polizeiwache Kummerfeld",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 682326035,
+      "lat": 54.3147111,
+      "lon": 9.9675567,
+      "tags": {
+        "addr:city": "Achterwehr",
+        "addr:country": "DE",
+        "addr:housenumber": "17",
+        "addr:postcode": "24239",
+        "addr:street": "Inspektor-Weimar-Weg",
+        "amenity": "police",
+        "check_date": "2025-02-26",
+        "name": "Polizeistation Achterwehr",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 765558428,
+      "lat": 54.0526978,
+      "lon": 10.020107,
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24539",
+        "addr:street": "Krogredder",
+        "amenity": "police",
+        "name": "Polizeistation Gadeland",
+        "phone": "+49 4321 690651"
+      }
+    },
+    {
+      "type": "node",
+      "id": 835785461,
+      "lat": 54.4415762,
+      "lon": 11.193405,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2025-02-26",
+        "name": "Polizei Station Fehmarn",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 916587244,
+      "lat": 53.7883322,
+      "lon": 10.1356156,
+      "tags": {
+        "addr:city": "Nahe",
+        "addr:country": "DE",
+        "addr:housenumber": "90",
+        "addr:postcode": "23866",
+        "addr:street": "Segeberger Straße",
+        "amenity": "police",
+        "contact:email": "itzstedt.pst@polizei.landsh.de",
+        "contact:fax": "+49 4535 4399959",
+        "contact:phone": "+49 4535 4399950",
+        "name": "Polizeistation Nahe",
+        "operator": "Polizeirevier Kaltenkirchen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 926309896,
+      "lat": 54.771105,
+      "lon": 9.3229903,
+      "tags": {
+        "addr:city": "Handewitt",
+        "addr:country": "DE",
+        "addr:housenumber": "23",
+        "addr:postcode": "24983",
+        "addr:street": "Wiesharder Markt",
+        "amenity": "police",
+        "check_date": "2026-04-19",
+        "name": "Polizeistation Handewitt",
+        "phone": "+49 4608 606137-0"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1039126108,
+      "lat": 53.7538876,
+      "lon": 9.6548575,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2024-10-17",
+        "name": "Stadtwache",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1119535925,
+      "lat": 54.7597594,
+      "lon": 9.1867504,
+      "tags": {
+        "addr:city": "Schafflund",
+        "addr:country": "DE",
+        "addr:housenumber": "17",
+        "addr:postcode": "24980",
+        "addr:street": "Hauptstraße",
+        "amenity": "police",
+        "name": "Polizeistation Schafflund",
+        "phone": "+49 4639 3629900",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1192586536,
+      "lat": 54.4049053,
+      "lon": 10.1236748,
+      "tags": {
+        "addr:city": "Altenholz",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "24161",
+        "addr:street": "An der Feuerwache",
+        "amenity": "police",
+        "check_date": "2024-12-22",
+        "name": "Polizeistation Altenholz",
+        "phone": "+49 431 3288879"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1252312700,
+      "lat": 54.1751706,
+      "lon": 10.0434888,
+      "tags": {
+        "addr:city": "Bordesholm",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24582",
+        "addr:street": "Heinrich-Rix-Straße",
+        "amenity": "police",
+        "name": "Polizeizentralstation Bordesholm",
+        "phone": "+49 4322 9610-0",
+        "short_name": "PZSt. Bordesholm",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1260469731,
+      "lat": 54.265091,
+      "lon": 10.0660856,
+      "tags": {
+        "addr:city": "Molfsee",
+        "addr:country": "DE",
+        "addr:housenumber": "25",
+        "addr:postcode": "24113",
+        "addr:street": "Hamburger Chaussee",
+        "amenity": "police",
+        "check_date": "2024-11-27",
+        "name": "Polizeistation Molfsee"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1340825105,
+      "lat": 54.3071722,
+      "lon": 8.6264279,
+      "tags": {
+        "addr:city": "Sankt Peter-Ording",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "25826",
+        "addr:street": "Deichgrafenweg",
+        "amenity": "police",
+        "check_date": "2026-08-10",
+        "name": "Polizeistation Sankt Peter-Ording",
+        "phone": "+49 4863 9589160",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1359362685,
+      "lat": 54.1959114,
+      "lon": 9.0915442,
+      "tags": {
+        "addr:city": "Heide",
+        "addr:country": "DE",
+        "addr:housenumber": "59",
+        "addr:postcode": "25746",
+        "addr:street": "Markt",
+        "amenity": "police",
+        "name": "Polizeiinspektion Heide",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1359468850,
+      "lat": 54.6058704,
+      "lon": 9.5821,
+      "tags": {
+        "addr:city": "Böklund",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "24860",
+        "addr:street": "Toft",
+        "amenity": "police",
+        "level": "2",
+        "name": "Polizeistation Böklund",
+        "opening_hours": "Mo 14:00-17:00; Th 09:00-12:00",
+        "phone": "+49 4623 9089920"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1369237058,
+      "lat": 54.1138222,
+      "lon": 10.2048259,
+      "tags": {
+        "addr:city": "Wankendorf",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "24601",
+        "addr:street": "Markt",
+        "amenity": "police",
+        "name": "Polizeistation Wankendorf"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1398790150,
+      "lat": 54.374158,
+      "lon": 10.9846995,
+      "tags": {
+        "addr:city": "Heiligenhafen",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "23774",
+        "addr:street": "Am Yachthafen",
+        "amenity": "police",
+        "check_date": "2025-08-13",
+        "name": "Wasserschutzpolizei Heiligenhafen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1425590542,
+      "lat": 53.6852157,
+      "lon": 9.987563,
+      "tags": {
+        "addr:city": "Norderstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "24",
+        "addr:postcode": "22850",
+        "addr:street": "Europaallee",
+        "amenity": "police",
+        "fax": "+49 40 52806 109",
+        "name": "Kriminalpolizeiaußenstelle Norderstedt",
+        "phone": "+49 40 52806 0",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1556808783,
+      "lat": 54.6641357,
+      "lon": 9.4057017,
+      "tags": {
+        "addr:city": "Tarp",
+        "addr:country": "DE",
+        "addr:housenumber": "22",
+        "addr:postcode": "24963",
+        "addr:street": "Dorfstraße",
+        "amenity": "police",
+        "email": "Tarp.PST@polizei.landsh.de",
+        "name": "Polizeidienststelle Tarp",
+        "phone": "+49 4638 8941-0"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1722602196,
+      "lat": 54.3013703,
+      "lon": 10.0922355,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Hassee",
+        "phone": "+49 431 1601352"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1777231868,
+      "lat": 54.6921081,
+      "lon": 9.6018199,
+      "tags": {
+        "addr:city": "Mittelangeln",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "24986",
+        "addr:street": "Flensburger Straße",
+        "addr:suburb": "Satrup",
+        "amenity": "police",
+        "name": "Polizeistation Satrup",
+        "phone": "+49 4633 8356 1710",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1789208557,
+      "lat": 53.8464227,
+      "lon": 10.7403183,
+      "tags": {
+        "amenity": "police",
+        "contact:fax": "+49 451 6091205",
+        "contact:phone": "+49 451 6091203",
+        "name": "Polizeistation Eichholz",
+        "note": "zum 3. Polizeirevier Lübeck gehörend"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1802733188,
+      "lat": 54.3350205,
+      "lon": 10.2242112,
+      "tags": {
+        "addr:city": "Schönkirchen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24232",
+        "addr:street": "Dorfstraße",
+        "amenity": "police",
+        "name": "Polizeistation Schönkirchen",
+        "phone": "+49 4348 215490"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1839932202,
+      "lat": 54.2428879,
+      "lon": 10.0648377,
+      "tags": {
+        "addr:city": "Flintbek",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24220",
+        "addr:street": "Heitmannskamp",
+        "amenity": "police",
+        "check_date": "2024-11-10",
+        "name": "Polizeistation Flintbek",
+        "phone": "+49 4347 9785",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1893444304,
+      "lat": 53.9243346,
+      "lon": 9.3744632,
+      "tags": {
+        "addr:country": "DE",
+        "addr:housenumber": "22",
+        "addr:street": "Etatsrätin-Doos-Straße",
+        "amenity": "police",
+        "check_date": "2025-07-25",
+        "name": "Polizeistation Wilster",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1894234613,
+      "lat": 54.4128211,
+      "lon": 9.5090725,
+      "tags": {
+        "addr:city": "Kropp",
+        "addr:country": "DE",
+        "addr:housenumber": "10a",
+        "addr:postcode": "24848",
+        "addr:street": "Am Markt",
+        "amenity": "police",
+        "contact:phone": "+49 4624 4506680",
+        "name": "Polizei-Zentralstation Kropp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1901219138,
+      "lat": 54.0074192,
+      "lon": 10.0254183,
+      "tags": {
+        "addr:city": "Boostedt",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "24598",
+        "addr:street": "Twiete",
+        "amenity": "police",
+        "check_date": "2024-04-21",
+        "name": "Polizeistation Boostedt",
+        "phone": "+49 4393 710",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1982758115,
+      "lat": 53.8335225,
+      "lon": 9.9670843,
+      "tags": {
+        "addr:city": "Kaltenkirchen",
+        "addr:country": "DE",
+        "addr:housenumber": "62",
+        "addr:postcode": "24568",
+        "addr:street": "Hamburger Straße",
+        "amenity": "police",
+        "name": "Polizei-Zentralstation Kaltenkirchen",
+        "phone": "+49 4191 3088-0",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1988133774,
+      "lat": 53.8685,
+      "lon": 10.6841603,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2024-06-19",
+        "name": "1. Polizeirevier",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2013000985,
+      "lat": 53.5423934,
+      "lon": 10.1662931,
+      "tags": {
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2071923937,
+      "lat": 54.2190889,
+      "lon": 9.2783023,
+      "tags": {
+        "addr:city": "Tellingstedt",
+        "addr:housenumber": "1a",
+        "addr:postcode": "25782",
+        "addr:street": "Teichstraße",
+        "amenity": "police",
+        "name": "Polizeistation Tellingstedt",
+        "phone": "+49 4838 78065",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2135138452,
+      "lat": 54.3316471,
+      "lon": 9.024893,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Lunden",
+        "phone": "+49 4882 1410"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2268762267,
+      "lat": 53.4802526,
+      "lon": 10.6162699,
+      "tags": {
+        "addr:city": "Büchen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "21514",
+        "addr:street": "Amtsplatz",
+        "amenity": "police",
+        "contact:phone": "+49 4155 49890",
+        "name": "Polizeistation Büchen",
+        "operator": "Polizeidirektion Ratzeburg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2318189848,
+      "lat": 54.1869394,
+      "lon": 10.7529244,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizei Schönwalde",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2430173630,
+      "lat": 53.8527666,
+      "lon": 10.6808962,
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:housenumber": "4",
+        "addr:postcode": "23560",
+        "addr:street": "Possehlstraße",
+        "amenity": "police",
+        "name": "4. Polizeirevier Lübeck",
+        "opening_hours": "24/7",
+        "phone": "+49 451 1316445"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2462944788,
+      "lat": 53.8418175,
+      "lon": 10.6383833,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Moisling"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2625023052,
+      "lat": 53.7547406,
+      "lon": 9.6581948,
+      "tags": {
+        "addr:city": "Elmshorn",
+        "addr:housenumber": "1",
+        "addr:postcode": "25335",
+        "addr:street": "Holstenplatz",
+        "amenity": "police",
+        "check_date": "2025-06-11",
+        "name": "Bundespolizei",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026",
+        "operator:wikipedia": "de:Bundespolizei (Deutschland)",
+        "toilets:wheelchair": "no",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2872797725,
+      "lat": 53.852744,
+      "lon": 10.6805726,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeidirektion Lübeck"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3037320323,
+      "lat": 54.7656012,
+      "lon": 9.5758154,
+      "tags": {
+        "addr:city": "Husby",
+        "addr:country": "DE",
+        "addr:housenumber": "40-42",
+        "addr:postcode": "24975",
+        "addr:street": "Flensburger Straße",
+        "amenity": "police",
+        "check_date": "2025-04-20",
+        "name": "Polizeidienststelle Husby",
+        "old_name": "Polizeistation Husby",
+        "opening_hours": "Mo 10:00-12:00; Th 16:00-18:00",
+        "phone": "+49 4634 939798-0",
+        "short_name": "PSt. Husby"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3064518442,
+      "lat": 54.2173272,
+      "lon": 10.8837455,
+      "tags": {
+        "addr:city": "Lensahn",
+        "addr:country": "DE",
+        "addr:housenumber": "19",
+        "addr:postcode": "23738",
+        "addr:street": "Lübecker Straße",
+        "amenity": "police",
+        "name": "Polizeistation Lensahn"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3168134800,
+      "lat": 53.851738,
+      "lon": 9.6989959,
+      "tags": {
+        "addr:city": "Westerhorn",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "25364",
+        "addr:street": "Rosentwiete",
+        "amenity": "police",
+        "name": "Polizeistation Brande-Hörnerkirchen",
+        "phone": "+49 4127 9562"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3190286023,
+      "lat": 53.8680646,
+      "lon": 10.6835642,
+      "tags": {
+        "amenity": "police",
+        "entrance": "yes",
+        "name": "1. Polizeirevier Bezirksdienst"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3257062196,
+      "lat": 54.3561876,
+      "lon": 10.1326287,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "53",
+        "addr:postcode": "24106",
+        "addr:street": "Wiker Straße",
+        "amenity": "police",
+        "check_date": "2025-10-18",
+        "name": "Polizeistation Kiel-Wik"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3338269125,
+      "lat": 53.7335239,
+      "lon": 10.0893644,
+      "tags": {
+        "addr:housenumber": "12",
+        "addr:street": "Wassermühlenweg",
+        "amenity": "police",
+        "check_date": "2025-05-06",
+        "name": "Polizeistation Tangstedt"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3438989939,
+      "lat": 53.8963066,
+      "lon": 9.1443932,
+      "tags": {
+        "amenity": "police",
+        "entrance": "yes",
+        "name": "Wasserschutzpolizei",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3607822120,
+      "lat": 54.9072007,
+      "lon": 8.3096492,
+      "tags": {
+        "addr:city": "Sylt",
+        "addr:housenumber": "1",
+        "addr:postcode": "25980",
+        "addr:street": "Trift",
+        "addr:suburb": "Westerland",
+        "amenity": "police",
+        "name": "Bundespolizei",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026",
+        "operator:wikipedia": "de:Bundespolizei (Deutschland)",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3610328768,
+      "lat": 54.3356469,
+      "lon": 10.1549963,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "11",
+        "addr:postcode": "24105",
+        "addr:street": "Arwed-Emminghaus-Weg",
+        "amenity": "police",
+        "check_date": "2025-04-27",
+        "email": "kiel.wsprv@polizei.landsh.de",
+        "fax": "+49 431 1601609",
+        "name": "Wasserschutzpolizei",
+        "official_name": "Wasserschutzpolizeirevier Kiel",
+        "phone": "+49 431 1601610"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3679096817,
+      "lat": 53.8566059,
+      "lon": 10.6466208,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizeistation Buntekuh"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3876247757,
+      "lat": 53.806449,
+      "lon": 10.7027468,
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:housenumber": "101",
+        "addr:postcode": "23562",
+        "addr:street": "Blankenseer Straße",
+        "amenity": "police",
+        "check_date": "2022-03-21",
+        "contact:email": "blankensee.pst@polizei.landsh.de",
+        "contact:fax": "+49 451 69393-19",
+        "contact:phone": "+49 451 69393-0",
+        "fixme": "Lage",
+        "name": "Polizeistation Blankensee",
+        "operator": "4. Polizeirevier Lübeck"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3927399628,
+      "lat": 53.9982742,
+      "lon": 9.2623028,
+      "tags": {
+        "addr:city": "Burg (Dithmarschen)",
+        "addr:housenumber": "7",
+        "addr:postcode": "25712",
+        "addr:street": "Holzmarkt",
+        "amenity": "police",
+        "name": "Polizei-Zentralstation Burg",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4010219087,
+      "lat": 54.3939115,
+      "lon": 10.3718267,
+      "tags": {
+        "addr:city": "Schönberg (Holstein)",
+        "addr:country": "DE",
+        "addr:housenumber": "13",
+        "addr:postcode": "24217",
+        "addr:street": "Knüll",
+        "amenity": "police",
+        "check_date": "2025-10-27",
+        "name": "Polizei-Zentralstation Schönberg",
+        "phone": "+49 4344 29150",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4151642694,
+      "lat": 54.2968161,
+      "lon": 9.6674992,
+      "tags": {
+        "addr:city": "Rendsburg",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "24768",
+        "addr:street": "Moltkestraße",
+        "amenity": "police",
+        "check_date": "2026-01-03",
+        "name": "Polizeirevier Rendsburg",
+        "phone": "+49 4331 208-0",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4237209890,
+      "lat": 54.2930438,
+      "lon": 10.8793124,
+      "tags": {
+        "addr:city": "Oldenburg in Holstein",
+        "addr:country": "DE",
+        "addr:housenumber": "20",
+        "addr:postcode": "23758",
+        "addr:street": "Hoheluftstraße",
+        "amenity": "police",
+        "name": "Polizeistation Oldenburg (Holstein)",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "phone": "+49 4361 1055-0",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4289825016,
+      "lat": 54.291174,
+      "lon": 10.2281681,
+      "tags": {
+        "addr:city": "Schwentinental",
+        "addr:housenumber": "12",
+        "addr:postcode": "24223",
+        "addr:street": "Lise-Meitner-Straße",
+        "amenity": "police",
+        "check_date": "2025-12-12",
+        "name": "Polizeistation Schwentinental",
+        "phone": "+49 4307 82360",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4450160856,
+      "lat": 54.123472,
+      "lon": 9.9913741,
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:country": "DE",
+        "addr:housenumber": "59",
+        "addr:postcode": "24536",
+        "addr:street": "Einfelder Straße",
+        "addr:suburb": "Einfeld",
+        "amenity": "police",
+        "name": "Polizeistation Einfeld"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4690272072,
+      "lat": 53.6876275,
+      "lon": 10.4869809,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2025-05-31",
+        "name": "Polizeistation Sandesneben",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4935161607,
+      "lat": 53.9982927,
+      "lon": 10.4172063,
+      "tags": {
+        "addr:city": "Wensin",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "23827",
+        "addr:street": "Segeberger Straße",
+        "addr:suburb": "Garbek",
+        "amenity": "police",
+        "name": "Polizeistation Garbek",
+        "phone": "+49 4559188354-0",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5015893148,
+      "lat": 53.8518637,
+      "lon": 10.6798696,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2026-07-27",
+        "name": "Polizeiliche Regionalleitstelle Süd",
+        "opening_hours": "24/7",
+        "phone": "110"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5028681722,
+      "lat": 54.0368477,
+      "lon": 10.2200011,
+      "tags": {
+        "amenity": "police",
+        "check_date": "2024-10-26",
+        "name": "Polizeistation Trappenkamp",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5227216113,
+      "lat": 53.9624624,
+      "lon": 9.6193842,
+      "tags": {
+        "addr:city": "Hohenlockstedt",
+        "addr:housenumber": "55",
+        "addr:postcode": "25551",
+        "addr:street": "Kieler Straße",
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5853282987,
+      "lat": 54.0077137,
+      "lon": 10.1631255,
+      "tags": {
+        "addr:housenumber": "35a",
+        "addr:postcode": "24635",
+        "addr:street": "Dorfstraße",
+        "amenity": "police",
+        "name": "Polizeistation Rickling"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5949831499,
+      "lat": 54.5694036,
+      "lon": 9.1742304,
+      "tags": {
+        "addr:city": "Viöl",
+        "addr:country": "DE",
+        "addr:housenumber": "41",
+        "addr:postcode": "25884",
+        "addr:street": "Westerende",
+        "amenity": "police",
+        "name": "Polizeistation Viöl",
+        "opening_hours": "Mo 14:00-16:00; We 10:00-12:00",
+        "phone": "+49 4843 2044990",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6149349785,
+      "lat": 54.3287829,
+      "lon": 10.1282245,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24116",
+        "addr:street": "Lessingplatz",
+        "amenity": "police",
+        "check_date": "2026-02-28",
+        "email": "bpoli.kiel@polizei.bund.de",
+        "fax": "+49 431 98071-299",
+        "name": "Bundespolizeiinspektion Kiel",
+        "phone": "+49 431 98071-0",
+        "short_name": "BPOLI KI",
+        "website": "https://www.bundespolizei.de/SharedDocs/Webs/Web/Organisationseinheiten/BPOLI/Kiel.html"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6345623095,
+      "lat": 54.7692452,
+      "lon": 9.4435061,
+      "tags": {
+        "addr:city": "Flensburg",
+        "addr:country": "DE",
+        "addr:housenumber": "2a",
+        "addr:postcode": "24941",
+        "addr:street": "Valentinerallee",
+        "amenity": "police",
+        "check_date": "2025-04-06",
+        "name": "Bundespolizeiinspektion Flensburg",
+        "short_name": "BPOLI FL"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6363283926,
+      "lat": 53.8225329,
+      "lon": 10.5008506,
+      "tags": {
+        "addr:city": "Reinfeld",
+        "addr:housenumber": "10",
+        "addr:postcode": "23858",
+        "addr:street": "Barnitzer Straße",
+        "amenity": "police",
+        "name": "Polizeistation Reinfeld",
+        "phone": "+49 4533 793400"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6484856693,
+      "lat": 54.1508728,
+      "lon": 10.3422487,
+      "tags": {
+        "amenity": "police",
+        "name": "Polizei Dienststelle",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6787726116,
+      "lat": 53.91658,
+      "lon": 9.8822897,
+      "tags": {
+        "addr:city": "Bad Bramstedt",
+        "addr:housenumber": "2",
+        "addr:postcode": "24576",
+        "addr:street": "Altonaer Straße",
+        "amenity": "police",
+        "level": "0",
+        "name": "PSt. Bad Bramstedt",
+        "opening_hours": "24/7",
+        "operator": "Landespolizeiamt Schleswig-Holstein",
+        "phone": "+49 4192 3911-0",
+        "start_date": "2019",
+        "website": "https://www.schleswig-holstein.de/DE/Landesregierung/POLIZEI/Polizei_node.html",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7562415789,
+      "lat": 54.316533,
+      "lon": 10.1235305,
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "34",
+        "addr:postcode": "24114",
+        "addr:street": "Von-der-Tann-Straße",
+        "amenity": "police",
+        "contact:fax": "+49 431 160-1319",
+        "contact:phone": "+49 431 160-1310",
+        "name": "3. Polizeirevier Kiel",
+        "operator": "Polizeidirektion Kiel",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8404101791,
+      "lat": 54.4990737,
+      "lon": 11.2228628,
+      "tags": {
+        "addr:city": "Fehmarn",
+        "addr:housenumber": "2",
+        "addr:postcode": "23769",
+        "addr:street": "Fährhafenstraße",
+        "amenity": "police",
+        "name": "Bundespolizeirevier Puttgarden",
+        "short_name": "BPOLR PUT"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9337229417,
+      "lat": 53.9372016,
+      "lon": 10.2725804,
+      "tags": {
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9352836413,
+      "lat": 54.3211775,
+      "lon": 9.6146826,
+      "tags": {
+        "addr:city": "Rendsburg",
+        "addr:housenumber": "34-40",
+        "addr:postcode": "24768",
+        "addr:street": "Helgoländer Straße",
+        "amenity": "police",
+        "name": "Polizei-Bezirksrevier Rendsburg",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9594067572,
+      "lat": 54.0639878,
+      "lon": 9.9628749,
+      "tags": {
+        "amenity": "police",
+        "contact:email": "faldera.pst@polizei.landsh.de",
+        "contact:fax": "+49 4321 690283",
+        "contact:phone": "+49 4321 690282",
+        "name": "Polizeistation Faldera",
+        "operator": "2. Polizeirevier Neumünster"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9594271003,
+      "lat": 54.2926804,
+      "lon": 10.5946612,
+      "tags": {
+        "addr:city": "Lütjenburg",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "24321",
+        "addr:street": "Gildenplatz",
+        "amenity": "police",
+        "contact:fax": "+49 4381 906333",
+        "contact:phone": "+49 4381 906331",
+        "name": "Polizeistation Lütjenburg",
+        "operator": "Polizeirevier Plön",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9594446119,
+      "lat": 54.520321,
+      "lon": 8.6839427,
+      "tags": {
+        "amenity": "police",
+        "contact:fax": "+49 4844 992086",
+        "contact:phone": "+49 4844 310",
+        "name": "Polizeistation Pellworm",
+        "operator": "Polizeirevier Husum"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9594473197,
+      "lat": 54.7923738,
+      "lon": 8.8429078,
+      "tags": {
+        "addr:city": "Niebüll",
+        "addr:country": "DE",
+        "addr:housenumber": "75",
+        "addr:postcode": "25899",
+        "addr:street": "Gather Landstraße",
+        "amenity": "police",
+        "contact:phone": "+49 4661 40110",
+        "name": "Polizeirevier Niebüll",
+        "name_old": "Polizei-Zentralstation Niebüll",
+        "operator": "Polizeidirektion Flensburg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9594592213,
+      "lat": 54.9110404,
+      "lon": 8.3077991,
+      "tags": {
+        "amenity": "police",
+        "contact:fax": "+49 4651 7047290",
+        "contact:phone": "+49 4651 70470",
+        "name": "Polizeirevier Sylt",
+        "operator": "Polizeidirektion Flensburg"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10152878102,
+      "lat": 53.6935676,
+      "lon": 10.0274277,
+      "tags": {
+        "amenity": "police",
+        "name": "Revier Norderstedt Ost"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11057400756,
+      "lat": 54.6413085,
+      "lon": 9.7618372,
+      "tags": {
+        "addr:city": "Süderbrarup",
+        "addr:country": "DE",
+        "addr:housenumber": "26",
+        "addr:postcode": "24392",
+        "addr:street": "team Allee",
+        "amenity": "police",
+        "name": "Polizeidienststelle Süderbrarup"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11069363374,
+      "lat": 53.732209,
+      "lon": 9.8938549,
+      "tags": {
+        "addr:city": "Quickborn",
+        "addr:housenumber": "1c",
+        "addr:postcode": "25451",
+        "addr:street": "Marktstraße",
+        "amenity": "police",
+        "name": "Polizeistation Quickborn",
+        "opening_hours": "24/7",
+        "wheelchair": "yes",
+        "wikidata": "Q108188733"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13178711882,
+      "lat": 53.862973,
+      "lon": 10.714042,
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:country": "DE",
+        "addr:housenumber": "6a",
+        "addr:postcode": "23564",
+        "addr:street": "Walderseestraße",
+        "amenity": "police",
+        "name": "Hauptzollamt"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13598601136,
+      "lat": 53.8669225,
+      "lon": 10.6700724,
+      "tags": {
+        "amenity": "police",
+        "name": "Bundespolizeirevier Lübeck",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026"
+      }
+    },
+    {
+      "type": "way",
+      "id": 4720664,
+      "center": {
+        "lat": 53.8264648,
+        "lon": 10.726082
+      },
+      "nodes": [
+        30061446,
+        2152595410,
+        2152595389,
+        2152595363,
+        2152595341,
+        2152595335,
+        2152595319,
+        2152595313,
+        2152595303,
+        2152595289,
+        2152595287,
+        2152595286,
+        2152595284,
+        2152595283,
+        30061439,
+        2152595336,
+        2152595339,
+        2152595342,
+        2152595348,
+        2152595346,
+        2152595350,
+        2152595357,
+        2152595355,
+        2152595372,
+        2152595371,
+        657783068,
+        30061440,
+        2152595642,
+        2152595707,
+        2152595749,
+        2152595691,
+        1116357212,
+        1116357115,
+        30061441,
+        3186733627,
+        30061442,
+        30061443,
+        2152595623,
+        30061444,
+        2152595598,
+        30061445,
+        31894250,
+        30061446
+      ],
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:housenumber": "4",
+        "addr:postcode": "23562",
+        "addr:street": "Ratzeburger Landstraße",
+        "alt_name": "Bundespolizeiakademie - Liegenschaft Dr. Robert Lehr",
+        "alt_name_1": "Hochschule des Bundes für öffentliche Verwaltung - Fachbereich Bundespolizei",
+        "amenity": "police",
+        "check_date": "2026-04-17",
+        "landuse": "commercial",
+        "name": "Bundespolizeiakademie",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026",
+        "operator:wikipedia": "de:Bundespolizei (Deutschland)",
+        "police": "academy",
+        "short_name": "BPOLAK DRL"
+      }
+    },
+    {
+      "type": "way",
+      "id": 24974363,
+      "center": {
+        "lat": 53.6441172,
+        "lon": 9.8413871
+      },
+      "nodes": [
+        271379680,
+        13155963163,
+        271379681,
+        271379682,
+        271379683,
+        271379684,
+        271379685,
+        271379680
+      ],
+      "tags": {
+        "addr:city": "Rellingen",
+        "addr:country": "DE",
+        "addr:housenumber": "85",
+        "addr:postcode": "25462",
+        "addr:street": "Halstenbeker Weg",
+        "amenity": "police",
+        "building": "public",
+        "check_date": "2025-09-08",
+        "fax": "+49 4101 498-108",
+        "name": "Polizeirevier Rellingen",
+        "phone": "+49 4101 498-0"
+      }
+    },
+    {
+      "type": "way",
+      "id": 26622442,
+      "center": {
+        "lat": 54.3304374,
+        "lon": 10.1079959
+      },
+      "nodes": [
+        292003596,
+        2374319760,
+        2374319761,
+        9393338776,
+        1089497791,
+        9393338775,
+        2374319762,
+        292003597,
+        292014371,
+        295113776,
+        9393342521,
+        295113778,
+        1758296070,
+        1758296071,
+        597423147,
+        1758296068,
+        292003599,
+        1886614809,
+        280146302,
+        1886531922,
+        1886532197,
+        1886532207,
+        2530758664,
+        2530758662,
+        3770474139,
+        292003826,
+        114676292,
+        294192132,
+        294193516,
+        294192491,
+        294192134,
+        292003827,
+        292003596
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "166",
+        "addr:postcode": "24116",
+        "addr:street": "Mühlenweg",
+        "amenity": "police",
+        "barrier": "fence",
+        "check_date": "2024-03-28",
+        "landuse": "commercial",
+        "name": "Polizeizentrum Eichhof, Landespolizeiamt, Landeskriminalamt, Bezirksrevier"
+      }
+    },
+    {
+      "type": "way",
+      "id": 26628650,
+      "center": {
+        "lat": 53.5799365,
+        "lon": 9.7025099
+      },
+      "nodes": [
+        292076817,
+        292076822,
+        292076823,
+        292076821,
+        292076819,
+        292076818,
+        1590656232,
+        1590656296,
+        292076817
+      ],
+      "tags": {
+        "addr:city": "Wedel",
+        "addr:country": "DE",
+        "addr:housenumber": "9-11",
+        "addr:postcode": "22880",
+        "addr:street": "Gorch-Fock-Straße",
+        "amenity": "police",
+        "building": "yes",
+        "building:levels": "3",
+        "name": "Polizeirevier Wedel (Holstein)",
+        "phone": "+49 4103 50180",
+        "roof:levels": "1",
+        "roof:shape": "hipped",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 26631295,
+      "center": {
+        "lat": 54.472859,
+        "lon": 9.0535439
+      },
+      "nodes": [
+        292110510,
+        292110512,
+        292110515,
+        292110519,
+        292110510
+      ],
+      "tags": {
+        "addr:city": "Husum",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "25813",
+        "addr:street": "Poggenburgstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-04-19",
+        "name": "Polizeidirektion Husum",
+        "name:frr": "Politiidireksjoon",
+        "phone": "+49 4841 8300",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 34095435,
+      "center": {
+        "lat": 53.6043104,
+        "lon": 9.8365223
+      },
+      "nodes": [
+        255677325,
+        12213659076,
+        12213659077,
+        390827212,
+        7168780697,
+        255677327,
+        390834300,
+        12213659074,
+        12213659075,
+        255677325
+      ],
+      "tags": {
+        "addr:city": "Schenefeld",
+        "addr:country": "DE",
+        "addr:housenumber": "22",
+        "addr:postcode": "22869",
+        "addr:street": "Kiebitzweg",
+        "amenity": "police",
+        "building": "yes",
+        "building:levels": "2",
+        "building:material": "brick",
+        "height": "6",
+        "name": "Polizei Schenefeld",
+        "roof:colour": "black",
+        "roof:height": "3",
+        "roof:material": "roof_tiles",
+        "roof:shape": "gabled"
+      }
+    },
+    {
+      "type": "way",
+      "id": 35668618,
+      "center": {
+        "lat": 53.7450925,
+        "lon": 9.7072143
+      },
+      "nodes": [
+        417653707,
+        417653708,
+        417653709,
+        417653710,
+        417653707
+      ],
+      "tags": {
+        "addr:city": "Elmshorn",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "25337",
+        "addr:street": "Wittenberger Straße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizei-Autobahn- und Bezirksrevier Elmshorn",
+        "opening_hours": "24/7",
+        "phone": "+49 4121 4092-0"
+      }
+    },
+    {
+      "type": "way",
+      "id": 42087920,
+      "center": {
+        "lat": 54.4689125,
+        "lon": 9.836541
+      },
+      "nodes": [
+        522882283,
+        2462374045,
+        2462374050,
+        2462374051,
+        2462374046,
+        522882287,
+        522882230,
+        6184662463,
+        522882229,
+        2462374041,
+        522882283
+      ],
+      "tags": {
+        "addr:city": "Eckernförde",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "24340",
+        "addr:street": "Gerichtstraße",
+        "amenity": "police",
+        "building": "apartments",
+        "building:levels": "2",
+        "building:material": "brick",
+        "name": "Polizeirevier Eckernförde",
+        "phone": "+49 4351 908-0",
+        "roof:levels": "1",
+        "roof:shape": "gabled",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 46648672,
+      "center": {
+        "lat": 53.9202589,
+        "lon": 9.523645
+      },
+      "nodes": [
+        1407455687,
+        1407455720,
+        595976023,
+        595976026,
+        595976028,
+        595976029,
+        1407455687
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-06-01",
+        "name": "Polizeidirektion Itzehoe"
+      }
+    },
+    {
+      "type": "way",
+      "id": 55750794,
+      "center": {
+        "lat": 53.6930865,
+        "lon": 10.1705453
+      },
+      "nodes": [
+        700346682,
+        700346683,
+        700346815,
+        700346685,
+        700346682
+      ],
+      "tags": {
+        "addr:city": "Ammersbek",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "22949",
+        "addr:street": "Grootkoppel",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-12-27",
+        "name": "Polizeistation Ammersbek",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 60130583,
+      "center": {
+        "lat": 53.9431588,
+        "lon": 9.9032259
+      },
+      "nodes": [
+        747032879,
+        747032866,
+        1086972686,
+        747032868,
+        3377603101,
+        747032870,
+        747032880,
+        747032881,
+        11186517081,
+        11186517080,
+        1319237936,
+        11186517078,
+        11186517079,
+        747032884,
+        747032886,
+        747032879
+      ],
+      "tags": {
+        "addr:city": "Fuhlendorf",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "24649",
+        "addr:street": "Bocksberg",
+        "aeroway": "heliport",
+        "amenity": "police",
+        "barrier": "fence",
+        "icao": "EDHX",
+        "name": "Bundespolizei-Fliegerstaffel Fuhlendorf",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026",
+        "police": "helicopter_unit",
+        "short_name": "BPOLFLS FUD"
+      }
+    },
+    {
+      "type": "way",
+      "id": 67743830,
+      "center": {
+        "lat": 53.6968945,
+        "lon": 10.7930948
+      },
+      "nodes": [
+        817977804,
+        817977304,
+        817977818,
+        817977196,
+        817977500,
+        817977751,
+        817977081,
+        1025689112,
+        1025688639,
+        1025688374,
+        1025688851,
+        817977230,
+        1025688580,
+        1025689020,
+        817977737,
+        1025689697,
+        1025688781,
+        817977804
+      ],
+      "tags": {
+        "access": "private",
+        "addr:city": "Ratzeburg",
+        "addr:housenumber": "6",
+        "addr:postcode": "23909",
+        "addr:street": "Mechower Straße",
+        "amenity": "police",
+        "landuse": "military",
+        "name": "Bundespolizeiabteilung Ratzeburg",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026"
+      }
+    },
+    {
+      "type": "way",
+      "id": 82011410,
+      "center": {
+        "lat": 54.1522773,
+        "lon": 10.5966768
+      },
+      "nodes": [
+        955633485,
+        955633479,
+        3647977455,
+        3647977490,
+        955633507,
+        3647977515,
+        955633494,
+        12378555177,
+        955633478,
+        955633508,
+        955633496,
+        1764671801,
+        2338039363,
+        2338039362,
+        955633486,
+        1275743414,
+        2338039356,
+        2338039355,
+        2338039354,
+        2338039353,
+        2338039351,
+        955633482,
+        2338039349,
+        2338039346,
+        955633475,
+        955633504,
+        955633480,
+        955633477,
+        955633498,
+        897294480,
+        955633484,
+        4812425955,
+        955633485
+      ],
+      "tags": {
+        "amenity": "police",
+        "barrier": "fence",
+        "note": "Polizeidirektion Ausbildung, Fortbildung, Bereitschaftspolizei",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 90104190,
+      "center": {
+        "lat": 54.3261787,
+        "lon": 10.1290872
+      },
+      "nodes": [
+        9393342564,
+        9393342563,
+        1044531476,
+        1044531402,
+        1044531324,
+        1044531614,
+        1044531604,
+        1044531504,
+        1044531424,
+        1044531354,
+        1044531564,
+        1044531473,
+        1044531392,
+        1044531312,
+        1044531369,
+        1044531677,
+        1866909679,
+        1044531582,
+        1044531496,
+        1044531338,
+        1044531641,
+        1044531541,
+        1044531440,
+        1044531433,
+        4268953033,
+        4268953035,
+        1044531360,
+        1044531656,
+        1044531570,
+        1044531474,
+        1044531638,
+        1044531532,
+        1044531436,
+        9393342565,
+        9393342566,
+        1866909678,
+        9393342564
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "24103",
+        "addr:street": "Gartenstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-07-10",
+        "contact:fax": "+49 431 160-2029",
+        "contact:phone": "+49 431 160-2003",
+        "name": "Polizeidirektion Kiel",
+        "operator": "Polizeidirektion Kiel",
+        "source": "Bing"
+      }
+    },
+    {
+      "type": "way",
+      "id": 95860702,
+      "center": {
+        "lat": 53.9201257,
+        "lon": 10.6955629
+      },
+      "nodes": [
+        1110910811,
+        14029001625,
+        1110910878,
+        13924264501,
+        13924264503,
+        1110910928,
+        1110910875,
+        14028959549,
+        14028959551,
+        14028959552,
+        14028959550,
+        1110910811
+      ],
+      "tags": {
+        "addr:city": "Bad Schwartau",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "23611",
+        "addr:street": "Eutiner Ring",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-07-03",
+        "name": "Polizeirevier Bad Schwartau",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 98654771,
+      "center": {
+        "lat": 53.865083,
+        "lon": 10.7200321
+      },
+      "nodes": [
+        1141342962,
+        1141342375,
+        1141343205,
+        1141344058,
+        1141342962
+      ],
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "23566",
+        "addr:street": "Meesenring",
+        "amenity": "police",
+        "building": "civic",
+        "building:levels": "3",
+        "check_date": "2025-11-11",
+        "name": "3. Polizeirevier",
+        "phone": "+49 451 131 6345",
+        "roof:levels": "1",
+        "roof:shape": "hipped",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 101385455,
+      "center": {
+        "lat": 54.3378168,
+        "lon": 10.1448598
+      },
+      "nodes": [
+        1170745548,
+        1170745403,
+        1170745340,
+        1170745613,
+        1170745467,
+        1170745373,
+        1170745300,
+        1170745574,
+        1170745409,
+        1170745344,
+        1170745628,
+        1170745530,
+        1170745548
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "23",
+        "addr:postcode": "24105",
+        "addr:street": "Düppelstraße",
+        "amenity": "police",
+        "building": "government",
+        "building:levels": "2",
+        "building:material": "stone",
+        "check_date": "2025-09-10",
+        "email": "Kiel.PRev01@polizei.landsh.de",
+        "fax": "+49 431 1601119",
+        "name": "1. Polizeirevier Kiel",
+        "operator": "Polizeidirektion Kiel",
+        "phone": "+49 431 1600",
+        "roof:levels": "2",
+        "roof:material": "roof_tiles",
+        "roof:orientation": "along",
+        "roof:shape": "mansard",
+        "short_name": "1. PR Kiel"
+      }
+    },
+    {
+      "type": "way",
+      "id": 105678461,
+      "center": {
+        "lat": 53.7276281,
+        "lon": 10.2528123
+      },
+      "nodes": [
+        1216890617,
+        1216890618,
+        1216890619,
+        1216890620,
+        1216890617
+      ],
+      "tags": {
+        "addr:city": "Bargteheide",
+        "addr:country": "DE",
+        "addr:housenumber": "68",
+        "addr:postcode": "22941",
+        "addr:street": "Alte Landstraße",
+        "alt_name": "Polizei Bargteheide",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizei-Zentralstation Bargteheide",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 109580586,
+      "center": {
+        "lat": 53.9342752,
+        "lon": 10.273969
+      },
+      "nodes": [
+        1254063970,
+        1254063978,
+        1254063983,
+        1254063968,
+        1254063970
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 116640114,
+      "center": {
+        "lat": 53.9481679,
+        "lon": 10.3051667
+      },
+      "nodes": [
+        1314457199,
+        1314457187,
+        2151664467,
+        2151664465,
+        4116311220,
+        4116311218,
+        2151664463,
+        2151664461,
+        1314457191,
+        2151664460,
+        2151664462,
+        2151664464,
+        4116311221,
+        4116311223,
+        2151664466,
+        4116311227,
+        2151664468,
+        2151664470,
+        2151664471,
+        2151664469,
+        1314457190,
+        1314457199
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-04-26",
+        "name": "Polizeidirektion Bad Segeberg",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 117262931,
+      "center": {
+        "lat": 53.5037898,
+        "lon": 10.4792219
+      },
+      "nodes": [
+        1320804766,
+        2273172474,
+        2273172476,
+        12630557431,
+        12630557432,
+        1320804684,
+        1320804766
+      ],
+      "tags": {
+        "addr:city": "Schwarzenbek",
+        "addr:country": "DE",
+        "addr:housenumber": "10",
+        "addr:postcode": "21493",
+        "addr:street": "Compestraße",
+        "amenity": "police",
+        "check_date": "2024-11-20",
+        "name": "Polizei-Zentralstation Schwarzenbek",
+        "phone": "+49 4151 8894-0"
+      }
+    },
+    {
+      "type": "way",
+      "id": 118806561,
+      "center": {
+        "lat": 54.1342495,
+        "lon": 10.6189064
+      },
+      "nodes": [
+        1335535047,
+        1335535037,
+        1335534995,
+        1335535030,
+        2239202275,
+        1335535047
+      ],
+      "tags": {
+        "addr:city": "Eutin",
+        "addr:country": "DE",
+        "addr:housenumber": "35",
+        "addr:postcode": "23701",
+        "addr:street": "Lübecker Straße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizei-Zentralstation Eutin",
+        "phone": "+49 4521 801-190",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 129716445,
+      "center": {
+        "lat": 53.9537911,
+        "lon": 9.0202821
+      },
+      "nodes": [
+        1430510461,
+        1430510463,
+        1430510465,
+        1430510467,
+        1430510461
+      ],
+      "tags": {
+        "addr:city": "Marne",
+        "addr:housenumber": "70",
+        "addr:postcode": "25709",
+        "addr:street": "Bahnhofstraße",
+        "amenity": "police",
+        "building": "yes",
+        "contact:phone": "+49 4851 95070",
+        "name": "Polizeistation Marne",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "source": "Bing"
+      }
+    },
+    {
+      "type": "way",
+      "id": 129822330,
+      "center": {
+        "lat": 54.0909456,
+        "lon": 9.0709565
+      },
+      "nodes": [
+        1431652525,
+        1431652539,
+        1431652535,
+        1431652524,
+        1431652525
+      ],
+      "tags": {
+        "addr:city": "Meldorf",
+        "addr:country": "DE",
+        "addr:housenumber": "3A",
+        "addr:postcode": "25704",
+        "addr:street": "Nordermarkt",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-01-11",
+        "name": "Polizei-Zentralstation Meldorf",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 129848704,
+      "center": {
+        "lat": 54.4742419,
+        "lon": 9.0432353
+      },
+      "nodes": [
+        1431931993,
+        1431932001,
+        1431931995,
+        1431931992,
+        1431931991,
+        13011234840,
+        1431931993
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-08-17",
+        "name": "Wasserschutzpolizei",
+        "name:frr": "Wääderpolitii",
+        "phone": "+49 4841 830660"
+      }
+    },
+    {
+      "type": "way",
+      "id": 131834338,
+      "center": {
+        "lat": 54.0877535,
+        "lon": 9.7890382
+      },
+      "nodes": [
+        1450281388,
+        1450281386,
+        1450281378,
+        1450281380,
+        1450281388
+      ],
+      "tags": {
+        "addr:city": "Aukrug",
+        "addr:housenumber": "9",
+        "addr:postcode": "24613",
+        "addr:street": "Heinkenborsteler Straße",
+        "amenity": "police",
+        "building": "commercial",
+        "name": "Polizeistation Aukrug",
+        "phone": "+49 4873 310"
+      }
+    },
+    {
+      "type": "way",
+      "id": 135114142,
+      "center": {
+        "lat": 54.6183657,
+        "lon": 8.9629859
+      },
+      "nodes": [
+        1484146086,
+        1484146082,
+        440816232,
+        1484146072,
+        440816231,
+        1484146086
+      ],
+      "tags": {
+        "addr:city": "Bredstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "33",
+        "addr:postcode": "25821",
+        "addr:street": "Markt",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeiwache Bredstedt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 136538737,
+      "center": {
+        "lat": 54.0009909,
+        "lon": 10.7750627
+      },
+      "nodes": [
+        1497733611,
+        1497733599,
+        1399849108,
+        1497733618,
+        1497733611
+      ],
+      "tags": {
+        "addr:city": "Timmendorfer Strand",
+        "addr:country": "DE",
+        "addr:housenumber": "24a",
+        "addr:postcode": "23669",
+        "addr:street": "Wohldstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-03-04",
+        "name": "Polizeistation Timmendorfer Strand",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "way",
+      "id": 139723064,
+      "center": {
+        "lat": 53.8876989,
+        "lon": 10.6840556
+      },
+      "nodes": [
+        1531252341,
+        1531252340,
+        1531252342,
+        1531252343,
+        1531252345,
+        1531252344,
+        1531252348,
+        1531252349,
+        1531252353,
+        1531252352,
+        1531252354,
+        1531252355,
+        1531252350,
+        1531252351,
+        1531252347,
+        1531252346,
+        1531252341
+      ],
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:country": "DE",
+        "addr:housenumber": "1a",
+        "addr:postcode": "23554",
+        "addr:street": "Schwartauer Landstraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Bundespolizeirevier Lübeck",
+        "short_name": "BPOLR HL"
+      }
+    },
+    {
+      "type": "way",
+      "id": 142142806,
+      "center": {
+        "lat": 54.133779,
+        "lon": 8.8605704
+      },
+      "nodes": [
+        1793464116,
+        1793464114,
+        1793464105,
+        1555754979,
+        1793464124,
+        1793464127,
+        1793464132,
+        1555754981,
+        1793464135,
+        1555754982,
+        1555754980,
+        1793464116
+      ],
+      "tags": {
+        "addr:city": "Büsum",
+        "addr:country": "DE",
+        "addr:housenumber": "28",
+        "addr:postcode": "25761",
+        "addr:street": "Vereinsallee",
+        "amenity": "police",
+        "building": "yes",
+        "building:levels": "1",
+        "check_date": "2025-07-26",
+        "name": "Polizeistation Büsum",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "phone": "+49 4834 95200",
+        "roof:shape": "many",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 142497709,
+      "center": {
+        "lat": 53.8995434,
+        "lon": 9.120737
+      },
+      "nodes": [
+        1559459439,
+        1559459442,
+        1559459444,
+        1559459446,
+        1559459449,
+        1559459451,
+        1559459452,
+        1559459454,
+        1559459456,
+        1559459458,
+        1559459459,
+        1559459461,
+        1559459462,
+        1559459464,
+        1559459439
+      ],
+      "tags": {
+        "addr:city": "Brunsbüttel",
+        "addr:housenumber": "1",
+        "addr:postcode": "25541",
+        "addr:street": "Emil-von-Behring-Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-10-08",
+        "name": "Polizei-Zentalstation Brunsbüttel",
+        "source": "Bing",
+        "toilets:wheelchair": "no",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 147559471,
+      "center": {
+        "lat": 53.8891997,
+        "lon": 10.6826609
+      },
+      "nodes": [
+        1607654377,
+        1607654376,
+        1607654380,
+        12103977481,
+        12103977484,
+        1607654379,
+        12103977483,
+        12103977482,
+        1607654375,
+        12103977489,
+        1607654371,
+        12103977490,
+        1607654369,
+        1607654370,
+        1607654372,
+        1607654373,
+        12103977467,
+        13531482403,
+        13531482401,
+        12103977468,
+        1607654374,
+        1607654377
+      ],
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:housenumber": "1-5",
+        "addr:postcode": "23554",
+        "addr:street": "Schwartauer Landstraße",
+        "amenity": "police",
+        "landuse": "commercial",
+        "name": "Bundespolizeiakademie - Unterkunft Falkenfeld",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026",
+        "short_name": "BPOLAK UKF"
+      }
+    },
+    {
+      "type": "way",
+      "id": 151170552,
+      "center": {
+        "lat": 53.563746,
+        "lon": 10.5560567
+      },
+      "nodes": [
+        1639955183,
+        1639955181,
+        1639955175,
+        10901361562,
+        10901361563,
+        1639955156,
+        1639955127,
+        1639955149,
+        1639955151,
+        1639955154,
+        1639955183
+      ],
+      "tags": {
+        "addr:city": "Elmenhorst",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "21493",
+        "addr:street": "An der Autobahn",
+        "amenity": "police",
+        "building": "public",
+        "contact:email": "ratzeburg.pabr@polizei.landsh.de",
+        "contact:fax": "+49 4156 295-19",
+        "contact:phone": "+49 4156 295-0",
+        "name": "Polizeiautobahn- und Bezirksrevier Mölln",
+        "opening_hours": "24/7",
+        "short_name": "PABR Ratzeburg",
+        "source:link": "https://bos-fahrzeuge.info/D15432"
+      }
+    },
+    {
+      "type": "way",
+      "id": 151796661,
+      "center": {
+        "lat": 54.357541,
+        "lon": 10.0826682
+      },
+      "nodes": [
+        1646384002,
+        1646383994,
+        1646383999,
+        1646384004,
+        12606688624,
+        12606688625,
+        1646384002
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:country": "DE",
+        "addr:housenumber": "425",
+        "addr:postcode": "24107",
+        "addr:street": "Eckernförder Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-02-12",
+        "name": "Polizeistation Suchsdorf",
+        "opening_hours": "Mo,We,Fr-Su off; Tu 10:00-12:00; Th 16:00-18:00",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 156659617,
+      "center": {
+        "lat": 53.7896991,
+        "lon": 9.9905172
+      },
+      "nodes": [
+        1688928050,
+        2377140739,
+        1688928060,
+        2576987242,
+        1688928019,
+        1688928017,
+        1688928050
+      ],
+      "tags": {
+        "addr:city": "Henstedt-Ulzburg",
+        "addr:country": "DE",
+        "addr:housenumber": "26",
+        "addr:postcode": "24558",
+        "addr:street": "Maurepasstraße",
+        "amenity": "police",
+        "building": "yes",
+        "building:levels": "2",
+        "check_date": "2024-10-18",
+        "fax": "+49 4193 9913-19",
+        "name": "Polizeistation Henstedt-Ulzburg",
+        "opening_hours": "24/7",
+        "phone": "+49 4193 9913 0",
+        "roof:colour": "maroon",
+        "roof:levels": "1",
+        "roof:shape": "gabled",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 157833996,
+      "center": {
+        "lat": 53.9604111,
+        "lon": 10.8812163
+      },
+      "nodes": [
+        1700799384,
+        1700799396,
+        1700799391,
+        1700799393,
+        12586980573,
+        12586980574,
+        12593306162,
+        1700799388,
+        1700799380,
+        12586980571,
+        12593306173,
+        12586980572,
+        12593306172,
+        1700799382,
+        1700799384
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "government",
+        "name": "Wasserschutzpolizeirevier Lübeck-Travemünde",
+        "police": "naval_base",
+        "source": "Aerowest",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 170422681,
+      "center": {
+        "lat": 53.9124202,
+        "lon": 10.805162
+      },
+      "nodes": [
+        1815630204,
+        12560939262,
+        12560939265,
+        1815630232,
+        1815630215,
+        1815630202,
+        1815630204
+      ],
+      "tags": {
+        "addr:city": "Lübeck",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "23569",
+        "addr:street": "Kücknitzer Hauptstraße",
+        "amenity": "police",
+        "building": "civic",
+        "name": "Polizeistation Kücknitz",
+        "short_name": "PSt Kücknitz",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 177183489,
+      "center": {
+        "lat": 54.4076363,
+        "lon": 9.9790135
+      },
+      "nodes": [
+        1876313910,
+        1876313911,
+        1876313909,
+        1876313920,
+        1876313910
+      ],
+      "tags": {
+        "addr:city": "Gettorf",
+        "addr:country": "DE",
+        "addr:housenumber": "1-3",
+        "addr:postcode": "24214",
+        "addr:street": "Hochkamp",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizei-Zentralstation Gettorf",
+        "phone": "+49 4346 9022",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 182198862,
+      "center": {
+        "lat": 54.6927582,
+        "lon": 8.5721584
+      },
+      "nodes": [
+        1925438287,
+        10945986007,
+        10945986008,
+        10945986009,
+        1925438234,
+        10945986006,
+        1925438356,
+        10945986003,
+        1925438235,
+        1925438287
+      ],
+      "tags": {
+        "addr:city": "Wyk auf Föhr",
+        "addr:housenumber": "15",
+        "addr:postcode": "25938",
+        "addr:street": "Hafendeich",
+        "amenity": "police",
+        "check_date": "2024-10-07",
+        "name": "Polizei Zentralstation Wyk auf Föhr",
+        "phone": "+49 4681 580470"
+      }
+    },
+    {
+      "type": "way",
+      "id": 195394022,
+      "center": {
+        "lat": 54.3295978,
+        "lon": 8.7879228
+      },
+      "nodes": [
+        2058388236,
+        2058388240,
+        2058388285,
+        2058388291,
+        2058388313,
+        2058388307,
+        2058388275,
+        2058388277,
+        2058388236
+      ],
+      "tags": {
+        "addr:city": "Garding",
+        "addr:country": "DE",
+        "addr:housenumber": "10",
+        "addr:postcode": "25836",
+        "addr:street": "Osterende",
+        "amenity": "police",
+        "building": "yes",
+        "contact:fax": "+49 4862 21748919",
+        "contact:phone": "+49 4862 2174890",
+        "operator": "Polizeirevier Husum",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 198975251,
+      "center": {
+        "lat": 54.0538613,
+        "lon": 9.9685267
+      },
+      "nodes": [
+        2090401051,
+        2090401043,
+        2090401030,
+        2090401046,
+        2090401066,
+        2090401051
+      ],
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:country": "DE",
+        "addr:housenumber": "16",
+        "addr:postcode": "24539",
+        "addr:street": "Mühlenstraße",
+        "addr:suburb": "Wittorf",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Wittorf"
+      }
+    },
+    {
+      "type": "way",
+      "id": 203890779,
+      "center": {
+        "lat": 54.0916889,
+        "lon": 9.6521305
+      },
+      "nodes": [
+        2139016952,
+        2139016949,
+        2139016950,
+        2139016956,
+        2139016952
+      ],
+      "tags": {
+        "addr:city": "Hohenwestedt",
+        "addr:country": "DE",
+        "addr:housenumber": "20",
+        "addr:postcode": "24594",
+        "addr:street": "Friedrichstraße",
+        "amenity": "police",
+        "building": "police",
+        "name": "Polizeistation Hohenwestedt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 207173630,
+      "center": {
+        "lat": 54.8152083,
+        "lon": 9.3607154
+      },
+      "nodes": [
+        2173309109,
+        2173309110,
+        2173309102,
+        2173309101,
+        2173309109
+      ],
+      "tags": {
+        "addr:city": "Harrislee",
+        "addr:country": "DE",
+        "addr:housenumber": "107",
+        "addr:postcode": "24955",
+        "addr:street": "Ochsenweg",
+        "amenity": "police",
+        "building": "yes",
+        "description": "Bundespolizeiinspektion Flensburg - Dienstverrichtungsraum Harrislee",
+        "loc_name": "Zollstation",
+        "short_name": "BPOLI FL - DVR HAR"
+      }
+    },
+    {
+      "type": "way",
+      "id": 209494530,
+      "center": {
+        "lat": 54.0122734,
+        "lon": 10.5706901
+      },
+      "nodes": [
+        2197031041,
+        2197031047,
+        2197031067,
+        2197031061,
+        2197031041
+      ],
+      "tags": {
+        "addr:city": "Ahrensbök",
+        "addr:housenumber": "3",
+        "addr:postcode": "23623",
+        "addr:street": "Poststraße",
+        "amenity": "police",
+        "building": "public",
+        "building:levels": "1",
+        "contact:phone": "+49 4525 7979910",
+        "name": "Polizeistation Ahrensbök",
+        "roof:levels": "1",
+        "roof:shape": "gabled",
+        "short_name": "PSt. Ahrensbök",
+        "start_date": "1826"
+      }
+    },
+    {
+      "type": "way",
+      "id": 214641334,
+      "center": {
+        "lat": 53.8668682,
+        "lon": 10.6699246
+      },
+      "nodes": [
+        2240235447,
+        2240235445,
+        419264745,
+        2240235447
+      ],
+      "tags": {
+        "addr:housenumber": "10",
+        "addr:street": "Am Bahnhof",
+        "amenity": "police",
+        "building": "retail",
+        "height": "15",
+        "name": "Bundespolizeirevier Lübeck",
+        "roof:height": "11",
+        "roof:orientation": "across",
+        "roof:shape": "gabled",
+        "source": "Aerowest Hires aerial images"
+      }
+    },
+    {
+      "type": "way",
+      "id": 215396803,
+      "center": {
+        "lat": 54.1695508,
+        "lon": 9.8596272
+      },
+      "nodes": [
+        2248174684,
+        11309874275,
+        2248174693,
+        2248174698,
+        2248174682,
+        2248174684
+      ],
+      "tags": {
+        "addr:city": "Nortorf",
+        "addr:country": "DE",
+        "addr:housenumber": "19",
+        "addr:postcode": "24589",
+        "addr:street": "Kieler Straße",
+        "amenity": "police",
+        "building": "commercial",
+        "name": "Polizeizentralstation Nortorf",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 217526618,
+      "center": {
+        "lat": 53.4303695,
+        "lon": 10.3750725
+      },
+      "nodes": [
+        2268083741,
+        2268083746,
+        2268083750,
+        2268083757,
+        2268083742,
+        2268083753,
+        7235546759,
+        7235546761,
+        7235546760,
+        12544894717,
+        7235546758,
+        2268083755,
+        2268083752,
+        2268083741
+      ],
+      "tags": {
+        "addr:city": "Geesthacht",
+        "addr:country": "DE",
+        "addr:housenumber": "11",
+        "addr:postcode": "21502",
+        "addr:street": "Markt",
+        "amenity": "police",
+        "building": "public",
+        "building:colour": "#f5f5dc",
+        "building:levels": "2",
+        "building:material": "plaster",
+        "description": "ehem. Gasthof \"Deutsches Haus\"; 1899, Umbau 1990-92; zweigeschossiger, traufständiger Putzbau unter Walmdach mit Kniestock und Schieferdeckung, aufwändige historistische Fassadengestaltung",
+        "hearing_loop": "no",
+        "historic": "building",
+        "roof:levels": "1",
+        "roof:material": "slate",
+        "roof:shape": "hipped",
+        "start_date": "1899",
+        "tactile_paving": "no",
+        "tactile_writing:braille": "no",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 222795187,
+      "center": {
+        "lat": 54.5421959,
+        "lon": 9.8185049
+      },
+      "nodes": [
+        2317354549,
+        1523119287,
+        2317354533,
+        2317354543,
+        2317354551,
+        2317354549
+      ],
+      "tags": {
+        "addr:city": "Rieseby",
+        "addr:country": "DE",
+        "addr:housenumber": "13",
+        "addr:postcode": "24354",
+        "addr:street": "Dorfstraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Rieseby",
+        "phone": "+49 4355 510",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 225203450,
+      "center": {
+        "lat": 54.3087215,
+        "lon": 9.3184475
+      },
+      "nodes": [
+        614940938,
+        2340186280,
+        2340186275,
+        2340186276,
+        2340186277,
+        2340186278,
+        614940938
+      ],
+      "tags": {
+        "addr:city": "Erfde",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24803",
+        "addr:street": "Beekstraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Erfde",
+        "phone": "+49 4333 410",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 229555773,
+      "center": {
+        "lat": 54.5205932,
+        "lon": 9.5516282
+      },
+      "nodes": [
+        2381320367,
+        2381501473,
+        2381501472,
+        4946859334,
+        4946859333,
+        4946859331,
+        4946859332,
+        2381320366,
+        2381501469,
+        2381501468,
+        2381320363,
+        2381320364,
+        4946859335,
+        4946859336,
+        2381501470,
+        2381320362,
+        2381320368,
+        4946859338,
+        4946859337,
+        2381320361,
+        2381501471,
+        2844061458,
+        2381320367
+      ],
+      "tags": {
+        "addr:city": "Schleswig",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "24837",
+        "addr:street": "Friedrich-Ebert-Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-11-02",
+        "name": "Polizei-Bezirksrevier Schleswig",
+        "phone": "+49 4621 84352"
+      }
+    },
+    {
+      "type": "way",
+      "id": 229922706,
+      "center": {
+        "lat": 53.8346243,
+        "lon": 9.4865292
+      },
+      "nodes": [
+        2384573999,
+        2384574005,
+        318573024,
+        2384573978,
+        2384573999
+      ],
+      "tags": {
+        "addr:city": "Krempe",
+        "addr:country": "DE",
+        "addr:housenumber": "40",
+        "addr:postcode": "25361",
+        "addr:street": "Süderstraße",
+        "amenity": "police",
+        "building": "house",
+        "name": "Polizeistation Krempe",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein"
+      }
+    },
+    {
+      "type": "way",
+      "id": 233138516,
+      "center": {
+        "lat": 53.8127846,
+        "lon": 9.6123387
+      },
+      "nodes": [
+        2414771753,
+        2414771768,
+        2414771744,
+        2100182201,
+        2414771753
+      ],
+      "tags": {
+        "addr:city": "Horst",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "25358",
+        "addr:street": "Wilhelm-Busch-Weg",
+        "amenity": "police",
+        "building": "house",
+        "check_date": "2024-03-17",
+        "name": "Polizeistation Horst",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 235091067,
+      "center": {
+        "lat": 54.3375189,
+        "lon": 10.0871476
+      },
+      "nodes": [
+        2431885108,
+        2431885110,
+        2431885112,
+        2431885117,
+        2431885113,
+        2431885119,
+        2431885115,
+        2431885106,
+        2431885102,
+        2431885092,
+        2431885096,
+        2431885098,
+        2431885100,
+        2431885111,
+        2431885104,
+        2431885108
+      ],
+      "tags": {
+        "addr:city": "Kronshagen",
+        "addr:country": "DE",
+        "addr:housenumber": "61",
+        "addr:postcode": "24119",
+        "addr:street": "Kopperpahler Allee",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-08-24",
+        "name": "Polizei-Zentralstation Kronshagen",
+        "source": "bing",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 237995003,
+      "center": {
+        "lat": 53.9518911,
+        "lon": 10.2148663
+      },
+      "nodes": [
+        2458515045,
+        2458515074,
+        2458515131,
+        2458515137,
+        2458515045
+      ],
+      "tags": {
+        "addr:city": "Wahlstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "23812",
+        "addr:street": "Segeberger Straße",
+        "amenity": "police",
+        "building": "public",
+        "name": "Polizei-Zentralstation Wahlstedt",
+        "phone": "+49 4554 7051-0",
+        "toilets:wheelchair": "no",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 240920217,
+      "center": {
+        "lat": 54.307369,
+        "lon": 9.6043538
+      },
+      "nodes": [
+        2486095604,
+        2486095608,
+        2486095578,
+        2486095571,
+        2486095604
+      ],
+      "tags": {
+        "addr:city": "Fockbek",
+        "addr:country": "DE",
+        "addr:housenumber": "37",
+        "addr:postcode": "24787",
+        "addr:street": "Rendsburger Straße",
+        "amenity": "police",
+        "building": "yes",
+        "contact:fax": "+49 4331 33226-69",
+        "contact:phone": "+49 4331 33226-60",
+        "name": "Polizeistation Fockbek",
+        "operator": "Polizeirevier Rendsburg"
+      }
+    },
+    {
+      "type": "way",
+      "id": 243726909,
+      "center": {
+        "lat": 54.0612831,
+        "lon": 9.9853664
+      },
+      "nodes": [
+        2510999550,
+        2510999487,
+        2510999485,
+        2510999483,
+        2510999482,
+        2510999522,
+        2510999527,
+        2510999546,
+        2510999551,
+        2510999579,
+        2510999593,
+        2510999604,
+        953024320,
+        2510999637,
+        2510999633,
+        2510999616,
+        2510999595,
+        2510999599,
+        953024311,
+        2687970958,
+        953024313,
+        2510999550
+      ],
+      "tags": {
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "way",
+      "id": 251795554,
+      "center": {
+        "lat": 54.6616756,
+        "lon": 9.9263782
+      },
+      "nodes": [
+        2579695801,
+        2579695829,
+        2579695825,
+        293381329,
+        2579695775,
+        2579695778,
+        2579695789,
+        2579695790,
+        2579695783,
+        2579695787,
+        2579695816,
+        2579695809,
+        2579695802,
+        2579695801
+      ],
+      "tags": {
+        "addr:city": "Kappeln",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24376",
+        "addr:street": "Gerichtsstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-10-15",
+        "image": "https://commons.wikimedia.org/wiki/File:Ehemalige_Amtsgericht_Kappeln.jpg",
+        "name": "Polizei-Zentralstation Kappeln",
+        "phone": "+49 4642 9655901",
+        "wikimedia_commons": "File:Ehemalige_Amtsgericht_Kappeln.jpg"
+      }
+    },
+    {
+      "type": "way",
+      "id": 255588476,
+      "center": {
+        "lat": 54.0358755,
+        "lon": 10.7260994
+      },
+      "nodes": [
+        297141241,
+        2612687322,
+        2612687320,
+        2612687313,
+        297141241
+      ],
+      "tags": {
+        "addr:city": "Scharbeutz",
+        "addr:country": "DE",
+        "addr:housenumber": "127",
+        "addr:postcode": "23684",
+        "addr:street": "Breitenkamp",
+        "addr:suburb": "Gronenberg",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeiautobahn- und Bezirksrevier Scharbeutz",
+        "source": "http://www.ln-online.de/Lokales/Ostholstein/Polizei-weiht-das-groesste-Revier-des-Landes-ein"
+      }
+    },
+    {
+      "type": "way",
+      "id": 255709217,
+      "center": {
+        "lat": 54.5248479,
+        "lon": 9.0291537
+      },
+      "nodes": [
+        2613807353,
+        2613807361,
+        2613807359,
+        2613807350,
+        2613807353
+      ],
+      "tags": {
+        "addr:city": "Hattstedt",
+        "addr:country": "DE",
+        "addr:housenumber": "10",
+        "addr:postcode": "25856",
+        "addr:street": "Amtsweg",
+        "alt_name": "Amtshaus Hattstedt",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Hattstedt",
+        "phone": "+49 4846 310"
+      }
+    },
+    {
+      "type": "way",
+      "id": 259084383,
+      "center": {
+        "lat": 54.0919949,
+        "lon": 9.9967245
+      },
+      "nodes": [
+        1748706656,
+        2644152824,
+        2644152827,
+        2644152810,
+        1748706656
+      ],
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24536",
+        "addr:street": "Hürsland",
+        "amenity": "police",
+        "building": "yes",
+        "contact:email": "tungendorf.pst@polizei.landsh.de",
+        "contact:fax": "+49 4321 301941",
+        "contact:phone": "+49 4321 301924",
+        "name": "Polizeistation Tungendorf",
+        "operator": "2. Polizeirevier Neumünster"
+      }
+    },
+    {
+      "type": "way",
+      "id": 263168797,
+      "center": {
+        "lat": 54.0620586,
+        "lon": 9.984395
+      },
+      "nodes": [
+        2510999630,
+        2510999625,
+        2510999624,
+        2510999623,
+        2510999608,
+        2510999609,
+        2510999610,
+        2510999613,
+        2510999615,
+        6864982742,
+        2510999630
+      ],
+      "tags": {
+        "addr:city": "Neumünster",
+        "addr:housenumber": "101",
+        "addr:postcode": "24539",
+        "addr:street": "Altonaer Straße",
+        "amenity": "police",
+        "building": "office",
+        "name": "1. Polizeirevier Neumünster"
+      }
+    },
+    {
+      "type": "way",
+      "id": 273500572,
+      "center": {
+        "lat": 53.9462298,
+        "lon": 10.7333019
+      },
+      "nodes": [
+        2783423229,
+        333961640,
+        2783423169,
+        2783423185,
+        2783423229
+      ],
+      "tags": {
+        "addr:city": "Ratekau",
+        "addr:country": "DE",
+        "addr:housenumber": "36",
+        "addr:postcode": "23626",
+        "addr:street": "Bäderstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-02-24",
+        "name": "Polizeistation Ratekau"
+      }
+    },
+    {
+      "type": "way",
+      "id": 282111401,
+      "center": {
+        "lat": 53.6594369,
+        "lon": 10.5791944
+      },
+      "nodes": [
+        2860444086,
+        2860444087,
+        2860444088,
+        2860444089,
+        2860444086
+      ],
+      "tags": {
+        "addr:city": "Nusse",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "23896",
+        "addr:street": "Klingenberg",
+        "amenity": "police",
+        "building": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 310212464,
+      "center": {
+        "lat": 53.6981057,
+        "lon": 10.7763672
+      },
+      "nodes": [
+        3156081011,
+        3161130883,
+        3156081006,
+        3156081008,
+        3156081007,
+        3156081009,
+        3156081041,
+        3156081036,
+        3156081013,
+        3156081010,
+        3156081012,
+        3156081011
+      ],
+      "tags": {
+        "addr:city": "Ratzeburg",
+        "addr:housenumber": "12",
+        "addr:postcode": "23909",
+        "addr:street": "Seestraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeidirektion Ratzeburg",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "website": "https://www.schleswig-holstein.de/DE/landesregierung/ministerien-behoerden/POLIZEI/DasSindWir/PDen/Ratzeburg/pdRatzeburg_index"
+      }
+    },
+    {
+      "type": "way",
+      "id": 310212489,
+      "center": {
+        "lat": 53.6981414,
+        "lon": 10.7767071
+      },
+      "nodes": [
+        3156081012,
+        3156081028,
+        3156081025,
+        3156081011,
+        3156081012
+      ],
+      "tags": {
+        "addr:city": "Ratzeburg",
+        "addr:housenumber": "12",
+        "addr:postcode": "23909",
+        "addr:street": "Seestraße",
+        "amenity": "police",
+        "building": "police",
+        "name": "Polizeirevier Ratzeburg",
+        "opening_hours": "24/7",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "phone": "+49 4541 809-1145",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "way",
+      "id": 312546547,
+      "center": {
+        "lat": 54.5243629,
+        "lon": 9.4865489
+      },
+      "nodes": [
+        3184197726,
+        376902344,
+        3184197732,
+        3184197737,
+        3184197707,
+        3184197676,
+        3184197706,
+        3184197726
+      ],
+      "tags": {
+        "addr:city": "Schuby",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "24850",
+        "addr:street": "Lürschauer Weg",
+        "amenity": "police",
+        "name": "Polizei-Autobahnrevier Schleswig",
+        "phone": "+49 4621 8452-0",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 318985073,
+      "center": {
+        "lat": 53.7592353,
+        "lon": 9.6660473
+      },
+      "nodes": [
+        3253911804,
+        3253911806,
+        3253911777,
+        3253911751,
+        3253906695,
+        3253911779,
+        3253911786,
+        3253906696,
+        3253911790,
+        3253911782,
+        3253911801,
+        3253911816,
+        3253911809,
+        3253911807,
+        3253911804
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-05-15",
+        "name": "Polizeirevier Elmshorn"
+      }
+    },
+    {
+      "type": "way",
+      "id": 323642364,
+      "center": {
+        "lat": 53.6483712,
+        "lon": 10.2805875
+      },
+      "nodes": [
+        3304203198,
+        3304203201,
+        3304203196,
+        11113101041,
+        11113101042,
+        3304203195,
+        3304203198
+      ],
+      "tags": {
+        "addr:city": "Großhansdorf",
+        "addr:country": "DE",
+        "addr:housenumber": "18",
+        "addr:postcode": "22927",
+        "addr:street": "Kortenkamp",
+        "amenity": "police",
+        "building": "yes",
+        "email": "großhansdorf.pst@polizei.landsh.de",
+        "name": "Polizeistation Großhansdorf",
+        "note": "nicht permanent besetzt\nim Notfall :   TEL.   110",
+        "operator": "Polizei",
+        "phone": "+49 4102 4565-0"
+      }
+    },
+    {
+      "type": "way",
+      "id": 324825390,
+      "center": {
+        "lat": 53.6297696,
+        "lon": 10.6931855
+      },
+      "nodes": [
+        13248682954,
+        13248682953,
+        3315013504,
+        3315013498,
+        3315013499,
+        3315013500,
+        13248682954
+      ],
+      "tags": {
+        "addr:city": "Mölln",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "23879",
+        "addr:street": "Mühlenplatz",
+        "amenity": "police",
+        "building": "apartments",
+        "name": "Polizeistation Mölln",
+        "opening_hours": "24/7",
+        "phone": "+49 4542 80990"
+      }
+    },
+    {
+      "type": "way",
+      "id": 326929782,
+      "center": {
+        "lat": 54.2834686,
+        "lon": 9.171273
+      },
+      "nodes": [
+        3336392927,
+        3336441254,
+        3336392922,
+        3336392928,
+        3336392927
+      ],
+      "tags": {
+        "addr:city": "Hennstedt",
+        "addr:housenumber": "8",
+        "addr:postcode": "25779",
+        "addr:street": "Tellingstedter Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-10-03",
+        "name": "Polizeistation Hennstedt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 345579030,
+      "center": {
+        "lat": 53.9490184,
+        "lon": 9.7228536
+      },
+      "nodes": [
+        3522234158,
+        3522234160,
+        3522234138,
+        3522234139,
+        3522234106,
+        973128598,
+        3522234158
+      ],
+      "tags": {
+        "addr:city": "Kellinghusen",
+        "addr:housenumber": "31",
+        "addr:postcode": "25548",
+        "addr:street": "Hauptstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-08-06",
+        "name": "Polizei Zentralstation",
+        "phone": "+49 4822 20980",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 350137565,
+      "center": {
+        "lat": 54.4858774,
+        "lon": 9.5500594
+      },
+      "nodes": [
+        3558990248,
+        3558990253,
+        13734881411,
+        13734881413,
+        13734881412,
+        13734881419,
+        13734881410,
+        3558990252,
+        3558990247,
+        3558990248
+      ],
+      "tags": {
+        "addr:city": "Busdorf",
+        "addr:housenumber": "5",
+        "addr:postcode": "24866",
+        "addr:street": "Panellenweg",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Busdorf",
+        "opening_hours": "Tu,Th 14:00-17:00; PH off",
+        "phone": "+49 4621 84500"
+      }
+    },
+    {
+      "type": "way",
+      "id": 356923080,
+      "center": {
+        "lat": 54.9078179,
+        "lon": 8.3122355
+      },
+      "nodes": [
+        3623218228,
+        297674556,
+        3623218210,
+        3623217990,
+        3623217986,
+        3623218223,
+        3623218228
+      ],
+      "tags": {
+        "addr:city": "Sylt",
+        "addr:housenumber": "21",
+        "addr:postcode": "25980",
+        "addr:street": "Kirchenweg",
+        "addr:suburb": "Westerland",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-07-12",
+        "description": "Polizei-Zentralstation und Kriminalpolizeiaußenstelle",
+        "name": "Polizei-Zentralstation Sylt",
+        "phone": "+49 4651 7047 0",
+        "wheelchair": "no",
+        "wikimedia_commons": "File:Westerland Polizei.jpg"
+      }
+    },
+    {
+      "type": "way",
+      "id": 374365186,
+      "center": {
+        "lat": 53.4868433,
+        "lon": 10.2570336
+      },
+      "nodes": [
+        3777420588,
+        1883671151,
+        3777420589,
+        3777420590,
+        3777420588
+      ],
+      "tags": {
+        "addr:city": "Wentorf bei Hamburg",
+        "addr:housenumber": "26",
+        "addr:postcode": "21465",
+        "addr:street": "Südring",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Wentorf"
+      }
+    },
+    {
+      "type": "way",
+      "id": 375989888,
+      "center": {
+        "lat": 54.3753102,
+        "lon": 9.0904737
+      },
+      "nodes": [
+        3793325566,
+        3793325573,
+        3793325570,
+        3793325559,
+        3793325564,
+        3793325566
+      ],
+      "tags": {
+        "addr:city": "Friedrichstadt",
+        "addr:country": "DE",
+        "addr:housenumber": "33a",
+        "addr:postcode": "25840",
+        "addr:street": "Lohgerberstraße",
+        "amenity": "police",
+        "building": "public",
+        "building:levels": "1",
+        "name": "Polizeistation Friedrichsstadt",
+        "phone": "+49 4881 310",
+        "roof:levels": "2",
+        "roof:shape": "gabled"
+      }
+    },
+    {
+      "type": "way",
+      "id": 376896431,
+      "center": {
+        "lat": 53.5088211,
+        "lon": 10.2520608
+      },
+      "nodes": [
+        3802741202,
+        5923927022,
+        5923927021,
+        5923927020,
+        5923927019,
+        5923927018,
+        3802741203,
+        2360022039,
+        3802741204,
+        5976708574,
+        3802741205,
+        3802741206,
+        3802741207,
+        3802741208,
+        3802741209,
+        3802741202
+      ],
+      "tags": {
+        "addr:city": "Reinbek",
+        "addr:country": "DE",
+        "addr:housenumber": "5",
+        "addr:postcode": "21465",
+        "addr:street": "Sophienstraße",
+        "amenity": "police",
+        "building": "yes",
+        "building:colour": "#ffe0a0",
+        "name": "Polizeirevier Reinbek",
+        "opening_hours": "24/7",
+        "phone": "+49 40 727707-0",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 380143554,
+      "center": {
+        "lat": 53.9268177,
+        "lon": 9.892865
+      },
+      "nodes": [
+        3834875453,
+        718972607,
+        718972596,
+        3834875452,
+        3834879281,
+        3834879280,
+        719024326,
+        719024348,
+        3834879277,
+        3834879276,
+        3834879275,
+        3834879274,
+        3834879273,
+        3834879272,
+        3834879271,
+        3834879270,
+        11734294886,
+        3834879269,
+        3834879268,
+        3834879267,
+        11531660333,
+        3834879265,
+        3834879264,
+        3834879282,
+        3834879262,
+        718972603,
+        3834879259,
+        718972604,
+        3834875454,
+        3834879283,
+        3834875453
+      ],
+      "tags": {
+        "addr:city": "Bad Bramstedt",
+        "addr:housenumber": "6",
+        "addr:postcode": "24576",
+        "addr:street": "Raaberg",
+        "amenity": "police",
+        "name": "Bundespolizeidirektion Bad Bramstedt",
+        "phone": "+49 41925020"
+      }
+    },
+    {
+      "type": "way",
+      "id": 414029107,
+      "center": {
+        "lat": 54.3955136,
+        "lon": 10.1701936
+      },
+      "nodes": [
+        4152252149,
+        4152252150,
+        4152252145,
+        4152252129,
+        4152252142,
+        4152252154,
+        4152252133,
+        4152252140,
+        4152252138,
+        4152252149
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:housenumber": "94",
+        "addr:postcode": "24159",
+        "addr:street": "Fritz-Reuter-Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-03-04",
+        "name": "Polizeistation Friedrichsort",
+        "phone": "+49 431 160-1172",
+        "source": "https://www.kiel.de/leben/umwelt/umweltwegweiser/index.php?view=keyword&id=618"
+      }
+    },
+    {
+      "type": "way",
+      "id": 419168927,
+      "center": {
+        "lat": 53.5253903,
+        "lon": 10.3089548
+      },
+      "nodes": [
+        4193007989,
+        4193007986,
+        4193007974,
+        4193007978,
+        4193007989
+      ],
+      "tags": {
+        "addr:city": "Aumühle",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "21521",
+        "addr:street": "Bergstraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Aumühle",
+        "phone": "+49 4104 969388"
+      }
+    },
+    {
+      "type": "way",
+      "id": 443167432,
+      "center": {
+        "lat": 54.6487197,
+        "lon": 8.344436
+      },
+      "nodes": [
+        4407930025,
+        4407930020,
+        4407930018,
+        1579467887,
+        4407930025
+      ],
+      "tags": {
+        "addr:city": "Nebel",
+        "addr:country": "DE",
+        "addr:housenumber": "12a",
+        "addr:postcode": "25946",
+        "addr:street": "Sanghughwai",
+        "amenity": "police",
+        "building": "civic",
+        "building:levels": "1",
+        "name": "Polizeistation Nebel auf Amrum",
+        "phone": "+49 4682 96440",
+        "roof:levels": "1"
+      }
+    },
+    {
+      "type": "way",
+      "id": 451613580,
+      "center": {
+        "lat": 54.3926793,
+        "lon": 9.5907881
+      },
+      "nodes": [
+        4484388058,
+        4484388055,
+        9594360597,
+        9594360596,
+        4484388056,
+        4484388057,
+        9271348960,
+        9271348958,
+        9271348959,
+        9271348961,
+        4484388058
+      ],
+      "tags": {
+        "addr:city": "Owschlag",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24811",
+        "addr:street": "An der Post",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-09-21",
+        "contact:fax": "+49 4336 29198519",
+        "contact:phone": "+49 4336 2919850",
+        "name": "Polizeistation Owschlag",
+        "operator": "Polizeirevier Rendsburg"
+      }
+    },
+    {
+      "type": "way",
+      "id": 457091017,
+      "center": {
+        "lat": 54.0760542,
+        "lon": 9.9660836
+      },
+      "nodes": [
+        1253687042,
+        12334971990,
+        12334971989,
+        12334971988,
+        12334971987,
+        1253687042
+      ],
+      "tags": {
+        "amenity": "police",
+        "name": "2. Polizeirevier Neumünster",
+        "phone": "+49 4321 9451211"
+      }
+    },
+    {
+      "type": "way",
+      "id": 525291604,
+      "center": {
+        "lat": 53.8954783,
+        "lon": 9.1440028
+      },
+      "nodes": [
+        5110458493,
+        5110458492,
+        5110458491,
+        5110458490,
+        5110458493
+      ],
+      "tags": {
+        "addr:city": "Brunsbüttel",
+        "addr:housenumber": "9",
+        "addr:postcode": "25541",
+        "addr:street": "Schillerstraße",
+        "amenity": "police",
+        "building": "civic",
+        "name": "Bundespolizeirevier Brunsbüttel",
+        "short_name": "BPOLR BBT",
+        "source:outline": "DigitalGlobe Vivid Imagery"
+      }
+    },
+    {
+      "type": "way",
+      "id": 580124567,
+      "center": {
+        "lat": 54.8151558,
+        "lon": 9.3607821
+      },
+      "nodes": [
+        2173315530,
+        12395848910,
+        12395848909,
+        5554358141,
+        5554358140,
+        5554358139,
+        5554358138,
+        3449607337,
+        2173315530
+      ],
+      "tags": {
+        "amenity": "police"
+      }
+    },
+    {
+      "type": "way",
+      "id": 598667241,
+      "center": {
+        "lat": 54.1709173,
+        "lon": 10.5573188
+      },
+      "nodes": [
+        5697937417,
+        5697937418,
+        5697937419,
+        5697937420,
+        5697937417
+      ],
+      "tags": {
+        "addr:city": "Malente",
+        "addr:housenumber": "14",
+        "addr:postcode": "23714",
+        "addr:street": "Kampstraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2024-07-03",
+        "name": "Polizeistation Malente",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 619010727,
+      "center": {
+        "lat": 54.1064864,
+        "lon": 10.8075663
+      },
+      "nodes": [
+        5850074759,
+        5850074760,
+        1287005577,
+        5850074761,
+        5850074764,
+        5850074763,
+        5850074762,
+        5850074759
+      ],
+      "tags": {
+        "addr:city": "Neustadt in Holstein",
+        "addr:housenumber": "12",
+        "addr:postcode": "23730",
+        "addr:street": "Lienaustraße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2026-03-15",
+        "name": "Polizei in Neustadt in Holstein"
+      }
+    },
+    {
+      "type": "way",
+      "id": 693863199,
+      "center": {
+        "lat": 54.0754436,
+        "lon": 9.988246
+      },
+      "nodes": [
+        6514517034,
+        6514517033,
+        6514517032,
+        6514517031,
+        6514517034
+      ],
+      "tags": {
+        "amenity": "police",
+        "building": "civic"
+      }
+    },
+    {
+      "type": "way",
+      "id": 701934847,
+      "center": {
+        "lat": 54.2895432,
+        "lon": 9.6920393
+      },
+      "nodes": [
+        6591933176,
+        6591933177,
+        6591933178,
+        6591933179,
+        6591933176
+      ],
+      "tags": {
+        "addr:city": "Osterrönfeld",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "24783",
+        "addr:street": "Wehrautal",
+        "amenity": "police",
+        "building": "yes",
+        "fax": "+49 4331 33226319",
+        "name": "Polizei Osterrönfeld",
+        "phone": "+49 4331 3322630"
+      }
+    },
+    {
+      "type": "way",
+      "id": 718898597,
+      "center": {
+        "lat": 54.3150435,
+        "lon": 10.1313543
+      },
+      "nodes": [
+        6749949925,
+        6749949926,
+        6749949922,
+        6749949924,
+        6749949925
+      ],
+      "tags": {
+        "amenity": "police",
+        "check_date": "2026-08-04",
+        "indoor": "room",
+        "level": "1",
+        "name": "Polizei",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 788249847,
+      "center": {
+        "lat": 53.6059128,
+        "lon": 10.405488
+      },
+      "nodes": [
+        7369704301,
+        7369704300,
+        7369704299,
+        7369704298,
+        7369704301
+      ],
+      "tags": {
+        "addr:city": "Trittau",
+        "addr:housenumber": "29",
+        "addr:postcode": "22946",
+        "addr:street": "Rausdorfer Straße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Trittau",
+        "phone": "+49 4154 70730"
+      }
+    },
+    {
+      "type": "way",
+      "id": 810606729,
+      "center": {
+        "lat": 54.2834506,
+        "lon": 10.159727
+      },
+      "nodes": [
+        7578993009,
+        7578993008,
+        7578993007,
+        7578993006,
+        7578993009
+      ],
+      "tags": {
+        "addr:city": "Kiel",
+        "addr:housenumber": "16B",
+        "addr:postcode": "24145",
+        "addr:street": "Wellseedamm",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Wellsee",
+        "opening_hours": "Mo-Fr 08:00-18:00",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "phone": "+49 431 1601480",
+        "website": "https://www.schleswig-holstein.de/DE/Landesregierung/POLIZEI/Polizei_node.html"
+      }
+    },
+    {
+      "type": "way",
+      "id": 906655755,
+      "center": {
+        "lat": 54.1198928,
+        "lon": 9.4210957
+      },
+      "nodes": [
+        8419076685,
+        8419076684,
+        8419076683,
+        8419076682,
+        8419076685
+      ],
+      "tags": {
+        "addr:city": "Hanerau-Hademarschen",
+        "addr:country": "DE",
+        "addr:housenumber": "2a",
+        "addr:postcode": "25557",
+        "addr:street": "Lindenstraße",
+        "amenity": "police",
+        "building": "detached",
+        "contact:email": "hanerau-hademarschen.pst@polizei.landsh.de",
+        "contact:fax": "+49 4872 52299319",
+        "contact:phone": "+49 4872 5229930",
+        "name": "Polizeistation Hanerau-Hademarschen"
+      }
+    },
+    {
+      "type": "way",
+      "id": 948237965,
+      "center": {
+        "lat": 53.7893079,
+        "lon": 9.7759085
+      },
+      "nodes": [
+        8777217527,
+        8777217528,
+        8777217529,
+        8777217530,
+        8777217531,
+        8777217532,
+        8777217533,
+        8777217534,
+        8777217535,
+        8777217536,
+        8777217527
+      ],
+      "tags": {
+        "addr:city": "Barmstedt",
+        "addr:housenumber": "38",
+        "addr:postcode": "25355",
+        "addr:street": "Reichenstraße",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Polizeistation Barmstedt",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "phone": "+49 4123 68408 0",
+        "website": "https://www.schleswig-holstein.de/DE/Landesregierung/POLIZEI/Polizei_node.html"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1014289212,
+      "center": {
+        "lat": 53.7342494,
+        "lon": 10.6424423
+      },
+      "nodes": [
+        9357792572,
+        9357792573,
+        9357792574,
+        9357792575,
+        9357792576,
+        9357792577,
+        9357792578,
+        9357792579,
+        9357792572
+      ],
+      "tags": {
+        "addr:city": "Berkenthin",
+        "addr:housenumber": "3",
+        "addr:postcode": "23919",
+        "addr:street": "Oldesloer Straße",
+        "amenity": "police",
+        "building": "yes",
+        "check_date": "2025-03-08",
+        "name": "Polizeistation Berkenthin",
+        "opening_hours": "Mo-Sa 09:00-12:00,13:00-19:00",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "operator:wikipedia": "de:Polizei Schleswig-Holstein",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1182468982,
+      "center": {
+        "lat": 53.6695995,
+        "lon": 10.8026224
+      },
+      "nodes": [
+        10810258991,
+        10810258992,
+        10810258993,
+        10810258994,
+        10810258995,
+        10810258996,
+        10810258997,
+        10810258998,
+        10810258991
+      ],
+      "tags": {
+        "access": "no",
+        "amenity": "police",
+        "building": "yes",
+        "description": "BGS Schießanlage",
+        "layer": "1",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1227589709,
+      "center": {
+        "lat": 54.1218144,
+        "lon": 9.947017
+      },
+      "nodes": [
+        11383764587,
+        11383758077,
+        11383758078,
+        11383764585,
+        11383764586,
+        11383764587
+      ],
+      "tags": {
+        "addr:city": "Krogaspe",
+        "addr:country": "DE",
+        "addr:housenumber": "10",
+        "addr:postcode": "24644",
+        "addr:street": "Am Aalbek",
+        "amenity": "police",
+        "name": "Autobahnpolizei Neumünster",
+        "phone": "+49 4321 945-2520"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1273793021,
+      "center": {
+        "lat": 54.1810289,
+        "lon": 7.8837215
+      },
+      "nodes": [
+        11828198697,
+        11828198694,
+        12246060864,
+        11828198695,
+        11828198696,
+        11828198697
+      ],
+      "tags": {
+        "addr:city": "Helgoland",
+        "addr:country": "DE",
+        "addr:housenumber": "729",
+        "addr:postcode": "27498",
+        "addr:street": "Leuchtturmstraße",
+        "amenity": "police",
+        "building": "police",
+        "name": "Polizei-Station Helgoland",
+        "operator": "Polizei Schleswig-Holstein",
+        "operator:wikidata": "Q897098",
+        "phone": "+4947258008540"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1482448924,
+      "center": {
+        "lat": 53.8669086,
+        "lon": 10.6700307
+      },
+      "nodes": [
+        2240235453,
+        2241412960,
+        419264745,
+        2240235447,
+        2240235453
+      ],
+      "tags": {
+        "addr:street": "Am Bahnhof",
+        "amenity": "police",
+        "building": "retail",
+        "name": "Bundespolizeirevier"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1521272055,
+      "center": {
+        "lat": 54.6316997,
+        "lon": 8.9837574
+      },
+      "nodes": [
+        13875776315,
+        13875776316,
+        13875776317,
+        13875776318,
+        13875776319,
+        13875776320,
+        13875776321,
+        13875776322,
+        13875776315
+      ],
+      "tags": {
+        "addr:city": "Bredstedt",
+        "addr:housenumber": "40",
+        "addr:postcode": "25821",
+        "addr:street": "Wittenburger Ring",
+        "amenity": "police",
+        "building": "yes",
+        "name": "Bundespolizeirevier Bredstedt",
+        "operator": "Bundespolizei",
+        "operator:short": "BPOL",
+        "operator:wikidata": "Q56026"
+      }
+    }
+  ]
+}

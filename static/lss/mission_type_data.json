@@ -1,0 +1,8066 @@
+{
+  "available_mission_values": [
+    {
+      "key": "id",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "caption",
+      "caption": null,
+      "type": "String"
+    },
+    {
+      "key": "fire_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "credits",
+      "caption": "Credits im Durchschnitt",
+      "type": "Integer"
+    },
+    {
+      "key": "feuerwache_count",
+      "caption": "Voraussetzung an Feuerwachen",
+      "type": "Integer"
+    },
+    {
+      "key": "poi_type",
+      "caption": "POI",
+      "type": "Unknown"
+    },
+    {
+      "key": "allow_without_poi",
+      "caption": "Kann ohne POI auftreten",
+      "type": "Boolean"
+    },
+    {
+      "key": "icon",
+      "caption": "Icon",
+      "type": "String"
+    },
+    {
+      "key": "expansion_missions",
+      "caption": "Ausbreitungsmöglichkeiten",
+      "type": "Unknown"
+    },
+    {
+      "key": "main_building",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "mission_generation_types",
+      "caption": "Einsatzart",
+      "type": "Set"
+    },
+    {
+      "key": "filter_id",
+      "caption": null,
+      "type": "String"
+    },
+    {
+      "key": "award",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "additive_value_overlays",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "alternate_value_overlay_requirements",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "alternate_value_overlays",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "need_lf",
+      "caption": "Benötigte Löschfahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "need_elw1",
+      "caption": "Benötigte ELW 1",
+      "type": "Integer"
+    },
+    {
+      "key": "need_elw1_chance",
+      "caption": "ELW 1 Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_dlk",
+      "caption": "Benötigte Drehleitern",
+      "type": "Integer"
+    },
+    {
+      "key": "need_dlk_chance",
+      "caption": "Drehleiter Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "possible_patient",
+      "caption": "Maximale Patientenanzahl",
+      "type": "Integer"
+    },
+    {
+      "key": "nef_need_quote",
+      "caption": "NEF Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "patient_extension_id",
+      "caption": "Fachrichtung für Patienten",
+      "type": "Unknown"
+    },
+    {
+      "key": "transport_need_quote",
+      "caption": "Wahrscheinlichkeit, dass ein Patient transportiert werden muss",
+      "type": "Integer"
+    },
+    {
+      "key": "followup_missions_probabilities",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "followup_missions_ranges",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "followup_missions",
+      "caption": "Folgeeinsätze",
+      "type": "Unknown"
+    },
+    {
+      "key": "minutes_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "personal_min_feuerwehr",
+      "caption": "Durchschnittliche min. Personalanzahl (Feuerwehr)",
+      "type": "Integer"
+    },
+    {
+      "key": "additional_personnel_counts",
+      "caption": {
+        "ambulance": "oder Rettungsdienstler",
+        "fire": "oder Feuerwehrleute",
+        "police": "oder Polizisten",
+        "thw": "oder THWler"
+      },
+      "type": "Unknown"
+    },
+    {
+      "key": "subsequent_missions",
+      "caption": "Anschlusseinsätze bei Abschluss",
+      "type": "Unknown"
+    },
+    {
+      "key": "subsequent_missions_probabilities",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "water_needed",
+      "caption": "Wasserbedarf",
+      "type": "Integer"
+    },
+    {
+      "key": "max_police_building",
+      "caption": "Max. Polizeiwachen",
+      "type": "Integer"
+    },
+    {
+      "key": "brandmeldeanlage_possible",
+      "caption": null,
+      "type": "Boolean"
+    },
+    {
+      "key": "need_rw",
+      "caption": "Benötigte Rüstwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_rw_chance",
+      "caption": "Rüstwagen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_elw2",
+      "caption": "Benötigte ELW 2",
+      "type": "Integer"
+    },
+    {
+      "key": "need_elw2_chance",
+      "caption": "ELW 2 Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "date_end",
+      "caption": "Tritt nur bis zu dem Datum auf",
+      "type": "Datetime"
+    },
+    {
+      "key": "need_gwl2wasser",
+      "caption": "Benötigte Schlauchwagen (GW-L2 Wasser, SW 1000, SW 2000 oder Ähnliches)",
+      "type": "Integer"
+    },
+    {
+      "key": "foam_needed",
+      "caption": "Sonderlöschmittelbedarf",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwl2wasser_chance",
+      "caption": "Schlauchwagen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwa",
+      "caption": "Benötigte GW-A",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwa_chance",
+      "caption": "GW-A Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwoil",
+      "caption": "Benötigte GW-Öl",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwoil_chance",
+      "caption": "GW-Öl Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_fire_engine_or_rescue",
+      "caption": "Benötigte Löschfahrzeuge oder Rüstwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwmess",
+      "caption": "Benötigte GW-Mess",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwmess_chance",
+      "caption": "GW-Mess Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_dekon_p",
+      "caption": "Benötigte Dekon-P",
+      "type": "Integer"
+    },
+    {
+      "key": "need_dekon_p_chance",
+      "caption": "Dekon P Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "date_start",
+      "caption": "Tritt nur ab dem Datum auf",
+      "type": "Datetime"
+    },
+    {
+      "key": "alliance_mission_caption",
+      "caption": null,
+      "type": "String"
+    },
+    {
+      "key": "alliance_mission_sort_order",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "only_alliance_mission",
+      "caption": "Nur als Verbandseinsatz",
+      "type": "Boolean"
+    },
+    {
+      "key": "police_count",
+      "caption": "Voraussetzung an Polizeiwachen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwgefahrgut",
+      "caption": "Benötigte GW-Gefahrgut",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwgefahrgut_chance",
+      "caption": "GW-Gefahrgut Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_streifenwagen",
+      "caption": "Benötigte Funkstreifenwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "possible_patient_min",
+      "caption": "Mindest Patientenanzahl",
+      "type": "Integer"
+    },
+    {
+      "key": "rettungswache_count",
+      "caption": "Voraussetzung an Rettungswachen",
+      "type": "Integer"
+    },
+    {
+      "key": "patient_allow_first_responder_full",
+      "caption": "Erstversorger können Patienten voll behandeln",
+      "type": "Integer"
+    },
+    {
+      "key": "patient_other_need_quote",
+      "caption": "Tragehilfe Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "allow_ktw_instead_of_rtw",
+      "caption": "KTW kann RTW ersetzen",
+      "type": "Boolean"
+    },
+    {
+      "key": "task_tag",
+      "caption": null,
+      "type": "Symbol"
+    },
+    {
+      "key": "event_mission_type",
+      "caption": null,
+      "type": "Symbol"
+    },
+    {
+      "key": "probability_modifier",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "police_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "possible_prisoner",
+      "caption": "Maximale Anzahl an Gefangene",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_motorcycle",
+      "caption": "Benötigte Funkstreifenwagen oder Polizeimotorräder",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_civil_patrol",
+      "caption": "Benötigte Funkstreifenwagen oder Zivilstreifenwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwhoehenrettung",
+      "caption": "Benötigte GW-Höhenrettung",
+      "type": "Integer"
+    },
+    {
+      "key": "patient_modus",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "max_police_motorcycle_replacing_fustw",
+      "caption": "Anzahl an Funkstreifenwagen, welche durch Polizeimotorräder ersetzt werden können",
+      "type": "Integer"
+    },
+    {
+      "key": "max_civil_patrol_replacing_fustw",
+      "caption": "Anzahl an Funkstreifenwagen, welche durch Zivilstreifenwagen ersetzt werden können",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_civil_patrol_or_motorcycle",
+      "caption": "Benötigte Funkstreifenwagen oder Zivilstreifenwagen oder Polizeimotorrad",
+      "type": "Integer"
+    },
+    {
+      "key": "need_k9",
+      "caption": "Benötigte DHuFüKW",
+      "type": "Integer"
+    },
+    {
+      "key": "need_k9_chance",
+      "caption": "DHuFüKW Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_k9_only_if_guard_dogs_present",
+      "caption": "Diensthundestaffeln nur wenn vorhanden",
+      "type": "Boolean"
+    },
+    {
+      "key": "water_damage_pump_value",
+      "caption": "Wasser abzupumpen (in Litern)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_water_damage_pump",
+      "caption": "Benötigte Feuerlöschpumpen (z. B. LF)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_fire_engine_or_rescue_or_oil_equipment",
+      "caption": "Benötigte Löschfahrzeuge, Rüstwagen oder Gerätewagen Öl",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_motorcycle_chance",
+      "caption": "Funkstreifenwagen oder Polizeimotorrad Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "max_rettungswache_building",
+      "caption": "Max. Rettungswachen",
+      "type": "Integer"
+    },
+    {
+      "key": "possible_patient_gender",
+      "caption": "Mögliches Patientengeschlecht",
+      "type": "String"
+    },
+    {
+      "key": "need_fwk",
+      "caption": "Benötigte Feuerwehrkräne (FwK)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_fwk_chance",
+      "caption": "FwK Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_lf_chance",
+      "caption": "LF Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_helicopter_bucket",
+      "caption": "Benötigte Außenlastbehälter (allgemein)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_helicopter_bucket_only_if_present",
+      "caption": "Außenlastbehälter (allgemein) nur angefordert, wenn vorhanden",
+      "type": "Boolean"
+    },
+    {
+      "key": "ktw_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "possible_prisoner_min",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwhoehenrettung_chance",
+      "caption": "GW-Höhenrettung Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "thw_count",
+      "caption": "Min. THW-Wachen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_gkw",
+      "caption": "Benötigte GKW",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_mtwtz",
+      "caption": "Benötigte MTW-TZ",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_brmg_r",
+      "caption": "BRmG R",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_lkw",
+      "caption": "LKW K 9",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_zugtrupp_count",
+      "caption": "Zugtrupp",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_fg_raeumen_count",
+      "caption": "Fachgruppe Räumen",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_gkw_count",
+      "caption": "Technische/r Zug/Züge",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_mzkw",
+      "caption": "Benötigte MzGW (FGr N)",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_bergung_count",
+      "caption": "Benötigte Fachgruppen N",
+      "type": "Integer"
+    },
+    {
+      "key": "rth_need_quote",
+      "caption": "RTH Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_dle",
+      "caption": "Anhänger Drucklufterzeugung",
+      "type": "Integer"
+    },
+    {
+      "key": "bereitschaftspolizei_count",
+      "caption": "Voraussetzung an Bereitschaftspolizeiwache",
+      "type": "Integer"
+    },
+    {
+      "key": "riot_unit_count",
+      "caption": "Züge der 1. Hundertschaft",
+      "type": "Integer"
+    },
+    {
+      "key": "grukw_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_grukw",
+      "caption": "Benötigte GruKw",
+      "type": "Integer"
+    },
+    {
+      "key": "need_lebefkw",
+      "caption": "Benötigte leBefKw",
+      "type": "Integer"
+    },
+    {
+      "key": "detention_unit_count",
+      "caption": "Sonderfahrzeug: Gefangenenkraftwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gefkw",
+      "caption": "Benötigte GefKw",
+      "type": "Integer"
+    },
+    {
+      "key": "need_fukw",
+      "caption": "Benötigte FüKW (Polizei)",
+      "type": "Integer"
+    },
+    {
+      "key": "sicherheitswache",
+      "caption": null,
+      "type": "Boolean"
+    },
+    {
+      "key": "duration",
+      "caption": null,
+      "type": "ActiveSupport::Duration"
+    },
+    {
+      "key": "need_rtw",
+      "caption": "Benötigte RTW",
+      "type": "Integer"
+    },
+    {
+      "key": "allow_ktw_b_instead_of_rtw",
+      "caption": "KTW Typ B kann RTW ersetzen",
+      "type": "Boolean"
+    },
+    {
+      "key": "need_gw_san",
+      "caption": "Benötigte GW-San",
+      "type": "Integer"
+    },
+    {
+      "key": "personal_min_polizei",
+      "caption": "Durchschnittliche min. Personalanzahl (Polizei)",
+      "type": "Integer"
+    },
+    {
+      "key": "polizeihubschrauber_count",
+      "caption": "Min. Polizeihubschrauberstationen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_polizeihubschrauber",
+      "caption": "Benötigte Polizeihubschrauber",
+      "type": "Integer"
+    },
+    {
+      "key": "wasser_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "wasserrettung_count",
+      "caption": "Voraussetzung an Wasserrettungswachen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_boot",
+      "caption": "Benötigte Boote",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwtaucher",
+      "caption": "Benötigte GW-Taucher",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gwtaucher_chance",
+      "caption": "GW-Taucher Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "water_cannon_count",
+      "caption": "Technische Züge: Wasserwerfer",
+      "type": "Integer"
+    },
+    {
+      "key": "need_wasserwerfer",
+      "caption": "Benötigte Wasserwerfer",
+      "type": "Integer"
+    },
+    {
+      "key": "need_arff",
+      "caption": "Benötigte Flugfeldlöschfahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "need_rettungstreppe",
+      "caption": "Benötigte Rettungstreppen",
+      "type": "Integer"
+    },
+    {
+      "key": "allow_arff_instead_of_lf",
+      "caption": "FLF kann LF ersetzen",
+      "type": "Boolean"
+    },
+    {
+      "key": "mek_count",
+      "caption": "Voraussetzung an MEK-Wachen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mek",
+      "caption": "Benötigte MEK-Fahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "need_sek",
+      "caption": "Benötigte SEK-Fahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "sek_count",
+      "caption": "Voraussetzung an SEK-Wachen",
+      "type": "Integer"
+    },
+    {
+      "key": "allow_police_motorcycle_instead_of_fustw",
+      "caption": "Polizeimotorrad kann Funkstreifenwagen ersetzen",
+      "type": "Boolean"
+    },
+    {
+      "key": "expansion_mission_only",
+      "caption": "Kann nur eine Ausbreitung eines anderen Einsatzes sein",
+      "type": "Boolean"
+    },
+    {
+      "key": "werkfeuerwehr_count",
+      "caption": "Voraussetzung an Werkfeuerwehren",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gw_werkfeuerwehr",
+      "caption": "Benötigte GW-Werkfeuerwehr",
+      "type": "Integer"
+    },
+    {
+      "key": "need_teleskopmast",
+      "caption": "Benötigte Teleskopmasten",
+      "type": "Integer"
+    },
+    {
+      "key": "need_turboloescher",
+      "caption": "Benötigte Turbolöscher",
+      "type": "Integer"
+    },
+    {
+      "key": "need_ulf",
+      "caption": "Benötigte ULF mit Löscharm",
+      "type": "Integer"
+    },
+    {
+      "key": "fehlalarm_possible",
+      "caption": null,
+      "type": "Boolean"
+    },
+    {
+      "key": "need_rettungstreppe_chance",
+      "caption": "Rettungstreppe Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "rescue_dog_count",
+      "caption": "Voraussetzung an Rettungshundestaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "need_rescue_dog_units",
+      "caption": "Benötigte Rettungshundestaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "seg_count",
+      "caption": "Voraussetzung an SEG-Wachen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_seg_elw",
+      "caption": "Benötigte ELW 1 (SEG)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gw_werkfeuerwehr_chance",
+      "caption": "GW-Werkfeuerwehr Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "guard_dog_count",
+      "caption": "Voraussetzung an Diensthundestaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "critical_transport_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "civil_patrolcar_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "criminal_investigation_count",
+      "caption": "Voraussetzung an Kriminalpolizei-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_civil_patrolcar",
+      "caption": "Benötigte Zivilstreifenwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_civil_patrolcar_chance",
+      "caption": "Zivilstreifenwagen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_turboloescher_chance",
+      "caption": "Turbolöscher Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_brmg_r_chance",
+      "caption": "BRmG R Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_lkw_chance",
+      "caption": "LKW K 9 Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "geo_poi",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "highway_police_count",
+      "caption": "Benötigte Autobahnpolizeiwachen",
+      "type": "Integer"
+    },
+    {
+      "key": "highway_police_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_highway_police",
+      "caption": "Benötigte FuStW (AP)",
+      "type": "Integer"
+    },
+    {
+      "key": "water_damage_pump_count",
+      "caption": "Fachgruppen Wasserschaden/Pumpen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_pump",
+      "caption": "Benötigte Schmutzwasserpumpen",
+      "type": "Integer"
+    },
+    {
+      "key": "min_pump_speed",
+      "caption": "Min. Pumpenleistung",
+      "type": "Integer"
+    },
+    {
+      "key": "pump_mode",
+      "caption": "Pumpeneinsatz",
+      "type": "Symbol"
+    },
+    {
+      "key": "need_streifenwagen_chance",
+      "caption": "Funkstreifenwagen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "subsequent_mission_only",
+      "caption": "Kann nur ein Anschlusseinsatz eines anderen Einsatzes sein",
+      "type": "Boolean"
+    },
+    {
+      "key": "additive_overlays",
+      "caption": null,
+      "type": "Unknown"
+    },
+    {
+      "key": "required_personnel_educations",
+      "caption": "Benötigtes Personal mit Ausbildung",
+      "type": "Unknown"
+    },
+    {
+      "key": "need_ulf_chance",
+      "caption": "ULF Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "police_service_group_leader_count",
+      "caption": "Voraussetzung an Dienstgruppenleitung-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_service_group_leader",
+      "caption": "Benötigte Funkstreifenwagen (Dienstgruppenleitung)",
+      "type": "Integer"
+    },
+    {
+      "key": "energy_supply_count",
+      "caption": "Voraussetzung an NEA50-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_energy_supply",
+      "caption": "Benötigte NEA50",
+      "type": "Integer"
+    },
+    {
+      "key": "energy_supply_2_count",
+      "caption": "Voraussetzung an NEA200-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_energy_supply_2",
+      "caption": "Benötigte NEA200",
+      "type": "Integer"
+    },
+    {
+      "key": "police_motorcycle_count",
+      "caption": "Benötigte Polizei-Motorradstaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_motorcycle",
+      "caption": "Benötigte Polizeimotorräder",
+      "type": "Integer"
+    },
+    {
+      "key": "police_horse_count",
+      "caption": "Benötigte Reiterstaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_horse",
+      "caption": "Benötigte Polizeipferde",
+      "type": "Integer"
+    },
+    {
+      "key": "groups",
+      "caption": "Eingeschränkte Fahrzeugtypen",
+      "type": "Unknown"
+    },
+    {
+      "key": "mountain_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "mountain_rescue_count",
+      "caption": "Voraussetzung an Bergrettungswachen",
+      "type": "Integer"
+    },
+    {
+      "key": "mountain_height_rescue_count",
+      "caption": "Voraussetzung an Höhenrettungs-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_height_rescue",
+      "caption": "Benötigte Höhenrettung (Bergrettung)",
+      "type": "Integer"
+    },
+    {
+      "key": "second_patient_transfer_from",
+      "caption": "Übergabe möglich bei",
+      "type": "Unknown"
+    },
+    {
+      "key": "need_mountain",
+      "caption": "Benötigte Bergrettungsfahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "custom_spawn_area",
+      "caption": "Spezialeinsatzbereich",
+      "type": "Boolean"
+    },
+    {
+      "key": "lift_count",
+      "caption": "Voraussetzung an Windenrettungs-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_equipment",
+      "caption": "Benötigte GW-Bergrettung",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_snow",
+      "caption": "Benötigte Schneefahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "need_lift",
+      "caption": "Benötigte Hubschrauber mit Winde",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_command",
+      "caption": "Benötigte ELW Bergrettung",
+      "type": "Integer"
+    },
+    {
+      "key": "personal_min_ambulance",
+      "caption": "Benötigte Minimum Rettungsdienstler",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_atv",
+      "caption": "Benötigte ATV",
+      "type": "Integer"
+    },
+    {
+      "key": "ocean_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "coastal_rescue_count",
+      "caption": "Voraussetzung an Seenotrettungswachen",
+      "type": "Integer"
+    },
+    {
+      "key": "water_rescue_heliport_count",
+      "caption": "Voraussetzung an Hubschrauberstationen (Seenotrettung)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_coastal_rescue_boat_or_boat_large",
+      "caption": "Benötigte Seenotrettungsboote oder Seenotrettungskreuzer",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_helicopter",
+      "caption": "Benötigte Hubschrauber (Seenotrettung)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_boat_large",
+      "caption": "Benötigte Seenotrettungskreuzer",
+      "type": "Integer"
+    },
+    {
+      "key": "heavy_rescue_count",
+      "caption": "Fachgruppe SB",
+      "type": "Integer"
+    },
+    {
+      "key": "need_heavy_rescue",
+      "caption": "Benötigte MzGW SB",
+      "type": "Integer"
+    },
+    {
+      "key": "railway_fire_count",
+      "caption": "Voraussetzung an Bahnrettungs-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_railway_fire",
+      "caption": "Benötigte Bahnrettungsfahrzeuge",
+      "type": "Integer"
+    },
+    {
+      "key": "police_speaker_count",
+      "caption": "Sonderfahrzeug: Lautsprecherkraftwagen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_speaker",
+      "caption": "Benötigte LauKw",
+      "type": "Integer"
+    },
+    {
+      "key": "thw_bridge_construction_count",
+      "caption": "Benötigte Fachgruppen Brückenbau",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_equipment",
+      "caption": "Benötigte MzGW (FGr BrB)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_crane",
+      "caption": "Benötigte Mobilkräne",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_trailer",
+      "caption": "Benötigte Anh Plattform (FGr BrB)",
+      "type": "Integer"
+    },
+    {
+      "key": "animal_rescue_value",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_animal_rescue",
+      "caption": "Benötigte GW-Tierrettung",
+      "type": "Integer"
+    },
+    {
+      "key": "animal_rescue_count",
+      "caption": "Voraussetzung an Tierrettungs-Erweiterungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_arff_chance",
+      "caption": "Flugfeldlöschfahrzeug Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_boot_chance",
+      "caption": "Boote Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_fukw_chance",
+      "caption": "FüKW (Polizei) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gefkw_chance",
+      "caption": "GefKw Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_grukw_chance",
+      "caption": "GruKw Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_gw_san_chance",
+      "caption": "GW-San Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_helicopter_bucket_chance",
+      "caption": "Anforderungswahrscheinlichkeit Außenlastbehälter (allgemein)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_helicopter_bucket_only_if_present_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_k9_only_if_guard_dogs_present_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_lebefkw_chance",
+      "caption": "leBefKw Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mek_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_motorcycle_chance",
+      "caption": "Polizeimotorrad Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_service_group_leader_chance",
+      "caption": "Funkstreifenwagen (Dienstgruppenleitung) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_polizeihubschrauber_chance",
+      "caption": "Wahrscheinlichkeit, dass Polizeihubschrauber benötigt werden",
+      "type": "Integer"
+    },
+    {
+      "key": "need_pump_chance",
+      "caption": "Schmutzwasserpumpen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_rescue_dog_units_chance",
+      "caption": "Anforderungswahrscheinlichkeit Rettungshundestaffeln",
+      "type": "Integer"
+    },
+    {
+      "key": "need_rtw_chance",
+      "caption": "RTW Anforderungswahrscheinlichekeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_seg_elw_chance",
+      "caption": "ELW 1 (SEG) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_sek_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_teleskopmast_chance",
+      "caption": "Teleskopmast Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_dle_chance",
+      "caption": "Anhänger Drucklufterzeugung Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_gkw_chance",
+      "caption": "GKW Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_mtwtz_chance",
+      "caption": "MTW-TZ Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_mzkw_chance",
+      "caption": "MzGW (FGr N) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_wasserwerfer_chance",
+      "caption": "Wasserwerfer Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_water_damage_pump_chance",
+      "caption": "Feuerlöschpumpen Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_energy_supply_chance",
+      "caption": "NEA50-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_energy_supply_2_chance",
+      "caption": "NEA200-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_heavy_rescue_chance",
+      "caption": "MzGW SB-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_ventilation",
+      "caption": "Benötigte Lüfter",
+      "type": "Integer"
+    },
+    {
+      "key": "need_ventilation_chance",
+      "caption": "Lüfter-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_drone",
+      "caption": "Benötigte Drohneneinheiten",
+      "type": "Integer"
+    },
+    {
+      "key": "need_drone_chance",
+      "caption": "Drohneneinheiten-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_care_service",
+      "caption": "Benötigte Bt-Kombi",
+      "type": "Integer"
+    },
+    {
+      "key": "need_care_service_chance",
+      "caption": "Bt-Kombi-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_care_service_equipment",
+      "caption": "Benötigte Betreuungs- und Verpflegungsausstattungen",
+      "type": "Integer"
+    },
+    {
+      "key": "need_care_service_equipment_chance",
+      "caption": "Betreuungs- und Verpflegungsausstattung-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_horse_chance",
+      "caption": "Polizeipferde-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command",
+      "caption": "Benötigte FüKW (THW)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_chance",
+      "caption": "FüKW Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_2",
+      "caption": "Benötigte FüKomKW",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_2_chance",
+      "caption": "FüKomKW Anforderungswahrscheinlichkiet",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_3",
+      "caption": "Benötigte FmKW",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_3_chance",
+      "caption": "FmKW Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_4",
+      "caption": "Benötigte MTW FGr K",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_4_chance",
+      "caption": "MTW FGr K Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_trailer",
+      "caption": "Benötigte Anh FüLa",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_command_trailer_chance",
+      "caption": "Anh FüLa Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_equipment_chance",
+      "caption": "GW-Bergrettung Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_command_chance",
+      "caption": "ELW Bergrettung Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_atv_chance",
+      "caption": "ATV Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_snow_chance",
+      "caption": "Schneefahrzeug Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_height_rescue_chance",
+      "caption": "Anh Höhenrettung (Bergrettung) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_lift_chance",
+      "caption": "Hubschrauber mit Winde Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_mountain_chance",
+      "caption": "Bergrettungsfahrzeug-Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_boat",
+      "caption": "Benötigte Seenotrettungsboote",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_boat_chance",
+      "caption": "Seenotrettungsboot Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_boat_large_chance",
+      "caption": "Seenotrettungskreuzer Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_coastal_helicopter_chance",
+      "caption": "Hubschrauber (Seenotrettung) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_railway_fire_chance",
+      "caption": "RW-Schiene, HLF Schiene oder AB-Schiene Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_fire_engine_or_rescue_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_civil_patrol_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_fire_engine_or_rescue_or_oil_equipment_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_coastal_rescue_boat_or_boat_large_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_oneof_police_patrol_or_civil_patrol_or_motorcycle_chance",
+      "caption": null,
+      "type": "Integer"
+    },
+    {
+      "key": "need_police_speaker_chance",
+      "caption": "LauKw Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_equipment",
+      "caption": "Benötigte GW-TeSi",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_equipment_chance",
+      "caption": "GW-TeSi Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_energy",
+      "caption": "Benötigte LKW Technik (Notstrom)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_energy_chance",
+      "caption": "LKW Technik (Notstrom) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_crew",
+      "caption": "Benötigte MTW-TeSi",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_crew_chance",
+      "caption": "MTW-TeSi Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_trailer",
+      "caption": "Benötigte Anh TeSi",
+      "type": "Integer"
+    },
+    {
+      "key": "need_disaster_response_technology_trailer_chance",
+      "caption": "Anh TeSi Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_equipment_chance",
+      "caption": "Benötigte MzGW (FGr BrB)",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_crane_chance",
+      "caption": "Benötigte Mobilkräne",
+      "type": "Integer"
+    },
+    {
+      "key": "need_thw_bridge_construction_trailer_chance",
+      "caption": "Anh Plattform (FGr BrB) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_highway_police_chance",
+      "caption": "FuStW (AP) Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "need_animal_rescue_chance",
+      "caption": "GW-Tierrettung Anforderungswahrscheinlichkeit",
+      "type": "Integer"
+    },
+    {
+      "key": "personal_min_thw",
+      "caption": "Durchschnittliche min. Personalanzahl (THW)",
+      "type": "Integer"
+    },
+    {
+      "key": "care_vehicle_required",
+      "caption": {
+        "care_service_equipment_value": "Benötigte Betreuungs- und Verpflegungsausstattung"
+      },
+      "type": "Integer"
+    },
+    {
+      "key": "care_includes_staff_members",
+      "caption": "Benötigtes Verpflegungspersonal für Einsatzkräfte",
+      "type": "Integer"
+    }
+  ],
+  "pois": [
+    {
+      "id": 0,
+      "caption": "Park"
+    },
+    {
+      "id": 1,
+      "caption": "See"
+    },
+    {
+      "id": 2,
+      "caption": "Krankenhaus"
+    },
+    {
+      "id": 3,
+      "caption": "Wald"
+    },
+    {
+      "id": 4,
+      "caption": "Bushaltestelle"
+    },
+    {
+      "id": 5,
+      "caption": "Straßenbahnhaltestelle"
+    },
+    {
+      "id": 6,
+      "caption": "Bahnhof (Regionalverkehr)"
+    },
+    {
+      "id": 7,
+      "caption": "Bahnhof (Regional und Fernverkehr)"
+    },
+    {
+      "id": 8,
+      "caption": "Güterbahnhof"
+    },
+    {
+      "id": 9,
+      "caption": "Supermarkt (Klein)"
+    },
+    {
+      "id": 10,
+      "caption": "Supermarkt (Groß)"
+    },
+    {
+      "id": 11,
+      "caption": "Tankstelle"
+    },
+    {
+      "id": 12,
+      "caption": "Schule"
+    },
+    {
+      "id": 13,
+      "caption": "Museum"
+    },
+    {
+      "id": 14,
+      "caption": "Einkaufszentrum"
+    },
+    {
+      "id": 15,
+      "caption": "Auto-Werkstatt"
+    },
+    {
+      "id": 16,
+      "caption": "Autobahnauf.- / abfahrt"
+    },
+    {
+      "id": 17,
+      "caption": "Weihnachtsmarkt"
+    },
+    {
+      "id": 18,
+      "caption": "Lagerhalle"
+    },
+    {
+      "id": 19,
+      "caption": "Diskothek"
+    },
+    {
+      "id": 20,
+      "caption": "Stadion"
+    },
+    {
+      "id": 21,
+      "caption": "Bauernhof"
+    },
+    {
+      "id": 22,
+      "caption": "Bürokomplex"
+    },
+    {
+      "id": 23,
+      "caption": "Schwimmbad"
+    },
+    {
+      "id": 24,
+      "caption": "Bahnübergang"
+    },
+    {
+      "id": 25,
+      "caption": "Theater"
+    },
+    {
+      "id": 26,
+      "caption": "Festplatz"
+    },
+    {
+      "id": 27,
+      "caption": "Fluss"
+    },
+    {
+      "id": 28,
+      "caption": "Baumarkt"
+    },
+    {
+      "id": 29,
+      "caption": "Flughafen (klein): Start-/Landebahn"
+    },
+    {
+      "id": 30,
+      "caption": "Flughafen (klein): Gebäude"
+    },
+    {
+      "id": 31,
+      "caption": "Flughafen (klein): Flugzeug Standplatz"
+    },
+    {
+      "id": 32,
+      "caption": "Flughafen (groß): Start-/Landebahn"
+    },
+    {
+      "id": 33,
+      "caption": "Flughafen (groß): Terminal"
+    },
+    {
+      "id": 34,
+      "caption": "Flughafen (groß): Vorfeld / Standplätze"
+    },
+    {
+      "id": 35,
+      "caption": "Flughafen (groß): Parkhaus"
+    },
+    {
+      "id": 36,
+      "caption": "Biogasanlage"
+    },
+    {
+      "id": 37,
+      "caption": "Bank"
+    },
+    {
+      "id": 38,
+      "caption": "Kirche"
+    },
+    {
+      "id": 39,
+      "caption": "Chemiepark"
+    },
+    {
+      "id": 40,
+      "caption": "Industrie-Allgemein"
+    },
+    {
+      "id": 41,
+      "caption": "Automobilindustrie"
+    },
+    {
+      "id": 42,
+      "caption": "Müllverbrennungsanlage"
+    },
+    {
+      "id": 43,
+      "caption": "Eishalle"
+    },
+    {
+      "id": 44,
+      "caption": "Holzverarbeitung"
+    },
+    {
+      "id": 45,
+      "caption": "Motorsportanlage"
+    },
+    {
+      "id": 46,
+      "caption": "Tunnel"
+    },
+    {
+      "id": 47,
+      "caption": "Klärwerk"
+    },
+    {
+      "id": 48,
+      "caption": "Innenstadt"
+    },
+    {
+      "id": 49,
+      "caption": "Möbelhaus"
+    },
+    {
+      "id": 50,
+      "caption": "Campingplatz"
+    },
+    {
+      "id": 51,
+      "caption": "Kompostieranlage"
+    },
+    {
+      "id": 52,
+      "caption": "Textilverarbeitung"
+    },
+    {
+      "id": 53,
+      "caption": "Moor"
+    },
+    {
+      "id": 54,
+      "caption": "Hüttenwerk"
+    },
+    {
+      "id": 55,
+      "caption": "Kraftwerk"
+    },
+    {
+      "id": 56,
+      "caption": "Werksgelände"
+    },
+    {
+      "id": 57,
+      "caption": "Seilbahn"
+    },
+    {
+      "id": 58,
+      "caption": "Brücke"
+    },
+    {
+      "id": 59,
+      "caption": "U-Bahn Station"
+    },
+    {
+      "id": 60,
+      "caption": "Eisenbahntunnel"
+    },
+    {
+      "id": 61,
+      "caption": "Zoo"
+    },
+    {
+      "id": 62,
+      "caption": "Kohlekraftwerk"
+    },
+    {
+      "id": 63,
+      "caption": "JVA"
+    },
+    {
+      "id": 64,
+      "caption": "Solarpark"
+    },
+    {
+      "id": 65,
+      "caption": "Raffinerie"
+    },
+    {
+      "id": 66,
+      "caption": "Schiffswerft"
+    }
+  ],
+  "available_icons": [
+    "fire",
+    "sawmill",
+    "caraccident",
+    "oil",
+    "tramway",
+    "blast",
+    "bar_cocktail",
+    "medicalstore",
+    "theft",
+    "constructioncrane",
+    "baseball",
+    "cat",
+    "museum_art",
+    "dancinghall",
+    "river",
+    "bus",
+    "planecrash",
+    "ghost",
+    "icy_road",
+    "ambulance",
+    "fallingrocks",
+    "stadium",
+    "clock",
+    "zoom",
+    "gas",
+    "waterpark",
+    "olfass",
+    "elevator",
+    "shooting",
+    "climbing",
+    "paragliding",
+    "themepark",
+    "soccer",
+    "warehouse",
+    "hotairbaloon",
+    "snowy",
+    "mobilephonetower",
+    "radiation",
+    "cannabis",
+    "glasses",
+    "comment",
+    "cruiseship",
+    "autumn",
+    "lightningStrike",
+    "spring",
+    "xmas",
+    "hiking",
+    "cycling",
+    "boat",
+    "bridge",
+    "highway",
+    "animal_rescue"
+  ],
+  "building_types": [
+    {
+      "id": 0,
+      "caption": "Feuerwache",
+      "key": "BUILDING_TYPE_FEUERWACHE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Rettungsdienst"
+        },
+        {
+          "id": 1,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 2,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 3,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 4,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 5,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 6,
+          "caption": "Wasserrettung"
+        },
+        {
+          "id": 7,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 8,
+          "caption": "Flughafenfeuerwehr"
+        },
+        {
+          "id": 9,
+          "caption": "Großwache"
+        },
+        {
+          "id": 10,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 11,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 12,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 13,
+          "caption": "Werkfeuerwehr"
+        },
+        {
+          "id": 14,
+          "caption": "Netzersatzanlage 50"
+        },
+        {
+          "id": 15,
+          "caption": "Netzersatzanlage 200"
+        },
+        {
+          "id": 16,
+          "caption": "Großlüfter"
+        },
+        {
+          "id": 17,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 18,
+          "caption": "Drohneneinheit"
+        },
+        {
+          "id": 19,
+          "caption": "Verpflegungsdienst"
+        },
+        {
+          "id": 20,
+          "caption": "Anhänger-Stellplatz"
+        },
+        {
+          "id": 21,
+          "caption": "Anhänger-Stellplatz"
+        },
+        {
+          "id": 22,
+          "caption": "Anhänger-Stellplatz"
+        },
+        {
+          "id": 23,
+          "caption": "Anhänger-Stellplatz"
+        },
+        {
+          "id": 24,
+          "caption": "Anhänger-Stellplatz"
+        },
+        {
+          "id": 25,
+          "caption": "Bahnrettung"
+        },
+        {
+          "id": 26,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 27,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 28,
+          "caption": "Abrollbehälter-Stellplatz"
+        },
+        {
+          "id": 29,
+          "caption": "Tierrettung"
+        }
+      ],
+      "generates_mission_types": [
+        "fire"
+      ]
+    },
+    {
+      "id": 1,
+      "caption": "Feuerwehrschule",
+      "key": "BUILDING_TYPE_FEUERWEHRSCHULE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 1,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 2,
+          "caption": "Weiterer Klassenraum"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "caption": "Rettungswache",
+      "key": "BUILDING_TYPE_RETTUNGSWACHE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Großwache"
+        }
+      ],
+      "generates_mission_types": [
+        "ambulance"
+      ]
+    },
+    {
+      "id": 3,
+      "caption": "Rettungsschule",
+      "key": "BUILDING_TYPE_RETTUNGSSCHULE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 1,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 2,
+          "caption": "Weiterer Klassenraum"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "caption": "Krankenhaus",
+      "key": "BUILDING_TYPE_HOSPITAL",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Allgemeine Innere"
+        },
+        {
+          "id": 1,
+          "caption": "Allgemeine Chirurgie"
+        },
+        {
+          "id": 2,
+          "caption": "Gynäkologie"
+        },
+        {
+          "id": 3,
+          "caption": "Urologie"
+        },
+        {
+          "id": 4,
+          "caption": "Unfallchirurgie"
+        },
+        {
+          "id": 5,
+          "caption": "Neurologie"
+        },
+        {
+          "id": 6,
+          "caption": "Neurochirurgie"
+        },
+        {
+          "id": 7,
+          "caption": "Kardiologie"
+        },
+        {
+          "id": 8,
+          "caption": "Kardiochirurgie"
+        },
+        {
+          "id": 9,
+          "caption": "Großkrankenhaus"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "caption": "Rettungshubschrauber-Station",
+      "key": "BUILDING_TYPE_NOTARZTHUBSCHRAUBERLANDEPLATZ",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Windenrettung"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "caption": "Polizeiwache",
+      "key": "BUILDING_TYPE_POLIZEIWACHE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Zelle"
+        },
+        {
+          "id": 1,
+          "caption": "Zelle"
+        },
+        {
+          "id": 2,
+          "caption": "Zelle"
+        },
+        {
+          "id": 3,
+          "caption": "Zelle"
+        },
+        {
+          "id": 4,
+          "caption": "Zelle"
+        },
+        {
+          "id": 5,
+          "caption": "Zelle"
+        },
+        {
+          "id": 6,
+          "caption": "Zelle"
+        },
+        {
+          "id": 7,
+          "caption": "Zelle"
+        },
+        {
+          "id": 8,
+          "caption": "Zelle"
+        },
+        {
+          "id": 9,
+          "caption": "Zelle"
+        },
+        {
+          "id": 10,
+          "caption": "Diensthundestaffel"
+        },
+        {
+          "id": 11,
+          "caption": "Kriminalpolizei"
+        },
+        {
+          "id": 12,
+          "caption": "Dienstgruppenleitung"
+        },
+        {
+          "id": 13,
+          "caption": "Motorradstaffel"
+        },
+        {
+          "id": 14,
+          "caption": "Großwache"
+        },
+        {
+          "id": 15,
+          "caption": "Großgewahrsam"
+        },
+        {
+          "id": 16,
+          "caption": "Autobahnpolizei"
+        }
+      ],
+      "generates_mission_types": [
+        "police"
+      ]
+    },
+    {
+      "id": 7,
+      "caption": "Leitstelle",
+      "key": "BUILDING_TYPE_LEITSTELLE"
+    },
+    {
+      "id": 8,
+      "caption": "Polizeischule",
+      "key": "BUILDING_TYPE_POLIZEISCHULE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 1,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 2,
+          "caption": "Weiterer Klassenraum"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "caption": "THW",
+      "key": "BUILDING_TYPE_THW",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "1. Technischer Zug: Fachgruppe Notversorgung/Notinstandsetzung"
+        },
+        {
+          "id": 1,
+          "caption": "1. Technischer Zug: Zugtrupp"
+        },
+        {
+          "id": 2,
+          "caption": "Fachgruppe Räumen"
+        },
+        {
+          "id": 3,
+          "caption": "Fachgruppe Wassergefahren"
+        },
+        {
+          "id": 4,
+          "caption": "2. Technischer Zug - Bergungsgruppe"
+        },
+        {
+          "id": 5,
+          "caption": "2. Technischer Zug: Fachgruppe Notversorgung/Notinstandsetzung"
+        },
+        {
+          "id": 6,
+          "caption": "2. Technischer Zug: Zugtrupp"
+        },
+        {
+          "id": 7,
+          "caption": "Fachgruppe Ortung"
+        },
+        {
+          "id": 8,
+          "caption": "Fachgruppe Wasserschaden/Pumpen"
+        },
+        {
+          "id": 9,
+          "caption": "Fachgruppe Schwere Bergung"
+        },
+        {
+          "id": 10,
+          "caption": "Fachgruppe Elektroversorgung"
+        },
+        {
+          "id": 11,
+          "caption": "Ortsverbands-Mannschaftstransportwagen"
+        },
+        {
+          "id": 12,
+          "caption": "Trupp Unbemannte Luftfahrtsysteme"
+        },
+        {
+          "id": 13,
+          "caption": "Fachzug Führung und Kommunikation"
+        },
+        {
+          "id": 14,
+          "caption": "Fachgruppe Logistik-Verpflegung"
+        },
+        {
+          "id": 15,
+          "caption": "Fachgruppe Brückenbau"
+        }
+      ],
+      "generates_mission_types": [
+        "thw"
+      ]
+    },
+    {
+      "id": 10,
+      "caption": "THW Bundesschule",
+      "key": "BUILDING_TYPE_THW_BUNDESSCHULE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 1,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 2,
+          "caption": "Weiterer Klassenraum"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "caption": "Bereitschaftspolizei",
+      "key": "BUILDING_TYPE_BEREITSCHAFTSPOLIZEI",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "2. Zug der 1. Hundertschaft"
+        },
+        {
+          "id": 1,
+          "caption": "3. Zug der 1. Hundertschaft"
+        },
+        {
+          "id": 2,
+          "caption": "Sonderfahrzeug: Gefangenenkraftwagen"
+        },
+        {
+          "id": 3,
+          "caption": "Technischer Zug: Wasserwerfer"
+        },
+        {
+          "id": 4,
+          "caption": "SEK: 1. Zug"
+        },
+        {
+          "id": 5,
+          "caption": "SEK: 2. Zug"
+        },
+        {
+          "id": 6,
+          "caption": "MEK: 1. Zug"
+        },
+        {
+          "id": 7,
+          "caption": "MEK: 2. Zug"
+        },
+        {
+          "id": 8,
+          "caption": "Diensthundestaffel"
+        },
+        {
+          "id": 9,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 10,
+          "caption": "Sonderfahrzeug: Lautsprecherkraftwagen"
+        }
+      ],
+      "generates_mission_types": [
+        "riot_police"
+      ]
+    },
+    {
+      "id": 12,
+      "caption": "Schnelleinsatzgruppe (SEG)",
+      "key": "BUILDING_TYPE_SEG",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Führung"
+        },
+        {
+          "id": 1,
+          "caption": "Sanitätsdienst"
+        },
+        {
+          "id": 2,
+          "caption": "Wasserrettung"
+        },
+        {
+          "id": 3,
+          "caption": "Rettungshundestaffel"
+        },
+        {
+          "id": 4,
+          "caption": "SEG Drohne"
+        },
+        {
+          "id": 5,
+          "caption": "Betreuungs- und Verpflegungsdienst"
+        },
+        {
+          "id": 6,
+          "caption": "Technik und Sicherheit"
+        }
+      ],
+      "generates_mission_types": [
+        "seg"
+      ]
+    },
+    {
+      "id": 13,
+      "caption": "Polizeihubschrauberstation",
+      "key": "BUILDING_TYPE_POLIZEIHUBSCHRAUBERLANDEPLATZ",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Außenlastbehälter"
+        },
+        {
+          "id": 1,
+          "caption": "Windenrettung"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "caption": "Bereitstellungsraum",
+      "key": "BUILDING_TYPE_BEREITSTELLUNGSRAUM"
+    },
+    {
+      "id": 15,
+      "caption": "Wasserrettung",
+      "key": "BUILDING_TYPE_WASSERRETTUNG",
+      "generates_mission_types": [
+        "water_rescue"
+      ]
+    },
+    {
+      "id": 16,
+      "caption": "Polizeizellen (Nur für den Verband)",
+      "key": "BUILDING_TYPE_POLIZEIZELLE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Zelle"
+        },
+        {
+          "id": 1,
+          "caption": "Zelle"
+        },
+        {
+          "id": 2,
+          "caption": "Zelle"
+        },
+        {
+          "id": 3,
+          "caption": "Zelle"
+        },
+        {
+          "id": 4,
+          "caption": "Zelle"
+        },
+        {
+          "id": 5,
+          "caption": "Zelle"
+        },
+        {
+          "id": 6,
+          "caption": "Zelle"
+        },
+        {
+          "id": 7,
+          "caption": "Zelle"
+        },
+        {
+          "id": 8,
+          "caption": "Zelle"
+        },
+        {
+          "id": 9,
+          "caption": "Zelle"
+        },
+        {
+          "id": 10,
+          "caption": "Großgewahrsam"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "caption": "Polizei-Sondereinheiten",
+      "key": "BUILDING_TYPE_POLIZEISONDEREINHEITEN",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "SEK: 1. Zug"
+        },
+        {
+          "id": 1,
+          "caption": "SEK: 2. Zug"
+        },
+        {
+          "id": 2,
+          "caption": "MEK: 1. Zug"
+        },
+        {
+          "id": 3,
+          "caption": "MEK: 2. Zug"
+        },
+        {
+          "id": 4,
+          "caption": "Diensthundestaffel"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "caption": "Feuerwache (Kleinwache)",
+      "key": "BUILDING_TYPE_FEUERWACHE_KLEINWACHE"
+    },
+    {
+      "id": 19,
+      "caption": "Polizeiwache (Kleinwache)",
+      "key": "BUILDING_TYPE_POLIZEIWACHE_KLEINWACHE"
+    },
+    {
+      "id": 20,
+      "caption": "Rettungswache (Kleinwache)",
+      "key": "BUILDING_TYPE_RETTUNGSWACHE_KLEINWACHE"
+    },
+    {
+      "id": 21,
+      "caption": "Rettungshundestaffel",
+      "key": "BUILDING_TYPE_RESCUE_DOG_UNIT"
+    },
+    {
+      "id": 22,
+      "caption": "Gebäudekomplexe",
+      "key": "BUILDING_TYPE_COMPLEX"
+    },
+    {
+      "id": 23,
+      "caption": "Gebäudekomplexe",
+      "key": "BUILDING_TYPE_COMPLEX_SMALL"
+    },
+    {
+      "id": 24,
+      "caption": "Reiterstaffel",
+      "key": "BUILDING_TYPE_POLICE_HORSE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 1,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 2,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 3,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 4,
+          "caption": "Reiterstaffel"
+        },
+        {
+          "id": 5,
+          "caption": "Reiterstaffel"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "caption": "Bergrettungswache",
+      "key": "BUILDING_TYPE_MOUNTAIN_RESCUE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Höhenrettung"
+        },
+        {
+          "id": 1,
+          "caption": "Drohneneinheit"
+        },
+        {
+          "id": 2,
+          "caption": "Rettungshundestaffel"
+        },
+        {
+          "id": 3,
+          "caption": "Rettungsdienst"
+        }
+      ],
+      "generates_mission_types": [
+        "mountain"
+      ]
+    },
+    {
+      "id": 26,
+      "caption": "Seenotrettungswache",
+      "key": "BUILDING_TYPE_COASTAL_RESCUE",
+      "generates_mission_types": [
+        "coastal"
+      ]
+    },
+    {
+      "id": 27,
+      "caption": "Schule für Seefahrt und Seenotrettung",
+      "key": "BUILDING_TYPE_WATER_RESCUE_SCHOOL",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 1,
+          "caption": "Weiterer Klassenraum"
+        },
+        {
+          "id": 2,
+          "caption": "Weiterer Klassenraum"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "caption": "Hubschrauberstation (Seenotrettung)",
+      "key": "BUILDING_TYPE_WATER_RESCUE_HELIPORT"
+    },
+    {
+      "id": 29,
+      "caption": "Autobahnpolizei",
+      "key": "BUILDING_TYPE_HIGHWAY_POLICE",
+      "extensions": [
+        {
+          "id": 0,
+          "caption": "Zelle"
+        },
+        {
+          "id": 1,
+          "caption": "Zelle"
+        },
+        {
+          "id": 2,
+          "caption": "Zelle"
+        },
+        {
+          "id": 3,
+          "caption": "Zelle"
+        },
+        {
+          "id": 4,
+          "caption": "Zelle"
+        },
+        {
+          "id": 5,
+          "caption": "Zelle"
+        },
+        {
+          "id": 6,
+          "caption": "Zelle"
+        },
+        {
+          "id": 7,
+          "caption": "Zelle"
+        },
+        {
+          "id": 8,
+          "caption": "Zelle"
+        },
+        {
+          "id": 9,
+          "caption": "Zelle"
+        }
+      ],
+      "generates_mission_types": [
+        "highway_police"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "id": 0,
+      "caption": "Gelöschte Mülleimer",
+      "key": null
+    },
+    {
+      "id": 1,
+      "caption": "Dauerspieler",
+      "key": null
+    },
+    {
+      "id": 2,
+      "caption": "Leben gerettet",
+      "key": null
+    },
+    {
+      "id": 3,
+      "caption": "Schnell gelöst",
+      "key": null
+    },
+    {
+      "id": 4,
+      "caption": "Verbandsmensch",
+      "key": null
+    },
+    {
+      "id": 5,
+      "caption": "Chat-Junkie",
+      "key": null
+    },
+    {
+      "id": 6,
+      "caption": "Ostereier",
+      "key": null
+    },
+    {
+      "id": 7,
+      "caption": "Brennende Bollerwagen gelöscht",
+      "key": null
+    },
+    {
+      "id": 9,
+      "caption": "Gruselige Einsätze",
+      "key": "AWARD_HALLOWEEN"
+    },
+    {
+      "id": 10,
+      "caption": "Weihnachtliche Einsätze",
+      "key": "AWARD_CHRISTMAS"
+    },
+    {
+      "id": 11,
+      "caption": "Knaller-Stark",
+      "key": "AWARD_NEW_YEARS"
+    },
+    {
+      "id": 17,
+      "caption": "Osterhasen-Einsätze",
+      "key": "AWARD_EASTER_MISSIONS"
+    },
+    {
+      "id": 20,
+      "caption": "Brennende Blumensträuße gelöscht",
+      "key": null
+    },
+    {
+      "id": 21,
+      "caption": "Fußball-Gott",
+      "key": null
+    },
+    {
+      "id": 24,
+      "caption": "Kürbisjagd",
+      "key": "AWARD_HALLOWEEN_HUNT"
+    },
+    {
+      "id": 25,
+      "caption": "Valentinstag",
+      "key": "AWARD_VALENTINES"
+    },
+    {
+      "id": 26,
+      "caption": "Vatertagseinsätze",
+      "key": "AWARD_FATHERS_DAY_MISSIONS"
+    },
+    {
+      "id": 27,
+      "caption": "Fußball-Event 2021",
+      "key": "AWARD_EM2021_MISSIONS"
+    },
+    {
+      "id": 28,
+      "caption": "Sommerevent-Auszeichnung",
+      "key": "AWARD_SUMMER_MISSIONS"
+    },
+    {
+      "id": 29,
+      "caption": "Herbstevent Einsätze",
+      "key": "AWARD_FALL_MISSIONS"
+    },
+    {
+      "id": 30,
+      "caption": "Europäischer Tag des Notrufs 112",
+      "key": "AWARD_EUROPEAN_112_DAY"
+    },
+    {
+      "id": 31,
+      "caption": "Karneval",
+      "key": "AWARD_CARNIVAL"
+    },
+    {
+      "id": 32,
+      "caption": "Frühlingsevent",
+      "key": "AWARD_SPRING_MISSIONS"
+    },
+    {
+      "id": 33,
+      "caption": "Muttertag-Einsätze",
+      "key": "AWARD_MOTHERS_DAY_MISSIONS"
+    },
+    {
+      "id": 34,
+      "caption": "9. Jubiläum!",
+      "key": "AWARD_NINE_YEARS"
+    },
+    {
+      "id": 35,
+      "caption": "Fußball-Event 2022",
+      "key": "AWARD_WC2022_MISSIONS"
+    },
+    {
+      "id": 36,
+      "caption": "Weihnachtliche Einsätze 2022",
+      "key": "AWARD_CHRISTMAS2022"
+    },
+    {
+      "id": 37,
+      "caption": "Winter-Einsätze 2023",
+      "key": "AWARD_WINTER_MISSIONS"
+    },
+    {
+      "id": 38,
+      "caption": "Knaller-Stark 2022",
+      "key": "AWARD_NEWYEAR2022"
+    },
+    {
+      "id": 39,
+      "caption": "Valentinstag 2023",
+      "key": "AWARD_VALENTINES_MISSIONS_2023"
+    },
+    {
+      "id": 40,
+      "caption": "Herzensbrecher",
+      "key": "AWARD_VALENTINES_COLLECTION"
+    },
+    {
+      "id": 41,
+      "caption": "Europäischer Tag des Notrufs 112 (2023)",
+      "key": "AWARD_EUROPEAN_112_DAY_2023"
+    },
+    {
+      "id": 42,
+      "caption": "Karneval 2023",
+      "key": "AWARD_CARNIVAL_2023"
+    },
+    {
+      "id": 43,
+      "caption": "Frühlingsevent 2023",
+      "key": "AWARD_SPRING_MISSIONS_2023"
+    },
+    {
+      "id": 44,
+      "caption": "Ostereier 2023",
+      "key": "AWARD_EASTER_COLLECTION_2023"
+    },
+    {
+      "id": 45,
+      "caption": "Osterhasen-Einsätze 2023",
+      "key": "AWARD_EASTER_MISSIONS_2023"
+    },
+    {
+      "id": 46,
+      "caption": "Muttertag-Einsätze 2023",
+      "key": "AWARD_MOTHERS_DAY_MISSIONS_2023"
+    },
+    {
+      "id": 47,
+      "caption": "Vatertagseinsätze 2023",
+      "key": "AWARD_FATHERS_DAY_MISSIONS_2023"
+    },
+    {
+      "id": 48,
+      "caption": "Sommer-Einsätze 2023",
+      "key": "AWARD_SUMMER_MISSIONS_2023"
+    },
+    {
+      "id": 49,
+      "caption": "10. Jubiläum!",
+      "key": "AWARD_TEN_YEARS"
+    },
+    {
+      "id": 50,
+      "caption": "Langjähriger Unterstützer",
+      "key": "AWARD_PREMIUM_LEGACY"
+    },
+    {
+      "id": 51,
+      "caption": "1-Monat VIP",
+      "key": "AWARD_PREMIUM_1_MONTH"
+    },
+    {
+      "id": 52,
+      "caption": "3-Monate VIP",
+      "key": "AWARD_PREMIUM_3_MONTH"
+    },
+    {
+      "id": 53,
+      "caption": "6-Monate VIP",
+      "key": "AWARD_PREMIUM_6_MONTH"
+    },
+    {
+      "id": 54,
+      "caption": "1-Jahr VIP",
+      "key": "AWARD_PREMIUM_1_YEAR"
+    },
+    {
+      "id": 55,
+      "caption": "2-Jahre VIP",
+      "key": "AWARD_PREMIUM_2_YEAR"
+    },
+    {
+      "id": 56,
+      "caption": "3-Jahre VIP",
+      "key": "AWARD_PREMIUM_3_YEAR"
+    },
+    {
+      "id": 57,
+      "caption": "4-Jahre VIP",
+      "key": "AWARD_PREMIUM_4_YEAR"
+    },
+    {
+      "id": 58,
+      "caption": "5-Jahre VIP",
+      "key": "AWARD_PREMIUM_5_YEAR"
+    },
+    {
+      "id": 59,
+      "caption": "6-Jahre VIP",
+      "key": "AWARD_PREMIUM_6_YEAR"
+    },
+    {
+      "id": 60,
+      "caption": "7-Jahre VIP",
+      "key": "AWARD_PREMIUM_7_YEAR"
+    },
+    {
+      "id": 61,
+      "caption": "8-Jahre VIP",
+      "key": "AWARD_PREMIUM_8_YEAR"
+    },
+    {
+      "id": 62,
+      "caption": "9-Jahre VIP",
+      "key": "AWARD_PREMIUM_9_YEAR"
+    },
+    {
+      "id": 63,
+      "caption": "10-Jahre VIP",
+      "key": "AWARD_PREMIUM_10_YEAR"
+    },
+    {
+      "id": 64,
+      "caption": "11-Jahre VIP",
+      "key": "AWARD_PREMIUM_11_YEAR"
+    },
+    {
+      "id": 65,
+      "caption": "12-Jahre VIP",
+      "key": "AWARD_PREMIUM_12_YEAR"
+    },
+    {
+      "id": 66,
+      "caption": "13-Jahre VIP",
+      "key": "AWARD_PREMIUM_13_YEAR"
+    },
+    {
+      "id": 67,
+      "caption": "14-Jahre VIP",
+      "key": "AWARD_PREMIUM_14_YEAR"
+    },
+    {
+      "id": 68,
+      "caption": "15-Jahre VIP",
+      "key": "AWARD_PREMIUM_15_YEAR"
+    },
+    {
+      "id": 69,
+      "caption": "16-Jahre VIP",
+      "key": "AWARD_PREMIUM_16_YEAR"
+    },
+    {
+      "id": 70,
+      "caption": "17-Jahre VIP",
+      "key": "AWARD_PREMIUM_17_YEAR"
+    },
+    {
+      "id": 71,
+      "caption": "18-Jahre VIP",
+      "key": "AWARD_PREMIUM_18_YEAR"
+    },
+    {
+      "id": 72,
+      "caption": "19-Jahre VIP",
+      "key": "AWARD_PREMIUM_19_YEAR"
+    },
+    {
+      "id": 73,
+      "caption": "20-Jahre VIP",
+      "key": "AWARD_PREMIUM_20_YEAR"
+    },
+    {
+      "id": 74,
+      "caption": "Fußball-Event 2023",
+      "key": "AWARD_WC2023_MISSIONS"
+    },
+    {
+      "id": 75,
+      "caption": "Sonnenblumen-Enthusiast 2023",
+      "key": "AWARD_SUMMER_COLLECTION_2023"
+    },
+    {
+      "id": 76,
+      "caption": "Verbands-Herausforderung 2023",
+      "key": "AWARD_ALLIANCE_CHALLENGE_2023"
+    },
+    {
+      "id": 77,
+      "caption": "Herbstevent Einsätze",
+      "key": "AWARD_AUTUMN_MISSIONS_2023"
+    },
+    {
+      "id": 78,
+      "caption": "Halloween 2023",
+      "key": "AWARD_HALLOWEEN_2023"
+    },
+    {
+      "id": 79,
+      "caption": "Kürbisjagd 2023",
+      "key": "AWARD_HALLOWEEN_HUNT_2023"
+    },
+    {
+      "id": 80,
+      "caption": "Weihnachtliche Einsätze 2023",
+      "key": "AWARD_CHRISTMAS_2023"
+    },
+    {
+      "id": 81,
+      "caption": "Weihnachtssammler 2023",
+      "key": "AWARD_CHRISTMAS_COLLECTION_2023"
+    },
+    {
+      "id": 82,
+      "caption": "Neujahr 2023",
+      "key": "AWARD_NEWYEAR2023"
+    },
+    {
+      "id": 83,
+      "caption": "Winter-Einsätze 2024",
+      "key": "AWARD_WINTER_2024"
+    },
+    {
+      "id": 84,
+      "caption": "Verbands-Herausforderung Januar 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JAN_2024"
+    },
+    {
+      "id": 85,
+      "caption": "Valentinstag 2024",
+      "key": "AWARD_VALENTINES_MISSIONS_2024"
+    },
+    {
+      "id": 86,
+      "caption": "Herzensbrecher 2024",
+      "key": "AWARD_VALENTINES_COLLECTION_2024"
+    },
+    {
+      "id": 87,
+      "caption": "Europäischer Tag des Notrufs 112 (2024)",
+      "key": "AWARD_EUROPEAN_112_DAY_2024"
+    },
+    {
+      "id": 88,
+      "caption": "Karneval 2024",
+      "key": "AWARD_CARNIVAL_2024"
+    },
+    {
+      "id": 89,
+      "caption": "Polizei Herausforderung Februar 2024",
+      "key": "AWARD_POLICE_CHALLENGE_FEB_2024"
+    },
+    {
+      "id": 90,
+      "caption": "Verbands-Herausforderung März 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MAR_2024"
+    },
+    {
+      "id": 91,
+      "caption": "Ostereier 2024",
+      "key": "AWARD_EASTER_COLLECTION_2024"
+    },
+    {
+      "id": 92,
+      "caption": "Osterhasen-Einsätze 2024",
+      "key": "AWARD_EASTER_MISSIONS_2024"
+    },
+    {
+      "id": 93,
+      "caption": "Frühlingsevent 2024",
+      "key": "AWARD_SPRING_MISSIONS_2024"
+    },
+    {
+      "id": 94,
+      "caption": "Verbands-Herausforderung April 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_APR_2024"
+    },
+    {
+      "id": 95,
+      "caption": "Vatertagseinsätze 2024",
+      "key": "AWARD_FATHERS_DAY_MISSIONS_2024"
+    },
+    {
+      "id": 96,
+      "caption": "Muttertag-Einsätze 2024",
+      "key": "AWARD_MOTHERS_DAY_MISSIONS_2024"
+    },
+    {
+      "id": 97,
+      "caption": "Verbands-Herausforderung Mai 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MAY_2024"
+    },
+    {
+      "id": 98,
+      "caption": "Fußball-Event 2024",
+      "key": "AWARD_EM2024_MISSIONS"
+    },
+    {
+      "id": 99,
+      "caption": "Fußball-Sammler 2024",
+      "key": "AWARD_EM2024_COLLECTION"
+    },
+    {
+      "id": 100,
+      "caption": "Verbands-Herausforderung Juni 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JUN_2024"
+    },
+    {
+      "id": 101,
+      "caption": "Sommer-Einsätze 2024",
+      "key": "AWARD_SUMMER_2024"
+    },
+    {
+      "id": 102,
+      "caption": "11. Jubiläum!",
+      "key": "AWARD_ELEVEN_YEARS"
+    },
+    {
+      "id": 103,
+      "caption": "Verbands-Herausforderung Juli 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JULY_2024"
+    },
+    {
+      "id": 104,
+      "caption": "Sonnenblumen-Enthusiast 2024",
+      "key": "AWARD_SUMMER_COLLECTION_2024"
+    },
+    {
+      "id": 105,
+      "caption": "Verbands-Herausforderung August 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_AUG_2024"
+    },
+    {
+      "id": 106,
+      "caption": "Verbands-Herausforderung September 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_SEP_2024"
+    },
+    {
+      "id": 107,
+      "caption": "Herbstevent Einsätze 2024",
+      "key": "AWARD_AUTUMN_MISSIONS_2024"
+    },
+    {
+      "id": 108,
+      "caption": "Verbands-Herausforderung Oktober 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_OCT_2024"
+    },
+    {
+      "id": 109,
+      "caption": "Halloween 2024",
+      "key": "AWARD_HALLOWEEN_2024"
+    },
+    {
+      "id": 110,
+      "caption": "Kürbisjagd 2024",
+      "key": "AWARD_HALLOWEEN_HUNT_2024"
+    },
+    {
+      "id": 111,
+      "caption": "Verbands-Herausforderung November 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_NOV_2024"
+    },
+    {
+      "id": 112,
+      "caption": "Weihnachtliche Einsätze 2024",
+      "key": "AWARD_CHRISTMAS_2024"
+    },
+    {
+      "id": 113,
+      "caption": "Rauchmeldertag 2024",
+      "key": "AWARD_SMOKE_DETECTOR_DAY_2024"
+    },
+    {
+      "id": 114,
+      "caption": "Weihnachtssammler 2024",
+      "key": "AWARD_CHRISTMAS_COLLECTION_2024"
+    },
+    {
+      "id": 115,
+      "caption": "Verbands-Herausforderung Dezember 2024",
+      "key": "AWARD_ALLIANCE_CHALLENGE_DEC_2024"
+    },
+    {
+      "id": 116,
+      "caption": "Neujahr 2024",
+      "key": "AWARD_NEWYEAR_2024"
+    },
+    {
+      "id": 117,
+      "caption": "Winter-Einsätze 2025",
+      "key": "AWARD_WINTER_2025"
+    },
+    {
+      "id": 118,
+      "caption": "Verbands-Herausforderung Januar 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JAN_2025"
+    },
+    {
+      "id": 119,
+      "caption": "Valentinstag 2025",
+      "key": "AWARD_VALENTINES_MISSIONS_2025"
+    },
+    {
+      "id": 120,
+      "caption": "Herzensbrecher 2025",
+      "key": "AWARD_VALENTINES_COLLECTION_2025"
+    },
+    {
+      "id": 121,
+      "caption": "Europäischer Tag des Notrufs 112 (2025)",
+      "key": "AWARD_EUROPEAN_112_DAY_2025"
+    },
+    {
+      "id": 122,
+      "caption": "Verbands-Herausforderung Februar 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_FEB_2025"
+    },
+    {
+      "id": 123,
+      "caption": "Karneval 2025",
+      "key": "AWARD_CARNIVAL_2025"
+    },
+    {
+      "id": 124,
+      "caption": "Verbands-Herausforderung März 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MARCH_2025"
+    },
+    {
+      "id": 125,
+      "caption": "Frühlingsevent 2025",
+      "key": "AWARD_SPRING_MISSIONS_2025"
+    },
+    {
+      "id": 126,
+      "caption": "Verbands-Herausforderung April 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_APR_2025"
+    },
+    {
+      "id": 127,
+      "caption": "Ostereier 2025",
+      "key": "AWARD_EASTER_COLLECTION_2025"
+    },
+    {
+      "id": 128,
+      "caption": "Osterhasen-Einsätze 2025",
+      "key": "AWARD_EASTER_MISSIONS_2025"
+    },
+    {
+      "id": 129,
+      "caption": "Muttertag-Einsätze 2025",
+      "key": "AWARD_MOTHERS_DAY_MISSIONS_2025"
+    },
+    {
+      "id": 130,
+      "caption": "Verbands-Herausforderung Mai 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MAY_2025"
+    },
+    {
+      "id": 131,
+      "caption": "Vatertagseinsätze 2025",
+      "key": "AWARD_FATHERS_DAY_MISSIONS_2025"
+    },
+    {
+      "id": 132,
+      "caption": "Verbands-Herausforderung Juni 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JUN_2025"
+    },
+    {
+      "id": 133,
+      "caption": "Sommer-Einsätze 2025",
+      "key": "AWARD_SUMMER_2025"
+    },
+    {
+      "id": 134,
+      "caption": "Fußball-Event 2025",
+      "key": "AWARD_EM2025_MISSIONS"
+    },
+    {
+      "id": 135,
+      "caption": "Verbands-Herausforderung Juli 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JULY_2025"
+    },
+    {
+      "id": 136,
+      "caption": "12. Jubiläum!",
+      "key": "AWARD_TWELVE_YEARS"
+    },
+    {
+      "id": 137,
+      "caption": "Verbands-Herausforderung August 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_AUGUST_2025"
+    },
+    {
+      "id": 138,
+      "caption": "Sonnenblumen-Enthusiast 2025",
+      "key": "AWARD_SUMMER_COLLECTION_2025"
+    },
+    {
+      "id": 139,
+      "caption": "Verbands-Herausforderung September 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_SEPTEMBER_2025"
+    },
+    {
+      "id": 140,
+      "caption": "Herbstevent Einsätze 2025",
+      "key": "AWARD_AUTUMN_MISSIONS_2025"
+    },
+    {
+      "id": 141,
+      "caption": "Verbands-Herausforderung Oktober 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_OCTOBER_2025"
+    },
+    {
+      "id": 142,
+      "caption": "Halloween 2025",
+      "key": "AWARD_HALLOWEEN_2025"
+    },
+    {
+      "id": 143,
+      "caption": "Verbands-Herausforderung November 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_NOVEMBER_2025"
+    },
+    {
+      "id": 144,
+      "caption": "Weihnachtliche Einsätze 2025",
+      "key": "AWARD_CHRISTMAS_2025"
+    },
+    {
+      "id": 145,
+      "caption": "Verbands-Herausforderung Dezember 2025",
+      "key": "AWARD_ALLIANCE_CHALLENGE_DECEMBER_2025"
+    },
+    {
+      "id": 146,
+      "caption": "Weihnachtssammler 2025",
+      "key": "AWARD_CHRISTMAS_COLLECTION_2025"
+    },
+    {
+      "id": 147,
+      "caption": "Neujahr 2025",
+      "key": "AWARD_NEWYEAR_2025"
+    },
+    {
+      "id": 148,
+      "caption": "Winter-Einsätze 2026",
+      "key": "AWARD_WINTER_2026"
+    },
+    {
+      "id": 149,
+      "caption": "Verbands-Herausforderung Januar 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JAN_2026"
+    },
+    {
+      "id": 150,
+      "caption": "Valentinstag 2026",
+      "key": "AWARD_VALENTINES_MISSIONS_2026"
+    },
+    {
+      "id": 151,
+      "caption": "Herzensbrecher 2026",
+      "key": "AWARD_VALENTINES_COLLECTION_2026"
+    },
+    {
+      "id": 152,
+      "caption": "Verbands-Herausforderung Februar 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_FEB_2026"
+    },
+    {
+      "id": 153,
+      "caption": "Europäischer Tag des Notrufs 112 (2026)",
+      "key": "AWARD_EUROPEAN_112_DAY_2026"
+    },
+    {
+      "id": 154,
+      "caption": "Karneval 2026",
+      "key": "AWARD_CARNIVAL_2026"
+    },
+    {
+      "id": 155,
+      "caption": "Schneemann-Liebhaber 2026",
+      "key": "AWARD_WINTER_COLLECTION_2026"
+    },
+    {
+      "id": 156,
+      "caption": "Verbands-Herausforderung März 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MARCH_2026"
+    },
+    {
+      "id": 157,
+      "caption": "Frühlingsevent 2026",
+      "key": "AWARD_SPRING_MISSIONS_2026"
+    },
+    {
+      "id": 158,
+      "caption": "Ostereier 2026",
+      "key": "AWARD_EASTER_COLLECTION_2026"
+    },
+    {
+      "id": 159,
+      "caption": "Osterhasen-Einsätze 2026",
+      "key": "AWARD_EASTER_MISSIONS_2026"
+    },
+    {
+      "id": 160,
+      "caption": "Verbands-Herausforderung April 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_APRIL_2026"
+    },
+    {
+      "id": 161,
+      "caption": "Muttertag-Einsätze 2026",
+      "key": "AWARD_MOTHERS_DAY_MISSIONS_2026"
+    },
+    {
+      "id": 162,
+      "caption": "Verbands-Herausforderung Mai 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_MAY_2026"
+    },
+    {
+      "id": 163,
+      "caption": "Vatertagseinsätze 2026",
+      "key": "AWARD_FATHERS_DAY_MISSIONS_2026"
+    },
+    {
+      "id": 164,
+      "caption": "Verbands-Herausforderung Juni 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JUNE_2026"
+    },
+    {
+      "id": 165,
+      "caption": "Fußball-Event 2026",
+      "key": "AWARD_WC2026_MISSIONS"
+    },
+    {
+      "id": 166,
+      "caption": "Sommer-Einsätze 2026",
+      "key": "AWARD_SUMMER_2026"
+    },
+    {
+      "id": 167,
+      "caption": "13. Jubiläum!",
+      "key": "AWARD_THIRTEEN_YEARS"
+    },
+    {
+      "id": 168,
+      "caption": "Verbands-Herausforderung Juli 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_JULY_2026"
+    },
+    {
+      "id": 169,
+      "caption": "Sonnenblumen-Enthusiast 2026",
+      "key": "AWARD_SUMMER_COLLECTION_2026"
+    },
+    {
+      "id": 170,
+      "caption": "Verbands-Herausforderung August 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_AUGUST_2026"
+    },
+    {
+      "id": 171,
+      "caption": "Tierfreund",
+      "key": "AWARD_ANIMAL_RESCUE"
+    },
+    {
+      "id": 172,
+      "caption": "Verbands-Herausforderung September 2026",
+      "key": "AWARD_ALLIANCE_CHALLENGE_SEPTEMBER_2026"
+    }
+  ],
+  "filter_types": [
+    {
+      "key": "firehouse_missions",
+      "caption": "Feuerwache"
+    },
+    {
+      "key": "police_station_missions",
+      "caption": "Polizeiwache"
+    },
+    {
+      "key": "rapid_deployment_group_missions",
+      "caption": "Schnelleinsatzgruppe (SEG)"
+    },
+    {
+      "key": "riot_police_missions",
+      "caption": "Bereitschaftspolizei"
+    },
+    {
+      "key": "ambulance_station_missions",
+      "caption": "Rettungswache"
+    },
+    {
+      "key": "technical_aid_organization_missions",
+      "caption": "THW"
+    },
+    {
+      "key": "water_watch_missions",
+      "caption": "Wasserrettung"
+    },
+    {
+      "key": "factory_fire_brigade_missions",
+      "caption": "Werkfeuerwehr"
+    },
+    {
+      "key": "federal_police_missions",
+      "caption": "Federal Police Station"
+    },
+    {
+      "key": "coastal_rescue_missions",
+      "caption": "Seenotrettungswache"
+    },
+    {
+      "key": "technical_aid_missions",
+      "caption": "Technical Aid Missions"
+    },
+    {
+      "key": "swat_missions",
+      "caption": "GIGN"
+    },
+    {
+      "key": "tow_trucks_missions",
+      "caption": "Tow Trucks"
+    },
+    {
+      "key": "mountain_missions",
+      "caption": "Bergrettung"
+    },
+    {
+      "key": "highway_police_missions",
+      "caption": "Autobahnpolizei"
+    },
+    {
+      "key": "animal_rescue_missions",
+      "caption": "Tierrettung"
+    }
+  ],
+  "existing_mission_captions": [
+    {
+      "id": 0,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 1,
+      "caption": "Brennender Abfallcontainer"
+    },
+    {
+      "id": 2,
+      "caption": "Brennender PKW"
+    },
+    {
+      "id": 3,
+      "caption": "Motorrad-Brand"
+    },
+    {
+      "id": 4,
+      "caption": "Brennendes Gras"
+    },
+    {
+      "id": 5,
+      "caption": "Zimmerbrand"
+    },
+    {
+      "id": 6,
+      "caption": "Gartenlaubenbrand"
+    },
+    {
+      "id": 7,
+      "caption": "Brennendes Laub"
+    },
+    {
+      "id": 8,
+      "caption": "Sperrmüllbrand"
+    },
+    {
+      "id": 9,
+      "caption": "Strohballen-Brand"
+    },
+    {
+      "id": 10,
+      "caption": "Traktorbrand"
+    },
+    {
+      "id": 11,
+      "caption": "Brennende Telefonzelle"
+    },
+    {
+      "id": 12,
+      "caption": "Baum auf Straße"
+    },
+    {
+      "id": 13,
+      "caption": "Brennender LKW"
+    },
+    {
+      "id": 14,
+      "caption": "Kleiner Feldbrand"
+    },
+    {
+      "id": 15,
+      "caption": "Kleiner Waldbrand"
+    },
+    {
+      "id": 16,
+      "caption": "Wohnwagenbrand"
+    },
+    {
+      "id": 17,
+      "caption": "Brand in Briefkasten"
+    },
+    {
+      "id": 18,
+      "caption": "Brennendes Gebüsch"
+    },
+    {
+      "id": 19,
+      "caption": "Brennender Anhänger"
+    },
+    {
+      "id": 20,
+      "caption": "Kellerbrand"
+    },
+    {
+      "id": 21,
+      "caption": "Schornsteinbrand"
+    },
+    {
+      "id": 22,
+      "caption": "Dachstuhlbrand"
+    },
+    {
+      "id": 23,
+      "caption": "Fettbrand in Pommesbude"
+    },
+    {
+      "id": 24,
+      "caption": "Brennendes Bus-Häuschen"
+    },
+    {
+      "id": 25,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 26,
+      "caption": "Brand im Supermarkt"
+    },
+    {
+      "id": 27,
+      "caption": "Auffahrunfall"
+    },
+    {
+      "id": 28,
+      "caption": "Garagenbrand"
+    },
+    {
+      "id": 29,
+      "caption": "Maschinenbrand"
+    },
+    {
+      "id": 30,
+      "caption": "Große Ölspur"
+    },
+    {
+      "id": 31,
+      "caption": "Auslaufende Betriebsstoffe"
+    },
+    {
+      "id": 32,
+      "caption": "Kaminbrand"
+    },
+    {
+      "id": 33,
+      "caption": "Mähdrescher-Brand"
+    },
+    {
+      "id": 34,
+      "caption": "Brand im Supermarkt"
+    },
+    {
+      "id": 35,
+      "caption": "Feuer im Krankenhaus"
+    },
+    {
+      "id": 36,
+      "caption": "Brennender Güterwaggon"
+    },
+    {
+      "id": 37,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 38,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 39,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 40,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 41,
+      "caption": "Großbrand"
+    },
+    {
+      "id": 42,
+      "caption": "Tankstellenbrand"
+    },
+    {
+      "id": 43,
+      "caption": "Massenkarambolage"
+    },
+    {
+      "id": 44,
+      "caption": "Alkoholintoxikation"
+    },
+    {
+      "id": 45,
+      "caption": "Nasenbluten unstillbar"
+    },
+    {
+      "id": 46,
+      "caption": "Herzinfarkt"
+    },
+    {
+      "id": 47,
+      "caption": "akuter Asthma-Anfall"
+    },
+    {
+      "id": 48,
+      "caption": "Krampfanfall"
+    },
+    {
+      "id": 49,
+      "caption": "Hohes Fieber"
+    },
+    {
+      "id": 50,
+      "caption": "Gestürzte Person"
+    },
+    {
+      "id": 51,
+      "caption": "Brand in Werkstatt"
+    },
+    {
+      "id": 52,
+      "caption": "Brand auf Weihnachtsmarkt"
+    },
+    {
+      "id": 53,
+      "caption": "Verkehrsunfall durch Glatteis"
+    },
+    {
+      "id": 54,
+      "caption": "Personenschaden durch Verbrennung"
+    },
+    {
+      "id": 55,
+      "caption": "Brennender Tannenbaum"
+    },
+    {
+      "id": 56,
+      "caption": "Betrunkene Person auf Weihnachtsmarkt"
+    },
+    {
+      "id": 57,
+      "caption": "Gestürzter Fußgänger"
+    },
+    {
+      "id": 58,
+      "caption": "Gestürzter Radfahrer"
+    },
+    {
+      "id": 59,
+      "caption": "Gefahrgutunfall"
+    },
+    {
+      "id": 60,
+      "caption": "Ladendiebstahl"
+    },
+    {
+      "id": 61,
+      "caption": "Ladendiebstahl"
+    },
+    {
+      "id": 62,
+      "caption": "Parkendes Auto gerammt"
+    },
+    {
+      "id": 63,
+      "caption": "Parkendes Auto gerammt"
+    },
+    {
+      "id": 64,
+      "caption": "Metalldiebstahl"
+    },
+    {
+      "id": 65,
+      "caption": "Taschendiebstahl"
+    },
+    {
+      "id": 66,
+      "caption": "Notebook aus Schule entwendet"
+    },
+    {
+      "id": 67,
+      "caption": "Personalienaufnahme von Schwarzfahrer"
+    },
+    {
+      "id": 68,
+      "caption": "Personalienaufnahme von Schwarzfahrer"
+    },
+    {
+      "id": 69,
+      "caption": "Personalienaufnahme von Schwarzfahrer"
+    },
+    {
+      "id": 70,
+      "caption": "Personalienaufnahme von Schwarzfahrer"
+    },
+    {
+      "id": 71,
+      "caption": "Parkendes Auto gerammt"
+    },
+    {
+      "id": 72,
+      "caption": "Bewusstloser Kranführer"
+    },
+    {
+      "id": 73,
+      "caption": "Schlägerei"
+    },
+    {
+      "id": 74,
+      "caption": "Randalierende Person"
+    },
+    {
+      "id": 75,
+      "caption": "Unangemeldete Demonstration"
+    },
+    {
+      "id": 76,
+      "caption": "Küchenbrand"
+    },
+    {
+      "id": 77,
+      "caption": "Person hinter Tür"
+    },
+    {
+      "id": 78,
+      "caption": "Kleintier in Not"
+    },
+    {
+      "id": 79,
+      "caption": "Verletzte Person auf Baugerüst"
+    },
+    {
+      "id": 80,
+      "caption": "Rauchentwicklung in Museum"
+    },
+    {
+      "id": 81,
+      "caption": "Einbruch in Keller"
+    },
+    {
+      "id": 82,
+      "caption": "Einbruch in Wohnung"
+    },
+    {
+      "id": 83,
+      "caption": "Gefahrgut-LKW verunglückt"
+    },
+    {
+      "id": 84,
+      "caption": "Brennende Lok"
+    },
+    {
+      "id": 85,
+      "caption": "Sachbeschädigung"
+    },
+    {
+      "id": 86,
+      "caption": "Sporthallenbrand"
+    },
+    {
+      "id": 87,
+      "caption": "Kleinflugzeug abgestürzt"
+    },
+    {
+      "id": 88,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 89,
+      "caption": "LKW Auffahrunfall"
+    },
+    {
+      "id": 90,
+      "caption": "Ruhestörung"
+    },
+    {
+      "id": 91,
+      "caption": "Keller unter Wasser"
+    },
+    {
+      "id": 92,
+      "caption": "Schlaganfall"
+    },
+    {
+      "id": 93,
+      "caption": "Brennender Bus"
+    },
+    {
+      "id": 94,
+      "caption": "Kleine Ölspur"
+    },
+    {
+      "id": 95,
+      "caption": "Ausgedehnte Ölspur"
+    },
+    {
+      "id": 96,
+      "caption": "Feuer in Schnellrestaurant"
+    },
+    {
+      "id": 97,
+      "caption": "Aufgerissener Öltank"
+    },
+    {
+      "id": 98,
+      "caption": "Angefahrener Fußgänger"
+    },
+    {
+      "id": 99,
+      "caption": "Flugzeug abgestürzt"
+    },
+    {
+      "id": 100,
+      "caption": "Küchenbrand"
+    },
+    {
+      "id": 101,
+      "caption": "Zimmerbrand"
+    },
+    {
+      "id": 102,
+      "caption": "Feuer in Einfamilienhaus"
+    },
+    {
+      "id": 103,
+      "caption": "Feuer in Einfamilienhaus"
+    },
+    {
+      "id": 104,
+      "caption": "Feuer in Einfamilienhaus"
+    },
+    {
+      "id": 105,
+      "caption": "Feuer in Einfamilienhaus"
+    },
+    {
+      "id": 106,
+      "caption": "Massenschlägerei"
+    },
+    {
+      "id": 107,
+      "caption": "Massenschlägerei"
+    },
+    {
+      "id": 108,
+      "caption": "Schwangere in Notsituation"
+    },
+    {
+      "id": 109,
+      "caption": "Beginnende Geburt"
+    },
+    {
+      "id": 110,
+      "caption": "Vaginale Blutung"
+    },
+    {
+      "id": 111,
+      "caption": "Brennende Vogelscheuche"
+    },
+    {
+      "id": 112,
+      "caption": "Brennendes Kürbisfeld"
+    },
+    {
+      "id": 113,
+      "caption": "Kürbissuppe übergekocht"
+    },
+    {
+      "id": 114,
+      "caption": "Hexe hängt in Baum"
+    },
+    {
+      "id": 115,
+      "caption": "Zombiebiss"
+    },
+    {
+      "id": 116,
+      "caption": "Monster ausgebrochen"
+    },
+    {
+      "id": 117,
+      "caption": "Kürbisse geklaut"
+    },
+    {
+      "id": 118,
+      "caption": "Frankensteins Monster gesichtet"
+    },
+    {
+      "id": 119,
+      "caption": "Süßigkeitendiebstahl"
+    },
+    {
+      "id": 120,
+      "caption": "LKW umgestürzt"
+    },
+    {
+      "id": 121,
+      "caption": "LKW umgestürzt"
+    },
+    {
+      "id": 122,
+      "caption": "Motorradunfall"
+    },
+    {
+      "id": 123,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 124,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 125,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 126,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 127,
+      "caption": "Verkehrsunfall"
+    },
+    {
+      "id": 128,
+      "caption": "Auffahrunfall"
+    },
+    {
+      "id": 129,
+      "caption": "Brennender Adventskranz"
+    },
+    {
+      "id": 130,
+      "caption": "Rangelei auf Weihnachtsmarkt"
+    },
+    {
+      "id": 131,
+      "caption": "Mittlerer Feldbrand"
+    },
+    {
+      "id": 132,
+      "caption": "Großer Feldbrand"
+    },
+    {
+      "id": 133,
+      "caption": "Großer Feldbrand"
+    },
+    {
+      "id": 134,
+      "caption": "Großer Waldbrand"
+    },
+    {
+      "id": 135,
+      "caption": "Großer Waldbrand"
+    },
+    {
+      "id": 136,
+      "caption": "Großfeuer im Wald"
+    },
+    {
+      "id": 137,
+      "caption": "Großfeuer im Wald"
+    },
+    {
+      "id": 138,
+      "caption": "Flächenbrand"
+    },
+    {
+      "id": 139,
+      "caption": "Flächenbrand"
+    },
+    {
+      "id": 140,
+      "caption": "Flächenbrand"
+    },
+    {
+      "id": 141,
+      "caption": "Flächenbrand"
+    },
+    {
+      "id": 142,
+      "caption": "Feuer auf Balkon"
+    },
+    {
+      "id": 143,
+      "caption": "Brennende Papiercontainer"
+    },
+    {
+      "id": 144,
+      "caption": "Brennende Hecke"
+    },
+    {
+      "id": 145,
+      "caption": "Trunkenheitsfahrt"
+    },
+    {
+      "id": 146,
+      "caption": "Brennendes Reetdachhaus"
+    },
+    {
+      "id": 147,
+      "caption": "Krankentransport"
+    },
+    {
+      "id": 148,
+      "caption": "Ampelausfall"
+    },
+    {
+      "id": 149,
+      "caption": "Pannenfahrzeug"
+    },
+    {
+      "id": 150,
+      "caption": "Hausfriedensbruch"
+    },
+    {
+      "id": 151,
+      "caption": "Raub"
+    },
+    {
+      "id": 152,
+      "caption": "Häusliche Gewalt"
+    },
+    {
+      "id": 153,
+      "caption": "Hilflose Person"
+    },
+    {
+      "id": 154,
+      "caption": "Hilflose Person"
+    },
+    {
+      "id": 155,
+      "caption": "Akuter Harnstau"
+    },
+    {
+      "id": 156,
+      "caption": "Harnröhrenblutung"
+    },
+    {
+      "id": 157,
+      "caption": "Herzrhythmusstörungen"
+    },
+    {
+      "id": 158,
+      "caption": "Tiefgarage unter Wasser"
+    },
+    {
+      "id": 159,
+      "caption": "Äste auf Fahrbahn"
+    },
+    {
+      "id": 160,
+      "caption": "Umherfliegendes Baumaterial"
+    },
+    {
+      "id": 161,
+      "caption": "Baum auf PKW"
+    },
+    {
+      "id": 162,
+      "caption": "Baum auf PKW"
+    },
+    {
+      "id": 163,
+      "caption": "Baum auf Dach"
+    },
+    {
+      "id": 164,
+      "caption": "Kopfplatzwunde"
+    },
+    {
+      "id": 165,
+      "caption": "Gehirnerschütterung"
+    },
+    {
+      "id": 166,
+      "caption": "Fassadenteile drohen zu fallen"
+    },
+    {
+      "id": 167,
+      "caption": "Beschädigter Dachbereich"
+    },
+    {
+      "id": 168,
+      "caption": "Baum auf Gleisen"
+    },
+    {
+      "id": 169,
+      "caption": "Baum auf Gleisen"
+    },
+    {
+      "id": 170,
+      "caption": "Baum auf Gleisen"
+    },
+    {
+      "id": 171,
+      "caption": "Parkdeck voll Wasser gelaufen"
+    },
+    {
+      "id": 172,
+      "caption": "Straße unter Wasser"
+    },
+    {
+      "id": 173,
+      "caption": "Straße unter Wasser"
+    },
+    {
+      "id": 174,
+      "caption": "Erdrutsch"
+    },
+    {
+      "id": 175,
+      "caption": "Erdrutsch"
+    },
+    {
+      "id": 176,
+      "caption": "LKW in Hauswand"
+    },
+    {
+      "id": 177,
+      "caption": "Eingestürztes Wohnhaus"
+    },
+    {
+      "id": 178,
+      "caption": "Gefahrgut-LKW verunglückt"
+    },
+    {
+      "id": 179,
+      "caption": "Schädelverletzung"
+    },
+    {
+      "id": 180,
+      "caption": "Wirbelsäulenverletzung"
+    },
+    {
+      "id": 181,
+      "caption": "Sturz aus Höhe"
+    },
+    {
+      "id": 182,
+      "caption": "Sturz aus Höhe"
+    },
+    {
+      "id": 183,
+      "caption": "Sonnenstich"
+    },
+    {
+      "id": 184,
+      "caption": "Hitzschlag"
+    },
+    {
+      "id": 185,
+      "caption": "Hitzekrampf"
+    },
+    {
+      "id": 186,
+      "caption": "Lagerhallenbrand"
+    },
+    {
+      "id": 187,
+      "caption": "Feuer im Lagerraum"
+    },
+    {
+      "id": 188,
+      "caption": "Personenkontrolle"
+    },
+    {
+      "id": 189,
+      "caption": "Verkehrsbehinderung"
+    },
+    {
+      "id": 190,
+      "caption": "Diebstahl aus Kfz"
+    },
+    {
+      "id": 191,
+      "caption": "Baum auf Radweg"
+    },
+    {
+      "id": 192,
+      "caption": "Brennende Trafostation"
+    },
+    {
+      "id": 193,
+      "caption": "Brennende Trafostation"
+    },
+    {
+      "id": 194,
+      "caption": "Person unter Baum eingeklemmt"
+    },
+    {
+      "id": 195,
+      "caption": "Schwerpunkteinsatz Tageswohnungseinbrüche"
+    },
+    {
+      "id": 196,
+      "caption": "Schwerpunkteinsatz Verkehrsüberwachung"
+    },
+    {
+      "id": 197,
+      "caption": "Präsenzeinsatz Volksfest"
+    },
+    {
+      "id": 198,
+      "caption": "Jugendschutzkontrolle in Diskothek"
+    },
+    {
+      "id": 199,
+      "caption": "Geländedurchsuchung nach Beweismittel"
+    },
+    {
+      "id": 200,
+      "caption": "Geplante Razzia"
+    },
+    {
+      "id": 201,
+      "caption": "Fußball Bundesliga-Spiel"
+    },
+    {
+      "id": 202,
+      "caption": "Diebstahl auf Weihnachtsmarkt"
+    },
+    {
+      "id": 203,
+      "caption": "Brennende Weihnachtsmarktbude"
+    },
+    {
+      "id": 204,
+      "caption": "Scheunenbrand"
+    },
+    {
+      "id": 205,
+      "caption": "Feuer auf Bauernhof - Mittel"
+    },
+    {
+      "id": 206,
+      "caption": "Feuer auf Bauernhof - Groß"
+    },
+    {
+      "id": 207,
+      "caption": "Gefahrgutunfall - Groß"
+    },
+    {
+      "id": 208,
+      "caption": "Leck in Chemikalientank"
+    },
+    {
+      "id": 209,
+      "caption": "Fahrraddiebstahl"
+    },
+    {
+      "id": 210,
+      "caption": "Unfall mit Motorsäge"
+    },
+    {
+      "id": 211,
+      "caption": "Unterzuckerung"
+    },
+    {
+      "id": 212,
+      "caption": "Akute Bauchschmerzen"
+    },
+    {
+      "id": 213,
+      "caption": "Gasexplosion"
+    },
+    {
+      "id": 214,
+      "caption": "Bürobrand"
+    },
+    {
+      "id": 215,
+      "caption": "Chlorgasaustritt"
+    },
+    {
+      "id": 216,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 217,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 218,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 219,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 220,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 221,
+      "caption": "Zugunglück (Groß)"
+    },
+    {
+      "id": 222,
+      "caption": "Zugunglück (Klein)"
+    },
+    {
+      "id": 223,
+      "caption": "Brandsicherheitswache bei Volksfest"
+    },
+    {
+      "id": 224,
+      "caption": "Brandsicherheitswachdienst im Theater"
+    },
+    {
+      "id": 225,
+      "caption": "Dorf/Stadtfest"
+    },
+    {
+      "id": 226,
+      "caption": "Volkslauf"
+    },
+    {
+      "id": 227,
+      "caption": "Angemeldete Demonstration"
+    },
+    {
+      "id": 228,
+      "caption": "Absicherung Musikumzug"
+    },
+    {
+      "id": 229,
+      "caption": "Absicherung Radrennen"
+    },
+    {
+      "id": 230,
+      "caption": "Feuerprobealarm an Schule"
+    },
+    {
+      "id": 231,
+      "caption": "Entflohener Gefangener"
+    },
+    {
+      "id": 232,
+      "caption": "Kabeldiebstahl"
+    },
+    {
+      "id": 233,
+      "caption": "Suche nach Vermissten"
+    },
+    {
+      "id": 234,
+      "caption": "Entschärfung von Weltkriegsbombe"
+    },
+    {
+      "id": 235,
+      "caption": "Verletzte Person auf Hochspannungsmast"
+    },
+    {
+      "id": 236,
+      "caption": "Verletzte Person auf Hochspannungsmast"
+    },
+    {
+      "id": 237,
+      "caption": "Verkehrsunfall mit Zug"
+    },
+    {
+      "id": 238,
+      "caption": "Verkehrsunfall mit Linienbus"
+    },
+    {
+      "id": 239,
+      "caption": "Verkehrsunfall mit Linienbus"
+    },
+    {
+      "id": 240,
+      "caption": "Gasgeruch"
+    },
+    {
+      "id": 241,
+      "caption": "Wildunfall"
+    },
+    {
+      "id": 242,
+      "caption": "Pfefferspray in Schule"
+    },
+    {
+      "id": 243,
+      "caption": "Reitunfall mit Pkw"
+    },
+    {
+      "id": 244,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 245,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 246,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 247,
+      "caption": "Pkw in Wasser"
+    },
+    {
+      "id": 248,
+      "caption": "LKW in Wasser"
+    },
+    {
+      "id": 249,
+      "caption": "Bus in Wasser"
+    },
+    {
+      "id": 250,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 251,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 252,
+      "caption": "Person in Wasser"
+    },
+    {
+      "id": 253,
+      "caption": "Pkw in Wasser"
+    },
+    {
+      "id": 254,
+      "caption": "LKW in Wasser"
+    },
+    {
+      "id": 255,
+      "caption": "Bus in Wasser"
+    },
+    {
+      "id": 256,
+      "caption": "Zusammenstoß zweier Boote"
+    },
+    {
+      "id": 257,
+      "caption": "Verkehrsüberwachung"
+    },
+    {
+      "id": 258,
+      "caption": "Baumaschine umgestürzt"
+    },
+    {
+      "id": 259,
+      "caption": "Brennender PKW durch Feuerwerkskörper"
+    },
+    {
+      "id": 260,
+      "caption": "Sperrmüllbrand durch Feuerwerkskörper"
+    },
+    {
+      "id": 261,
+      "caption": "Kleiner Feldbrand durch Feuerwerkskörper"
+    },
+    {
+      "id": 262,
+      "caption": "Kellerbrand durch Feuerwerkskörper"
+    },
+    {
+      "id": 263,
+      "caption": "Brennendes Bus-Häuschen durch Feuerwerkskörper"
+    },
+    {
+      "id": 264,
+      "caption": "Feuer auf Balkon durch Feuerwerkskörper"
+    },
+    {
+      "id": 265,
+      "caption": "Brennende Papiercontainer durch Feuerwerkskörper"
+    },
+    {
+      "id": 266,
+      "caption": "Brennende Hecke durch Feuerwerkskörper"
+    },
+    {
+      "id": 267,
+      "caption": "Trunkenheitsfahrt nach Silvesterparty"
+    },
+    {
+      "id": 268,
+      "caption": "Brennendes Reetdachhaus durch Feuerwerkskörper"
+    },
+    {
+      "id": 269,
+      "caption": "Kfz durch Feuerwerkskörper beschädigt"
+    },
+    {
+      "id": 270,
+      "caption": "Verstoß gegen Sprengstoffverordnung"
+    },
+    {
+      "id": 271,
+      "caption": "Beschädigter Kesselwagen"
+    },
+    {
+      "id": 272,
+      "caption": "Gewässerverschmutzung durch Öl"
+    },
+    {
+      "id": 273,
+      "caption": "Gewässerverschmutzung durch Öl"
+    },
+    {
+      "id": 274,
+      "caption": "Bewusstlose Person"
+    },
+    {
+      "id": 275,
+      "caption": "Absicherung Rockkonzert"
+    },
+    {
+      "id": 276,
+      "caption": "Schwertransport"
+    },
+    {
+      "id": 277,
+      "caption": "Person im Aufzug"
+    },
+    {
+      "id": 278,
+      "caption": "LKW in Supermarkt"
+    },
+    {
+      "id": 279,
+      "caption": "LKW in Supermarkt"
+    },
+    {
+      "id": 280,
+      "caption": "Baum auf Oberleitung"
+    },
+    {
+      "id": 281,
+      "caption": "Stromschlag"
+    },
+    {
+      "id": 282,
+      "caption": "Geplatzte Wasserleitung"
+    },
+    {
+      "id": 283,
+      "caption": "Bürobrand (Groß)"
+    },
+    {
+      "id": 284,
+      "caption": "Ostereier-Dieb"
+    },
+    {
+      "id": 285,
+      "caption": "Pinsel aus Werkstatt entwendet"
+    },
+    {
+      "id": 286,
+      "caption": "Eingestürzter Hasenbau"
+    },
+    {
+      "id": 287,
+      "caption": "Angefahrener Osterhase"
+    },
+    {
+      "id": 288,
+      "caption": "Brennendes Osternest"
+    },
+    {
+      "id": 289,
+      "caption": "Schokoladenspur auf Straße"
+    },
+    {
+      "id": 290,
+      "caption": "Eierkocherbrand"
+    },
+    {
+      "id": 291,
+      "caption": "Hasentreffen in Ostereistedt"
+    },
+    {
+      "id": 292,
+      "caption": "Tankbetrug"
+    },
+    {
+      "id": 293,
+      "caption": "Bluthochdruck"
+    },
+    {
+      "id": 294,
+      "caption": "Fußball Bundesliga-Risikospiel"
+    },
+    {
+      "id": 295,
+      "caption": "Tankstellenüberfall"
+    },
+    {
+      "id": 296,
+      "caption": "Gasunfall in Werkstatt"
+    },
+    {
+      "id": 297,
+      "caption": "Arbeitsunfall im Garten"
+    },
+    {
+      "id": 298,
+      "caption": "Hilflose Person auf Wasser"
+    },
+    {
+      "id": 299,
+      "caption": "Strohballen qualmen in Scheune"
+    },
+    {
+      "id": 300,
+      "caption": "Abgestürzter Kletterer"
+    },
+    {
+      "id": 301,
+      "caption": "Tiere auf der Fahrbahn"
+    },
+    {
+      "id": 302,
+      "caption": "Brennendes Kleinflugzeug"
+    },
+    {
+      "id": 303,
+      "caption": "Carportbrand"
+    },
+    {
+      "id": 304,
+      "caption": "Angemeldete Demonstration - Gefahrenpotenzial"
+    },
+    {
+      "id": 305,
+      "caption": "Fußball Bundesliga-Risikospiel"
+    },
+    {
+      "id": 306,
+      "caption": "Absicherung Rockkonzert - Gefahrenpotenzial"
+    },
+    {
+      "id": 307,
+      "caption": "Spontaner Aufstand"
+    },
+    {
+      "id": 308,
+      "caption": "Brennender Müllwagen"
+    },
+    {
+      "id": 309,
+      "caption": "Tauchunfall"
+    },
+    {
+      "id": 310,
+      "caption": "Tauchunfall"
+    },
+    {
+      "id": 311,
+      "caption": "Mitarbeiter unter PKW eingeklemmt"
+    },
+    {
+      "id": 312,
+      "caption": "Verunglückter Fallschirmspringer"
+    },
+    {
+      "id": 313,
+      "caption": "Verunglückter Fallschirmspringer"
+    },
+    {
+      "id": 314,
+      "caption": "Verunglückter Fallschirmspringer"
+    },
+    {
+      "id": 315,
+      "caption": "Chemieunfall an Schule"
+    },
+    {
+      "id": 316,
+      "caption": "Unbekannte Substanz"
+    },
+    {
+      "id": 317,
+      "caption": "Person in Baumaschine eingeklemmt"
+    },
+    {
+      "id": 318,
+      "caption": "Ausgelöster Heimrauchmelder"
+    },
+    {
+      "id": 319,
+      "caption": "Person in Baugrube"
+    },
+    {
+      "id": 320,
+      "caption": "Großfeuer im Krankenhaus"
+    },
+    {
+      "id": 321,
+      "caption": "Saunabrand"
+    },
+    {
+      "id": 322,
+      "caption": "Geplante Autobahnsperrung"
+    },
+    {
+      "id": 323,
+      "caption": "Dehnfugenbrand"
+    },
+    {
+      "id": 324,
+      "caption": "Brand in Baumarkt"
+    },
+    {
+      "id": 325,
+      "caption": "Absicherung Castor-Transport"
+    },
+    {
+      "id": 326,
+      "caption": "Handverletzung durch Feuerwerkskörper"
+    },
+    {
+      "id": 327,
+      "caption": "Tiefgaragenbrand"
+    },
+    {
+      "id": 328,
+      "caption": "Rauch in Kabine"
+    },
+    {
+      "id": 329,
+      "caption": "Rauch in Kabine"
+    },
+    {
+      "id": 330,
+      "caption": "Überhitzte Bremsen"
+    },
+    {
+      "id": 331,
+      "caption": "Flugzeugzusammenstoß am Boden"
+    },
+    {
+      "id": 332,
+      "caption": "Flugzeugbrand"
+    },
+    {
+      "id": 333,
+      "caption": "Flugzeugbrand"
+    },
+    {
+      "id": 334,
+      "caption": "Brennendes Kleinflugzeug"
+    },
+    {
+      "id": 335,
+      "caption": "Brennendes Kleinflugzeug"
+    },
+    {
+      "id": 336,
+      "caption": "Absicherung Betankung"
+    },
+    {
+      "id": 337,
+      "caption": "Brennender PKW"
+    },
+    {
+      "id": 338,
+      "caption": "Motorrad-Brand"
+    },
+    {
+      "id": 339,
+      "caption": "Herzinfarkt"
+    },
+    {
+      "id": 340,
+      "caption": "akuter Asthma-Anfall"
+    },
+    {
+      "id": 341,
+      "caption": "Krampfanfall"
+    },
+    {
+      "id": 342,
+      "caption": "Triebwerksbrand"
+    },
+    {
+      "id": 343,
+      "caption": "Triebwerksbrand"
+    },
+    {
+      "id": 344,
+      "caption": "Mehrere brennende Fahrzeuge"
+    },
+    {
+      "id": 345,
+      "caption": "Höhenrettung am Fahrgeschäft"
+    },
+    {
+      "id": 346,
+      "caption": "Gebäudesprengung"
+    },
+    {
+      "id": 347,
+      "caption": "Helikopter in Baum"
+    },
+    {
+      "id": 348,
+      "caption": "Explosion in Biogasanlage"
+    },
+    {
+      "id": 349,
+      "caption": "Brandgeruch"
+    },
+    {
+      "id": 350,
+      "caption": "Flughafenbrand"
+    },
+    {
+      "id": 351,
+      "caption": "Brand im Terminal"
+    },
+    {
+      "id": 352,
+      "caption": "Brand in Mehrfamilienhaus"
+    },
+    {
+      "id": 353,
+      "caption": "Großkontrolle Betäubungsmittel"
+    },
+    {
+      "id": 354,
+      "caption": "Grillunfall"
+    },
+    {
+      "id": 355,
+      "caption": "Waffenentzug"
+    },
+    {
+      "id": 356,
+      "caption": "Häusliche Gewalt - eskaliert"
+    },
+    {
+      "id": 357,
+      "caption": "Bank: Stiller Alarm"
+    },
+    {
+      "id": 358,
+      "caption": "Banküberfall"
+    },
+    {
+      "id": 359,
+      "caption": "Geplante Razzia - Verdächtiger flüchtig"
+    },
+    {
+      "id": 360,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 361,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 362,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 363,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 364,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 365,
+      "caption": "Brennender Blumenstrauß"
+    },
+    {
+      "id": 366,
+      "caption": "Vollstreckung Haftbefehl"
+    },
+    {
+      "id": 367,
+      "caption": "Vollstreckung Haftbefehl - eskaliert"
+    },
+    {
+      "id": 368,
+      "caption": "Brennende Kirche"
+    },
+    {
+      "id": 369,
+      "caption": "Austritt Kohlenmonoxid"
+    },
+    {
+      "id": 370,
+      "caption": "Geisterfahrer"
+    },
+    {
+      "id": 371,
+      "caption": "Fußball aufpumpen"
+    },
+    {
+      "id": 372,
+      "caption": "Mannschaftsbus in Halteverbot abgestellt"
+    },
+    {
+      "id": 373,
+      "caption": "Behandlung nach Schwalbe"
+    },
+    {
+      "id": 374,
+      "caption": "Prellung nach Lattenpraller"
+    },
+    {
+      "id": 375,
+      "caption": "Tor gefallen"
+    },
+    {
+      "id": 376,
+      "caption": "Pokal geklaut"
+    },
+    {
+      "id": 377,
+      "caption": "Überzuckerung"
+    },
+    {
+      "id": 378,
+      "caption": "Observation"
+    },
+    {
+      "id": 379,
+      "caption": "PKW im Gleisbett"
+    },
+    {
+      "id": 380,
+      "caption": "PKW im Gleisbett"
+    },
+    {
+      "id": 381,
+      "caption": "PKW im Gleisbett"
+    },
+    {
+      "id": 382,
+      "caption": "PKW im Gleisbett"
+    },
+    {
+      "id": 383,
+      "caption": "Kind in PKW eingeschlossen"
+    },
+    {
+      "id": 384,
+      "caption": "Brennende Ballenpresse"
+    },
+    {
+      "id": 385,
+      "caption": "Unfall beim Umpumpen von Flüssigkeiten"
+    },
+    {
+      "id": 386,
+      "caption": "Ammoniakaustritt"
+    },
+    {
+      "id": 387,
+      "caption": "Brennende Pipeline-Isolierung"
+    },
+    {
+      "id": 388,
+      "caption": "Feuer in Verwaltungsgebäude"
+    },
+    {
+      "id": 389,
+      "caption": "Brand in Chemiepark - Produktion"
+    },
+    {
+      "id": 390,
+      "caption": "Sicherheitslandung"
+    },
+    {
+      "id": 391,
+      "caption": "Vergiftung"
+    },
+    {
+      "id": 392,
+      "caption": "Person durch Hubmaschine eingeklemmt"
+    },
+    {
+      "id": 393,
+      "caption": "Einsturzgefährdeter Balkon"
+    },
+    {
+      "id": 394,
+      "caption": "LKW auf Stauende"
+    },
+    {
+      "id": 395,
+      "caption": "Maschinenbrand in Produktionshalle"
+    },
+    {
+      "id": 396,
+      "caption": "Maschinenbrand in Produktionshalle"
+    },
+    {
+      "id": 397,
+      "caption": "Schnittwunde"
+    },
+    {
+      "id": 398,
+      "caption": "Brennende Absauganlage"
+    },
+    {
+      "id": 399,
+      "caption": "Brand in Kabelkanal"
+    },
+    {
+      "id": 400,
+      "caption": "Brand in Lackiererei"
+    },
+    {
+      "id": 401,
+      "caption": "Umgestürzter Gabelstapler"
+    },
+    {
+      "id": 402,
+      "caption": "Brennender PKW"
+    },
+    {
+      "id": 403,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 404,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 405,
+      "caption": "Brennender LKW"
+    },
+    {
+      "id": 406,
+      "caption": "Brennender LKW"
+    },
+    {
+      "id": 407,
+      "caption": "Brennende Filteranlage"
+    },
+    {
+      "id": 408,
+      "caption": "Rauchentwicklung an Förderband"
+    },
+    {
+      "id": 409,
+      "caption": "Brennender LKW"
+    },
+    {
+      "id": 410,
+      "caption": "Mülleimerbrand"
+    },
+    {
+      "id": 411,
+      "caption": "Heißluftballon in Hochspannungsmast"
+    },
+    {
+      "id": 412,
+      "caption": "Verpuffung"
+    },
+    {
+      "id": 413,
+      "caption": "Verpuffung"
+    },
+    {
+      "id": 414,
+      "caption": "Verpuffung"
+    },
+    {
+      "id": 415,
+      "caption": "Jäger verletzt Passant durch Schuss"
+    },
+    {
+      "id": 416,
+      "caption": "Jäger stürzt von Hochsitz"
+    },
+    {
+      "id": 417,
+      "caption": "Jäger durch Wildtier verletzt"
+    },
+    {
+      "id": 418,
+      "caption": "Absicherung Pannen-LKW"
+    },
+    {
+      "id": 419,
+      "caption": "Austritt Flüssiggas"
+    },
+    {
+      "id": 420,
+      "caption": "Schlechter Allgemeinzustand"
+    },
+    {
+      "id": 421,
+      "caption": "PKW in Bushaltestelle"
+    },
+    {
+      "id": 422,
+      "caption": "Sachbeschädigung an PKW"
+    },
+    {
+      "id": 423,
+      "caption": "Brand in Klassenraum"
+    },
+    {
+      "id": 424,
+      "caption": "Großbrand Müllverbrennungsanlage"
+    },
+    {
+      "id": 425,
+      "caption": "Verstauchter Knöchel"
+    },
+    {
+      "id": 426,
+      "caption": "Gebrochenes Bein"
+    },
+    {
+      "id": 427,
+      "caption": "Gebrochener Arm"
+    },
+    {
+      "id": 428,
+      "caption": "Schneelast auf Dach"
+    },
+    {
+      "id": 429,
+      "caption": "Staubexplosion"
+    },
+    {
+      "id": 430,
+      "caption": "Ammoniakaustritt in Eishalle"
+    },
+    {
+      "id": 431,
+      "caption": "Kreislaufkollaps"
+    },
+    {
+      "id": 432,
+      "caption": "Fassadenbrand"
+    },
+    {
+      "id": 433,
+      "caption": "Großfeuer in Bank"
+    },
+    {
+      "id": 434,
+      "caption": "Brand in Eloxalanlage"
+    },
+    {
+      "id": 435,
+      "caption": "Brand in Eloxalanlage"
+    },
+    {
+      "id": 436,
+      "caption": "Verschmutzte Fahrbahn"
+    },
+    {
+      "id": 437,
+      "caption": "Taxi - Stiller Alarm"
+    },
+    {
+      "id": 438,
+      "caption": "PKW in Zapfsäule"
+    },
+    {
+      "id": 439,
+      "caption": "Einsturz Parkhaus"
+    },
+    {
+      "id": 440,
+      "caption": "Akute Atemnot"
+    },
+    {
+      "id": 441,
+      "caption": "Brennende Waldhütte"
+    },
+    {
+      "id": 442,
+      "caption": "Osterei in Wasser"
+    },
+    {
+      "id": 443,
+      "caption": "Osterei-LKW umgestürzt"
+    },
+    {
+      "id": 444,
+      "caption": "Schwerpunkteinsatz Ostereiersuche"
+    },
+    {
+      "id": 445,
+      "caption": "Ei rollt in Schlangenlinien"
+    },
+    {
+      "id": 446,
+      "caption": "Osterhase auf Kran"
+    },
+    {
+      "id": 447,
+      "caption": "Eingestürzter Balkon"
+    },
+    {
+      "id": 448,
+      "caption": "Ermittlungen nach Unfallflucht"
+    },
+    {
+      "id": 449,
+      "caption": "PKW in Supermarkt"
+    },
+    {
+      "id": 450,
+      "caption": "PKW in Supermarkt"
+    },
+    {
+      "id": 451,
+      "caption": "PKW in Gebäude"
+    },
+    {
+      "id": 452,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 453,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 454,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 455,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 456,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 457,
+      "caption": "Brennender Bollerwagen"
+    },
+    {
+      "id": 458,
+      "caption": "Schwerlastkontrolle"
+    },
+    {
+      "id": 459,
+      "caption": "Brennende Baumaschine"
+    },
+    {
+      "id": 460,
+      "caption": "Person in Schacht"
+    },
+    {
+      "id": 461,
+      "caption": "Dehydrierte Person"
+    },
+    {
+      "id": 462,
+      "caption": "Großfeuer in Lagerhalle"
+    },
+    {
+      "id": 463,
+      "caption": "Gesprengter Geldautomat"
+    },
+    {
+      "id": 464,
+      "caption": "Eingestürzter Funkmast"
+    },
+    {
+      "id": 465,
+      "caption": "Großbrand im Gefahrstofflager"
+    },
+    {
+      "id": 466,
+      "caption": "Badeunfall"
+    },
+    {
+      "id": 467,
+      "caption": "Badeunfall"
+    },
+    {
+      "id": 468,
+      "caption": "Badeunfall"
+    },
+    {
+      "id": 469,
+      "caption": "Entgleiste Stadtbahn"
+    },
+    {
+      "id": 470,
+      "caption": "Feuer in Museum"
+    },
+    {
+      "id": 471,
+      "caption": "Beweismittelsuche im Wasser"
+    },
+    {
+      "id": 472,
+      "caption": "Beweismittelsuche im Wasser"
+    },
+    {
+      "id": 473,
+      "caption": "Pfefferspray in Bahn"
+    },
+    {
+      "id": 474,
+      "caption": "Pfefferspray in Bahn"
+    },
+    {
+      "id": 475,
+      "caption": "Pfefferspray in Bahn"
+    },
+    {
+      "id": 476,
+      "caption": "Angefahrener Radfahrer"
+    },
+    {
+      "id": 477,
+      "caption": "Baum auf Zug"
+    },
+    {
+      "id": 478,
+      "caption": "Baum auf Zug"
+    },
+    {
+      "id": 479,
+      "caption": "Baum auf Zug"
+    },
+    {
+      "id": 480,
+      "caption": "Flugzeugreifenplatzer"
+    },
+    {
+      "id": 481,
+      "caption": "Flugzeugreifenplatzer"
+    },
+    {
+      "id": 482,
+      "caption": "Flugzeugreifenplatzer"
+    },
+    {
+      "id": 483,
+      "caption": "Flugzeugreifenplatzer"
+    },
+    {
+      "id": 484,
+      "caption": "Transportunfall mit Strahler"
+    },
+    {
+      "id": 485,
+      "caption": "Brand mehrerer E-Autos in Auslieferungshalle"
+    },
+    {
+      "id": 486,
+      "caption": "Cannabisplantage entdeckt"
+    },
+    {
+      "id": 487,
+      "caption": "Kleinbrand in Kirche"
+    },
+    {
+      "id": 488,
+      "caption": "Massenanfall an Erkrankten - Stadion"
+    },
+    {
+      "id": 489,
+      "caption": "Massenanfall an Erkrankten"
+    },
+    {
+      "id": 490,
+      "caption": "Massenanfall an Erkrankten"
+    },
+    {
+      "id": 491,
+      "caption": "Massenanfall an Erkrankten - Bahnhof (Regionalverkehr)"
+    },
+    {
+      "id": 492,
+      "caption": "Massenanfall an Erkrankten"
+    },
+    {
+      "id": 493,
+      "caption": "Massenanfall an Erkrankten - Diskothek"
+    },
+    {
+      "id": 494,
+      "caption": "Beschädigte Radarfalle"
+    },
+    {
+      "id": 495,
+      "caption": "Massenpanik in Diskothek"
+    },
+    {
+      "id": 496,
+      "caption": "Pferd in Jauchegrube"
+    },
+    {
+      "id": 497,
+      "caption": "Personensuche nahe Gewässer"
+    },
+    {
+      "id": 498,
+      "caption": "Personensuche nahe Gewässer"
+    },
+    {
+      "id": 499,
+      "caption": "Massenkarambolage auf Autobahn"
+    },
+    {
+      "id": 500,
+      "caption": "Herzkreislaufprobleme"
+    },
+    {
+      "id": 501,
+      "caption": "Schwimmbaddach eingestürzt"
+    },
+    {
+      "id": 502,
+      "caption": "Brand in Betreuungseinrichtung"
+    },
+    {
+      "id": 503,
+      "caption": "Damm droht zu brechen"
+    },
+    {
+      "id": 504,
+      "caption": "Damm droht zu brechen"
+    },
+    {
+      "id": 505,
+      "caption": "Hochwasserschadenslage"
+    },
+    {
+      "id": 506,
+      "caption": "Hundeangriff"
+    },
+    {
+      "id": 507,
+      "caption": "Hochwasserschadenslage"
+    },
+    {
+      "id": 508,
+      "caption": "Pfählungsverletzung"
+    },
+    {
+      "id": 509,
+      "caption": "Brennender Stall"
+    },
+    {
+      "id": 510,
+      "caption": "Zwangseinweisung"
+    },
+    {
+      "id": 511,
+      "caption": "Herrenloses Gepäckstück"
+    },
+    {
+      "id": 512,
+      "caption": "Herrenloses Gepäckstück"
+    },
+    {
+      "id": 513,
+      "caption": "Hausdach eingestürzt"
+    },
+    {
+      "id": 514,
+      "caption": "Durchsuchung - Gebäudekomplex"
+    },
+    {
+      "id": 515,
+      "caption": "Brand einer Produktionshalle"
+    },
+    {
+      "id": 516,
+      "caption": "Flugzeug Erstlandung"
+    },
+    {
+      "id": 517,
+      "caption": "Brennender Baum"
+    },
+    {
+      "id": 518,
+      "caption": "Brennender Baum"
+    },
+    {
+      "id": 519,
+      "caption": "Hüpfburgunfall"
+    },
+    {
+      "id": 520,
+      "caption": "Hotelbrand"
+    },
+    {
+      "id": 521,
+      "caption": "Explosion in Feuerwerksfabrik"
+    },
+    {
+      "id": 522,
+      "caption": "Medizinischer Notfall in Flugzeug"
+    },
+    {
+      "id": 523,
+      "caption": "Medizinischer Notfall in Flugzeug"
+    },
+    {
+      "id": 524,
+      "caption": "Brand in Spänebunker"
+    },
+    {
+      "id": 525,
+      "caption": "Großer Supermarkt eingestürzt"
+    },
+    {
+      "id": 526,
+      "caption": "Supermarkt eingestürzt"
+    },
+    {
+      "id": 527,
+      "caption": "Verschüttete Person"
+    },
+    {
+      "id": 528,
+      "caption": "Fischsterben in Gewässer"
+    },
+    {
+      "id": 529,
+      "caption": "Fischsterben in Gewässer"
+    },
+    {
+      "id": 530,
+      "caption": "Eingestürztes Wohnhaus"
+    },
+    {
+      "id": 531,
+      "caption": "Gasexplosion"
+    },
+    {
+      "id": 532,
+      "caption": "Suche nach Vermissten"
+    },
+    {
+      "id": 533,
+      "caption": "Personensuche nahe Gewässer"
+    },
+    {
+      "id": 534,
+      "caption": "Einsturz Parkhaus"
+    },
+    {
+      "id": 535,
+      "caption": "Schwimmbaddach eingestürzt"
+    },
+    {
+      "id": 536,
+      "caption": "Einbruch in Supermarkt"
+    },
+    {
+      "id": 537,
+      "caption": "Einbruch in Supermarkt"
+    },
+    {
+      "id": 538,
+      "caption": "Verbrennung"
+    },
+    {
+      "id": 539,
+      "caption": "Verschüttete Personen"
+    },
+    {
+      "id": 540,
+      "caption": "Einsturz Stadiontribüne"
+    },
+    {
+      "id": 541,
+      "caption": "Erdrutsch"
+    },
+    {
+      "id": 542,
+      "caption": "Supermarkt eingestürzt"
+    },
+    {
+      "id": 543,
+      "caption": "Supermarkt eingestürzt"
+    },
+    {
+      "id": 544,
+      "caption": "Säureangriff auf Hauswand"
+    },
+    {
+      "id": 545,
+      "caption": "Brand bei Holzverarbeiter"
+    },
+    {
+      "id": 546,
+      "caption": "Hitzschlagvorsorge bei Stau"
+    },
+    {
+      "id": 547,
+      "caption": "Badestellenüberwachung"
+    },
+    {
+      "id": 548,
+      "caption": "Grillbrand"
+    },
+    {
+      "id": 549,
+      "caption": "Absicherung Geldtransport"
+    },
+    {
+      "id": 550,
+      "caption": "LKW auf PKW gestürzt"
+    },
+    {
+      "id": 551,
+      "caption": "Einbruch auf Betriebsgelände"
+    },
+    {
+      "id": 552,
+      "caption": "Brand in Reifenlager"
+    },
+    {
+      "id": 553,
+      "caption": "Verätzung"
+    },
+    {
+      "id": 554,
+      "caption": "Einbruch in Wohnhaus"
+    },
+    {
+      "id": 555,
+      "caption": "Phosphorsäureaustritt"
+    },
+    {
+      "id": 556,
+      "caption": "Phosphorsäureaustritt"
+    },
+    {
+      "id": 557,
+      "caption": "Schwerer Verkehrsunfall"
+    },
+    {
+      "id": 558,
+      "caption": "Brennende Bühne"
+    },
+    {
+      "id": 559,
+      "caption": "Unbekannte Flüssigkeit aus LKW"
+    },
+    {
+      "id": 560,
+      "caption": "Absicherung Motocrossrennen"
+    },
+    {
+      "id": 561,
+      "caption": "Fremdkörper in Wunde"
+    },
+    {
+      "id": 562,
+      "caption": "Verkehrsunfall in Tunnel"
+    },
+    {
+      "id": 563,
+      "caption": "Absicherung Staatsbesuch"
+    },
+    {
+      "id": 564,
+      "caption": "Geplante Festnahme"
+    },
+    {
+      "id": 565,
+      "caption": "Zugriff bei Geldübergabe"
+    },
+    {
+      "id": 566,
+      "caption": "Drogenhandel aufgeflogen"
+    },
+    {
+      "id": 567,
+      "caption": "Diebstahl auf Baustelle"
+    },
+    {
+      "id": 568,
+      "caption": "Ausbruch gefährlicher Personen aus geschlossenem Vollzug"
+    },
+    {
+      "id": 569,
+      "caption": "Tankstellenüberfall - Eskaliert"
+    },
+    {
+      "id": 570,
+      "caption": "Blitzeinschlag in Wohnhaus"
+    },
+    {
+      "id": 571,
+      "caption": "Dachstuhlbrand"
+    },
+    {
+      "id": 572,
+      "caption": "Überfall auf Spielhalle"
+    },
+    {
+      "id": 573,
+      "caption": "Chemikalienaustritt - Klärwerk"
+    },
+    {
+      "id": 574,
+      "caption": "Brandsicherheitswache bei Feuerwerk"
+    },
+    {
+      "id": 575,
+      "caption": "Unklare Rauchentwicklung"
+    },
+    {
+      "id": 576,
+      "caption": "Brand in Parkhaus"
+    },
+    {
+      "id": 577,
+      "caption": "Auslaufendes Kerosin"
+    },
+    {
+      "id": 578,
+      "caption": "Blausäureaustritt"
+    },
+    {
+      "id": 579,
+      "caption": "Blausäureaustritt"
+    },
+    {
+      "id": 580,
+      "caption": "Ausschreitungen durch alkoholisierte Menschengruppe"
+    },
+    {
+      "id": 581,
+      "caption": "Sturzverletzung beim Schlittschuhlaufen"
+    },
+    {
+      "id": 582,
+      "caption": "Sturzverletzung beim Schlittschuhlaufen"
+    },
+    {
+      "id": 583,
+      "caption": "Massenanfall durch Lebkuchenverzehr (klein)"
+    },
+    {
+      "id": 584,
+      "caption": "Massenanfall durch Lebkuchenverzehr (groß)"
+    },
+    {
+      "id": 585,
+      "caption": "Massenanfall durch Lebkuchenverzehr (riesig)"
+    },
+    {
+      "id": 586,
+      "caption": "Weihnachtsschlitten in Baum"
+    },
+    {
+      "id": 587,
+      "caption": "Weihnachtsmann in Kamin steckengeblieben"
+    },
+    {
+      "id": 588,
+      "caption": "Betrunkener Weihnachtsmann"
+    },
+    {
+      "id": 589,
+      "caption": "Verkehrsunsicherer Rentierschlitten"
+    },
+    {
+      "id": 590,
+      "caption": "Diebstahl aus Weihnachtsbäckerei"
+    },
+    {
+      "id": 591,
+      "caption": "Fassadenbrand durch Feuerwerksbatterien"
+    },
+    {
+      "id": 592,
+      "caption": "Unangemeldete Demonstration (Groß)"
+    },
+    {
+      "id": 593,
+      "caption": "Beseitigung kontaminierter Erde"
+    },
+    {
+      "id": 594,
+      "caption": "Brand in Schule"
+    },
+    {
+      "id": 595,
+      "caption": "Person von Blitz getroffen"
+    },
+    {
+      "id": 596,
+      "caption": "Verkehrsunfall (Personen eingeklemmt)"
+    },
+    {
+      "id": 597,
+      "caption": "Paar hat zu viel Schokolade gegessen"
+    },
+    {
+      "id": 598,
+      "caption": "Schmetterlinge im Bauch"
+    },
+    {
+      "id": 599,
+      "caption": "Schock durch Heiratsantrag"
+    },
+    {
+      "id": 600,
+      "caption": "Gebrochenes Herz"
+    },
+    {
+      "id": 601,
+      "caption": "Valentinsdekoration in Restaurant brennt"
+    },
+    {
+      "id": 602,
+      "caption": "Feuer durch Abendessen bei Kerzenlicht"
+    },
+    {
+      "id": 603,
+      "caption": "Suche nach nicht vorhandenem Partner"
+    },
+    {
+      "id": 604,
+      "caption": "Lärmbeschwerde wegen streitendem Paar"
+    },
+    {
+      "id": 605,
+      "caption": "Herz gestohlen"
+    },
+    {
+      "id": 606,
+      "caption": "Brennender Bahnhof"
+    },
+    {
+      "id": 607,
+      "caption": "Verkehrserziehung an Schule"
+    },
+    {
+      "id": 608,
+      "caption": "Abgebrochener Notruf"
+    },
+    {
+      "id": 609,
+      "caption": "Fensterputzer hängt in Gondel fest"
+    },
+    {
+      "id": 610,
+      "caption": "Gefahrgut-LKW in Brand"
+    },
+    {
+      "id": 611,
+      "caption": "Ausschreitungen verfeindeter Gruppen (Klein)"
+    },
+    {
+      "id": 612,
+      "caption": "Ausschreitungen verfeindeter Gruppen (Groß)"
+    },
+    {
+      "id": 613,
+      "caption": "Intensivverlegung"
+    },
+    {
+      "id": 614,
+      "caption": "Unbefugtes Betreten einer Gleisanlage"
+    },
+    {
+      "id": 615,
+      "caption": "Unbefugtes Betreten einer Gleisanlage"
+    },
+    {
+      "id": 616,
+      "caption": "Unbefugtes Betreten einer Gleisanlage"
+    },
+    {
+      "id": 617,
+      "caption": "Güterzug entgleist"
+    },
+    {
+      "id": 618,
+      "caption": "Massenanfall von Osterhasen"
+    },
+    {
+      "id": 619,
+      "caption": "Havariertes Flussfahrtschiff"
+    },
+    {
+      "id": 620,
+      "caption": "Säurebehälter beschädigt"
+    },
+    {
+      "id": 621,
+      "caption": "Säurebehälter beschädigt"
+    },
+    {
+      "id": 622,
+      "caption": "Allergischer Schock"
+    },
+    {
+      "id": 623,
+      "caption": "Baugerüst eingestürzt"
+    },
+    {
+      "id": 624,
+      "caption": "Zusammenstoß zweier Busse"
+    },
+    {
+      "id": 625,
+      "caption": "Person steckt mit Hand in Kanaldeckel"
+    },
+    {
+      "id": 626,
+      "caption": "Person tritt auf Glasscherben"
+    },
+    {
+      "id": 627,
+      "caption": "Grill in Flammen"
+    },
+    {
+      "id": 628,
+      "caption": "Brennendes Campingzelt"
+    },
+    {
+      "id": 629,
+      "caption": "Vater vermisst"
+    },
+    {
+      "id": 630,
+      "caption": "Gestohlener Picknick-Korb"
+    },
+    {
+      "id": 631,
+      "caption": "Vollstreckung Durchsuchungsbeschluss"
+    },
+    {
+      "id": 632,
+      "caption": "Einbruch in Museum"
+    },
+    {
+      "id": 633,
+      "caption": "Einbruch in Wohnhaus"
+    },
+    {
+      "id": 634,
+      "caption": "Einbruch in Wohnhaus - Täter am Ort"
+    },
+    {
+      "id": 635,
+      "caption": "Einbruch in Wohnhaus - Täter flüchtig"
+    },
+    {
+      "id": 636,
+      "caption": "Entführung"
+    },
+    {
+      "id": 637,
+      "caption": "Ausgefallenes Kühlsystem"
+    },
+    {
+      "id": 638,
+      "caption": "LKW droht umzustürzen"
+    },
+    {
+      "id": 639,
+      "caption": "Gefahrgutzug verunglückt"
+    },
+    {
+      "id": 640,
+      "caption": "Amputationsverletzung"
+    },
+    {
+      "id": 641,
+      "caption": "Flitzer auf dem Spielfeld"
+    },
+    {
+      "id": 642,
+      "caption": "Mauer auf Spielfeld"
+    },
+    {
+      "id": 643,
+      "caption": "Unfall in Getreidesilo"
+    },
+    {
+      "id": 644,
+      "caption": "Brand Holzpolter"
+    },
+    {
+      "id": 645,
+      "caption": "Brand Holzpolter"
+    },
+    {
+      "id": 646,
+      "caption": "Absicherung Schwimmwettbewerb"
+    },
+    {
+      "id": 647,
+      "caption": "Illegales Lagerfeuer in Park"
+    },
+    {
+      "id": 648,
+      "caption": "Verkeimter Eiswagen"
+    },
+    {
+      "id": 649,
+      "caption": "Knalltrauma"
+    },
+    {
+      "id": 650,
+      "caption": "Ladungsbergung LKW"
+    },
+    {
+      "id": 651,
+      "caption": "Brand in Getreidesilo"
+    },
+    {
+      "id": 652,
+      "caption": "Aufgeplatzter Asphalt auf Autobahn"
+    },
+    {
+      "id": 653,
+      "caption": "Brand auf Schultoilette"
+    },
+    {
+      "id": 654,
+      "caption": "Großbrand Möbelhaus"
+    },
+    {
+      "id": 655,
+      "caption": "Parkhaus voll Wasser gelaufen"
+    },
+    {
+      "id": 656,
+      "caption": "Mehrere Keller unter Wasser"
+    },
+    {
+      "id": 657,
+      "caption": "Tunnel unter Wasser (Klein)"
+    },
+    {
+      "id": 658,
+      "caption": "Tunnel unter Wasser (Groß)"
+    },
+    {
+      "id": 659,
+      "caption": "Dammbruch"
+    },
+    {
+      "id": 660,
+      "caption": "Bach droht über Ufer zu treten"
+    },
+    {
+      "id": 661,
+      "caption": "Gewässer gekippt (Klein)"
+    },
+    {
+      "id": 662,
+      "caption": "Gewässer gekippt (Groß)"
+    },
+    {
+      "id": 663,
+      "caption": "Wassereinbruch Großbaustelle"
+    },
+    {
+      "id": 664,
+      "caption": "Hochwasserschadenslage"
+    },
+    {
+      "id": 665,
+      "caption": "Unterkühlung"
+    },
+    {
+      "id": 666,
+      "caption": "Brand auf Campingplatz"
+    },
+    {
+      "id": 667,
+      "caption": "Strohballenstapelbrand"
+    },
+    {
+      "id": 668,
+      "caption": "Ampelausfall (Regelung erforderlich)"
+    },
+    {
+      "id": 669,
+      "caption": "Reihenhaus in Flammen"
+    },
+    {
+      "id": 670,
+      "caption": "Havarie in Kläranlage"
+    },
+    {
+      "id": 671,
+      "caption": "Unbekanntes Objekt in Wasser"
+    },
+    {
+      "id": 672,
+      "caption": "Person auf Laub ausgerutscht"
+    },
+    {
+      "id": 673,
+      "caption": "Verkehrsunfall durch Laub"
+    },
+    {
+      "id": 674,
+      "caption": "Person in Laubhaufen gestürzt"
+    },
+    {
+      "id": 675,
+      "caption": "Laubsauger außer Kontrolle"
+    },
+    {
+      "id": 676,
+      "caption": "Von Laub verstopfter Gulli"
+    },
+    {
+      "id": 677,
+      "caption": "Unterkühlung nach Schwimmen in kaltem Wasser"
+    },
+    {
+      "id": 678,
+      "caption": "Verkehrsunfall auf nebliger Straße"
+    },
+    {
+      "id": 679,
+      "caption": "Verkehrsunfall bei Wildwechsel"
+    },
+    {
+      "id": 680,
+      "caption": "Brennender Laubhaufen"
+    },
+    {
+      "id": 681,
+      "caption": "Reitsportunfall"
+    },
+    {
+      "id": 682,
+      "caption": "Brand auf Kompostieranlage"
+    },
+    {
+      "id": 683,
+      "caption": "KFZ-Diebstahl"
+    },
+    {
+      "id": 684,
+      "caption": "Brand in metallverarbeitendem Betrieb"
+    },
+    {
+      "id": 685,
+      "caption": "Großbrand in Museum"
+    },
+    {
+      "id": 686,
+      "caption": "Kind in Spielgerät eingeklemmt"
+    },
+    {
+      "id": 687,
+      "caption": "Nitrose Gase auf Bauernhof"
+    },
+    {
+      "id": 688,
+      "caption": "Fahndung nach KFZ-Diebstahl"
+    },
+    {
+      "id": 689,
+      "caption": "Straßenblockade"
+    },
+    {
+      "id": 690,
+      "caption": "Metallbrand in Industriebetrieb"
+    },
+    {
+      "id": 691,
+      "caption": "Lungenödem"
+    },
+    {
+      "id": 692,
+      "caption": "Rauchentwicklung in Einkaufszentrum"
+    },
+    {
+      "id": 693,
+      "caption": "Kraftstoffdiebstahl"
+    },
+    {
+      "id": 694,
+      "caption": "Gülle ausgelaufen"
+    },
+    {
+      "id": 695,
+      "caption": "Massenanfall beim Fondue essen (klein)"
+    },
+    {
+      "id": 696,
+      "caption": "Blitzeinschlag auf Veranstaltungsgelände"
+    },
+    {
+      "id": 697,
+      "caption": "Abwasserkanal droht zu überfluten"
+    },
+    {
+      "id": 698,
+      "caption": "Autogasaustritt am PKW"
+    },
+    {
+      "id": 699,
+      "caption": "Moorbrand"
+    },
+    {
+      "id": 700,
+      "caption": "Bewusstlose Person am Lkw-Steuer"
+    },
+    {
+      "id": 701,
+      "caption": "Wohnhausbrand"
+    },
+    {
+      "id": 702,
+      "caption": "Brand in Großwäscherei"
+    },
+    {
+      "id": 703,
+      "caption": "Akute Rückenschmerzen"
+    },
+    {
+      "id": 704,
+      "caption": "Schulkinder über den Notruf 112 informieren"
+    },
+    {
+      "id": 705,
+      "caption": "Schulkinder über den Notruf 112 informieren"
+    },
+    {
+      "id": 706,
+      "caption": "Bekanntgabe neuer Funktionen des Notrufs 112"
+    },
+    {
+      "id": 707,
+      "caption": "Feier zum Tag des Notrufs 112"
+    },
+    {
+      "id": 708,
+      "caption": "Verleihung von Auszeichnungen am Tag des Notrufs 112"
+    },
+    {
+      "id": 709,
+      "caption": "Bus in Haltestelle"
+    },
+    {
+      "id": 710,
+      "caption": "Brand auf Motivwagen"
+    },
+    {
+      "id": 711,
+      "caption": "Zwischenfall beim Karnevalsumzug"
+    },
+    {
+      "id": 712,
+      "caption": "Gestohlene Karnevalsmaske"
+    },
+    {
+      "id": 713,
+      "caption": "Gestohlener Maskenball-Preis"
+    },
+    {
+      "id": 714,
+      "caption": "Feuer bei Prunksitzung"
+    },
+    {
+      "id": 715,
+      "caption": "Unfall beim Faschingsball"
+    },
+    {
+      "id": 716,
+      "caption": "Sicherheitswache bei Prunksitzung"
+    },
+    {
+      "id": 717,
+      "caption": "Verbrecher versteckt sich bei Maskenball"
+    },
+    {
+      "id": 718,
+      "caption": "Brennendes Faschingskostüm"
+    },
+    {
+      "id": 719,
+      "caption": "Diebstahl von Kostümen"
+    },
+    {
+      "id": 720,
+      "caption": "Großfeuer im Moor"
+    },
+    {
+      "id": 721,
+      "caption": "Randalierender Fluggast"
+    },
+    {
+      "id": 722,
+      "caption": "Allergische Reaktion auf Bienenstich"
+    },
+    {
+      "id": 723,
+      "caption": "Allergische Reaktion auf Pollen"
+    },
+    {
+      "id": 724,
+      "caption": "Fall von Leiter beim Frühjahrsputz"
+    },
+    {
+      "id": 725,
+      "caption": "Angriff eines Wildtiers während eines Frühlingspicknicks"
+    },
+    {
+      "id": 726,
+      "caption": "Vergiftung durch wilde Beeren"
+    },
+    {
+      "id": 727,
+      "caption": "Brennender Picknickkorb"
+    },
+    {
+      "id": 728,
+      "caption": "Diebstahl von Kälbern"
+    },
+    {
+      "id": 729,
+      "caption": "Fahndung nach Kälberdieb"
+    },
+    {
+      "id": 730,
+      "caption": "Kälberdieb von Kuh angegriffen"
+    },
+    {
+      "id": 731,
+      "caption": "Zugevakuierung"
+    },
+    {
+      "id": 732,
+      "caption": "Illegales Osterfeuer"
+    },
+    {
+      "id": 733,
+      "caption": "Absicherung Osterfeuer"
+    },
+    {
+      "id": 734,
+      "caption": "Geschmolzener Schokohase"
+    },
+    {
+      "id": 735,
+      "caption": "Blitzeinschlag in Hasenbau"
+    },
+    {
+      "id": 736,
+      "caption": "Schokohase in PKW eingeschlossen"
+    },
+    {
+      "id": 737,
+      "caption": "Ostereiersuche im Wasser"
+    },
+    {
+      "id": 738,
+      "caption": "Starke Blutung"
+    },
+    {
+      "id": 739,
+      "caption": "Absicherung Osterfeuer"
+    },
+    {
+      "id": 740,
+      "caption": "Gasaustritt aus Kanalisation"
+    },
+    {
+      "id": 741,
+      "caption": "Auslaufendes Metall aus Hochofen"
+    },
+    {
+      "id": 742,
+      "caption": "Person auf geschmolzener Schokolade ausgerutscht"
+    },
+    {
+      "id": 743,
+      "caption": "Schlafzimmer-Feuer durch Kerze"
+    },
+    {
+      "id": 744,
+      "caption": "Brennender Kuchen in Ofen"
+    },
+    {
+      "id": 745,
+      "caption": "Küchenbrand am Muttertag"
+    },
+    {
+      "id": 746,
+      "caption": "Gestohlene Schokolade"
+    },
+    {
+      "id": 747,
+      "caption": "Gestohlener Blumenstrauß"
+    },
+    {
+      "id": 748,
+      "caption": "Gestohlene Glückwunschkarte"
+    },
+    {
+      "id": 749,
+      "caption": "E-Call ausgelöst"
+    },
+    {
+      "id": 750,
+      "caption": "Brand auf Flohmarkt"
+    },
+    {
+      "id": 751,
+      "caption": "Reizgas in geschlossenem Raum"
+    },
+    {
+      "id": 752,
+      "caption": "Verletzte Person auf Dach"
+    },
+    {
+      "id": 753,
+      "caption": "Person in Förderband eingeklemmt"
+    },
+    {
+      "id": 754,
+      "caption": "Wespenangriff"
+    },
+    {
+      "id": 755,
+      "caption": "Kurzschluss an Freileitungsmast"
+    },
+    {
+      "id": 756,
+      "caption": "Unfall beim Backen des Jubiläumskuchens"
+    },
+    {
+      "id": 757,
+      "caption": "Jubiläumsluftballon eines Gastes bleibt im Baum hängen"
+    },
+    {
+      "id": 758,
+      "caption": "Kabelbrand in Jubiläums-Party-Dekoration (klein)"
+    },
+    {
+      "id": 759,
+      "caption": "Kabelbrand in Jubiläums-Party-Dekoration (groß)"
+    },
+    {
+      "id": 760,
+      "caption": "Jubiläumsgeschenk gestohlen"
+    },
+    {
+      "id": 761,
+      "caption": "Sabotierte Lautsprecher auf Jubiläumsparty"
+    },
+    {
+      "id": 762,
+      "caption": "Vermisster Jubiläumsgast"
+    },
+    {
+      "id": 763,
+      "caption": "Jubiläumsgäste haben Dekoration gestohlen"
+    },
+    {
+      "id": 764,
+      "caption": "Jubiläumsgäste haben Kuchen gestohlen"
+    },
+    {
+      "id": 765,
+      "caption": "Gast hat zu viel Jubiläumskuchen gegessen"
+    },
+    {
+      "id": 766,
+      "caption": "Papierschnitt beim Öffnen von Jubiläumsgeschenken"
+    },
+    {
+      "id": 767,
+      "caption": "Jubiläumsgast mit Gelenkschmerzen nach dem Tanzen"
+    },
+    {
+      "id": 768,
+      "caption": "Jubiläumsgast von Korken getroffen"
+    },
+    {
+      "id": 769,
+      "caption": "Jubiläumsgast bewusstlos"
+    },
+    {
+      "id": 770,
+      "caption": "Personen auf der Tanzfläche vermisst"
+    },
+    {
+      "id": 771,
+      "caption": "Luftballons für Jubiläumsparty aufblasen"
+    },
+    {
+      "id": 772,
+      "caption": "Gast trank verdorbene Getränke auf Jubiläumsfeier"
+    },
+    {
+      "id": 773,
+      "caption": "Großfeuer in Einkaufszentrum"
+    },
+    {
+      "id": 774,
+      "caption": "Kollision zwischen Frachtschiff und Motorboot"
+    },
+    {
+      "id": 775,
+      "caption": "Drogenlabor gefunden"
+    },
+    {
+      "id": 776,
+      "caption": "Person in Rolltreppe eingeklemmt"
+    },
+    {
+      "id": 777,
+      "caption": "Kraftwerksbrand"
+    },
+    {
+      "id": 778,
+      "caption": "Brennende Chemietoilette"
+    },
+    {
+      "id": 779,
+      "caption": "Gefahrgut-LKW in Brand"
+    },
+    {
+      "id": 780,
+      "caption": "Treppensturz"
+    },
+    {
+      "id": 781,
+      "caption": "Gartenschuppenbrand"
+    },
+    {
+      "id": 782,
+      "caption": "Tankstellenbrand"
+    },
+    {
+      "id": 783,
+      "caption": "Brennende Weihnachtsdekoration"
+    },
+    {
+      "id": 784,
+      "caption": "Gestohlener Weihnachtsbaum"
+    },
+    {
+      "id": 785,
+      "caption": "Diebstahl von Weihnachtsgeschenken in Einkaufszentrum"
+    },
+    {
+      "id": 786,
+      "caption": "Weihnachtsmann-Schlitten blockiert Straße"
+    },
+    {
+      "id": 787,
+      "caption": "Lagerfeuer setzt Holzschuppen in Brand"
+    },
+    {
+      "id": 788,
+      "caption": "Schlägerei auf zugefrorenem See"
+    },
+    {
+      "id": 789,
+      "caption": "Kinder werfen Schneebälle auf Menschen und Häuser"
+    },
+    {
+      "id": 790,
+      "caption": "Unfall bei der Zubereitung des Valentinsmenüs"
+    },
+    {
+      "id": 791,
+      "caption": "Brennender Valentins-Strauß"
+    },
+    {
+      "id": 792,
+      "caption": "Feuer beim Candlelight-Dinner"
+    },
+    {
+      "id": 793,
+      "caption": "Tier auf Eisfläche gefangen"
+    },
+    {
+      "id": 794,
+      "caption": "Unbefugtes Betreten einer Eisfläche"
+    },
+    {
+      "id": 795,
+      "caption": "Absicherung Eisbaden"
+    },
+    {
+      "id": 796,
+      "caption": "Brand in Garagenkomplex"
+    },
+    {
+      "id": 797,
+      "caption": "Brand in Gebäudekomplex"
+    },
+    {
+      "id": 798,
+      "caption": "Großbrand in Gebäudekomplex"
+    },
+    {
+      "id": 799,
+      "caption": "Fremdkörper in Atemweg"
+    },
+    {
+      "id": 800,
+      "caption": "Ersatz-Stromversorgung durch Bauarbeiten"
+    },
+    {
+      "id": 801,
+      "caption": "Ersatz-Stromversorgung durch Trafo-Wartung"
+    },
+    {
+      "id": 802,
+      "caption": "Ersatz-Stromversorgung einer Krankenhausstation"
+    },
+    {
+      "id": 803,
+      "caption": "Stromausfall in Feuerwache"
+    },
+    {
+      "id": 804,
+      "caption": "Stromausfall in Rettungswache"
+    },
+    {
+      "id": 805,
+      "caption": "Stromausfall in THW-Ortsverband"
+    },
+    {
+      "id": 806,
+      "caption": "Bereitstellungsraum vor angekündigter Großdemo"
+    },
+    {
+      "id": 807,
+      "caption": "Ersatz-Stromversorgung in Krankenhaus"
+    },
+    {
+      "id": 808,
+      "caption": "Stromausfall in Pflegeeinrichtung"
+    },
+    {
+      "id": 809,
+      "caption": "Stromausfall im Rathaus"
+    },
+    {
+      "id": 810,
+      "caption": "Stromausfall in Polizeiwache"
+    },
+    {
+      "id": 811,
+      "caption": "Produktionshalle überschwemmt"
+    },
+    {
+      "id": 812,
+      "caption": "Schilderbrücke eingestürzt"
+    },
+    {
+      "id": 813,
+      "caption": "Stromausfall in Krankenhaus"
+    },
+    {
+      "id": 814,
+      "caption": "Stromausfall in Feuerwehrwache"
+    },
+    {
+      "id": 815,
+      "caption": "Stromausfall in Rettungsdienstwache"
+    },
+    {
+      "id": 816,
+      "caption": "Stromausfall in THW-Ortsverband"
+    },
+    {
+      "id": 817,
+      "caption": "Stromausfall in Pflegeeinrichtung"
+    },
+    {
+      "id": 818,
+      "caption": "Stromausfall im Rathaus"
+    },
+    {
+      "id": 819,
+      "caption": "Stromausfall in Polizeiwache"
+    },
+    {
+      "id": 820,
+      "caption": "Stromausfall durch Kabelschaden"
+    },
+    {
+      "id": 821,
+      "caption": "Kellerbrand in Mehrfamilienhaus"
+    },
+    {
+      "id": 822,
+      "caption": "Brand in Arztpraxis"
+    },
+    {
+      "id": 823,
+      "caption": "Unfall mit Reinigungsmitteln"
+    },
+    {
+      "id": 824,
+      "caption": "Person zwischen Bahnsteig und Zug eingeklemmt"
+    },
+    {
+      "id": 825,
+      "caption": "PKW brennt in Tunnel"
+    },
+    {
+      "id": 826,
+      "caption": "LKW brennt in Tunnel"
+    },
+    {
+      "id": 827,
+      "caption": "Holzdiebstahl"
+    },
+    {
+      "id": 828,
+      "caption": "Brand in Großbäckerei"
+    },
+    {
+      "id": 829,
+      "caption": "Brennender Regionalbahnhof"
+    },
+    {
+      "id": 830,
+      "caption": "Brennender Güterbahnhof"
+    },
+    {
+      "id": 831,
+      "caption": "Person in Eis eingebrochen"
+    },
+    {
+      "id": 832,
+      "caption": "Einbruchmeldeanlage (EMA) ausgelöst"
+    },
+    {
+      "id": 833,
+      "caption": "Brennendes Herz"
+    },
+    {
+      "id": 834,
+      "caption": "Verkehrsunfall durch Verliebtheit"
+    },
+    {
+      "id": 835,
+      "caption": "Fußstreife"
+    },
+    {
+      "id": 836,
+      "caption": "Motorradstreife"
+    },
+    {
+      "id": 837,
+      "caption": "Berittene Streife"
+    },
+    {
+      "id": 838,
+      "caption": "Stromausfall im Stellwerk (klein)"
+    },
+    {
+      "id": 839,
+      "caption": "Stromausfall im Stellwerk (groß)"
+    },
+    {
+      "id": 840,
+      "caption": "Personensuche im Wald"
+    },
+    {
+      "id": 841,
+      "caption": "Unterstützung Hausnotruf"
+    },
+    {
+      "id": 842,
+      "caption": "Unterstützung Hausnotruf"
+    },
+    {
+      "id": 843,
+      "caption": "Ausgelöste Höhenkontrolle"
+    },
+    {
+      "id": 844,
+      "caption": "Bierfässer ausgelaufen"
+    },
+    {
+      "id": 845,
+      "caption": "Lärmbelästigung durch Vatertagsfeier"
+    },
+    {
+      "id": 846,
+      "caption": "Betrunkene versuchen Kühe um zu Schubsen"
+    },
+    {
+      "id": 847,
+      "caption": "Brand in Tortenfabrik"
+    },
+    {
+      "id": 848,
+      "caption": "Einsturz Terminal"
+    },
+    {
+      "id": 849,
+      "caption": "Überwachung Risiko-Länderspiel"
+    },
+    {
+      "id": 850,
+      "caption": "Großbrand im Stadion"
+    },
+    {
+      "id": 851,
+      "caption": "Sommermärchen geplatzt"
+    },
+    {
+      "id": 852,
+      "caption": "Schwalbe fliegt gegen Mauer"
+    },
+    {
+      "id": 853,
+      "caption": "Höhenrettung aus Gondel"
+    },
+    {
+      "id": 854,
+      "caption": "Abgestürzter Wanderer"
+    },
+    {
+      "id": 855,
+      "caption": "Rettung aus Felsspalte"
+    },
+    {
+      "id": 856,
+      "caption": "Blockierte Bergsteiger"
+    },
+    {
+      "id": 857,
+      "caption": "Gestürzter Mountainbiker"
+    },
+    {
+      "id": 858,
+      "caption": "Erschöpfte Wanderer"
+    },
+    {
+      "id": 859,
+      "caption": "Abgestürzter Kletterer"
+    },
+    {
+      "id": 860,
+      "caption": "Gleitschirmabsturz"
+    },
+    {
+      "id": 861,
+      "caption": "Personensuche nach Lawine"
+    },
+    {
+      "id": 862,
+      "caption": "Unterkühlung"
+    },
+    {
+      "id": 863,
+      "caption": "Hitzschlag"
+    },
+    {
+      "id": 864,
+      "caption": "Vermisstensuche im Gelände"
+    },
+    {
+      "id": 865,
+      "caption": "PKW blockiert Straßenbahn"
+    },
+    {
+      "id": 866,
+      "caption": "Großfeuer im Bergwald"
+    },
+    {
+      "id": 867,
+      "caption": "Personensuche nach Gerölllawine"
+    },
+    {
+      "id": 868,
+      "caption": "Plötzliche Erkrankung auf der Zuschauertribüne"
+    },
+    {
+      "id": 869,
+      "caption": "Hitzschlag bei Sportveranstaltung im Freien"
+    },
+    {
+      "id": 870,
+      "caption": "Allergische Reaktion auf Essen"
+    },
+    {
+      "id": 871,
+      "caption": "Absicherung der Eröffnungsfeier einer Sportveranstaltung"
+    },
+    {
+      "id": 872,
+      "caption": "Verdächtiges Paket im Stadion"
+    },
+    {
+      "id": 873,
+      "caption": "Verkehrsunfall mit Shuttlebus"
+    },
+    {
+      "id": 874,
+      "caption": "Massensturz während Fahrradrennen"
+    },
+    {
+      "id": 875,
+      "caption": "Sportverletzung"
+    },
+    {
+      "id": 876,
+      "caption": "Wasserrettung bei Segelregatta"
+    },
+    {
+      "id": 877,
+      "caption": "Sportler im Aufzug gefangen"
+    },
+    {
+      "id": 878,
+      "caption": "Fan mit gefälschter Eintrittskarte"
+    },
+    {
+      "id": 879,
+      "caption": "Absicherung Flugshow"
+    },
+    {
+      "id": 880,
+      "caption": "Hautreaktion nach Kontakt mit giftiger Pflanze"
+    },
+    {
+      "id": 881,
+      "caption": "Hautreaktion nach Kontakt mit giftiger Pflanze"
+    },
+    {
+      "id": 882,
+      "caption": "Verkehrskontrolle Radverkehr"
+    },
+    {
+      "id": 883,
+      "caption": "Schulschwänzer"
+    },
+    {
+      "id": 884,
+      "caption": "Verkehrsunfall mit Stadtbahn"
+    },
+    {
+      "id": 885,
+      "caption": "Suche nach vermisster Person"
+    },
+    {
+      "id": 886,
+      "caption": "Großangelegte Suche nach vermisster Besatzung"
+    },
+    {
+      "id": 887,
+      "caption": "Abschleppen eines manövrierunfähigen Kutters"
+    },
+    {
+      "id": 888,
+      "caption": "Rettung eines über Bord gegangenen Seglers"
+    },
+    {
+      "id": 889,
+      "caption": "Medizinische Erstversorgung eines erkrankten Fährpassagiers"
+    },
+    {
+      "id": 890,
+      "caption": "Freischleppen einer Segelyacht"
+    },
+    {
+      "id": 891,
+      "caption": "Rettung eines schwerverletzten Seglers"
+    },
+    {
+      "id": 892,
+      "caption": "Rettung eines beschädigten Segelbootes"
+    },
+    {
+      "id": 893,
+      "caption": "Befreiung der Fahrgäste einer aufgelaufenen Fähre"
+    },
+    {
+      "id": 894,
+      "caption": "Ausgebrannte Segelyacht"
+    },
+    {
+      "id": 895,
+      "caption": "Abschleppen eines defekten Wasserflugzeugs"
+    },
+    {
+      "id": 896,
+      "caption": "Verletzte auf Segelboot"
+    },
+    {
+      "id": 897,
+      "caption": "Patientenübernahme von Ambulanzflug"
+    },
+    {
+      "id": 898,
+      "caption": "Rauchentwicklung in Produktionshallen"
+    },
+    {
+      "id": 899,
+      "caption": "Sporthalle eingestürzt"
+    },
+    {
+      "id": 900,
+      "caption": "Verdächtiges Fahrzeug"
+    },
+    {
+      "id": 901,
+      "caption": "Brand in Weihnachtsbäckerei"
+    },
+    {
+      "id": 902,
+      "caption": "Brückeneinsturz (klein)"
+    },
+    {
+      "id": 903,
+      "caption": "Brückeneinsturz (Groß)"
+    },
+    {
+      "id": 904,
+      "caption": "Person unter Zug"
+    },
+    {
+      "id": 905,
+      "caption": "Rangierunfall"
+    },
+    {
+      "id": 906,
+      "caption": "Personensuche bei Schnellfahrstrecke"
+    },
+    {
+      "id": 907,
+      "caption": "Eingleisen einer U-Bahn"
+    },
+    {
+      "id": 908,
+      "caption": "Verkehrsunfall mit Straßenbahn"
+    },
+    {
+      "id": 909,
+      "caption": "Straßenbahn entgleist"
+    },
+    {
+      "id": 910,
+      "caption": "Personenzug entgleist"
+    },
+    {
+      "id": 911,
+      "caption": "Abgestürzter Weihnachtsschlitten"
+    },
+    {
+      "id": 912,
+      "caption": "Lebkuchenmann durch Biss verletzt"
+    },
+    {
+      "id": 913,
+      "caption": "Weihnachtsmann vermisst"
+    },
+    {
+      "id": 914,
+      "caption": "Brand in Düngemittellager"
+    },
+    {
+      "id": 915,
+      "caption": "Verletzte Person in verlassenem Gebäude"
+    },
+    {
+      "id": 916,
+      "caption": "Brand auf altem Fabrikgelände"
+    },
+    {
+      "id": 917,
+      "caption": "Jahrestag vergessen"
+    },
+    {
+      "id": 918,
+      "caption": "Unterstützung bei Feuerwehr-Heiratsantrag"
+    },
+    {
+      "id": 919,
+      "caption": "Großfeuer durch umgefallene Kerzen"
+    },
+    {
+      "id": 920,
+      "caption": "Vergiftete Pralinen"
+    },
+    {
+      "id": 921,
+      "caption": "Eishockey Risikospiel"
+    },
+    {
+      "id": 922,
+      "caption": "Personenzug in Tunnel verunfallt"
+    },
+    {
+      "id": 923,
+      "caption": "Gefahrgutzug in Tunnel verunfallt"
+    },
+    {
+      "id": 924,
+      "caption": "Angemeldete Demonstration - Gefahrenpotenzial (Groß)"
+    },
+    {
+      "id": 925,
+      "caption": "Hochhausbrand mit Evakuierung"
+    },
+    {
+      "id": 926,
+      "caption": "Brandsicherheitswache Rockfestival"
+    },
+    {
+      "id": 927,
+      "caption": "Brand in Schokoeierfabrik"
+    },
+    {
+      "id": 928,
+      "caption": "Massenanfall nach Senf-Ei-Challenge"
+    },
+    {
+      "id": 929,
+      "caption": "Unangemeldeter Osterhasenstreik"
+    },
+    {
+      "id": 930,
+      "caption": "Feuer im Zoo"
+    },
+    {
+      "id": 931,
+      "caption": "Ausgefallene Pumpen in Kläranlage"
+    },
+    {
+      "id": 932,
+      "caption": "Großbrand in Kohlebunker"
+    },
+    {
+      "id": 933,
+      "caption": "Gefahrgut-Austritt in Paketzentrum"
+    },
+    {
+      "id": 934,
+      "caption": "Brand auf Recyclinghof"
+    },
+    {
+      "id": 935,
+      "caption": "Herabstürzende Brückenteile"
+    },
+    {
+      "id": 936,
+      "caption": "Brand einer Gasstation"
+    },
+    {
+      "id": 937,
+      "caption": "Bauernhof steht unter Wasser"
+    },
+    {
+      "id": 938,
+      "caption": "Person in Großgehege"
+    },
+    {
+      "id": 939,
+      "caption": "Brand in JVA-Trakt"
+    },
+    {
+      "id": 940,
+      "caption": "Brand in Solarpark"
+    },
+    {
+      "id": 941,
+      "caption": "Illegales Lagerfeuer in Park"
+    },
+    {
+      "id": 942,
+      "caption": "Tragwerkssicherung"
+    },
+    {
+      "id": 943,
+      "caption": "Brennendes Spukschloss"
+    },
+    {
+      "id": 944,
+      "caption": "Chemieunfall beim Zaubertrank-Brauen"
+    },
+    {
+      "id": 945,
+      "caption": "Kopf steckt in ausgehöhltem Kürbis fest"
+    },
+    {
+      "id": 946,
+      "caption": "Hilflose Geisterjäger in Spukhaus"
+    },
+    {
+      "id": 947,
+      "caption": "Giftiges Kleintier entflohen"
+    },
+    {
+      "id": 948,
+      "caption": "Schwerer Erntediebstahl"
+    },
+    {
+      "id": 949,
+      "caption": "Pilzsucher im Wald verunglückt"
+    },
+    {
+      "id": 950,
+      "caption": "Pilzsucher im Bergwald verunglückt"
+    },
+    {
+      "id": 951,
+      "caption": "Waffenfund"
+    },
+    {
+      "id": 952,
+      "caption": "Absicherung Besuch des Weihnachtsmannes"
+    },
+    {
+      "id": 953,
+      "caption": "Absicherung Geschenketransport"
+    },
+    {
+      "id": 954,
+      "caption": "Notlandung Weihnachtsschlitten (klein)"
+    },
+    {
+      "id": 955,
+      "caption": "Notlandung Weihnachtsschlitten (groß)"
+    },
+    {
+      "id": 956,
+      "caption": "Streit bei Weihnachtsessen"
+    },
+    {
+      "id": 957,
+      "caption": "Unterstützung Geschenkelieferung"
+    },
+    {
+      "id": 958,
+      "caption": "Weihnachtsgans im Ofen vergessen"
+    },
+    {
+      "id": 959,
+      "caption": "Verletzte Person auf Kühlturm"
+    },
+    {
+      "id": 960,
+      "caption": "Brand in Ölraffinerie"
+    },
+    {
+      "id": 961,
+      "caption": "Flugzeug von Start-/Landebahn abgekommen"
+    },
+    {
+      "id": 962,
+      "caption": "Errichtung einer Behelfsbrücke (klein)"
+    },
+    {
+      "id": 963,
+      "caption": "Errichtung einer Behelfsbrücke (groß)"
+    },
+    {
+      "id": 964,
+      "caption": "Tragwerkssicherung (Brücke)"
+    },
+    {
+      "id": 965,
+      "caption": "Brennendes Blumenfeld"
+    },
+    {
+      "id": 966,
+      "caption": "Brennender Blumenladen"
+    },
+    {
+      "id": 967,
+      "caption": "Person auf Rosenblättern ausgerutscht"
+    },
+    {
+      "id": 968,
+      "caption": "Brand im Fahrsilo"
+    },
+    {
+      "id": 969,
+      "caption": "Brand in Schiffswerft"
+    },
+    {
+      "id": 970,
+      "caption": "Brand in Schiffswerft"
+    },
+    {
+      "id": 971,
+      "caption": "Angefahrene Person auf Autobahn"
+    },
+    {
+      "id": 972,
+      "caption": "Trunkenheitsfahrt auf Autobahn"
+    },
+    {
+      "id": 973,
+      "caption": "Motorradunfall auf Autobahn"
+    },
+    {
+      "id": 974,
+      "caption": "Pannenfahrzeug auf Autobahn"
+    },
+    {
+      "id": 975,
+      "caption": "Verkehrsbehinderung auf Autobahn"
+    },
+    {
+      "id": 976,
+      "caption": "Wildunfall auf Autobahn"
+    },
+    {
+      "id": 977,
+      "caption": "Geisterfahrer auf Autobahn"
+    },
+    {
+      "id": 978,
+      "caption": "Absicherung Pannen-LKW auf Autobahn"
+    },
+    {
+      "id": 979,
+      "caption": "Fahndung auf Autobahn nach KFZ-Diebstahl"
+    },
+    {
+      "id": 980,
+      "caption": "Fahndung auf Autobahn nach Kraftstoffdiebstahl"
+    },
+    {
+      "id": 981,
+      "caption": "Ausgelöste Höhenkontrolle auf Autobahn"
+    },
+    {
+      "id": 982,
+      "caption": "Verdächtiges Fahrzeug auf Autobahn"
+    },
+    {
+      "id": 983,
+      "caption": "Autobahnbereitschaft"
+    },
+    {
+      "id": 984,
+      "caption": "Großangelegte LKW-Kontrolle"
+    },
+    {
+      "id": 985,
+      "caption": "Großangelegte PKW-Kontrolle"
+    },
+    {
+      "id": 986,
+      "caption": "Absicherung Schwertransport"
+    },
+    {
+      "id": 987,
+      "caption": "Verkehrsunfall auf Autobahn"
+    },
+    {
+      "id": 988,
+      "caption": "Verkehrsunfall auf Autobahn (Person eingeklemmt)"
+    },
+    {
+      "id": 989,
+      "caption": "Verkehrsunfall auf Autobahn (mit Verletzten)"
+    },
+    {
+      "id": 990,
+      "caption": "Versorgung von Personen im Stau"
+    },
+    {
+      "id": 991,
+      "caption": "LKW verliert Ladung"
+    },
+    {
+      "id": 992,
+      "caption": "Pannenfahrzeug auf Standstreifen"
+    },
+    {
+      "id": 993,
+      "caption": "Gegenstand auf Fahrbahn"
+    },
+    {
+      "id": 994,
+      "caption": "Person auf Autobahn"
+    },
+    {
+      "id": 995,
+      "caption": "Übermüdeter PKW-Fahrer"
+    },
+    {
+      "id": 996,
+      "caption": "Übermüdeter LKW-Fahrer"
+    },
+    {
+      "id": 997,
+      "caption": "Gefahr auf Autobahn durch Baustelle"
+    },
+    {
+      "id": 998,
+      "caption": "Hochzeits-Korso auf Autobahn"
+    },
+    {
+      "id": 999,
+      "caption": "Fan-Korso auf Autobahn"
+    },
+    {
+      "id": 1000,
+      "caption": "Rettungsgasse kontrollieren"
+    },
+    {
+      "id": 1001,
+      "caption": "Ölspur auf Autobahn"
+    },
+    {
+      "id": 1002,
+      "caption": "Ladungsbergung eines LKW auf Autobahn"
+    },
+    {
+      "id": 1003,
+      "caption": "Platzverweis missachtet"
+    },
+    {
+      "id": 1004,
+      "caption": "Ausrastenden Trainer unter Kontrolle bringen"
+    },
+    {
+      "id": 1005,
+      "caption": "Zusammenbruch durch Niederlage"
+    },
+    {
+      "id": 1006,
+      "caption": "Randalierende Fußballfans"
+    },
+    {
+      "id": 1007,
+      "caption": "Platzsturm"
+    },
+    {
+      "id": 1008,
+      "caption": "Fußballfan auf Fanmeile vermisst"
+    },
+    {
+      "id": 1009,
+      "caption": "Eingestürzte VIP-Lounge"
+    },
+    {
+      "id": 1010,
+      "caption": "Absicherung Volksfest (klein)"
+    },
+    {
+      "id": 1011,
+      "caption": "Geburtstagsfeier außer Kontrolle"
+    },
+    {
+      "id": 1012,
+      "caption": "Einbruch auf Flughafengelände"
+    },
+    {
+      "id": 1013,
+      "caption": "Kleintier in Not"
+    },
+    {
+      "id": 1014,
+      "caption": "Tier auf Eisfläche gefangen"
+    },
+    {
+      "id": 1015,
+      "caption": "Giftiges Kleintier entflohen"
+    },
+    {
+      "id": 1016,
+      "caption": "Pferd in Jauchegrube"
+    },
+    {
+      "id": 1017,
+      "caption": "Hundeangriff"
+    },
+    {
+      "id": 1018,
+      "caption": "Wildunfall"
+    },
+    {
+      "id": 1019,
+      "caption": "Reitunfall mit Pkw"
+    },
+    {
+      "id": 1020,
+      "caption": "Feuer im Zoo"
+    },
+    {
+      "id": 1021,
+      "caption": "Gewässerverschmutzung durch Öl"
+    },
+    {
+      "id": 1022,
+      "caption": "Tiere auf der Fahrbahn"
+    },
+    {
+      "id": 1023,
+      "caption": "Entlaufenes Pferd"
+    },
+    {
+      "id": 1024,
+      "caption": "Wildtier einfangen"
+    },
+    {
+      "id": 1025,
+      "caption": "Wespennest umsiedeln"
+    },
+    {
+      "id": 1026,
+      "caption": "Brennender Stall - Tierrettung"
+    },
+    {
+      "id": 1027,
+      "caption": "Brand eines Großbatteriespeichers"
+    },
+    {
+      "id": 1028,
+      "caption": "Brand eines Großbatteriespeichers"
+    },
+    {
+      "id": 1029,
+      "caption": "Großflächiger Waldbrand"
+    },
+    {
+      "id": 1030,
+      "caption": "Evakuierung Gefahrengebiet"
+    },
+    {
+      "id": 1031,
+      "caption": "Person in Müllwagen eingeklemmt"
+    },
+    {
+      "id": 1032,
+      "caption": "Massenkarambolage auf Autobahn"
+    }
+  ],
+  "education_data": [
+    {
+      "id": 0,
+      "caption": "GW-Messtechnik Lehrgang",
+      "duration": "259200",
+      "education_key": "gw_messtechnik"
+    },
+    {
+      "id": 1,
+      "caption": "GW-Gefahrgut Lehrgang",
+      "duration": "259200",
+      "education_key": "gw_gefahrgut"
+    },
+    {
+      "id": 2,
+      "caption": "Höhenrettung Lehrgang",
+      "duration": "345600",
+      "education_key": "gw_hoehenrettung"
+    },
+    {
+      "id": 3,
+      "caption": "ELW 2 Lehrgang",
+      "duration": "604800",
+      "education_key": "elw2"
+    },
+    {
+      "id": 4,
+      "caption": "Wechsellader Lehrgang",
+      "duration": "172800",
+      "education_key": "wechsellader"
+    },
+    {
+      "id": 5,
+      "caption": "Dekon-P Lehrgang",
+      "duration": "259200",
+      "education_key": "dekon_p"
+    },
+    {
+      "id": 6,
+      "caption": "Feuerwehrkran Lehrgang",
+      "duration": "259200",
+      "education_key": "fwk"
+    },
+    {
+      "id": 7,
+      "caption": "GW-Wasserrettung Lehrgang",
+      "duration": "259200",
+      "education_key": "gw_wasserrettung"
+    },
+    {
+      "id": 8,
+      "caption": "GW-Taucher Lehrgang",
+      "duration": "432000",
+      "education_key": "gw_taucher"
+    },
+    {
+      "id": 9,
+      "caption": "Notarzt-Ausbildung",
+      "duration": "604800",
+      "education_key": "notarzt"
+    },
+    {
+      "id": 10,
+      "caption": "Flugfeldlöschfahrzeug-Ausbildung",
+      "duration": "604800",
+      "education_key": "arff"
+    },
+    {
+      "id": 11,
+      "caption": "Rettungstreppen-Ausbildung",
+      "duration": "172800",
+      "education_key": "rettungstreppe"
+    },
+    {
+      "id": 12,
+      "caption": "Werkfeuerwehr-Ausbildung",
+      "duration": "172800",
+      "education_key": "werkfeuerwehr"
+    },
+    {
+      "id": 13,
+      "caption": "Intensivpflege",
+      "duration": "259200",
+      "education_key": "intensive_care"
+    },
+    {
+      "id": 14,
+      "caption": "NEA200 Fortbildung",
+      "duration": "604800",
+      "education_key": "energy_supply"
+    },
+    {
+      "id": 15,
+      "caption": "Drohnen-Schulung",
+      "duration": "259200",
+      "education_key": "fire_drone"
+    },
+    {
+      "id": 16,
+      "caption": "Feuerwehr-Verpflegungseinheit",
+      "duration": "259200",
+      "education_key": "fire_care_service"
+    },
+    {
+      "id": 17,
+      "caption": "Verpflegungshelfer",
+      "duration": "259200",
+      "education_key": "care_service_equipment"
+    },
+    {
+      "id": 18,
+      "caption": "Bahnrettung",
+      "duration": "259200",
+      "education_key": "railway_fire"
+    },
+    {
+      "id": 0,
+      "caption": "Zugtrupp",
+      "duration": "604800",
+      "education_key": "thw_zugtrupp"
+    },
+    {
+      "id": 1,
+      "caption": "Fachgruppe Räumen",
+      "duration": "604800",
+      "education_key": "thw_raumen"
+    },
+    {
+      "id": 2,
+      "caption": "Fachgruppe Wassergefahren",
+      "duration": "259200",
+      "education_key": "gw_wasserrettung"
+    },
+    {
+      "id": 3,
+      "caption": "Fachgruppe Bergungstaucher",
+      "duration": "432000",
+      "education_key": "gw_taucher"
+    },
+    {
+      "id": 4,
+      "caption": "Fachgruppe Rettungshundeführer",
+      "duration": "432000",
+      "education_key": "thw_rescue_dogs"
+    },
+    {
+      "id": 5,
+      "caption": "Fachgruppe Wasserschaden/Pumpen",
+      "duration": "604800",
+      "education_key": "water_damage_pump"
+    },
+    {
+      "id": 6,
+      "caption": "Fachgruppe Schwere Bergung",
+      "duration": "604800",
+      "education_key": "heavy_rescue"
+    },
+    {
+      "id": 7,
+      "caption": "Fachgruppe Elektroversorgung",
+      "duration": "604800",
+      "education_key": "thw_energy_supply"
+    },
+    {
+      "id": 8,
+      "caption": "Trupp Unbemannte Luftfahrtsysteme",
+      "duration": "259200",
+      "education_key": "thw_drone"
+    },
+    {
+      "id": 9,
+      "caption": "Fachzug Führung und Kommunikation",
+      "duration": "604800",
+      "education_key": "thw_command"
+    },
+    {
+      "id": 10,
+      "caption": "Logistik-Verpflegung",
+      "duration": "259200",
+      "education_key": "thw_care_service"
+    },
+    {
+      "id": 11,
+      "caption": "Verpflegungshelfer",
+      "duration": "259200",
+      "education_key": "care_service_equipment"
+    },
+    {
+      "id": 12,
+      "caption": "Fachgruppe Brückenbau",
+      "duration": "259200",
+      "education_key": "thw_bridge_construction"
+    },
+    {
+      "id": 13,
+      "caption": "Kranführer",
+      "duration": "259200",
+      "education_key": "thw_bridge_construction_crane"
+    },
+    {
+      "id": 0,
+      "caption": "Zugführer (leBefKw)",
+      "duration": "604800",
+      "education_key": "police_einsatzleiter"
+    },
+    {
+      "id": 1,
+      "caption": "Hundertschaftsführer (FüKW)",
+      "duration": "604800",
+      "education_key": "police_fukw"
+    },
+    {
+      "id": 2,
+      "caption": "Polizeihubschrauber",
+      "duration": "604800",
+      "education_key": "polizeihubschrauber"
+    },
+    {
+      "id": 3,
+      "caption": "Wasserwerfer",
+      "duration": "604800",
+      "education_key": "police_wasserwerfer"
+    },
+    {
+      "id": 4,
+      "caption": "SEK",
+      "duration": "604800",
+      "education_key": "police_sek"
+    },
+    {
+      "id": 5,
+      "caption": "MEK",
+      "duration": "604800",
+      "education_key": "police_mek"
+    },
+    {
+      "id": 6,
+      "caption": "Hundeführer (Schutzhund)",
+      "duration": "604800",
+      "education_key": "k9"
+    },
+    {
+      "id": 7,
+      "caption": "Motorradstaffel",
+      "duration": "259200",
+      "education_key": "police_motorcycle"
+    },
+    {
+      "id": 8,
+      "caption": "Brandbekämpfung",
+      "duration": "259200",
+      "education_key": "police_firefighting"
+    },
+    {
+      "id": 9,
+      "caption": "Kriminalpolizei",
+      "duration": "604800",
+      "education_key": "criminal_investigation"
+    },
+    {
+      "id": 10,
+      "caption": "Dienstgruppenleitung",
+      "duration": "604800",
+      "education_key": "police_service_group_leader"
+    },
+    {
+      "id": 11,
+      "caption": "Reiterstaffel",
+      "duration": "259200",
+      "education_key": "police_horse"
+    },
+    {
+      "id": 12,
+      "caption": "Windenoperator",
+      "duration": "432000",
+      "education_key": "police_helicopter_lift"
+    },
+    {
+      "id": 13,
+      "caption": "Lautsprecheroperator",
+      "duration": "259200",
+      "education_key": "police_speaker_operator"
+    },
+    {
+      "id": 14,
+      "caption": "Autobahnpolizei",
+      "duration": "259200",
+      "education_key": "highway_police"
+    },
+    {
+      "id": 0,
+      "caption": "Notarzt-Ausbildung",
+      "duration": "604800",
+      "education_key": "notarzt"
+    },
+    {
+      "id": 1,
+      "caption": "LNA-Ausbildung",
+      "duration": "777600",
+      "education_key": "lna"
+    },
+    {
+      "id": 2,
+      "caption": "OrgL-Ausbildung",
+      "duration": "950400",
+      "education_key": "orgl"
+    },
+    {
+      "id": 3,
+      "caption": "SEG - Einsatzleitung",
+      "duration": "345600",
+      "education_key": "seg_elw"
+    },
+    {
+      "id": 4,
+      "caption": "SEG - GW-San",
+      "duration": "259200",
+      "education_key": "seg_gw_san"
+    },
+    {
+      "id": 5,
+      "caption": "GW-Wasserrettung Lehrgang",
+      "duration": "259200",
+      "education_key": "gw_wasserrettung"
+    },
+    {
+      "id": 6,
+      "caption": "GW-Taucher Lehrgang",
+      "duration": "432000",
+      "education_key": "gw_taucher"
+    },
+    {
+      "id": 7,
+      "caption": "Rettungshundeführer",
+      "duration": "432000",
+      "education_key": "seg_rescue_dogs"
+    },
+    {
+      "id": 8,
+      "caption": "Intensivpflege",
+      "duration": "259200",
+      "education_key": "intensive_care"
+    },
+    {
+      "id": 9,
+      "caption": "Drohnenoperator",
+      "duration": "259200",
+      "education_key": "seg_drone"
+    },
+    {
+      "id": 10,
+      "caption": "Betreuungsdienst",
+      "duration": "259200",
+      "education_key": "care_service"
+    },
+    {
+      "id": 11,
+      "caption": "Verpflegungshelfer",
+      "duration": "259200",
+      "education_key": "care_service_equipment"
+    },
+    {
+      "id": 12,
+      "caption": "Höhenretter",
+      "duration": "432000",
+      "education_key": "mountain_height_rescue"
+    },
+    {
+      "id": 13,
+      "caption": "Windenoperator",
+      "duration": "432000",
+      "education_key": "rescue_helicopter_lift"
+    },
+    {
+      "id": 14,
+      "caption": "Einsatzleiter Bergrettung",
+      "duration": "432000",
+      "education_key": "mountain_command"
+    },
+    {
+      "id": 15,
+      "caption": "Technik und Sicherheit",
+      "duration": "432000",
+      "education_key": "disaster_response_technology"
+    },
+    {
+      "id": 0,
+      "caption": "Seenotretter",
+      "duration": "432000",
+      "education_key": "coastal_rescue"
+    },
+    {
+      "id": 1,
+      "caption": "Hubschrauberpilot (Seenotrettung)",
+      "duration": "432000",
+      "education_key": "coastal_helicopter"
+    },
+    {
+      "id": 2,
+      "caption": "Windenoperator",
+      "duration": "432000",
+      "education_key": "coastal_helicopter_lift"
+    },
+    {
+      "id": 3,
+      "caption": "Wasserrettungsausbildung für Notfallsanitäter",
+      "duration": "604800",
+      "education_key": "emergency_paramedic_water_rescue"
+    }
+  ]
+}
