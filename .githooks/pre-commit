@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+if ! git diff --quiet -- README.md; then
+    printf '%s\n' \
+        'README.md enthält nicht vorgemerkte Änderungen.' \
+        'Bitte diese zuerst bewusst stagen oder zurücknehmen.' >&2
+    exit 1
+fi
+
+"$repo_root/build/update-readme-dist.sh"
+
+if ! git diff --quiet -- README.md; then
+    git add -- README.md
+fi
+
+branch="$(git branch --show-current)"
+
+case "$branch" in
+    main|dev)
+        raw_base="https://raw.githubusercontent.com/papachaotica/LSS-Tools/${branch}/"
+
+        while IFS= read -r -d '' script; do
+            [[ "$script" == dist/*.js && -f "$script" ]] || continue
+
+            temporary_file="$(mktemp)"
+            sed -E \
+                "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/|\\1${raw_base}|" \
+                "$script" > "$temporary_file"
+
+            if ! cmp -s "$script" "$temporary_file"; then
+                mv "$temporary_file" "$script"
+                git add -- "$script"
+            else
+                rm -f "$temporary_file"
+            fi
+        done < <(git diff --cached --name-only --diff-filter=ACMR -z -- dist)
+        ;;
+esac
