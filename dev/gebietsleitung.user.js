@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         [ LSS ] Chef der Einheiten und Objekte
+// @name:de         [ LSS ] Chef der Einheiten und Objekte
 // @name:en         [ LSS ] Central Exequte Officer
 // @namespace       papachaotica.leitstellenspiel.de
 // @version         0.10.0.261017
@@ -9,8 +9,8 @@
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261017
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261017
+// @require         http://localhost:8080/lib/indexedDB.js?v261017
+// @require         http://localhost:8080/lib/api-fetch-database-handler.js?v261017
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -99,7 +99,8 @@ const defaults = {
 
 'use strict'
 
-const prefix = "dev-ceo";
+const prefix = "dev";
+const scriptName = "script ohne Name"
 
 const lang = I18n.locale ? I18n.locale : 'de_DE'
 
@@ -373,7 +374,7 @@ async function addTabBuildings() {
     tabLink.setAttribute('aria-controls', paneId);
     tabLink.setAttribute('role', 'tab');
     tabLink.setAttribute('data-toggle', 'tab');
-    tabLink.append("Gebäude"); // translation
+    tabLink.append("Gebäude");
 
 
     tabLi.append(tabLink);
@@ -515,7 +516,7 @@ async function filterDispatchCenters() {
     emptyValue.value = "";
     dropdown.appendChild(emptyValue);
     const allValue = document.createElement('option');
-    allValue.value = "all";
+    allValue.value = 'all';
     allValue.textContent = "alle Gebäude";
     dropdown.appendChild(allValue);
     let value;
@@ -553,7 +554,7 @@ async function filterDispatchCenters() {
 
 async function initialize() {
 
-    const config = { name: "BosErnie_StationBlueprints", stores: [] };
+    const config = { name: 'BosErnie_StationBlueprints', stores: [] };
     await initDB(config);
     templates = await readKey('blueprints', 'main', config);
     templates = Object.values(templates);
@@ -598,7 +599,7 @@ function createModal() {
     closeButton.type = 'button';
     closeButton.classList.add('close');
     closeButton.setAttribute('data-dismiss', 'modal');
-    closeButton.setAttribute('aria-label', "close"); // translation
+    closeButton.setAttribute('aria-label', 'close');
 
     const closeIcon = document.createElement('span');
     closeIcon.setAttribute('aria-hidden', 'true');
@@ -610,7 +611,7 @@ function createModal() {
     title.id = `${prefix}-title`;
     title.classList.add('modal-title');
     title.style.textAlign = 'center';
-    title.append("Central Execute Officer"); // translation
+    title.append(scriptName);
 
     header.append(closeButton, title);
 
@@ -664,7 +665,7 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
         );
     const triggerA = document.createElement("a");
     triggerA.href = `#${prefix}`;
-    triggerA.append("Central Exequte Offcer"); // translation
+    triggerA.append(scriptName);
     const triggerLi = document.createElement("li");
     triggerLi.id = `${prefix}-menu`;
     triggerLi.append(triggerA);
