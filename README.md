@@ -16,9 +16,7 @@ Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederve
 - [`LSS Einsatz-Generierungszeitpunkt`](dist/missionDateAge.user.js) — Zeigt den Erstellungszeitpunkt und das Alter des Einsatzes an (Rot ab 24h um 01:00 Uhr nachts).
 - [`[LSS] showAddress`](dist/ShowAddress.user.js) — zeigt die Adresse der Wache im Gebäude an
 - [`[ LSS ] erweiterter Lehrgangszuweiser`](dist/trainingPersonalSelector.user.js) — Fügt Buttons hinzu, um Personal einer Wache gesammelt einem Lehrgang zuzuweisen. Behebt wechselwirkung mit Ausbildungsmausschoner und erweitert um Vollausblidungs Feature
-
-### Bibliotheken
-
+- [`* Wachenbaupläne`](dist/Wachenbaupläne.user.js) — Verwaltet Baupläne für benutzerdefinierte Vorlagen, wie Wachen ausgebaut und ausgestattet werden sollen
 <!-- END DIST SCRIPTS -->
 
 - [`indexedDb.js`](lib/indexedDb.js) — keine Userscript-Metadaten vorhanden
