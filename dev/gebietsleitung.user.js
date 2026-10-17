@@ -1,6 +1,5 @@
 // ==UserScript==
-// @name:de         [ LSS ] Chef der Einheiten und Objekte
-// @name:en         [ LSS ] Central Exequte Officer
+// @name            [ LSS ] Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
 // @version         0.10.0.261017
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
@@ -99,8 +98,8 @@ const defaults = {
 
 'use strict'
 
-const prefix = "dev";
-const scriptName = "script ohne Name"
+const prefix = "gl";
+const scriptName = "Gebietsleitung"
 
 const lang = I18n.locale ? I18n.locale : 'de_DE'
 
