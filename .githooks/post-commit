@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+branch="$(git branch --show-current)"
+
+case "$branch" in
+    main|dev)
+        raw_base="https://raw.githubusercontent.com/papachaotica/LSS-Tools/${branch}/"
+
+        while IFS= read -r -d '' script; do
+            [[ ( "$script" == dist/*.js || "$script" == dev/*.js ) && -f "$script" ]] || continue
+
+            temporary_file="$(mktemp)"
+            sed -E \
+                "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}|\\1http://localhost:8080/|" \
+                "$script" > "$temporary_file"
+
+            if ! cmp -s "$script" "$temporary_file"; then
+                mv "$temporary_file" "$script"
+            else
+                rm -f "$temporary_file"
+            fi
+        done < <(git diff-tree --root --no-commit-id --name-only -r -z HEAD -- dev dist)
+        ;;
+esac

@@ -24,7 +24,7 @@ case "$branch" in
         raw_base="https://raw.githubusercontent.com/papachaotica/LSS-Tools/${branch}/"
 
         while IFS= read -r -d '' script; do
-            [[ "$script" == dist/*.js && -f "$script" ]] || continue
+            [[ ( "$script" == dist/*.js || "$script" == dev/*.js ) && -f "$script" ]] || continue
 
             temporary_file="$(mktemp)"
             sed -E \
@@ -37,6 +37,37 @@ case "$branch" in
             else
                 rm -f "$temporary_file"
             fi
-        done < <(git diff --cached --name-only --diff-filter=ACMR -z -- dist)
+        done < <(git diff --cached --name-only --diff-filter=ACMR -z -- dev dist)
+
+        if git diff --cached --quiet -- \
+            lib/indexedDB.js \
+            lib/api-fetch-database-handler.js; then
+            exit 0
+        fi
+
+        version_date="$(TZ=Europe/Berlin date +%y%m%d)"
+
+        while IFS= read -r -d '' script; do
+            temporary_file="$(mktemp)"
+
+            sed -E \
+                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
+                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
+                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
+                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
+                -e "/^[[:space:]]*\\/\\/[[:space:]]*@version[[:space:]]/ { s|(\\.[0-9]{6})(\\.[0-9]{4})?([[:space:]]*)$|.${version_date}\\3|; t version_date_done; s|([[:space:]]*)$|.${version_date}\\1|; :version_date_done; }" \
+                "$script" > "$temporary_file"
+
+            if ! cmp -s "$script" "$temporary_file"; then
+                mv "$temporary_file" "$script"
+                git add -- "$script"
+            else
+                rm -f "$temporary_file"
+            fi
+        done < <(
+            rg -l -0 -e '@require[[:space:]]+https?://[^[:space:]]+/lib/indexedDB\.js([?][^[:space:]]*)?' \
+                -e '@require[[:space:]]+https?://[^[:space:]]+/lib/api-fetch-database-handler\.js([?][^[:space:]]*)?' \
+                --glob '*.js' dev dist
+        )
         ;;
 esac
