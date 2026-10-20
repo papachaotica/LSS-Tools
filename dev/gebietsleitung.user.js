@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name            [ LSS ] Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.10.0.261017.2258
+// @version         0.14.0.261020
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261017
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261017
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261020
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261020
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -18,18 +18,20 @@
  * [X] modal bauen
  * [x] Tab flexible hinzufügen
  * [x] Gebäudetabelle rendern mit Erweiterungen
+ * [X] wechsel auf html sting
  * [x] Wachenbaupläne importieren
  * [x] Blueprint auf regex zuordnen oder Default setzen
  * [x] Blueprint auf Erweiterungen anwenden
  * [x] Manuelle Profil Zuordnung und persistent speichern
  * [x] Personal auf Ist/soll und personalSetpoint farblich markieren
+ * [x] Tabelsorter für alt-neu(ID), Wachentyp, Wachennamen
  * [x] Leitstelle erkennen
  * [x] Auswahl dropdown auf Leitstelle Übergabe an renderTableBuildings
- * [_] Stellplätze ermitteln und verfügbare anzeigen
+ * [p] Stellplätze ermitteln und verfügbare anzeigen
  * [_] manuell Abweichungen vom Profi freigeben mit Gültigkeitsverlust bei nächster Profiländerung
  * [_] Fahrzeuge Leitstelle zuordnen und Änderungen erkennen
  * [_] geplante Fahrzeuge vergleichen und Abweichungen anzeigen
- * [_] Lagergröße und verfügbar anzeigen
+ * [x] Lagergröße und verfügbar anzeigen
  * [_] Template Tabelle rendern
  * [_] Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
  * [_] Equipment auf Machbarkeit prüfen
@@ -37,62 +39,63 @@
  */
 
 const defaults = {
-    "1": {
-        "caption": "Feuerwehrschule",
-        "extensions": [
-            {"id": 0, "name": "Weiterer Klassenraum"},
-            {"id": 1, "name": "Weiterer Klassenraum"},
-            {"id": 2, "name": "Weiterer Klassenraum"},
-        ],
-    },
-    "3": {
-        "caption": "Rettungsschule",
-         "extensions": [
-            {"id": 0, "name": "Weiterer Klassenraum"},
-            {"id": 1, "name": "Weiterer Klassenraum"},
-            {"id": 2, "name": "Weiterer Klassenraum"},
-        ],
-    },
-    "4": {
-        "caption": "Krankenhaus",
-        "extensions": [
-            {"id": 0, "name": "Allgemeine Innere"},
-            {"id": 1, "name": "Allgemeine Chirurgie"},
-            {"id": 2, "name": "Gynäkologie"},
-            {"id": 3, "name": "Urologie"},
-            {"id": 4, "name": "Unfallchirurgie"},
-            {"id": 5, "name": "Neurologie"},
-            {"id": 6, "name": "Neurochirurgie"},
-            {"id": 7, "name": "Kardiologie"},
-            {"id": 8, "name": "Kardiochirurgie"},
-        ],
-        "maxLevel": 20,
-    },
-    "8": {
-        "caption": "Polizeischule",
-        "extensions": [
-            {"id": 0, "name": "Weiterer Klassenraum"},
-            {"id": 1, "name": "Weiterer Klassenraum"},
-            {"id": 2, "name": "Weiterer Klassenraum"},
-        ],
-    },
-    "10": {
-        "caption": "THW Bundesschule",
-        "extensions": [
-            {"id": 0, "name": "Weiterer Klassenraum"},
-            {"id": 1, "name": "Weiterer Klassenraum"},
-            {"id": 2, "name": "Weiterer Klassenraum"},
-        ],
-    },
-    "27": {
-        "caption": "Schule für Seefahrt und Seenotrettung",
-        "extensions": [
-            {"id": 0, "name": "Weiterer Klassenraum"},
-            {"id": 1, "name": "Weiterer Klassenraum"},
-            {"id": 2, "name": "Weiterer Klassenraum"},
-        ],
-    },
-}
+  '1': {
+    caption: "Feuerwehrschule",
+    extensions: [
+      {id: 0, name: "Weiterer Klassenraum"},
+      {id: 1, name: "Weiterer Klassenraum"},
+      {id: 2, name: "Weiterer Klassenraum"},
+    ],
+  },
+  '3': {
+    caption: "Rettungsschule",
+    extensions: [
+      {id: 0, name: "Weiterer Klassenraum"},
+      {id: 1, name: "Weiterer Klassenraum"},
+      {id: 2, name: "Weiterer Klassenraum"},
+    ],
+  },
+  '4': {
+    caption: "Krankenhaus",
+    extensions: [
+      {id: 0, name: "Allgemeine Innere"},
+      {id: 1, name: "Allgemeine Chirurgie"},
+      {id: 2, name: "Gynäkologie"},
+      {id: 3, name: "Urologie"},
+      {id: 4, name: "Unfallchirurgie"},
+      {id: 5, name: "Neurologie"},
+      {id: 6, name: "Neurochirurgie"},
+      {id: 7, name: "Kardiologie"},
+      {id: 8, name: "Kardiochirurgie"},
+    ],
+    targetLevel: 20,
+  },
+  '8': {
+    caption: "Polizeischule",
+    extensions: [
+      {id: 0, name: "Weiterer Klassenraum"},
+      {id: 1, name: "Weiterer Klassenraum"},
+      {id: 2, name: "Weiterer Klassenraum"},
+    ],
+  },
+  '10': {
+    caption: "THW Bundesschule",
+    extensions: [
+      {id: 0, name: "Weiterer Klassenraum"},
+      {id: 1, name: "Weiterer Klassenraum"},
+      {id: 2, name: "Weiterer Klassenraum"},
+    ],
+  },
+  '27': {
+    caption: "Schule für Seefahrt und Seenotrettung",
+    extensions: [
+      {id: 0, name: "Weiterer Klassenraum"},
+      {id: 1, name: "Weiterer Klassenraum"},
+      {id: 2, name: "Weiterer Klassenraum"},
+    ],
+  },
+};
+
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -101,7 +104,7 @@ const defaults = {
 const prefix = "gl";
 const scriptName = "Gebietsleitung"
 
-const lang = I18n.locale ? I18n.locale : 'de_DE'
+const lang = I18n.locale ? I18n.locale : 'de_DE';
 
 let buildings;
 let buildingTypes;
@@ -116,191 +119,207 @@ let modal;
 async function showLastUpdate(store) {
     let lastUpdate = await readKey('lastUpdate', store, configDB);
     if (!lastUpdate) {
-        if (store === 'buildings') {
-            await getBuildings(true);
-        } else if (store === 'vehicles') {
-            await getVehicles(true);
-        }
-        lastUpdate = await readKey('lastUpdate', store, configDB);
+      if (store === 'buildings') {
+        await getBuildings(true);
+      } else if (store === 'vehicles') {
+        await getVehicles(true);
+      }
+      lastUpdate = await readKey('lastUpdate', store, configDB);
     }
     lastUpdate = lastUpdate.date;
     lastUpdate = new Date(lastUpdate).toLocaleString();
     return lastUpdate;
 }
+function profileSelector(building) {
+    const profiles = templates.filter(profile =>
+      profile.buildingTypeId === building.building_type
+    );
+    let select = undefined;
+    let defaultProfile = false;
+    let match = [];
+    if (assignments[building.id]) {
+      select = profiles.find(profile =>
+        profile.id === assignments[building.id]);
+    } else {
+      match = profiles.filter(profile => {
+          return typeof profile.buildingNameRegexPattern === 'string' &&
+                        profile.buildingNameRegexPattern.trim() !== '' &&
+                        new RegExp(
+                          profile.buildingNameRegexPattern
+                        ).test(building.caption);
+      });
+    }
+    if (match.length === 1) {
+      select = match[0];
+    } else if (match.length === 0 && profiles.length === 1) {
+      select = profiles[0];
+    } else {
+      select = defaults[building.building_type];
+      if (select) {
+        defaultProfile = true;
+      }
+    }
+    return { select, profiles, defaultProfile };
+}
 
 async function renderTableBuildings(buildings) {
-    const tableBody = tableBuildings
-    tableBody.replaceChildren();
+    const table = tableBuildings.table;
+    const tbody = tableBuildings.tableBody;
+    console.log(table, tbody)
+
+    tbody.replaceChildren();
+
     buildings.forEach(building => {
-        modal
         if (building.id === 'lastUpdate') { return; }
-
-        // name and link
-        const row = document.createElement('tr');
-        const nameCell = document.createElement('td');
-        const buildingLink = document.createElement('a');
-        buildingLink.classList.add('lightbox-open');
-        buildingLink.href = `/buildings/${building.id}`;
-        buildingLink.append(building.caption);
-        nameCell.append(buildingLink);
-
-        // buildingType
         const buildingType = buildingTypes[building.building_type];
+        let parkingLots = buildingType?.startParkingLots + building.level;
 
-        // templates
-        let template = undefined;
-        const templatesCell = document.createElement('td');
-        const profiles = templates.filter(profile =>
-            profile.buildingTypeId === building.building_type
-        );
+        let row = `<tr>`;
+        row += `<td data-digit=${building.id}>`; // cell id -- tabelsorter
+        row += `</td>`;
+
+        row += `<td class='text-right' data-text='${buildingType.caption}'>`; // cell building Type -- tabelsorter
+        row += `<a class='btn btn-default btn-xs disabled'>${buildingType.caption}</a>`;
+        row += `</td>`;
+
+        row += `<td>`; // cell building caption -- tabelsorter
+        row += `<a class='lightbox-open' href='/buildings/${building.id}'>${building.caption}</a>`;
+        row += `</td>`;
+
+        row += `<td>`; // cell dropdown
+        const selector = profileSelector(building);
+        const profiles = selector.profiles;
+        const template = selector.select;
+
         if (profiles.length > 0) {
-            const dropdown = document.createElement('select');
-            dropdown.style.width = '100%';
-            const empty = document.createElement('option');
-            empty.value = 'none';
-            empty.textContent = "";
-            dropdown.appendChild(empty);
-            let select = undefined;
-            if (assignments[building.id]) {
-                select = profiles.find(profile => profile.id === assignments[building.id]);
-            } else {
-                const match = profiles.filter(profile => {
-                    return typeof profile.buildingNameRegexPattern === 'string' &&
-                        profile.buildingNameRegexPattern.trim() !== '' &&
-                        new RegExp(profile.buildingNameRegexPattern).test(building.caption);
-                });
-                if (match.length === 1) {
-                    select = match[0];
-                } else if (match.length === 0 && profiles.length === 1) {
-                    select = profiles[0];
-                }
-            }
-            profiles.forEach(profile => {
-                const option = document.createElement('option');
-                option.textContent = profile.name;
-                option.value = profile.id;
-                if (select && profile.id === select?.id) {
-                    template = profile;
-                    option.selected = true;
-                }
-                dropdown.appendChild(option);
-            });
-            dropdown.addEventListener('change', event => {
-                if (event.target.value === 'none') {
-                    delete assignments[building.id];
-                } else {
-                    assignments[building.id] = event.target.value;
-                }
-            });
-            templatesCell.append(dropdown);
+          row += `<select style='width: 100%';>`;
+          row += `<option value='none'></option>`;
+          profiles.forEach(profile => {
+              if (template && profile.id === template?.id) {
+                row += `<option value='${profile.id}' selected>${profile.name}</option>`;
+              } else {
+                row += `<option value='${profile.id}'>${profile.name}</option>`;
+              }
+          });
+          row += `</select>`;
         } else {
-            templatesCell.append("keine Vorlage");
-            template = defaults[building.building_type];
+          if (selector.defaultProfile === true) {
+            row += `default Profil gewählt`;
+          } else {
+            row += `keine Vorlage gefunden`;
+          }
         }
         if (!template) {
-            building.withoutAssignment = true;
+          building.withoutAssignment = true;
         }
+        row += `</td>`;
 
-        // extensions
-        const extensionsCell = document.createElement('td');
-        /* eslint-disable no-multi-spaces */
         /*
-         *  grün       = label-success ===   geplant   gebaut und   aktiv === succes
-         *  hellgrün   = HG = #7FFF00  === ungeplant   gebaut und   aktiv === xtraactiv
-         *  gelb       = YE = #FFFF00  === ungeplant   gebaut und inaktiv === xtraDead
-         *  orange-rot = label-warning ===   geplant   gebaut und inaktiv === planDead
-         *  rot        = label-danger  ===   geplant ungebaut             === missing
-         *  blau       = label-info    === in progress                    === build
+         *  grün   = label-success ===             gebaut und   aktiv === succes
+         *  orange = label-warning ===             gebaut und inaktiv === dead
+         *  rot    = label-danger  ===   geplant ungebaut             === missing
+         *  blau   = label-info    ===          in progress           === build
          */
-        const success   = element => { element.classList.add('label', 'label-success'); };
-        const xtraActiv = element => { element.style.backgroundColor = '#65C960'; };
-        const xtraDead  = element => { element.style.backgroundColor = '#FFFF00'; };
-        const planDead  = element => { element.classList.add('label', 'label-warning'); };
-        const missing   = element => { element.classList.add('label', 'label-danger'); };
-        const build     = element => { element.classList.add('label', 'label-info'); };
-        /* eslint-enable no-multi-spaces */
-
-        const types = buildingType ? buildingType.extensions : [];
+        row += `<td>`; // cell extensions
+        const types = Array.isArray(buildingType.extensions) ? buildingType.extensions : [];
         const real = building.extensions ? building.extensions : [];
         const plan = template ? template.extensions : [];
-
         types.forEach((type, index) => {
-
-            const extensionLabel = document.createElement('span');
-            extensionLabel.title = type ? type.caption ? type.caption : "" : "";
-            extensionLabel.append(index);
-            extensionLabel.style.marginRight = '3px';
-            extensionLabel.style.fontSize = '8px';
-            //extensionLabel.style.cursor = 'help';
-            extensionLabel.classList.add('label', 'label-default');
-
-            const current = real.find(item => item.type_id === index);
             const planned = plan.find(item => item.id === index);
-            if (current?.available_at) {
-                build(extensionLabel);
-                const date = new Date(current.available_at);
-                extensionLabel.title = `${type.caption}
-                ${date.toLocaleString()}`;
-            }
-            if (!current && planned) {
-                extensionLabel.title = `${type.caption}\nfehlt`;
-                missing(extensionLabel);
-                building.missingExtension = true;
+            const current = real.find(item => item.type_id === index);
 
+            row += `<span title='${type?.caption ?? "caption nicht lesbar"}`;
+
+            if (!current && !planned) {
+              row += `' class='label label-default' style='font-size: 8px;'>`
+            }
+            if (!current && planned) { // missing
+              row += ` nicht gebaut`;
+              row += `' class='label label-danger' style='font-size: 10px'>`;
+              building.missingExtension = true;
             }
             if (current) {
-                extensionLabel.style.fontSize = '10px';
-                if (planned && (current?.enabled === false)) {
-                    planDead(extensionLabel);
-                    building.allExtensionsActiv = false
-                }
-                if (planned && (current?.enabled === true)) {
-                    success(extensionLabel);
-                }
-                if (!planned && (current?.enabled === false)) {
-                    xtraDead(extensionLabel);
-                    extensionLabel.title = `${type.caption}\nzusätzlich\nnicht aktiv`
-                    building.allExtensionsActiv = false
-                }
-                if (!planned && (current?.enabled === true)) {
-                    xtraActiv(extensionLabel);
-                    extensionLabel.title = `${type.caption}\nzusätzlich`
-                }
+              const givesParkingLots = type.givesParkingLots ?? 0;
+              parkingLots = parkingLots + givesParkingLots;
+              if (current?.enabled === false) { // dead
+                row += ` nicht aktiv`;
+                row += `' class='label label-warning' style='font-size: 10px;'>`
+                building.allExtensionsActiv = false
+              }
+              if (current?.available_at) { // build
+                const date = new Date(current.available_at);
+                row += ` fertig am ${date.toLocaleString()}`;
+                row += `' class='label label-info' style='font-size: 8px;'>`;
+              }
+              if ((current?.enabled === true)
+                  && (current?.available === true)) {
+                row += `' class='label label-success' style='font-size: 8px;'>`;
+              }
             }
-
-            extensionsCell.append(extensionLabel);
+            row += `${index}`;
+            row += `</span>`;
         });
+        row += `</td>`;
 
-        // personal
-        const personalCell = document.createElement('td');
-        if (buildingType.startPersonnel >= 0) {
-            const count = building.personal_count;
-            const target = building.personal_count_target;
-            const setpoint = template ? template.personnelSetPoint : null;
+        row += `<td class='text-center'>`; // cell parkingslots
+        row += Number.isInteger(parkingLots) ? parkingLots : "";
+        row += `</td>`;
 
-            // default
-            personalCell.append(`${count} / ${target}`);
-
-            // succes = green
-            if ((count === target) && ( setpoint === target )) {
-                personalCell.classList.add('text-success');
-                personalCell.replaceChildren(count);
-            }
-
-            // danger = red
-            if ((target === setpoint || setpoint === null) && (count < target)) {
-                personalCell.classList.add('text-danger');
-            }
-
-            // warning = orange-red
-            if ((count > target) && ((setpoint === null) || (setpoint === target))) {
-
-            }
+        row += `<td class='text-center'>`; // cell storage
+        if (building.storage_upgrades.length > 0) {
+          const storage_total = building.storage_total ?? '';
+          const storage_available = building.storage_available ?? '';
+          row += `${storage_available} / ${storage_total}`;
         }
+        row += `</td>`;
 
-        row.append(nameCell, templatesCell, extensionsCell, personalCell);
-        tableBody.append(row);
+        /*
+         *  grün   = label-success === count === target === setpoint
+         *  blau   = label-info    === count === target    !setpoint
+         *  orange = label-warning === count >=  target    !setpoint
+         *  rot    = label-danger  === count <=  target
+         */
+        const count = building.personal_count;
+        const target = building.personal_count_target;
+        const setpoint = template ? template.personnelSetPoint : null;
+
+        if (buildingType?.startPersonnel >= 0) {
+
+          if (count === target) {
+            if (setpoint === target) { // succes = green
+              row += `<td class='text-success text-center'>`;
+            }
+            if (setpoint !== target) { // info
+              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-info text-center'>`
+            }
+            row += `${count}`;
+          }
+          if (count !== target) { // warning = orange
+            if (setpoint === target) {
+              row += `<td title="Diese Wache ist noch nicht voll" class='text-warning text-center'>`;
+            }
+            if (setpoint !== target) { // danger = red
+              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-danger text-center'>`;
+            }
+            row += `${count} / ${target}`;
+          }
+        } else {
+          row += `<td>`;
+        }
+        row += `</td>`;
+        row += `</tr>`;
+        $(tbody).append(row);
     });
+    $(table).trigger('update');
+    /*
+    tbody.addEventListener('change', event => {
+        if (event.target.value === 'none') {
+          delete assignments[building.id];
+        } else {
+          assignments[building.id] = event.target.value;
+        }
+    });
+        */
 }
 let tableVehicles;
 async function addTabVehicles() {
@@ -315,7 +334,8 @@ async function addTabVehicles() {
     tabLink.setAttribute('aria-controls', paneId);
     tabLink.setAttribute('role', 'tab');
     tabLink.setAttribute('data-toggle', 'tab');
-    tabLink.append("Fahrzeuge"); // translation
+    const text = "Fahrzeuge";
+    tabLink.append(text);
 
     tabLi.append(tabLink);
     modal.tabList.append(tabLi);
@@ -347,21 +367,21 @@ async function addTabVehicles() {
         reloadButtonVehicles.disabled = false;
         reloadButtonVehicles.blur();
     });
-    reloadButtonVehicles.id = `${prefix}-reloadBuildingsButton`
+    reloadButtonVehicles.id = `${prefix}-reloadBuildingsButton`;
     reloadButtonVehicles.append("Fahrzeuge neuladen");
 
 
     $(tabLink).on('shown.bs.tab', () => {
         //modal.filterArea.replaceChildren();
         modal.footer.replaceChildren(
-            reloadButtonVehicles,
-            updateVehicles
+          reloadButtonVehicles,
+          updateVehicles
         );
     });
 }
 
 let tableBuildings;
-async function addTabBuildings() {
+async function createTabBuildings() {
     const paneId = `${prefix}-tab-buildings`
 
     const tabLi = document.createElement('li')
@@ -408,7 +428,8 @@ async function addTabBuildings() {
     filterButtonProfiles.append("Wachen ohne Profil anzeigen ");
     filterButtonProfiles.id = `${prefix}-filterButtonProfiles`;
     filterButtonProfiles.addEventListener('click', async () => {
-        const withoutAssignment = buildings.filter(building => building.withoutAssignment);
+        const withoutAssignment = buildings.filter(building =>
+          building.withoutAssignment);
         renderTableBuildings(withoutAssignment);
     });
 
@@ -418,7 +439,8 @@ async function addTabBuildings() {
     filterButtonExtensionMissing.append("Fehlende Erweiterungen");
     filterButtonExtensionMissing.id = `${prefix}-filterButtonExtensionMissing`;
     filterButtonExtensionMissing.addEventListener('click', async () => {
-        const extensionMissing = buildings.filter(building => building.missingExtension);
+        const extensionMissing = buildings.filter(building =>
+          building.missingExtension);
         renderTableBuildings(extensionMissing);
     });
     const filterButtonNotActiv = document.createElement('button');
@@ -427,7 +449,8 @@ async function addTabBuildings() {
     filterButtonNotActiv.append("Erweiterung nicht aktiv");
     filterButtonNotActiv.id = `${prefix}-filterButtonExtensionMissing`;
     filterButtonNotActiv.addEventListener('click', async () => {
-        const allExtensionsActiv = buildings.filter(building => building.allExtensionsActiv === false);
+        const allExtensionsActiv = buildings.filter(building =>
+          building.allExtensionsActiv === false);
         renderTableBuildings(allExtensionsActiv);
     });
 
@@ -456,38 +479,50 @@ async function addTabBuildings() {
 
     //    modal.functionArea.append()
     modal.filterArea.append(
-        saveButtonProfiles,
-        filterButtonProfiles,
-        filterButtonExtensionMissing,
-        filterButtonNotActiv,
+      saveButtonProfiles,
+      filterButtonProfiles,
+      filterButtonExtensionMissing,
+      filterButtonNotActiv,
     );
     modal.footer.append(reloadButtonBuildings, updateBuildings);
 
     const table = document.createElement('table');
     table.classList.add('table', 'table-striped', 'tablesorter', 'tablesorter-default');
-
-    const thead = document.createElement('thead');
-    const theadRow = document.createElement('tr');
-    const theadName = document.createElement('th');
-    theadName.append("Wache");
-    const theadProfiles = document.createElement('th');
-    const theadExtensions = document.createElement('th');
-    theadExtensions.append("Erweiterungen");
-    const theadPersonal = document.createElement('th');
-    theadPersonal.append("Personal");
-
-    [theadName, theadExtensions, theadPersonal].forEach(thead => {
-        thead.classList.add('text-center');
-    });
-
-    theadRow.append(theadName, theadProfiles, theadExtensions, theadPersonal);
-    thead.append(theadRow);
+    table.style.width = '100%, ';
+    table.style.tableLayout = 'fixed';
+    const thead =
+    /* HTML */`
+    <thead>
+        <tr>
+            <th class='sorter-digit' style='width: 3ch;' title='alt - neu'> </th> <!-- tabelsorter -->
+            <th class='text-center' style='width: 200px;'>Wachentyp</th> <!-- tabelsorter -->
+            <th class='text-center' style='width: 40ch;'>Wache</th> <!-- tabelsorter -->
+            <th class='sorter-false'style='width: 40ch'></th>
+            <th class='sorter-false text-center'>Erweiterungen</th>
+            <th class='sorter-false text-center' style='width: 11ch;'>Stellplätze</th>
+            <th class='sorter-false text-center' style='width: 11ch;'>Lager</th>
+            <th class='sorter-false text-center' style='width: 11ch;'>Personal</th>
+        </tr>
+    </thead> `
+    /* END HTML */
 
     const tableBody = document.createElement('tbody');
-    table.append(thead, tableBody);
+    $(table).append(thead);
+    table.append(tableBody);
     tabPane.append(table);
-    tableBuildings = tableBody;
 
+    $(table).tablesorter({
+      textExtraction: {
+        0: function(node) {
+            return $(node).attr('data-digit')
+        }
+      },
+      headers: {
+        0: { sorter: 'digit' },
+        1: { sorter: 'text' },
+        2: { sorter: 'text' },
+      }
+    });
     $(tabLink).on('shown.bs.tab', () => {
         /*modal.filterAreaArea.replaceChildren(
             saveButtonProfiles,
@@ -496,23 +531,23 @@ async function addTabBuildings() {
             filterButtonNotActiv,
         );*/
         modal.footer.replaceChildren(reloadButtonBuildings, updateBuildings);
-        renderTableBuildings(buildings);
     });
+    return { table, tableBody };
 }
 
 async function filterDispatchCenters() {
     buildings = [];
     const dispatchCenterType = Object.entries(buildingTypes).find(
-        ([, buildingType]) => buildingType.isDispatchCenter
+      ([, buildingType]) => buildingType.isDispatchCenter
     );
+    const typeId = Number(dispatchCenterType[0]);
     if (dispatchCenterType) {
-        const typeId = Number(dispatchCenterType[0]);
-        dispatchCenters = await getBuildings(false, 'type', typeId);
+      dispatchCenters = await getBuildings(false, 'type', typeId);
     }
     const dropdown = document.createElement('select');
     dropdown.id = `${prefix}-filter-dispatchCenters`;
     const emptyValue = document.createElement('option');
-    emptyValue.value = "";
+    emptyValue.value = "Leitstelle auswählen";
     dropdown.appendChild(emptyValue);
     const allValue = document.createElement('option');
     allValue.value = 'all';
@@ -538,12 +573,14 @@ async function filterDispatchCenters() {
 
     const refresh = async () => {
         if (value === "") { return; }
-        if (value === "all") {
-            const get = await getBuildings(false);
-            buildings = get.filter(building => building.building_type !== dispatchCenterType);
+        if (value === 'all') {
+          const get = await getBuildings(false);
+          buildings = get.filter(building =>
+            building.building_type !== typeId);
         } else {
-            const get = await getBuildings(false, 'dispatchCenter', Number(value));
-            buildings = get.filter(building => building.building_type !== dispatchCenterType);
+          const get = await getBuildings(false, 'dispatchCenter', Number(value));
+          buildings = get.filter(building =>
+            building.building_type !== typeId);
         }
         await renderTableBuildings(buildings);
 
@@ -552,7 +589,6 @@ async function filterDispatchCenters() {
 }
 
 async function initialize() {
-
     const config = { name: 'BosErnie_StationBlueprints', stores: [] };
     await initDB(config);
     templates = await readKey('blueprints', 'main', config);
@@ -565,12 +601,30 @@ async function initialize() {
     vehicleTypes = await getVehicleTypes(I18n.locale);
     const blueprints = await readKey('templates', 'main', configDB);
     assignments = blueprints ? blueprints.assignments ? blueprints.assignments : assignments = {} : assignments = {};
-
 }
 
 
 function createModal() {
-
+    const html =
+    /* HTML */ `
+            <div class='modal fade' id='${prefix}-modal' tabindex='-1' role='dialog' aria-labelledby='${prefix}-title'>
+                <div class="modal-content" style="height: 100%; display: flex; flex-direction: column;">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="${prefix}-title" style="text-align: center;">${scriptName}</h4>
+                    </div>
+                    <div class="modal-body" style="max-height: none; flex: 1 1 auto; overflow-y: auto;">
+                        <div id="${prefix}-control" style="min-height: 50px;"></div>
+                        <div id="${prefix}-filters" style="min-height: 25px;"></div>
+                        <ul class="nav nav-tabs" role="tablist" id="${prefix}-tabs"></ul>
+                        <div class="tab-content" style="padding-top: 15px;"></div>
+                    </div>
+                    <div class="modal-footer" style="text-align: left;"></div>
+                </div>
+            </div>
+    `;/* END HTML */
     const modal = document.createElement('div');
     modal.id = `${prefix}-modal`;
     modal.classList.add('modal', 'fade');
@@ -653,34 +707,42 @@ function createModal() {
 
     document.body.append(modal);
 
-    return { modal, body, functionArea, filterArea, tabList, tabContent, footer };
+    return {
+      modal,
+      body,
+      functionArea,
+      filterArea,
+      tabList,
+      tabContent,
+      footer,
+    };
 
 }
 
 if ( ! document.querySelector(`#${prefix}-menu`)) {
-    const divider =
+  const divider =
         document.querySelector(
-            '#menu_profile + .dropdown-menu > li.divider'
+          '#menu_profile + .dropdown-menu > li.divider'
         );
-    const triggerA = document.createElement("a");
-    triggerA.href = `#${prefix}`;
-    triggerA.append(scriptName);
-    const triggerLi = document.createElement("li");
-    triggerLi.id = `${prefix}-menu`;
-    triggerLi.append(triggerA);
-    triggerLi.addEventListener(
-        'click', async () => {
-            event.preventDefault();
-            await initialize();
+  const triggerA = document.createElement('a');
+  triggerA.href = `#${prefix}`;
+  triggerA.append(scriptName);
+  const triggerLi = document.createElement('li');
+  triggerLi.id = `${prefix}-menu`;
+  triggerLi.append(triggerA);
+  triggerLi.addEventListener(
+    'click', async () => {
+        event.preventDefault();
+        await initialize();
 
-            if (!modal) {
-                modal = createModal();
-                await filterDispatchCenters();
-                await addTabVehicles();
-                await addTabBuildings();
-            }
-            $(modal.modal).modal('show');
-        });
-    divider.before(triggerLi);
+        if (!modal) {
+          modal = createModal();
+          await filterDispatchCenters();
+          await addTabVehicles();
+          tableBuildings = await createTabBuildings();
+        }
+        $(modal.modal).modal('show');
+    });
+  divider.before(triggerLi);
 };
 //if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
