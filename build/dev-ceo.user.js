@@ -1,17 +1,19 @@
 // ==UserScript==
 // @name         [DEV] LSS Chef der Einheiten und Objekte
 // @namespace    papachaotica.leitstellenspiel.de
-// @version     20261014.1820
+// @version     20261021.2237
 // @match        https://leitstellenspiel.de/*
 // @match        https://www.leitstellenspiel.de/*
 // @exclude-match https://forum.leitstellenspiel.de/*
 // @run-at       document-idle
 // ==/UserScript==
 (() => {
+        
     const reloadSocket = new WebSocket('ws://127.0.0.1:8080/ws');
 
     reloadSocket.addEventListener('message', event => {
         if (event.data === 'reload') {
+        
             window.location.reload();
         }
     });

@@ -39,23 +39,49 @@ case "$branch" in
             fi
         done < <(git diff --cached --name-only --diff-filter=ACMR -z -- dev dist)
 
-        if git diff --cached --quiet -- \
+        if ! git diff --cached --quiet -- \
             lib/indexedDB.js \
             lib/api-fetch-database-handler.js; then
-            exit 0
+            version_date="$(TZ=Europe/Berlin date +%y%m%d)"
+
+            while IFS= read -r -d '' script; do
+                temporary_file="$(mktemp)"
+
+                sed -E \
+                    -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
+                    -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
+                    -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
+                    -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
+                    -e "/^[[:space:]]*\\/\\/[[:space:]]*@version[[:space:]]/ { s|(\\.[0-9]{6})(\\.[0-9]{4})?([[:space:]]*)$|.${version_date}\\3|; t version_date_done; s|([[:space:]]*)$|.${version_date}\\1|; :version_date_done; }" \
+                    "$script" > "$temporary_file"
+
+                if ! cmp -s "$script" "$temporary_file"; then
+                    mv "$temporary_file" "$script"
+                    git add -- "$script"
+                else
+                    rm -f "$temporary_file"
+                fi
+            done < <(
+                rg -l -0 -e '@require[[:space:]]+https?://[^[:space:]]+/lib/indexedDB\.js([?][^[:space:]]*)?' \
+                    -e '@require[[:space:]]+https?://[^[:space:]]+/lib/api-fetch-database-handler\.js([?][^[:space:]]*)?' \
+                    --glob '*.js' dev dist
+            )
         fi
 
-        version_date="$(TZ=Europe/Berlin date +%y%m%d)"
-
+        # Keep an optional runtime version constant aligned with the userscript header.
         while IFS= read -r -d '' script; do
-            temporary_file="$(mktemp)"
+            [[ -f "$script" ]] || continue
 
+            script_version="$(sed -nE 's|^[[:space:]]*//[[:space:]]*@version[[:space:]]+([^[:space:]]+).*$|\1|p' "$script" | head -n 1)"
+            [[ -n "$script_version" ]] || continue
+            [[ "$script_version" =~ ^[[:alnum:]_.+-]+$ ]] || {
+                printf 'Unsupported @version value in %s: %s\n' "$script" "$script_version" >&2
+                exit 1
+            }
+
+            temporary_file="$(mktemp)"
             sed -E \
-                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
-                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/indexedDB\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/indexedDB.js?v${version_date}\\3|" \
-                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)http://localhost:8080/lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
-                -e "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}lib/api-fetch-database-handler\\.js(\\?v[^[:space:]]*)?([[:space:]]*)$|\\1${raw_base}lib/api-fetch-database-handler.js?v${version_date}\\3|" \
-                -e "/^[[:space:]]*\\/\\/[[:space:]]*@version[[:space:]]/ { s|(\\.[0-9]{6})(\\.[0-9]{4})?([[:space:]]*)$|.${version_date}\\3|; t version_date_done; s|([[:space:]]*)$|.${version_date}\\1|; :version_date_done; }" \
+                "s|^([[:space:]]*const[[:space:]]+version[[:space:]]*=[[:space:]]*)['\"][^'\"]*['\"]([[:space:]]*;?[[:space:]]*)$|\\1\"${script_version}\"\\2|" \
                 "$script" > "$temporary_file"
 
             if ! cmp -s "$script" "$temporary_file"; then
@@ -64,10 +90,6 @@ case "$branch" in
             else
                 rm -f "$temporary_file"
             fi
-        done < <(
-            rg -l -0 -e '@require[[:space:]]+https?://[^[:space:]]+/lib/indexedDB\.js([?][^[:space:]]*)?' \
-                -e '@require[[:space:]]+https?://[^[:space:]]+/lib/api-fetch-database-handler\.js([?][^[:space:]]*)?' \
-                --glob '*.js' dev dist
-        )
+        done < <(git diff --cached --name-only --diff-filter=ACMR -z -- dev dist)
         ;;
 esac

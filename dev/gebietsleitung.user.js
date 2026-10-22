@@ -808,4 +808,4 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
     });
   divider.before(triggerLi);
 };
-if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
+//if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
