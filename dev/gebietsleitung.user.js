@@ -1,16 +1,17 @@
 // ==UserScript==
-// @name            [ LSS ] Gebietsleiter - Zentrale Leitstelle
+// @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.14.0.261020
+// @version         0.14.1.261022
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261020
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261020
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261022
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261022
 // @run-at          document-idle
+// @grant           TM_info
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
 
@@ -102,7 +103,8 @@ const defaults = {
 'use strict'
 
 const prefix = "gl";
-const scriptName = "Gebietsleitung"
+const scriptName = "Gebietsleitung - Zentrale Leitstelle";
+const version = "0.14.1.261022";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 
@@ -130,6 +132,7 @@ async function showLastUpdate(store) {
     lastUpdate = new Date(lastUpdate).toLocaleString();
     return lastUpdate;
 }
+
 function profileSelector(building) {
     const profiles = templates.filter(profile =>
       profile.buildingTypeId === building.building_type
@@ -165,7 +168,6 @@ function profileSelector(building) {
 async function renderTableBuildings(buildings) {
     const table = tableBuildings.table;
     const tbody = tableBuildings.tableBody;
-    console.log(table, tbody)
 
     tbody.replaceChildren();
 
@@ -174,25 +176,25 @@ async function renderTableBuildings(buildings) {
         const buildingType = buildingTypes[building.building_type];
         let parkingLots = buildingType?.startParkingLots + building.level;
 
-        let row = `<tr>`;
-        row += `<td data-digit=${building.id}>`; // cell id -- tabelsorter
+        let row = `<tr style='display: table; width: 100%; table-layout: fixed;'>`;
+        row += `<td data-digit=${building.id} style='width: 3ch;'>`; // cell id -- tabelsorter
         row += `</td>`;
 
-        row += `<td class='text-right' data-text='${buildingType.caption}'>`; // cell building Type -- tabelsorter
+        row += `<td class='text-right' data-text='${buildingType.caption}' style='middle; width: 175px;'>`; // cell building Type -- tabelsorter
         row += `<a class='btn btn-default btn-xs disabled'>${buildingType.caption}</a>`;
         row += `</td>`;
 
-        row += `<td>`; // cell building caption -- tabelsorter
+        row += `<td style='width: 40ch;'>`; // cell building caption -- tabelsorter
         row += `<a class='lightbox-open' href='/buildings/${building.id}'>${building.caption}</a>`;
         row += `</td>`;
 
-        row += `<td>`; // cell dropdown
+        row += `<td style='width: 40ch;'>`; // cell dropdown
         const selector = profileSelector(building);
         const profiles = selector.profiles;
         const template = selector.select;
 
         if (profiles.length > 0) {
-          row += `<select style='width: 100%';>`;
+          row += `<select style='width: 100%;'>`;
           row += `<option value='none'></option>`;
           profiles.forEach(profile => {
               if (template && profile.id === template?.id) {
@@ -221,7 +223,7 @@ async function renderTableBuildings(buildings) {
          *  blau   = label-info    ===          in progress           === build
          */
         row += `<td>`; // cell extensions
-        const types = Array.isArray(buildingType.extensions) ? buildingType.extensions : [];
+        const types = /*Array.isArray(buildingType.extensions) ? */buildingType.extensions// : [];
         const real = building.extensions ? building.extensions : [];
         const plan = template ? template.extensions : [];
         types.forEach((type, index) => {
@@ -261,12 +263,13 @@ async function renderTableBuildings(buildings) {
         });
         row += `</td>`;
 
-        row += `<td class='text-center'>`; // cell parkingslots
+        row += `<td class='text-center' style='width: 13ch;'>`; // cell parkingslots
         row += Number.isInteger(parkingLots) ? parkingLots : "";
         row += `</td>`;
 
-        row += `<td class='text-center'>`; // cell storage
-        if (building.storage_upgrades.length > 0) {
+        row += `<td class='text-center' style='width: 11ch;'>`; // cell storage
+        if ((building.storage_upgrades.length >= 0)
+            && (building.storage_total !== 0)) {
           const storage_total = building.storage_total ?? '';
           const storage_available = building.storage_available ?? '';
           row += `${storage_available} / ${storage_total}`;
@@ -287,31 +290,32 @@ async function renderTableBuildings(buildings) {
 
           if (count === target) {
             if (setpoint === target) { // succes = green
-              row += `<td class='text-success text-center'>`;
+              row += `<td class='text-success text-center' style='width: 11ch;'>`;
             }
             if (setpoint !== target) { // info
-              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-info text-center'>`
+              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-info text-center' style='width: 11ch;'>`
             }
             row += `${count}`;
           }
           if (count !== target) { // warning = orange
             if (setpoint === target) {
-              row += `<td title="Diese Wache ist noch nicht voll" class='text-warning text-center'>`;
+              row += `<td title="Diese Wache ist noch nicht voll" class='text-warning text-center' style='width: 11ch;'>`;
             }
             if (setpoint !== target) { // danger = red
-              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-danger text-center'>`;
+              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-danger text-center' style='width: 11ch;'>`;
             }
             row += `${count} / ${target}`;
           }
         } else {
-          row += `<td>`;
+          row += `<td style='width: 11ch;'>`;
         }
         row += `</td>`;
         row += `</tr>`;
         $(tbody).append(row);
     });
     $(table).trigger('update');
-    /*
+    //    tableBuildings.syncLayout();
+
     tbody.addEventListener('change', event => {
         if (event.target.value === 'none') {
           delete assignments[building.id];
@@ -319,8 +323,8 @@ async function renderTableBuildings(buildings) {
           assignments[building.id] = event.target.value;
         }
     });
-        */
 }
+
 let tableVehicles;
 async function addTabVehicles() {
     const paneId = `${prefix}-tab-vehicles`
@@ -403,6 +407,8 @@ async function createTabBuildings() {
     tabPane.id = paneId;
     tabPane.classList.add('tab-pane', 'active');
     tabPane.setAttribute('role', 'tabpanel');
+    tabPane.style.height = '100%'; //
+    tabPane.style.minHeight = '0';
 
     modal.tabContent.append(tabPane);
 
@@ -488,28 +494,54 @@ async function createTabBuildings() {
 
     const table = document.createElement('table');
     table.classList.add('table', 'table-striped', 'tablesorter', 'tablesorter-default');
-    table.style.width = '100%, ';
-    table.style.tableLayout = 'fixed';
+    table.id = `${prefix}-buildings-table`;
+    table.style.width = '100%';
+    //table.style.tableLayout = 'fixed';
+    table.style.display = 'flex'; ///
+    table.style.flexDirection = 'column'; ///
+    table.style.height = '100%'; //
+    table.style.minHeight = '0'; //
+    table.style.marginBottom = '0'; //
     const thead =
     /* HTML */`
-    <thead>
-        <tr>
-            <th class='sorter-digit' style='width: 3ch;' title='alt - neu'> </th> <!-- tabelsorter -->
-            <th class='text-center' style='width: 200px;'>Wachentyp</th> <!-- tabelsorter -->
-            <th class='text-center' style='width: 40ch;'>Wache</th> <!-- tabelsorter -->
-            <th class='sorter-false'style='width: 40ch'></th>
-            <th class='sorter-false text-center'>Erweiterungen</th>
-            <th class='sorter-false text-center' style='width: 11ch;'>Stellplätze</th>
-            <th class='sorter-false text-center' style='width: 11ch;'>Lager</th>
-            <th class='sorter-false text-center' style='width: 11ch;'>Personal</th>
+    <thead style='display: block; flex; 0 0 auto;'>
+        <tr style='display: table; width: 100%; table-layout: fixed;'>
+            <th class='sorter-digit' style='vertical-align: middle; width: 3ch; background-position: right -1ch center;' title='alt - neu'>
+            </th> <!-- tabelsorter -->
+            <th class='text-center' style='vertical-align: middle; width: 175px;'>Wachentyp</th> <!-- tabelsorter -->
+            <th class='text-center' style='vertical-align: middle; width: 40ch;'>Wache</th> <!-- tabelsorter -->
+            <th class='sorter-false' style='vertical-align: middle; width: 40ch;'></th>
+            <th class='sorter-false text-center' style='vertical-align: middle;'>Erweiterungen</th>
+            <th class='sorter-false text-center' style='vertical-align: middle; width: 13ch;'>Stellplätze
+                <small style='font-weight: normal;'> Fzg - Anh - AB</small>
+            </th>
+            <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Lager</th>
+            <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Personal</th>
         </tr>
     </thead> `
     /* END HTML */
 
     const tableBody = document.createElement('tbody');
+    tableBody.style.display = 'block';
+    tableBody.style.minHeight = '0'; //
+    tableBody.style.overflowY = 'auto'; //
+    tableBody.style.width = '100%';
+    tableBody.style.boxSizing = 'border-box';
+
     $(table).append(thead);
     table.append(tableBody);
     tabPane.append(table);
+
+/*    const head = table.tHead;
+    const syncLayout = () => {
+        const bodyHeight = table.clientHeight - head.getBoundingClientRect().height;
+        tableBody.style.height = `${Math.max(0, bodyHeight)}px`;
+        head.style.width = `${tableBody.clientWidth}px`;
+    };
+    const tableResizeObserver = new ResizeObserver(syncLayout);
+    tableResizeObserver.observe(tabPane);
+    tableResizeObserver.observe(head);
+    requestAnimationFrame(syncLayout); */
 
     $(table).tablesorter({
       textExtraction: {
@@ -531,8 +563,9 @@ async function createTabBuildings() {
             filterButtonNotActiv,
         );*/
         modal.footer.replaceChildren(reloadButtonBuildings, updateBuildings);
+//        requestAnimationFrame(syncLayout);
     });
-    return { table, tableBody };
+    return { table, tableBody/*, syncLayout*/ };
 }
 
 async function filterDispatchCenters() {
@@ -543,15 +576,18 @@ async function filterDispatchCenters() {
     const typeId = Number(dispatchCenterType[0]);
     if (dispatchCenterType) {
       dispatchCenters = await getBuildings(false, 'type', typeId);
+      dispatchCenters.sort((a, b) => a.caption.localeCompare(b.caption));
+
     }
     const dropdown = document.createElement('select');
     dropdown.id = `${prefix}-filter-dispatchCenters`;
     const emptyValue = document.createElement('option');
-    emptyValue.value = "Leitstelle auswählen";
+    emptyValue.value = 'none';
+    emptyValue.textContent = "Leitstelle auswählen"
     dropdown.appendChild(emptyValue);
     const allValue = document.createElement('option');
     allValue.value = 'all';
-    allValue.textContent = "alle Gebäude";
+    allValue.textContent = "alle Gebaude";
     dropdown.appendChild(allValue);
     let value;
     dropdown.addEventListener('change', async event => {
@@ -572,7 +608,7 @@ async function filterDispatchCenters() {
     });
 
     const refresh = async () => {
-        if (value === "") { return; }
+        if (value === 'none') { return; }
         if (value === 'all') {
           const get = await getBuildings(false);
           buildings = get.filter(building =>
@@ -589,11 +625,8 @@ async function filterDispatchCenters() {
 }
 
 async function initialize() {
-    const config = { name: 'BosErnie_StationBlueprints', stores: [] };
-    await initDB(config);
-    templates = await readKey('blueprints', 'main', config);
-    templates = Object.values(templates);
-    db.close();
+    templates = await caseOfCaddy('BosErnie_StationBlueprints', 'main', 'blueprints');
+    templates = templates !== undefined ? Object.values(templates) : [];
 
     await initDB(configDB);
 
@@ -609,11 +642,11 @@ function createModal() {
     /* HTML */ `
             <div class='modal fade' id='${prefix}-modal' tabindex='-1' role='dialog' aria-labelledby='${prefix}-title'>
                 <div class="modal-content" style="height: 100%; display: flex; flex-direction: column;">
-                    <div class="modal-header">
+                    <div class="modal-header" style="display: flex; align-items: center; justify-content: space-between; position: relative;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="${prefix}-title" style="text-align: center;">${scriptName}</h4>
+                        <h4 class="modal-title" id="${prefix}-title" style="flex-grow: 1; text-align: center; margin: 0">${scriptName}</h4>
                     </div>
                     <div class="modal-body" style="max-height: none; flex: 1 1 auto; overflow-y: auto;">
                         <div id="${prefix}-control" style="min-height: 50px;"></div>
@@ -636,8 +669,8 @@ function createModal() {
     dialog.classList.add('modal-dialog');
     dialog.setAttribute('role', 'document');
     dialog.style.width = '95%';
-    dialog.style.height = '95vh';
-    dialog.style.margin = '2.5vh auto';
+    dialog.style.height = '90vh';
+    dialog.style.margin = '7vh auto 3vh auto';
 
     const content = document.createElement('div');
     content.classList.add('modal-content');
@@ -647,6 +680,10 @@ function createModal() {
 
     const header = document.createElement('div');
     header.classList.add('modal-header');
+    header.style.display = 'flex';
+    header.style.alignItems = 'center';
+    header.style.justifyContent = 'space-between';
+    header.style.position = 'relative';
 
     const closeButton = document.createElement('button');
     closeButton.type = 'button';
@@ -660,19 +697,42 @@ function createModal() {
 
     closeButton.append(closeIcon);
 
+    const versionSpan = document.createElement('span');
+    versionSpan.style.fontSize = '0.8em';
+    //versionSpan.style.color = '#777';
+    versionSpan.style.fontWeight = 'normal';
+    versionSpan.style.whiteSpace = 'nowrap';
+    versionSpan.append(`v${version}`);
+
+    const rightContainer = document.createElement('div');
+    rightContainer.style.display = 'flex';
+    rightContainer.style.alignItems = 'center';
+    rightContainer.style.gap = '15px';
+    rightContainer.style.position = 'absolute';
+    rightContainer.style.right = '15px';
+    rightContainer.style.top = '50%';
+    rightContainer.style.transform = 'translateY(-50%)';
+
+    rightContainer.append(versionSpan, closeButton);
+
     const title = document.createElement('h4');
     title.id = `${prefix}-title`;
     title.classList.add('modal-title');
     title.style.textAlign = 'center';
+    title.style.flexGrow = '1'
+
     title.append(scriptName);
 
-    header.append(closeButton, title);
+    header.append(title, rightContainer);
 
     const body = document.createElement('div');
     body.classList.add('modal-body');
+    body.style.display = 'flex'; //
+    body.style.flexDirection = 'column'; //
+    body.style.minHeight = '0'; //
     body.style.maxHeight = 'none';
     body.style.flex = '1 1 auto';
-    body.style.overflowY = 'auto';
+    body.style.overflowY = 'hidden';
 
     const functionArea = document.createElement('div');
     functionArea.id = `${prefix}-control`;
@@ -694,6 +754,9 @@ function createModal() {
     const tabContent = document.createElement('div');
     tabContent.classList.add('tab-content');
     tabContent.style.paddingTop = '15px';
+    tabContent.style.flex = '1 1 0'; //
+    tabContent.style.minHeight = '0'; //
+    tabContent.style.overflow = 'hidden'; //
 
     body.append(tabList, tabContent);
 
@@ -745,4 +808,4 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
     });
   divider.before(triggerLi);
 };
-//if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
+if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
