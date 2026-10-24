@@ -1,17 +1,16 @@
 // ==UserScript==
 // @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.14.1.261022
+// @version         0.17.1.261024
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261022
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261022
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261024
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261024
 // @run-at          document-idle
-// @grant           TM_info
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
 
@@ -37,6 +36,18 @@
  * [_] Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
  * [_] Equipment auf Machbarkeit prüfen
  * [_] renderTableVehicles (Design ausarbeiten)
+ * [X] Erweiterungen aktivieren ermöglichen
+ * [X] Erweiterungen kaufen ermöglichen
+ * [X] Gekaufte Erweiterung nach erfolgreicher AJAX-Antwort in IndexedDB speichern
+ * [_] Zähler gleicher Erweiterungen über type_id und Erweiterungstyp ermitteln
+ * [_] AJAX-Ergebnis, Gebäude und Erweiterung vor dem Zugriff prüfen
+ * [_] Kauf gegen Doppelklick absichern und Tabelle nach Erfolg aktualisieren
+ * [_] change-Listener der Gebäudetabelle nur einmal registrieren
+ * [_] Speichern-Buttontext mit textContent statt append setzen
+ * [_] Zahlenformatierung für alle unterstützten Spielsprachen abfangen
+ * [_] Werte in Tabellen-HTML vor dem Einfügen escapen
+ * [_] Ereignisparameter im Menü-Click-Handler explizit übernehmen
+ * [_] storage_upgrades vor dem Zugriff prüfen
  */
 
 const defaults = {
@@ -104,9 +115,12 @@ const defaults = {
 
 const prefix = "gl";
 const scriptName = "Gebietsleitung - Zentrale Leitstelle";
-const version = "0.14.1.261022";
+const version = "0.17.1.261024";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
+const langcode = {
+  'de_DE': 'de-DE'
+}
 
 let buildings;
 let buildingTypes;
@@ -117,6 +131,33 @@ let vehicles;
 let vehicleTypes;
 
 let modal;
+
+async function refreshBuildings(value = dispathCenter) {
+    let data;
+    if (value === 'none') { return; }
+    if (value === 'all') {
+      data = await getBuildings(false);
+    } else {
+      data = await getBuildings(false, 'dispatchCenter', Number(value));
+    }
+    buildings = data.filter(building =>
+      building.building_type !== dispatchCenterType);
+    await renderTableBuildings(buildings);
+}
+
+function countDuplicates(data) {
+    const array = Array.isArray(data)
+      ? data
+      : Object.values(data);
+    const counts = array.reduce((acc, index) => {
+        if (!index) return acc;
+        const item = index.caption ?? index.name;
+        if ((item === undefined) || (item === null)) return acc;
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+    }, {})
+    return counts;
+}
 
 async function showLastUpdate(store) {
     let lastUpdate = await readKey('lastUpdate', store, configDB);
@@ -177,7 +218,7 @@ async function renderTableBuildings(buildings) {
         let parkingLots = buildingType?.startParkingLots + building.level;
 
         let row = `<tr style='display: table; width: 100%; table-layout: fixed;'>`;
-        row += `<td data-digit=${building.id} style='width: 3ch;'>`; // cell id -- tabelsorter
+        row += `<td class='digit-cell' data-digit=${building.id} style='width: 3ch;'>`; // cell id -- tabelsorter
         row += `</td>`;
 
         row += `<td class='text-right' data-text='${buildingType.caption}' style='middle; width: 175px;'>`; // cell building Type -- tabelsorter
@@ -191,7 +232,8 @@ async function renderTableBuildings(buildings) {
         row += `<td style='width: 40ch;'>`; // cell dropdown
         const selector = profileSelector(building);
         const profiles = selector.profiles;
-        const template = selector.select;
+        let template = selector.select;
+        building.withoutAssignment = false;
 
         if (profiles.length > 0) {
           row += `<select style='width: 100%;'>`;
@@ -213,7 +255,9 @@ async function renderTableBuildings(buildings) {
         }
         if (!template) {
           building.withoutAssignment = true;
+          template = { id: 'none', extensions: [], vehicles: [] };
         }
+        building.template = template;
         row += `</td>`;
 
         /*
@@ -223,45 +267,78 @@ async function renderTableBuildings(buildings) {
          *  blau   = label-info    ===          in progress           === build
          */
         row += `<td>`; // cell extensions
-        const types = /*Array.isArray(buildingType.extensions) ? */buildingType.extensions// : [];
-        const real = building.extensions ? building.extensions : [];
-        const plan = template ? template.extensions : [];
+        const types = buildingType.extensions ?? [];
+        const real = building.extensions ?? [];
+        const plan = template.extensions;
+        const planCount = countDuplicates(plan); //console.log('plan', planCount)
+        const realCount = countDuplicates(real); //console.log('real', realCount)
+        building.allExtensionsActiv = true;
+        building.missingExtension = false;
         types.forEach((type, index) => {
+            if (!type?.caption) { return; }
+            const caption = type.caption;
             const planned = plan.find(item => item.id === index);
             const current = real.find(item => item.type_id === index);
 
-            row += `<span title='${type?.caption ?? "caption nicht lesbar"}`;
-
-            if (!current && !planned) {
-              row += `' class='label label-default' style='font-size: 8px;'>`
-            }
-            if (!current && planned) { // missing
-              row += ` nicht gebaut`;
-              row += `' class='label label-danger' style='font-size: 10px'>`;
-              building.missingExtension = true;
-            }
             if (current) {
               const givesParkingLots = type.givesParkingLots ?? 0;
               parkingLots = parkingLots + givesParkingLots;
               if (current?.enabled === false) { // dead
-                row += ` nicht aktiv`;
-                row += `' class='label label-warning' style='font-size: 10px;'>`
                 building.allExtensionsActiv = false
+                row += `<a data-remote='true' data-method='post' data-building='${building.id}' data-link-tag='activate'
+                  data-extension='${index}' href="/buildings/${building.id}/extension_ready/${index}/${building.id}">`
+                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += ` nicht aktiv`;
+                row += `' class='label label-warning' style='font-size: 12px;'>`;
+                row += `${index}</span>`;
+                row += `</a>`;
               }
               if (current?.available_at) { // build
                 const date = new Date(current.available_at);
+                row += `<span title='${caption ?? "caption nicht lesbar"}`;
                 row += ` fertig am ${date.toLocaleString()}`;
                 row += `' class='label label-info' style='font-size: 8px;'>`;
+                row += `${index}</span>`;
               }
               if ((current?.enabled === true)
                   && (current?.available === true)) {
+                row += `<span title='${caption ?? "caption nicht lesbar"}`;
                 row += `' class='label label-success' style='font-size: 8px;'>`;
+                row += `${index}</span>`;
               }
             }
-            row += `${index}`;
-            row += `</span>`;
+            if (!current && !planned) {
+              row += `<span title='${caption ?? "caption nicht lesbar"}`;
+              row += `' class='label label-default' style='font-size: 8px;'>`
+              row += `${index}</span>`;
+            }
+            if (!current && planned) {
+              if ((realCount[caption] ?? 0) >= planCount[caption]) {
+                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += `' class='label label-default' style='font-size: 8px;'>`
+                row += `${index}</span>`;
+              } else {
+                row += `<a data-remote='true' data-method='post' data-building='${building.id}' data-link-tag='credits'
+                  data-extension='${index}' href="/buildings/${building.id}/extension/credits/${index}?redirect_building_id=${building.id}">`
+                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                const formatNumber = new Intl.NumberFormat(`${langcode[lang]}`, {maximumFractionDigits: 0});
+                const credits = formatNumber.format(type.credits)
+                row += ` bauen für ${credits} dauer ${type.duration}`;
+                row += `' class='label label-danger' style='font-size: 12px'>`;
+                row += `${index}</span>`;
+                row += `</a>`;
+                building.missingExtension = true;
+              }
+            }
         });
         row += `</td>`;
+
+        /*row += `<td style='width: 60px;'>`; // buy extensions -- comming soon
+        if (building.missingExtension === true) {
+          row += `<a class="btn btn-success btn-xs">Credits</a>
+                comming soon`;
+        }
+        row += `</td>`;*/
 
         row += `<td class='text-center' style='width: 13ch;'>`; // cell parkingslots
         row += Number.isInteger(parkingLots) ? parkingLots : "";
@@ -282,29 +359,32 @@ async function renderTableBuildings(buildings) {
          *  orange = label-warning === count >=  target    !setpoint
          *  rot    = label-danger  === count <=  target
          */
-        const count = building.personal_count;
-        const target = building.personal_count_target;
-        const setpoint = template ? template.personnelSetPoint : null;
+        const personnelCount = building.personal_count;
+        const personnelTarget = building.personal_count_target;
+        const personnelSetPoint = template ? template.personnelSetPoint : null;
+        building.personnel_target = true;
 
         if (buildingType?.startPersonnel >= 0) {
 
-          if (count === target) {
-            if (setpoint === target) { // succes = green
+          if (personnelCount === personnelTarget) {
+            if (personnelSetPoint === personnelTarget) { // succes = green
               row += `<td class='text-success text-center' style='width: 11ch;'>`;
             }
-            if (setpoint !== target) { // info
+            if (personnelSetPoint !== personnelTarget) { // info
               row += `<td title="SetPiont konnte nicht festegellt werden" class='text-info text-center' style='width: 11ch;'>`
+              building.personnel_target = false;
             }
-            row += `${count}`;
+            row += `${personnelCount}`;
           }
-          if (count !== target) { // warning = orange
-            if (setpoint === target) {
+          if (personnelCount !== personnelTarget) { // warning = orange
+            if (personnelSetPoint === personnelTarget) {
               row += `<td title="Diese Wache ist noch nicht voll" class='text-warning text-center' style='width: 11ch;'>`;
             }
-            if (setpoint !== target) { // danger = red
+            if (personnelSetPoint !== personnelTarget) { // danger = red
               row += `<td title="SetPiont konnte nicht festegellt werden" class='text-danger text-center' style='width: 11ch;'>`;
+              building.personnel_target = false;
             }
-            row += `${count} / ${target}`;
+            row += `${personnelCount} / ${personnelTarget}`;
           }
         } else {
           row += `<td style='width: 11ch;'>`;
@@ -314,13 +394,18 @@ async function renderTableBuildings(buildings) {
         $(tbody).append(row);
     });
     $(table).trigger('update');
-    //    tableBuildings.syncLayout();
+
+    const allDropdowns = document.querySelectorAll('table select');
 
     tbody.addEventListener('change', event => {
-        if (event.target.value === 'none') {
-          delete assignments[building.id];
+        const value = event.target.value;
+        const row = event.target.closest('tr');
+        const cell = row.querySelector('.digit-cell');
+        const building = parseInt(cell.dataset.digit, 10);
+        if (value === 'none') {
+          delete assignments[building];
         } else {
-          assignments[building.id] = event.target.value;
+          assignments[building] = value;
         }
     });
 }
@@ -331,7 +416,6 @@ async function addTabVehicles() {
 
     const tabLi = document.createElement('li')
     tabLi.setAttribute('role', 'presentation');
-    //    tabLi.classList.add('active');
 
     const tabLink = document.createElement('a');
     tabLink.href = `#${paneId}`;
@@ -407,7 +491,7 @@ async function createTabBuildings() {
     tabPane.id = paneId;
     tabPane.classList.add('tab-pane', 'active');
     tabPane.setAttribute('role', 'tabpanel');
-    tabPane.style.height = '100%'; //
+    tabPane.style.height = '100%';
     tabPane.style.minHeight = '0';
 
     modal.tabContent.append(tabPane);
@@ -435,7 +519,7 @@ async function createTabBuildings() {
     filterButtonProfiles.id = `${prefix}-filterButtonProfiles`;
     filterButtonProfiles.addEventListener('click', async () => {
         const withoutAssignment = buildings.filter(building =>
-          building.withoutAssignment);
+          building.withoutAssignment === true);
         renderTableBuildings(withoutAssignment);
     });
 
@@ -446,18 +530,32 @@ async function createTabBuildings() {
     filterButtonExtensionMissing.id = `${prefix}-filterButtonExtensionMissing`;
     filterButtonExtensionMissing.addEventListener('click', async () => {
         const extensionMissing = buildings.filter(building =>
-          building.missingExtension);
+          building.missingExtension === true);
         renderTableBuildings(extensionMissing);
     });
     const filterButtonNotActiv = document.createElement('button');
     filterButtonNotActiv.classList.add('btn', 'btn-default', 'btn-xs');
     filterButtonNotActiv.style.width = '175px';
     filterButtonNotActiv.append("Erweiterung nicht aktiv");
-    filterButtonNotActiv.id = `${prefix}-filterButtonExtensionMissing`;
+    filterButtonNotActiv.titel = "Aktivieren direkt auf den Gelben Button klicken";
+    filterButtonNotActiv.id = `${prefix}-filterButtonExtensionNotActiv`;
     filterButtonNotActiv.addEventListener('click', async () => {
         const allExtensionsActiv = buildings.filter(building =>
           building.allExtensionsActiv === false);
         renderTableBuildings(allExtensionsActiv);
+    });
+
+    const filterButtonPersonnel = document.createElement('button');
+    filterButtonPersonnel.classList.add('btn', 'btn-default', 'btn-xs');
+    filterButtonPersonnel.style.width = '175px';
+    filterButtonPersonnel.append("Abweichendes Personalsoll");
+    filterButtonPersonnel.title = "Achtung es werden nur Gebäude mit einem Profil angezeigt";
+    filterButtonPersonnel.id = `${prefix}-filterButtonPersonnel`;
+    filterButtonPersonnel.addEventListener('click', async () => {
+        const personnelSetPoint = buildings.filter(building =>
+          building.personnel_target === false
+            && building.withoutAssignment !== true);
+        renderTableBuildings(personnelSetPoint);
     });
 
     const updateBuildings = document.createElement('span');
@@ -465,23 +563,26 @@ async function createTabBuildings() {
     updateBuildings.textContent = `Lade Gebäudeliste ...`;
 
     let lastupdateBuildings = await showLastUpdate('buildings');
-    updateBuildings.textContent = `Letztes update: ${lastupdateBuildings}`;
+    updateBuildings.textContent = ` Letztes update: ${lastupdateBuildings}
+        der update Button zeigt nur Gebäude die sich in den letzen 24 Stunden verändert haben!`;
 
     const reloadButtonBuildings = document.createElement('button');
     reloadButtonBuildings.classList.add('btn', 'btn-default', 'btn-xs');
     reloadButtonBuildings.addEventListener('click', async () => {
         reloadButtonBuildings.disabled = true;
         updateBuildings.textContent = " Lade Gebäudeliste ..."
-        await getBuildings(true);
+        console.log(Number(dispathCenter))
+        const fetch = await getBuildings(false, 'update');
         lastupdateBuildings = await showLastUpdate('buildings');
         await delay(1000);
-        updateBuildings.textContent = ` Letztes update: ${lastupdateBuildings}`;
+        updateBuildings.textContent = ` Letztes update: ${lastupdateBuildings}
+            der update Button zeigt nur Gebäude die sich in den letzen 24 Stunden verändert haben!`;
         reloadButtonBuildings.disabled = false;
         reloadButtonBuildings.blur();
+        renderTableBuildings(fetch);
     });
     reloadButtonBuildings.id = `${prefix}-reloadBuildingsButton`
     reloadButtonBuildings.append("Gebäude neuladen");
-
 
     //    modal.functionArea.append()
     modal.filterArea.append(
@@ -489,6 +590,7 @@ async function createTabBuildings() {
       filterButtonProfiles,
       filterButtonExtensionMissing,
       filterButtonNotActiv,
+      filterButtonPersonnel,
     );
     modal.footer.append(reloadButtonBuildings, updateBuildings);
 
@@ -496,12 +598,11 @@ async function createTabBuildings() {
     table.classList.add('table', 'table-striped', 'tablesorter', 'tablesorter-default');
     table.id = `${prefix}-buildings-table`;
     table.style.width = '100%';
-    //table.style.tableLayout = 'fixed';
-    table.style.display = 'flex'; ///
-    table.style.flexDirection = 'column'; ///
-    table.style.height = '100%'; //
-    table.style.minHeight = '0'; //
-    table.style.marginBottom = '0'; //
+    table.style.display = 'flex';
+    table.style.flexDirection = 'column';
+    table.style.height = '100%';
+    table.style.minHeight = '0';
+    table.style.marginBottom = '0';
     const thead =
     /* HTML */`
     <thead style='display: block; flex; 0 0 auto;'>
@@ -512,6 +613,7 @@ async function createTabBuildings() {
             <th class='text-center' style='vertical-align: middle; width: 40ch;'>Wache</th> <!-- tabelsorter -->
             <th class='sorter-false' style='vertical-align: middle; width: 40ch;'></th>
             <th class='sorter-false text-center' style='vertical-align: middle;'>Erweiterungen</th>
+            <!--<th class='sorter-false' style='width: 60px;'></th>-->
             <th class='sorter-false text-center' style='vertical-align: middle; width: 13ch;'>Stellplätze
                 <small style='font-weight: normal;'> Fzg - Anh - AB</small>
             </th>
@@ -523,25 +625,14 @@ async function createTabBuildings() {
 
     const tableBody = document.createElement('tbody');
     tableBody.style.display = 'block';
-    tableBody.style.minHeight = '0'; //
-    tableBody.style.overflowY = 'auto'; //
+    tableBody.style.minHeight = '0';
+    tableBody.style.overflowY = 'auto';
     tableBody.style.width = '100%';
     tableBody.style.boxSizing = 'border-box';
 
     $(table).append(thead);
     table.append(tableBody);
     tabPane.append(table);
-
-/*    const head = table.tHead;
-    const syncLayout = () => {
-        const bodyHeight = table.clientHeight - head.getBoundingClientRect().height;
-        tableBody.style.height = `${Math.max(0, bodyHeight)}px`;
-        head.style.width = `${tableBody.clientWidth}px`;
-    };
-    const tableResizeObserver = new ResizeObserver(syncLayout);
-    tableResizeObserver.observe(tabPane);
-    tableResizeObserver.observe(head);
-    requestAnimationFrame(syncLayout); */
 
     $(table).tablesorter({
       textExtraction: {
@@ -563,19 +654,58 @@ async function createTabBuildings() {
             filterButtonNotActiv,
         );*/
         modal.footer.replaceChildren(reloadButtonBuildings, updateBuildings);
-//        requestAnimationFrame(syncLayout);
     });
-    return { table, tableBody/*, syncLayout*/ };
+
+    $(document).ajaxComplete(async function(event, xhr, settings) {
+        if (!settings.url.includes('/extension/credits/')
+            && !settings.url.includes('/extension_ready/')
+        ) return;
+
+        const match = settings.url.match(
+          /\/buildings\/(\d+)\/extension(?:_ready|\/credits)\/(\d+)(?:[\/?].*)?/
+        );
+        const id = Number(match[1]); // building id
+        const type_id = Number(match[2]); // extension type_id
+        const building = buildings.find(b => b.id === id);
+
+        // /buildings/building.id/extension_ready/type_id/.*
+        if ((settings.url.includes('/extension_ready')) && (xhr.status === 200)) {
+          const index = building.extensions.findIndex(i =>
+            i.type_id === type_id);
+          building.extensions[index].enabled = true;
+          await saveKey(building, 'buildings', configDB);
+          console.log('extension aktiviert')
+        }
+
+        // /buildings/building.id/extension/credits/type_id?redirect_building_id=.*
+        if ((settings.url.includes('/extension/credits/')) && (xhr.status === 200)){
+          const buildingType = buildingTypes[building.building_type];
+          const extensionType = buildingType.extensions[type_id];
+          const duration = extensionType.duration.match(/(\d+)/);
+          const period = Number(duration[1]) * 24 * 60 * 60 * 1000;
+          const completion_date = date((Date.now() + period))
+          const extension = {
+            type_id,
+            caption: extensionType.caption,
+            available_at: completion_date
+          }
+          building.extensions.push(extension);
+          await saveKey(building, 'buildings', configDB);
+        }
+    });
+    return { table, tableBody, };
 }
 
+let dispathCenter;
+let dispatchCenterType;
 async function filterDispatchCenters() {
     buildings = [];
-    const dispatchCenterType = Object.entries(buildingTypes).find(
+    dispatchCenterType = Object.entries(buildingTypes).find(
       ([, buildingType]) => buildingType.isDispatchCenter
     );
-    const typeId = Number(dispatchCenterType[0]);
+    dispatchCenterType = Number(dispatchCenterType[0]);
     if (dispatchCenterType) {
-      dispatchCenters = await getBuildings(false, 'type', typeId);
+      dispatchCenters = await getBuildings(false, 'type', dispatchCenterType);
       dispatchCenters.sort((a, b) => a.caption.localeCompare(b.caption));
 
     }
@@ -589,10 +719,9 @@ async function filterDispatchCenters() {
     allValue.value = 'all';
     allValue.textContent = "alle Gebaude";
     dropdown.appendChild(allValue);
-    let value;
     dropdown.addEventListener('change', async event => {
-        value = event.target.value;
-        await refresh();
+        dispathCenter = event.target.value;
+        await refreshBuildings(dispathCenter);
     });
     dispatchCenters.forEach(building => {
         const option = document.createElement('option');
@@ -604,23 +733,9 @@ async function filterDispatchCenters() {
     const refreshButton = document.createElement('span');
     refreshButton.classList.add('btn', 'btn-default', 'btn-xs', 'glyphicon', 'glyphicon-refresh');
     refreshButton.addEventListener('click', async () => {
-        await refresh();
+        await refreshBuildings(dispathCenter);
     });
 
-    const refresh = async () => {
-        if (value === 'none') { return; }
-        if (value === 'all') {
-          const get = await getBuildings(false);
-          buildings = get.filter(building =>
-            building.building_type !== typeId);
-        } else {
-          const get = await getBuildings(false, 'dispatchCenter', Number(value));
-          buildings = get.filter(building =>
-            building.building_type !== typeId);
-        }
-        await renderTableBuildings(buildings);
-
-    }
     modal.functionArea.append(dropdown, refreshButton)
 }
 
@@ -630,12 +745,15 @@ async function initialize() {
 
     await initDB(configDB);
 
-    buildingTypes = await getBuildingTypes(I18n.locale);
-    vehicleTypes = await getVehicleTypes(I18n.locale);
-    const blueprints = await readKey('templates', 'main', configDB);
-    assignments = blueprints ? blueprints.assignments ? blueprints.assignments : assignments = {} : assignments = {};
-}
+    buildingTypes = await getBuildingTypes(I18n.locale)
 
+    vehicleTypes = await getVehicleTypes(I18n.locale)
+
+    const blueprints = await readKey('templates', 'main', configDB)
+    assignments = blueprints ? blueprints.assignments ? blueprints.assignments
+      : assignments = {} : assignments = {};
+
+}
 
 function createModal() {
     const html =
@@ -699,7 +817,6 @@ function createModal() {
 
     const versionSpan = document.createElement('span');
     versionSpan.style.fontSize = '0.8em';
-    //versionSpan.style.color = '#777';
     versionSpan.style.fontWeight = 'normal';
     versionSpan.style.whiteSpace = 'nowrap';
     versionSpan.append(`v${version}`);
@@ -727,9 +844,9 @@ function createModal() {
 
     const body = document.createElement('div');
     body.classList.add('modal-body');
-    body.style.display = 'flex'; //
-    body.style.flexDirection = 'column'; //
-    body.style.minHeight = '0'; //
+    body.style.display = 'flex';
+    body.style.flexDirection = 'column';
+    body.style.minHeight = '0';
     body.style.maxHeight = 'none';
     body.style.flex = '1 1 auto';
     body.style.overflowY = 'hidden';
@@ -754,9 +871,9 @@ function createModal() {
     const tabContent = document.createElement('div');
     tabContent.classList.add('tab-content');
     tabContent.style.paddingTop = '15px';
-    tabContent.style.flex = '1 1 0'; //
-    tabContent.style.minHeight = '0'; //
-    tabContent.style.overflow = 'hidden'; //
+    tabContent.style.flex = '1 1 0';
+    tabContent.style.minHeight = '0';
+    tabContent.style.overflow = 'hidden';
 
     body.append(tabList, tabContent);
 
