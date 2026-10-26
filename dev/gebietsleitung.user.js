@@ -1,24 +1,24 @@
 // ==UserScript==
 // @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.17.1.261024
+// @version         0.18.6.261026
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261024
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261024
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261026
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261026
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
 
 /*
- * [X] modal bauen
+ * [x] modal bauen
  * [x] Tab flexible hinzufügen
  * [x] Gebäudetabelle rendern mit Erweiterungen
- * [X] wechsel auf html sting
+ * [x] wechsel auf html sting
  * [x] Wachenbaupläne importieren
  * [x] Blueprint auf regex zuordnen oder Default setzen
  * [x] Blueprint auf Erweiterungen anwenden
@@ -26,27 +26,27 @@
  * [x] Personal auf Ist/soll und personalSetpoint farblich markieren
  * [x] Tabelsorter für alt-neu(ID), Wachentyp, Wachennamen
  * [x] Leitstelle erkennen
+ * [x] Erweiterungen aktivieren ermöglichen
+ * [x] Lagergröße und verfügbar anzeigen
+ * [x] Erweiterungen kaufen ermöglichen
+ * [x] Gekaufte Erweiterung nach erfolgreicher AJAX-Antwort in IndexedDB speichern
+ * [x] Schreibweise des title-Attributs am Filter korrigieren
+ * [x] AJAX-URL-Match und Gebäude vor dem Zugriff prüfen
+ * [x] Ereignisparameter im Menü-Click-Handler explizit übernehmen
+ * [x] Kauf gegen Doppelklick absichern und Tabelle nach Erfolg aktualisieren
+ * [x] change-Listener der Gebäudetabelle nur einmal registrieren
  * [x] Auswahl dropdown auf Leitstelle Übergabe an renderTableBuildings
  * [p] Stellplätze ermitteln und verfügbare anzeigen
+ * [p] renderTableVehicles (Design ausarbeiten)
  * [_] manuell Abweichungen vom Profi freigeben mit Gültigkeitsverlust bei nächster Profiländerung
  * [_] Fahrzeuge Leitstelle zuordnen und Änderungen erkennen
  * [_] geplante Fahrzeuge vergleichen und Abweichungen anzeigen
- * [x] Lagergröße und verfügbar anzeigen
  * [_] Template Tabelle rendern
  * [_] Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
  * [_] Equipment auf Machbarkeit prüfen
- * [_] renderTableVehicles (Design ausarbeiten)
- * [X] Erweiterungen aktivieren ermöglichen
- * [X] Erweiterungen kaufen ermöglichen
- * [X] Gekaufte Erweiterung nach erfolgreicher AJAX-Antwort in IndexedDB speichern
- * [_] Zähler gleicher Erweiterungen über type_id und Erweiterungstyp ermitteln
- * [_] AJAX-Ergebnis, Gebäude und Erweiterung vor dem Zugriff prüfen
- * [_] Kauf gegen Doppelklick absichern und Tabelle nach Erfolg aktualisieren
- * [_] change-Listener der Gebäudetabelle nur einmal registrieren
  * [_] Speichern-Buttontext mit textContent statt append setzen
- * [_] Zahlenformatierung für alle unterstützten Spielsprachen abfangen
+ * [_] Zahlenformatierung für alle unterstützten Spielsprachen abfangen - later
  * [_] Werte in Tabellen-HTML vor dem Einfügen escapen
- * [_] Ereignisparameter im Menü-Click-Handler explizit übernehmen
  * [_] storage_upgrades vor dem Zugriff prüfen
  */
 
@@ -115,7 +115,7 @@ const defaults = {
 
 const prefix = "gl";
 const scriptName = "Gebietsleitung - Zentrale Leitstelle";
-const version = "0.17.1.261024";
+const version = "0.18.6.261026";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 const langcode = {
@@ -123,6 +123,7 @@ const langcode = {
 }
 
 let buildings;
+let buildingCategories;
 let buildingTypes;
 let dispatchCenters;
 let templates;
@@ -132,18 +133,7 @@ let vehicleTypes;
 
 let modal;
 
-async function refreshBuildings(value = dispathCenter) {
-    let data;
-    if (value === 'none') { return; }
-    if (value === 'all') {
-      data = await getBuildings(false);
-    } else {
-      data = await getBuildings(false, 'dispatchCenter', Number(value));
-    }
-    buildings = data.filter(building =>
-      building.building_type !== dispatchCenterType);
-    await renderTableBuildings(buildings);
-}
+
 
 function countDuplicates(data) {
     const array = Array.isArray(data)
@@ -206,7 +196,9 @@ function profileSelector(building) {
     return { select, profiles, defaultProfile };
 }
 
+let currentFilterBuildings = [];
 async function renderTableBuildings(buildings) {
+    currentFilterBuildings = buildings;
     const table = tableBuildings.table;
     const tbody = tableBuildings.tableBody;
 
@@ -295,32 +287,32 @@ async function renderTableBuildings(buildings) {
               }
               if (current?.available_at) { // build
                 const date = new Date(current.available_at);
-                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += `<span title='${caption}`;
                 row += ` fertig am ${date.toLocaleString()}`;
                 row += `' class='label label-info' style='font-size: 8px;'>`;
                 row += `${index}</span>`;
               }
               if ((current?.enabled === true)
                   && (current?.available === true)) {
-                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += `<span title='${caption}`;
                 row += `' class='label label-success' style='font-size: 8px;'>`;
                 row += `${index}</span>`;
               }
             }
             if (!current && !planned) {
-              row += `<span title='${caption ?? "caption nicht lesbar"}`;
+              row += `<span title='${caption}`;
               row += `' class='label label-default' style='font-size: 8px;'>`
               row += `${index}</span>`;
             }
             if (!current && planned) {
               if ((realCount[caption] ?? 0) >= planCount[caption]) {
-                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += `<span title='${caption}`;
                 row += `' class='label label-default' style='font-size: 8px;'>`
                 row += `${index}</span>`;
               } else {
                 row += `<a data-remote='true' data-method='post' data-building='${building.id}' data-link-tag='credits'
                   data-extension='${index}' href="/buildings/${building.id}/extension/credits/${index}?redirect_building_id=${building.id}">`
-                row += `<span title='${caption ?? "caption nicht lesbar"}`;
+                row += `<span title='${caption}`;
                 const formatNumber = new Intl.NumberFormat(`${langcode[lang]}`, {maximumFractionDigits: 0});
                 const credits = formatNumber.format(type.credits)
                 row += ` bauen für ${credits} dauer ${type.duration}`;
@@ -365,14 +357,18 @@ async function renderTableBuildings(buildings) {
         building.personnel_target = true;
 
         if (buildingType?.startPersonnel >= 0) {
+          if (personnelSetPoint) {
+            building.personal_count_setPoint = personnelSetPoint;
+          }
 
           if (personnelCount === personnelTarget) {
             if (personnelSetPoint === personnelTarget) { // succes = green
               row += `<td class='text-success text-center' style='width: 11ch;'>`;
             }
             if (personnelSetPoint !== personnelTarget) { // info
-              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-info text-center' style='width: 11ch;'>`
+              row += `<td title="Das Personalsoll weicht vom Wert der Vorlage ab" class='text-info text-center' style='width: 11ch;'>`
               building.personnel_target = false;
+
             }
             row += `${personnelCount}`;
           }
@@ -381,7 +377,8 @@ async function renderTableBuildings(buildings) {
               row += `<td title="Diese Wache ist noch nicht voll" class='text-warning text-center' style='width: 11ch;'>`;
             }
             if (personnelSetPoint !== personnelTarget) { // danger = red
-              row += `<td title="SetPiont konnte nicht festegellt werden" class='text-danger text-center' style='width: 11ch;'>`;
+              row += `<td title="Das Personalsoll weicht vom Wert der Vorlage ab und ist noch nicht voll"
+                class='text-danger text-center' style='width: 11ch;'>`;
               building.personnel_target = false;
             }
             row += `${personnelCount} / ${personnelTarget}`;
@@ -396,18 +393,6 @@ async function renderTableBuildings(buildings) {
     $(table).trigger('update');
 
     const allDropdowns = document.querySelectorAll('table select');
-
-    tbody.addEventListener('change', event => {
-        const value = event.target.value;
-        const row = event.target.closest('tr');
-        const cell = row.querySelector('.digit-cell');
-        const building = parseInt(cell.dataset.digit, 10);
-        if (value === 'none') {
-          delete assignments[building];
-        } else {
-          assignments[building] = value;
-        }
-    });
 }
 
 let tableVehicles;
@@ -499,17 +484,17 @@ async function createTabBuildings() {
     const saveButtonProfiles = document.createElement('button');
     saveButtonProfiles.classList.add('btn', 'btn-default', 'btn-xs');
     saveButtonProfiles.style.width = '175px';
-    saveButtonProfiles.append("Vorlagen zuordnung speichern");
+    saveButtonProfiles.textContent = "Vorlagen zuordnung speichern";
     saveButtonProfiles.id = `${prefix}-saveProfileButton`;
     saveButtonProfiles.addEventListener('click', async () => {
         saveButtonProfiles.disabled = true;
         saveButtonProfiles.blur();
         const data = { assignments };
         await saveKey(data, 'main', configDB, 'templates');
+        saveButtonProfiles.textContent = "Erfolgreich gespeichert";
         await delay(1500);
-        saveButtonProfiles.append = "Erfolgreich gespeichert";
         saveButtonProfiles.disabled = false;
-        saveButtonProfiles.append = "Vorlagen zuordnung speichern";
+        saveButtonProfiles.textContent = "Vorlagen zuordnung speichern";
     });
 
     const filterButtonProfiles = document.createElement('button');
@@ -537,7 +522,7 @@ async function createTabBuildings() {
     filterButtonNotActiv.classList.add('btn', 'btn-default', 'btn-xs');
     filterButtonNotActiv.style.width = '175px';
     filterButtonNotActiv.append("Erweiterung nicht aktiv");
-    filterButtonNotActiv.titel = "Aktivieren direkt auf den Gelben Button klicken";
+    filterButtonNotActiv.title = "Aktivieren direkt auf den Gelben Button klicken";
     filterButtonNotActiv.id = `${prefix}-filterButtonExtensionNotActiv`;
     filterButtonNotActiv.addEventListener('click', async () => {
         const allExtensionsActiv = buildings.filter(building =>
@@ -558,6 +543,36 @@ async function createTabBuildings() {
         renderTableBuildings(personnelSetPoint);
     });
 
+    /*
+    const fixStaffTarget = document.createElement('button');
+    fixStaffTarget.classList.add('btn', 'btn-default', 'btn-xs', 'glyphicon', 'glyphicon-ok');
+    fixStaffTarget.title = "Personalsoll korrigieren";
+    fixStaffTarget.id = `${prefix}-fixStaffTarget`;
+    fixStaffTarget.addEventListener('click', async () => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content
+        const url = `https://www.leitstellenspiel.de/buildings/23743689?personal_count_target_only=1`;
+        const body = new URLSearchParams({
+          utf8: '✓',
+          _method: 'patch',
+          authenticity_token: csrfToken,
+          'building[personal_count_target]': String('200'),
+        });
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+          },
+          body,
+        });
+        console.log(response)
+
+        if (!response.ok) {
+          throw new Error(`Speichern fehlgeschlagen: ${response.status}`);
+        }
+    });
+    */
+
     const updateBuildings = document.createElement('span');
     updateBuildings.id = `${prefix}-textLastUpdateBuildings`;
     updateBuildings.textContent = `Lade Gebäudeliste ...`;
@@ -571,7 +586,6 @@ async function createTabBuildings() {
     reloadButtonBuildings.addEventListener('click', async () => {
         reloadButtonBuildings.disabled = true;
         updateBuildings.textContent = " Lade Gebäudeliste ..."
-        console.log(Number(dispathCenter))
         const fetch = await getBuildings(false, 'update');
         lastupdateBuildings = await showLastUpdate('buildings');
         await delay(1000);
@@ -591,6 +605,7 @@ async function createTabBuildings() {
       filterButtonExtensionMissing,
       filterButtonNotActiv,
       filterButtonPersonnel,
+      //fixStaffTarget
     );
     modal.footer.append(reloadButtonBuildings, updateBuildings);
 
@@ -656,49 +671,38 @@ async function createTabBuildings() {
         modal.footer.replaceChildren(reloadButtonBuildings, updateBuildings);
     });
 
-    $(document).ajaxComplete(async function(event, xhr, settings) {
-        if (!settings.url.includes('/extension/credits/')
-            && !settings.url.includes('/extension_ready/')
-        ) return;
-
-        const match = settings.url.match(
-          /\/buildings\/(\d+)\/extension(?:_ready|\/credits)\/(\d+)(?:[\/?].*)?/
+    tableBody.addEventListener('click', event => {
+        const link = event.target.closest(
+          `a[data-link-tag='credits']`
         );
-        const id = Number(match[1]); // building id
-        const type_id = Number(match[2]); // extension type_id
-        const building = buildings.find(b => b.id === id);
-
-        // /buildings/building.id/extension_ready/type_id/.*
-        if ((settings.url.includes('/extension_ready')) && (xhr.status === 200)) {
-          const index = building.extensions.findIndex(i =>
-            i.type_id === type_id);
-          building.extensions[index].enabled = true;
-          await saveKey(building, 'buildings', configDB);
-          console.log('extension aktiviert')
+        if (!link) return;
+        if (link.dataset.pending === 'true') {
+          event.preventDefault();
+          event.stopPropagation();
+          return;
         }
+        link.dataset.pending = 'true';
+    });
 
-        // /buildings/building.id/extension/credits/type_id?redirect_building_id=.*
-        if ((settings.url.includes('/extension/credits/')) && (xhr.status === 200)){
-          const buildingType = buildingTypes[building.building_type];
-          const extensionType = buildingType.extensions[type_id];
-          const duration = extensionType.duration.match(/(\d+)/);
-          const period = Number(duration[1]) * 24 * 60 * 60 * 1000;
-          const completion_date = date((Date.now() + period))
-          const extension = {
-            type_id,
-            caption: extensionType.caption,
-            available_at: completion_date
-          }
-          building.extensions.push(extension);
-          await saveKey(building, 'buildings', configDB);
+    tableBody.addEventListener('change', event => {
+        console.log(event)
+        const value = event.target.value;
+        const row = event.target.closest('tr');
+        const cell = row.querySelector('.digit-cell');
+        const building = parseInt(cell.dataset.digit, 10);
+        if (value === 'none') {
+          delete assignments[building];
+        } else {
+          assignments[building] = value;
         }
     });
+
     return { table, tableBody, };
 }
 
-let dispathCenter;
-let dispatchCenterType;
-async function filterDispatchCenters() {
+async function functionArea() {
+    const area = modal.functionArea;
+    let dispatchCenterType;
     buildings = [];
     dispatchCenterType = Object.entries(buildingTypes).find(
       ([, buildingType]) => buildingType.isDispatchCenter
@@ -707,36 +711,85 @@ async function filterDispatchCenters() {
     if (dispatchCenterType) {
       dispatchCenters = await getBuildings(false, 'type', dispatchCenterType);
       dispatchCenters.sort((a, b) => a.caption.localeCompare(b.caption));
-
     }
-    const dropdown = document.createElement('select');
-    dropdown.id = `${prefix}-filter-dispatchCenters`;
-    const emptyValue = document.createElement('option');
-    emptyValue.value = 'none';
-    emptyValue.textContent = "Leitstelle auswählen"
-    dropdown.appendChild(emptyValue);
-    const allValue = document.createElement('option');
-    allValue.value = 'all';
-    allValue.textContent = "alle Gebaude";
-    dropdown.appendChild(allValue);
-    dropdown.addEventListener('change', async event => {
-        dispathCenter = event.target.value;
-        await refreshBuildings(dispathCenter);
-    });
-    dispatchCenters.forEach(building => {
-        const option = document.createElement('option');
-        option.textContent = building.caption;
-        option.value = building.id;
-        dropdown.appendChild(option);
-    });
+    const dispatch = () => {
+        let string =`
+        <select id='${prefix}-dispatchCenters'>
+            <option value='none'>Leitstelle auswählen</option>
+            <option value='all'>alle Leitstellen</option>
+        `;
+        dispatchCenters.forEach(dc => {
+            string += `<option value='${dc.id}'>${dc.caption}</option>`;
+        });
+        string += `</select>`;
+        return string;
+    }
 
-    const refreshButton = document.createElement('span');
-    refreshButton.classList.add('btn', 'btn-default', 'btn-xs', 'glyphicon', 'glyphicon-refresh');
-    refreshButton.addEventListener('click', async () => {
-        await refreshBuildings(dispathCenter);
-    });
+    const refresh = `<span id='${prefix}-refresh' class="btn btn-default btn-xs glyphicon glyphicon-refresh"></span>`;
 
-    modal.functionArea.append(dropdown, refreshButton)
+    const categories = () => {
+        let string =`
+        <select id='${prefix}-buildingCategories'>
+            <option value='all'>alle Gebäudearten</option>`
+
+        Object.entries(buildingCategories).forEach(([group, info]) => {
+            string += `<option value='${group}'>${group}</option>`;
+
+            info.buildings.forEach(type => {
+                const caption = buildingTypes[type].caption;
+                if (caption === "Verbandszellen") return;
+                string += `<option value='${type}'>&nbsp;&nbsp;&nbsp;&nbsp;${caption}</option>`;
+            });
+        });
+        string += `</select>`;
+        return string;
+    }
+
+    let dispathCenterId = 'none';
+    let filter = 'all';
+    $(area).append(dispatch(), refresh, categories());
+    area.addEventListener('click', async event => {
+        const dropdown = event.target.id;
+        const value = event.target.value;
+
+        if (dropdown === `${prefix}-refresh`) {
+          await renderTableBuildings(buildings);
+          return;
+        }
+
+        if (dropdown === `${prefix}-dispatchCenters`) {
+          dispathCenterId = value;
+        }
+        if (dispathCenterId === 'none') return;
+
+        if (dropdown === `${prefix}-buildingCategories`) {
+          const group = buildingCategories[value];
+          if (group) {
+            filter = group.buildings;
+          } else {
+            filter = value;
+          }
+        }
+
+        let data;
+        if (Number(filter) === dispatchCenterType) {
+          buildings = await getBuildings(false, 'type', Number(filter));
+        } else {
+          if (dispathCenterId === 'all') {
+            data = await getBuildings(false);
+          } else {
+            data = await getBuildings(false, 'dispatchCenter', Number(dispathCenterId));
+          }
+          if (filter !== 'all') {
+            const active = Array.isArray(filter) ? filter : [Number(filter)]
+            const filtered = data.filter(b => active.includes(b.building_type));
+            data = filtered;
+          }
+          buildings = data.filter(building =>
+            building.building_type !== dispatchCenterType);
+        }
+        await renderTableBuildings(buildings);
+    });
 }
 
 async function initialize() {
@@ -745,14 +798,14 @@ async function initialize() {
 
     await initDB(configDB);
 
-    buildingTypes = await getBuildingTypes(I18n.locale)
+    buildingCategories = await getBuildingCategories(lang)
+    buildingTypes = await getBuildingTypes(lang)
 
-    vehicleTypes = await getVehicleTypes(I18n.locale)
+    vehicleTypes = await getVehicleTypes(lang)
 
     const blueprints = await readKey('templates', 'main', configDB)
     assignments = blueprints ? blueprints.assignments ? blueprints.assignments
       : assignments = {} : assignments = {};
-
 }
 
 function createModal() {
@@ -887,6 +940,59 @@ function createModal() {
 
     document.body.append(modal);
 
+    $(document).ajaxComplete(async function(event, xhr, settings) {
+        if (!settings.url.includes('/extension/credits/')
+            && !settings.url.includes('/extension_ready/')
+        ) return;
+
+        const match = settings.url.match(
+          /\/buildings\/(\d+)\/extension(?:_ready|\/credits)\/(\d+)(?:[\/?].*)?/
+        );
+        if (!match) return;
+        const id = Number(match[1]); // building id
+        const type_id = Number(match[2]); // extension type_id
+        const building = buildings.find(b => b.id === id);
+        if (!building) return;
+
+        const link = [...document.querySelectorAll(`a[data-link-tag='credits']`)]
+          .find(link =>
+            link.dataset.building === match[1]
+        && link.dataset.extension === match[2]
+          );
+
+        if (xhr.status !== 200) {
+          link?.removeAttribute('data-pending');
+          return;
+        }
+
+        // /buildings/building.id/extension_ready/type_id/.*
+        if ((settings.url.includes('/extension_ready')) && (xhr.status === 200)) {
+          const index = building.extensions.findIndex(i =>
+            i.type_id === type_id);
+          building.extensions[index].enabled = true;
+          await saveKey(building, 'buildings', configDB);
+          console.log('extension aktiviert')
+        }
+
+        // /buildings/building.id/extension/credits/type_id?redirect_building_id=.*
+        if ((settings.url.includes('/extension/credits/')) && (xhr.status === 200)){
+
+          const buildingType = buildingTypes[building.building_type];
+          const extensionType = buildingType.extensions[type_id];
+          const duration = extensionType.duration.match(/(\d+)/);
+          const period = Number(duration[1]) * 24 * 60 * 60 * 1000;
+          const completion_date = date((Date.now() + period))
+          const extension = {
+            type_id,
+            caption: extensionType.caption,
+            available_at: completion_date
+          }
+          building.extensions.push(extension);
+          await saveKey(building, 'buildings', configDB);
+          await renderTableBuildings(currentFilterBuildings);
+        }
+    });
+
     return {
       modal,
       body,
@@ -896,7 +1002,6 @@ function createModal() {
       tabContent,
       footer,
     };
-
 }
 
 if ( ! document.querySelector(`#${prefix}-menu`)) {
@@ -911,13 +1016,13 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
   triggerLi.id = `${prefix}-menu`;
   triggerLi.append(triggerA);
   triggerLi.addEventListener(
-    'click', async () => {
+    'click', async event => {
         event.preventDefault();
         await initialize();
 
         if (!modal) {
           modal = createModal();
-          await filterDispatchCenters();
+          await functionArea();
           await addTabVehicles();
           tableBuildings = await createTabBuildings();
         }
@@ -925,4 +1030,4 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
     });
   divider.before(triggerLi);
 };
-//if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
+if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
