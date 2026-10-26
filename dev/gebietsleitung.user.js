@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.18.6.261026
+// @version         0.20.7.261026
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
@@ -44,7 +44,7 @@
  * [_] Template Tabelle rendern
  * [_] Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
  * [_] Equipment auf Machbarkeit prüfen
- * [_] Speichern-Buttontext mit textContent statt append setzen
+ * [x] Speichern-Buttontext mit textContent statt append setzen
  * [_] Zahlenformatierung für alle unterstützten Spielsprachen abfangen - later
  * [_] Werte in Tabellen-HTML vor dem Einfügen escapen
  * [_] storage_upgrades vor dem Zugriff prüfen
@@ -108,14 +108,13 @@ const defaults = {
   },
 };
 
-
 //////////////////////////////////////////////////////////////////////////////
 
 'use strict'
 
 const prefix = "gl";
 const scriptName = "Gebietsleitung - Zentrale Leitstelle";
-const version = "0.18.6.261026";
+const version = "0.20.7.261026";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 const langcode = {
@@ -204,7 +203,9 @@ async function renderTableBuildings(buildings) {
 
     tbody.replaceChildren();
 
+    let count = 0;
     buildings.forEach(building => {
+        count++;
         if (building.id === 'lastUpdate') { return; }
         const buildingType = buildingTypes[building.building_type];
         let parkingLots = buildingType?.startParkingLots + building.level;
@@ -354,7 +355,12 @@ async function renderTableBuildings(buildings) {
         const personnelCount = building.personal_count;
         const personnelTarget = building.personal_count_target;
         const personnelSetPoint = template ? template.personnelSetPoint : null;
+        /*
+        const hiring_automatic =
+          building.hiring_automatic === false && building.personal_count_target
+            ? false : undefined;
         building.personnel_target = true;
+        */
 
         if (buildingType?.startPersonnel >= 0) {
           if (personnelSetPoint) {
@@ -387,12 +393,27 @@ async function renderTableBuildings(buildings) {
           row += `<td style='width: 11ch;'>`;
         }
         row += `</td>`;
+        /*
+          if ((building.hiring_automatic === false) // cell hiring_automatic
+            && (building.personal_count_target)) {
+          row += `<td style='width: 2ch;'>`
+          row += `<a data-remote='true' data-method='post' data-building='${building.id}'
+            href='/buildings/${building.id}/hire_do/automatic'>`
+          row += `<span id='${prefix}-hiringAuto' class="btn btn-danger btn-xs glyphicon glyphicon-time"></span>`;
+          row += `</a>`
+          row += `</td>`;
+        } else {
+          row += `<td style='width: 2ch;'></td>`;
+        }
+        */
         row += `</tr>`;
         $(tbody).append(row);
     });
-    $(table).trigger('update');
 
-    const allDropdowns = document.querySelectorAll('table select');
+    const counter = document.querySelector(`#${prefix}-buildingsCounter`)
+    counter.textContent = `\u00a0\u00a0\u00a0\u00a0${count} Gebäude`;
+
+    $(table).trigger('update');
 }
 
 let tableVehicles;
@@ -543,35 +564,95 @@ async function createTabBuildings() {
         renderTableBuildings(personnelSetPoint);
     });
 
-    /*
     const fixStaffTarget = document.createElement('button');
     fixStaffTarget.classList.add('btn', 'btn-default', 'btn-xs', 'glyphicon', 'glyphicon-ok');
-    fixStaffTarget.title = "Personalsoll korrigieren";
+    fixStaffTarget.title = `Personalsoll für die aktuellen Gebäude setzen\n
+       Achtung! Es werden nur 2 Gebäude pro Sekunde abgearbeitet\n
+       Wachen ohne Profil können nicht verarbeitet werden!`;
     fixStaffTarget.id = `${prefix}-fixStaffTarget`;
     fixStaffTarget.addEventListener('click', async () => {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').content
-        const url = `https://www.leitstellenspiel.de/buildings/23743689?personal_count_target_only=1`;
-        const body = new URLSearchParams({
-          utf8: '✓',
-          _method: 'patch',
-          authenticity_token: csrfToken,
-          'building[personal_count_target]': String('200'),
-        });
+        fixStaffTarget.disabled = true;
+        const fixBuildings = buildings.filter(building =>
+          building.personnel_target === false
+              && building.withoutAssignment !== true);
+        for (const building of fixBuildings) {
+          await delay(500);
+          const id = building.id;
+          const personnelSetPoint = building.template.personnelSetPoint
+          const url = `/buildings/${id}?personal_count_target_only=1`;
+          const body = new URLSearchParams({
+            utf8: '✓',
+            _method: 'patch',
+            authenticity_token: document.querySelector('meta[name="csrf-token"]').content,
+            'building[personal_count_target]': String(personnelSetPoint),
+          });
+          try {
+            const response = await fetch(url, {
+              method: 'POST',
+              headers: {
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
+              },
+              body,
+            });
 
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content,
-          },
-          body,
-        });
-        console.log(response)
-
-        if (!response.ok) {
-          throw new Error(`Speichern fehlgeschlagen: ${response.status}`);
+            if (!response.ok) {
+              throw new Error(`Speichern fehlgeschlagen: ${response.status}`);
+            }
+            building.personal_count_target = personnelSetPoint;
+            await saveKey(building, 'buildings', configDB);
+          } finally {
+            console.log(`building ${id} done`)
+          }
+          renderTableBuildings(fixBuildings)
+          fixStaffTarget.disabled = false;
         }
     });
-    */
+
+    //https://www.leitstellenspiel.de/buildings/23743689/hire_do/automatic
+    const filterButtonHireAutomatic = document.createElement('button');
+    filterButtonHireAutomatic.classList.add('btn', 'btn-default', 'btn-xs');
+    filterButtonHireAutomatic.style.width = '175px';
+    filterButtonHireAutomatic.append("Kein automatisches werben");
+    filterButtonHireAutomatic.id = `${prefix}-filterButtonPersonnel`;
+    filterButtonHireAutomatic.addEventListener('click', async () => {
+        const hireAutomatic = buildings.filter(building =>
+          building.hiring_automatic === false
+            && building.personal_count_target
+        );
+        renderTableBuildings(hireAutomatic);
+    });
+    const fixHireAutomatic = document.createElement('button');
+    fixHireAutomatic.classList.add('btn', 'btn-default', 'btn-xs', 'glyphicon', 'glyphicon-ok');
+    fixHireAutomatic.id = `${prefix}-filterButtonPersonnel`;
+    fixHireAutomatic.title = `Automatisches Personal werben für die aktuellen Gebäude akivieren\n
+      Achtung! Es werden nur 2 Gebäude pro Sekunde abgearbeitet`;
+    fixHireAutomatic.addEventListener('click', async event => {
+        event.preventDefault();
+        fixHireAutomatic.disabled = true;
+        const hireAutomatic = currentFilterBuildings.filter(building =>
+          building.hiring_automatic === false
+            && building.personal_count_target
+        );
+        for (const building of hireAutomatic) {
+          await delay(500);
+          try {
+            const id = building.id;
+            const response = await fetch(`/buildings/${id}/hire_do/automatic`);
+            if (!response.ok) {
+              throw new Error(`building ${id}: HTTP ${response.status}`)
+            }
+            building.hiring_automatic = true;
+            await saveKey(building, 'buildings', configDB);
+          } finally {
+            console.log(`${id} done`)
+          }
+        }
+        const errorBuildings = fixBuildings.filter(building =>
+          building.hiring_automatic === false
+        );
+        await renderTableBuildings(errorBuildings);
+        fixHireAutomatic.disabled = false;
+    });
 
     const updateBuildings = document.createElement('span');
     updateBuildings.id = `${prefix}-textLastUpdateBuildings`;
@@ -605,7 +686,9 @@ async function createTabBuildings() {
       filterButtonExtensionMissing,
       filterButtonNotActiv,
       filterButtonPersonnel,
-      //fixStaffTarget
+      fixStaffTarget,
+      filterButtonHireAutomatic,
+      fixHireAutomatic
     );
     modal.footer.append(reloadButtonBuildings, updateBuildings);
 
@@ -634,6 +717,7 @@ async function createTabBuildings() {
             </th>
             <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Lager</th>
             <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Personal</th>
+            <!--<th class='sorter-false text-center' style='vertical-align: middle; width: 2ch;'></th>-->
         </tr>
     </thead> `
     /* END HTML */
@@ -745,9 +829,12 @@ async function functionArea() {
         return string;
     }
 
+    const buildingsCounter = `<span id="gl-buildingsCounter">&nbsp;&nbsp;&nbsp;&nbsp;0 Gebäude</span>`
+
+    $(area).append(dispatch(), refresh, categories(), buildingsCounter);
+
     let dispathCenterId = 'none';
     let filter = 'all';
-    $(area).append(dispatch(), refresh, categories());
     area.addEventListener('click', async event => {
         const dropdown = event.target.id;
         const value = event.target.value;
@@ -1030,4 +1117,4 @@ if ( ! document.querySelector(`#${prefix}-menu`)) {
     });
   divider.before(triggerLi);
 };
-if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
+//if (document.querySelector(`#${prefix}-menu`)) { document.querySelector(`#${prefix}-menu`).click(); };
