@@ -14,6 +14,7 @@ Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederve
 - [`[LSS] Layout 04`](dist/lssm-layout-04.user.js) — Kompaktes Layout für das Leitstellenspiel (Basiert auf LSSM v3)
 - [`[LSSM] MissionsOut`](dist/lssm-missionsOut.user.js) — Einsatz aus/ein-blenden
 - [`LSS Einsatz-Generierungszeitpunkt`](dist/missionDateAge.user.js) — Zeigt den Erstellungszeitpunkt und das Alter des Einsatzes an (Rot ab 24h um 01:00 Uhr nachts).
+- [`[ LSS ] fehlendes Personal schnell FMS 6 setzen`](dist/missionVehicleErrrorFMS6.user.js) — erstellt bei der Fehlermeldung im Einsatz einen Button, um bei fehlendem Personal schnell FMS6 zu setzen
 - [`[LSS] showAddress`](dist/ShowAddress.user.js) — zeigt die Adresse der Wache im Gebäude an
 - [`* Wachenbaupläne`](dist/teplateEditor.js) — Verwaltet Baupläne für benutzerdefinierte Vorlagen, wie Wachen ausgebaut und ausgestattet werden sollen
 - [`[ LSS ] erweiterter Lehrgangszuweiser`](dist/trainingPersonalSelector.user.js) — Fügt Buttons hinzu, um Personal einer Wache gesammelt einem Lehrgang zuzuweisen. Behebt wechselwirkung mit Ausbildungsmausschoner und erweitert um Vollausblidungs Feature
