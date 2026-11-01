@@ -81,7 +81,7 @@ module.exports = {
         'max-len': [
             'error',
             {
-                'code': 80,
+                'code': 100,
                 'tabWidth': 4,
                 'ignoreStrings': true,
                 'ignoreTemplateLiterals': true,
@@ -98,7 +98,7 @@ module.exports = {
                 'SwitchCase': 1,
                 'VariableDeclarator': 2, // 2 * 2 = 4 Spaces für Variablen im Code
                 'outerIIFEBody': 1,
-                'MemberExpression': 1,
+                'MemberExpression': 2,
                 'FunctionDeclaration': { 'body': 2, 'parameters': 2 }, // 2 * 2 = 4 Spaces für Funktionen
                 'FunctionExpression': { 'body': 2, 'parameters': 2 },   // 2 * 2 = 4 Spaces für anonyme Funktionen
                 'ObjectExpression': 1,

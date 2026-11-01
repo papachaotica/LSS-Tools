@@ -6,4 +6,6 @@
 *.swn
 *.un~
 
-temp/*
+tmp/**
+.codex/**
+api/**

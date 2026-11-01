@@ -15,7 +15,7 @@ case "$branch" in
 
             temporary_file="$(mktemp)"
             sed -E \
-                "s|^([[:space:]]*//[[:space:]]*@require[[:space:]]+)${raw_base}|\\1http://localhost:8080/|" \
+                "s#^([[:space:]]*//[[:space:]]*@(require|updateURL)[[:space:]]+)${raw_base}#\\1http://localhost:8080/#" \
                 "$script" > "$temporary_file"
 
             if ! cmp -s "$script" "$temporary_file"; then
