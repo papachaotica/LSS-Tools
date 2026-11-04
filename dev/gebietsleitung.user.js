@@ -1071,12 +1071,12 @@ async function renderTableBuildings(buildings) {
 async function functionArea() {
   const area = modal.functionArea;
   buildings = [];
-  const dispatchCenterTypeEntry = Object.entries(buildingTypes).find(
+  const dispatchCenterType = Object.entries(buildingTypes).find(
     ([, bType]) => bType.isDispatchCenter
   );
-  const dispatchCenterBTypeID = Number(dispatchCenterTypeEntry[0]);
-  if (Number.isFinite(dispatchCenterBTypeID)) {
-    dispatchCenters = await getBuildings(false, 'type', dispatchCenterBTypeID);
+  const dispatchCenterTypeID = Number(dispatchCenterType[0]);
+  if (Number.isFinite(dispatchCenterTypeID)) {
+    dispatchCenters = await getBuildings(false, 'type', dispatchCenterTypeID);
     dispatchCenters.sort((a, b) => a.caption.localeCompare(b.caption));
   }
   const dispatch = () => {
@@ -1171,9 +1171,8 @@ async function functionArea() {
         data = filtered;
       }
       buildings = data.filter(building =>
-        Number(building.building_type) !== dispatchCenterBTypeID
+        Number(building.building_type) !== dispatchCenterTypeID
       );
-      buildings.sort((a, b) => a.caption.localeCompare(b.caption));
     }
 
     if (modal.activeTab === 'buildings') {
