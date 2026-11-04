@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name            [ LSS ] Profil Editor
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.0.0.261102
+// @version         0.0.0.261105
 // @description:de  Erstellung und Bearbeitung von Profilen für den Gebietsleiter
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261102
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261102
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261105
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261105
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -25,7 +25,7 @@
 
 const prefix = "te";
 const scriptName = "Profil Editor";
-const version = "0.0.0.261102";
+const version = "0.0.0.261105";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 

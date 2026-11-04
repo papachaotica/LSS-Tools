@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.20.8.261102
+// @version         0.25.0.261105
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
@@ -9,15 +9,13 @@
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
 // @updateURL       https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/dist/gebietsleitung.user.js
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261102
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261102
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261105
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261105
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
 
 /*
- * [x] modal bauen
- * [x] Tab flexible hinzufügen
  * [x] Gebäudetabelle rendern mit Erweiterungen
  * [x] wechsel auf html sting
  * [x] Wachenbaupläne importieren
@@ -37,25 +35,31 @@
  * [x] Kauf gegen Doppelklick absichern und Tabelle nach Erfolg aktualisieren
  * [x] change-Listener der Gebäudetabelle nur einmal registrieren
  * [x] Auswahl dropdown auf Leitstelle Übergabe an renderTableBuildings
- * [p] Stellplätze ermitteln und verfügbare anzeigen
- * [p] renderTableVehicles (Design ausarbeiten)
+ * [x] Stellplätze ermitteln und verfügbare anzeigen
+ * [x] renderTableVehicles (Design ausarbeiten)
+ * [_] rendernPannels ist träge rückmeldungen zum zustand geben Progressbar z.B. beim Fahrzeug laden
+ * [_] filter button Fahrzeug tab einrichten
+ * [_] link vor dem Fahrzeug kauf auf erweiterunge prüfen
  * [_] manuell Abweichungen vom Profi freigeben mit Gültigkeitsverlust bei nächster Profiländerung
- * [_] Fahrzeuge Leitstelle zuordnen und Änderungen erkennen
- * [_] geplante Fahrzeuge vergleichen und Abweichungen anzeigen
+ * [c] Fahrzeuge Leitstelle zuordnen und Änderungen erkennen
+ * [x] geplante Fahrzeuge vergleichen und Abweichungen anzeigen
  * [_] Template Tabelle rendern
  * [_] Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
  * [_] Equipment auf Machbarkeit prüfen
  * [x] Speichern-Buttontext mit textContent statt append setzen
- * [_] Zahlenformatierung für alle unterstützten Spielsprachen abfangen - later
  * [_] Werte in Tabellen-HTML vor dem Einfügen escapen
  * [_] storage_upgrades vor dem Zugriff prüfen
- */
+ * [_] footer progessbar als data-tab-control
+ * [_] footer status credits success 
+ */ /* x=done p=progress c=canceled */
 
 const defaults = {
   '0': {
     name: "Feuerwache",
     personnelSetPoint: 200,
     extensions: [],
+    vehicles: [],
+    targetLevel: 19
   },
   '1': {
     name: "Feuerwehrschule",
@@ -69,6 +73,8 @@ const defaults = {
     name: "Rettungswache",
     personnelSetPoint: 60,
     extensions: [],
+    vehicles: [],
+    targetLevel: 14
   },
   '3': {
     name: "Rettungsschule",
@@ -93,6 +99,19 @@ const defaults = {
     ],
     targetLevel: 20,
   },
+  '6': {
+    name: "Polizeiwache",
+    extensions: [
+      { id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }, { id: 9 }, // Zellen
+      { id: 11, name: "Kriminalpolizei" },
+      { id: 12, name: "Dienstgruppenleitung" },
+      { id: 13, name: "Motorradstaffel" },
+      { id: 16, name: "Autobahnpolizei " },
+    ],
+    personnelSetPoint: 50,
+    vehicles: [],
+    targetLevel: 14
+  },
   '8': {
     name: "Polizeischule",
     extensions: [
@@ -100,6 +119,20 @@ const defaults = {
       { id: 1, name: "Weiterer Klassenraum" },
       { id: 2, name: "Weiterer Klassenraum" },
     ],
+  },
+  '9': {
+    name: "THW",
+    extensions: [
+      { id: 0, name: "1. Technischer Zug: Fachgruppe Notversorgung/Notinstandsetzung" },
+      { id: 1, name: "1. Technischer Zug: Zugtrupp" },
+      { id: 5, name: "2. Technischer Zug: Fachgruppe Notversorgung/Notinstandsetzung" },
+      { id: 6, name: "2. Technischer Zug: Zugtrupp" },
+      { id: 4, name: "2. Technischer Zug - Bergungsgruppe" },
+      { id: 2, name: "Fachgruppe Räumen" },
+      { id: 8, name: "Fachgruppe Wasserschaden/Pumpen" },
+      { id: 9, name: "Fachgruppe Schwere Bergung" }
+    ],
+    vehicles: []
   },
   '10': {
     name: "THW Bundesschule",
@@ -109,6 +142,54 @@ const defaults = {
       { id: 2, name: "Weiterer Klassenraum" },
     ],
   },
+  '11': {
+    name: "Bereitschaftspolizei",
+    extensions: [
+      { id: 0, name: "2. Zug der 1. Hundertschaft" },
+      { id: 1, name: "3. Zug der 1. Hundertschaft" },
+      { id: 2, name: "Sonderfahrzeug: Gefangenenkraftwagen" },
+      { id: 3, name: "Technischer Zug: Wasserwerfer" },
+      { id: 4, name: "SEK: 1. Zug" },
+      { id: 6, name: "MEK: 1. Zug" },
+      { id: 8, name: "Diesnthundestaffel" },
+      { id: 9, name: "Reiterstaffel" },
+      { id: 10, name: "Sonderfahrzeug: Lautsprecherkraftwagen" },
+    ],
+    personnelSetPoint: 240,
+    vehicles: []
+  },
+  '12': {
+    name: "Schnelleinsatzgruppe (SEG)",
+    extensions: [
+      { id: 0, name: "Führung" },
+      { id: 1, name: "Sanitätsdienst" },
+    ],
+    vehicles: []
+  },
+  '18': {
+    name: "Feuerwache (Kleinwache)",
+    extensions: [],
+    personnelSetPoint: 100,
+    vehicles: [],
+    targetLevel: 5
+  },
+  '19': {
+    name: "Polizeiwache (Kleinwache)",
+    extensions: [
+      { id: 0 }, { id: 1 }, // Zellen
+      { id: 12, name: "Dienstgruppenleitung" }
+    ],
+    personnelSetPoint: 25,
+    vehicles: [],
+    targetLevel: 5
+  },
+  '20': {
+    name: "Rettungswache (Kleinwache)",
+    extensions: [],
+    personnelSetPoint: 25,
+    vehicles: [],
+    targetLevel: 5
+  },
   '27': {
     name: "Schule für Seefahrt und Seenotrettung",
     extensions: [
@@ -117,24 +198,64 @@ const defaults = {
       { id: 2, name: "Weiterer Klassenraum" },
     ],
   },
+  '28': {
+    name: "Hubschrauberstation (Seenotrettung)",
+    extensions: [],
+    personnelSetPoint: 10,
+    vehicles: []
+  },
+  '29': {
+    name: "Autobahnpolizei",
+    extensions: [
+      { id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }, { id: 8 }, { id: 9 }, // Zellen
+    ],
+    personnelSetPoint: 20,
+    vehicles: [],
+    targetLevel: 9
+  }
 };
 
 //////////////////////////////////////////////////////////////////////////////
+
+/* definition
+ * bCaption = building.caption
+ * bID = Number(building.id || vehicle.building_id)
+ * building = object of one building
+ * buildings = Array of Buildings
+ * buildingTypes = Objekt contain all objects of building Types
+ * bType = object of one building Type
+ * bTypeCaption = bType.caption
+ * bTypeID = Number(building.building_type)
+ * extension = Object of one extension on building
+ * extensions = Array all extensions on building
+ * exType = Object of one extension Type
+ * exTypes = Array of all extensions Types on one bType in buildingTypes
+ * exTypeID = extension.type_id || exTypes[index]
+ * template = Object of one template
+ * templates = Array of all templates
+ * vCaption = vehicle.caption
+ * vID = Number(vehicel.id)
+ * vehicle = object of one vehicle
+ * vehicels = Array of all vehicles
+ * vehicleTypes = Object contain all objects fo vehicle Types
+ * vType = Object of one vehicle Type
+ * vTypeCaption = vType.caption
+ * vTypeID Number(vehicle.vehicel_type)
+ * similar at trailer t or container c if needed
+ */
 
 'use strict'
 
 const prefix = "gl";
 const scriptName = "Gebietsleitung - Zentrale Leitstelle";
-const version = "0.20.8.261102";
+const version = "0.25.0.261105";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 const international = {
   'de_DE': {
+    notSupportedBuildings: [14, 16,],
     langcode: 'de-DE',
-    vehicles:
-    {
-      hooklifts: [46,],
-    },
+    vehicles: { hooklifts: [46,], },
   },
 };
 
@@ -178,8 +299,9 @@ async function showLastUpdate(store) {
 }
 
 function profileSelector(building) {
+  const bTypeID = Number(building.building_type);
   const profiles = templates.filter(profile =>
-    profile.buildingTypeId === building.building_type
+    Number(profile.buildingTypeId) === bTypeID
   );
   let select = undefined;
   let defaultProfile = false;
@@ -202,19 +324,45 @@ function profileSelector(building) {
     select = profiles[0];
   }
   if (!select) {
-    select = defaults[building.building_type];
+    select = defaults[bTypeID];
     if (select) {
       select.defaultProfile = true;
     } else {
-      select = {
-        id: 'none',
-        extensions: [],
-        vehicles: [],
-      }
+      select = { id: 'none', extensions: [], vehicles: [], }
     }
   }
   return { select, profiles };
 }
+
+const getType = (item, array) => {
+  if (item?.building_type !== undefined) {
+    const bTypeID = Number(item.building_type);
+    return array?.[bTypeID] ?? {
+      caption: `Unbekannter Gebäudetyp (${bTypeID})`,
+      extensions: [],
+    };
+  }
+  if (item?.vehicle_type !== undefined) {
+    const vTypeID = Number(item.vehicle_type);
+    return array?.[vTypeID] ?? {
+      caption: `Unbekannter Fahrzeugtyp (${vTypeID})`,
+      isTrailer: false,
+      staff: { min: 0, max: 0, training: 0, trainingAtScene: 0 },
+    };
+  }
+  if (item?.type_id !== undefined) {
+    const exTypeID = Number(item.type_id);
+    return array?.[exTypeID] ?? {
+      caption: `Unbekannte Erweiterung (${exTypeID})`,
+      credits: 0,
+      duration: '0 Tage',
+      givesParkingLots: 0,
+      unlocksVehicleTypes: [],
+      parkingLotReservations: [],
+    };
+  }
+  return undefined;
+};
 
 async function renderVehicleRows(tbody, id) {
   /* eslint-disabel */ /*
@@ -260,6 +408,10 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
   tbody.replaceChildren();
 
   const building = buildings.find(b => b.id === id);
+  const bType = getType(building, buildingTypes);
+  const extensions = building?.extensions || [];
+  const exTypes = bType?.extensions || [];
+  const template = profileSelector(building)?.select;
   const vehiclesThisBuilding = vehiclesByBuilding.get(id) || [];
 
   if (vehiclesThisBuilding.length === 0) {
@@ -270,45 +422,50 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
     return;
   }
 
-  const tags = building?.tags
+  const tags = building?.tags ? building.tags : building.tags = {};
   tags.fms6 = false;
 
-  const getCaption = (vehicle) => {
-    const typeId = vehicle.vehicle_type;
-    return vehicleTypes[typeId]?.caption;
-  };
-
   const sortedByType = [...vehiclesThisBuilding].sort((a, b) => {
-    const captionA = getCaption(a) || '';
-    const captionB = getCaption(b) || '';
+    const captionA = getType(a, vehicleTypes)?.caption || '';
+    const captionB = getType(b, vehicleTypes)?.caption || '';
     return captionA.localeCompare(captionB);
   });
 
-  const trailers = sortedByType.filter(v => vehicleTypes[v.vehicle_type].isTrailer === true);
-  const trucks = sortedByType.filter(v => vehicleTypes[v.vehicle_type]?.isTrailer !== true);
+  const trailers = sortedByType.filter(vehicle =>
+    getType(vehicle, vehicleTypes).isTrailer === true);
+  const trucks = sortedByType.filter(vehicle =>
+    getType(vehicle, vehicleTypes).isTrailer !== true);
 
   const sortedVehicles = [...trucks, ...trailers];
 
-  // Icons definieren
+  // icons
   const truckIcon = `<img src="/images/trailer_vehicle.png" width="18" height="18" style="margin-left: 5px;" title="Zugfahrzeug">`;
   const trailerIcon = `<img src="/images/trailer_2.png" width="18" height="18" style="margin-right: 5px;" title="Anhänger">`;
 
   let rc = 0;
+
+  const vehicleCount = {};
   sortedVehicles.forEach(vehicle => {
-    const vTypeId = vehicle.vehicle_type;
-    const vType = vehicleTypes[vTypeId];
+    const vTypeID = vehicle.vehicle_type;
+    const vType = getType(vehicle, vehicleTypes);
+
+    const target = template.vehicles.find(t => t.id === vTypeID);
+    const quantity = target?.quantity ?? 0;
+
+    vehicleCount[vTypeID] = (vehicleCount[vTypeID] || 0) + 1;
 
     const isTrailer = vType?.isTrailer ?? false;
     const isConnect = sortedVehicles.some(t => t.id === vehicle.tractive_vehicle_id);
     const hasTrailer = sortedVehicles.some(t => t.tractive_vehicle_id === vehicle.id);
 
+
+
     // Cell vehicleType
     let row;
     row = `<tr data-line="${rc++}" data-vehicle-id="${vehicle.id}" data-building-id='${building.id}' style="display: table; width: 100%; table-layout: fixed;">`;
-    row += `<td class="text-right" style="width: 175px;">`;
+    row += `<td class="text-right" style="width: 200px;">`;
     row += `<a class="btn btn-default btn-xs disabled">${vType.caption}</a>`;
     row += `</td>`;
-
 
     // Cell vehicle caption and trailer caption
     let nameCell = '';
@@ -321,31 +478,62 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
     }
     row += `<td style="width: 40ch;">${nameCell}</td>`
     row += `<td style="width: 40ch;">${trailerCell}</td>`
-    /*
-<tr class="tablesorter-headerRow" role="row" style='display: table; width: 100%; table-layout: fixed;'>`;
-+  586         panel += `        <th class='text-center' style='vertical-align: middle; width: 175px;'>Fahrzeugtyp</th>`;
-+  587         panel += `        <th class='sorter-false' style='vertical-align: middle; width: 40ch;'>Fahrzeug</th>`;
-+  588         panel += `        <th class='sorter-false' style='vertical-align: middle; width: 40ch;'>Anhänger</th>`;
-+  589         panel += `        <th class='text-center' style='vertical-align: middle; width: 175px;'></th>`;
-+  590         panel += `        <th class='text-center sorter-false' style='vertical-align: middle; width: 3ch;'>FMS</th>`;
-+  591         panel += `        <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Besatzung</th>`;
-*/
 
     // Cell buttons
-    row += `<td class="text-center" style="width: 175px;">`
+    row += `<td class="text-center" style="width: 200px;">`
     row += `<div class="btn-group">`;
     row += `<a class='lightbox-open btn btn-default btn-xs glyphicon glyphicon-cog' href="/vehicles/${vehicle.id}/edit" title="Fahrzeug bearbeiten"></a>`;
+    // assigned_personnel_count === staff.max -- default
+    // assigned_personnel_count > staff.min && (> staff.trainingAtScene) && < staff.max -- info
+    // assigned_personal_count > staff.min && (< staff.trainingAtScene) -- warning
+    // lssm staff assigned_personnel_count < staff.trainingAtScene || staff.min    -- danger
+    //
+    // if hasTrailer => look for training trailer
+    const assStaff = vehicle.assigned_personnel_count ?? 0;
+    const minStaff = vType.staff.min;
+    const maxStaff = vehicle.max_personnel_override ?? vType.staff.max;
+    let training = vType.staff?.training ?? 0;
+    let trainingAtScene = vType.staff.trainingAtScene ?? 0;
+    if (hasTrailer) {
+      const trailerID = sortedVehicles.find(t => t.tractive_vehicle_id === vehicle.id)?.id;
+      const trailer = sortedVehicles.find(t => t.id === trailerID);
+      const tType = trailer ? getType(trailer, vehicleTypes) : undefined;
+      training = tType?.staff?.training ?? vType.staff.training;
+      trainingAtScene = tType?.staff?.trainingAtScene ?? vType.staff.trainingAtScene;
+    }
+
     if (!isTrailer) {
-      row += `<a class='lightbox-open btn btn-default btn-xs glyphicon glyphicon-user' href="/vehicles/${vehicle.id}/zuweisung" title="Personal zuweisen"></a>`;
+      if (assStaff < maxStaff) {
+        if (assStaff < minStaff) {
+          row += `<a class='lightbox-open btn btn-danger btn-xs glyphicon glyphicon-user' href="/vehicles/${vehicle.id}/zuweisung" title="Personal zuweisen"></a>`;
+        } else {
+          if (assStaff < trainingAtScene) {
+            row += `<a class='lightbox-open btn btn-warning btn-xs glyphicon glyphicon-user' href="/vehicles/${vehicle.id}/zuweisung" title="Personal zuweisen"></a>`;
+          } else
+            if (assStaff >= trainingAtScene && assStaff < maxStaff) {
+              row += `<a class='lightbox-open btn btn-info btn-xs glyphicon glyphicon-user' href="/vehicles/${vehicle.id}/zuweisung" title="Personal zuweisen"></a>`;
+            }
+        }
+      } else {
+        row += `<a class='lightbox-open btn btn-default btn-xs glyphicon glyphicon-user' href="/vehicles/${vehicle.id}/zuweisung" title="Personal zuweisen"></a>`;
+      }
+    }
+    if (quantity < vehicleCount[vTypeID]) {
+      row += `<a class='lightbox-open btn btn-info btn-xs glyphicon glyphicon-move' href="/vehicles/${vehicle.id}/move" title="Fahrzeug verschieben"></a>`;
+    } else {
+      row += `<a class='lightbox-open btn btn-default btn-xs glyphicon glyphicon-move' href="/vehicles/${vehicle.id}/move" title="Fahrzeug verschieben"></a>`;
+    }
+    if (vType?.canBeRefit === true) {
+      row += `<a class='lightbox-open btn btn-default btn-xs glyphicon glyphicon-wrench' href="/vehicles/${vehicle.id}/refit" title="Fahrzeug umrüsten"></a>`;
     }
     row += `</div>`;
     row += `</td>`;
 
 
     // Cell rsm
-    row += `<td class="text-center" style="vertical-align: middle; width: 3ch;">`;
+    row += `<td class="text-center" style="vertical-align: middle; width: 5ch;">`;
     if (vehicle.fms_real === 6) {
-      row += `<a title="Nicht einsatzbereit" class="building_list_fms building_list_fms_6" data-remote='true' href='/vehicles/${vehicle.id}/set_fms/2'><span>6</span></a>`; // style="background-color: #000; color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: bold;"
+      row += `<a title="Nicht einsatzbereit" class="building_list_fms building_list_fms_6" data-action='fsm' data-remote='true' href='/vehicles/${vehicle.id}/set_fms/2'><span>6</span></a>`; // style="background-color: #000; color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: bold;"
       tags.fms6 = true
     }
     row += `</td>`;
@@ -354,11 +542,7 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
     row += `<td></td>`;
 
     // Cell staff
-    const assStaff = vehicle.assigned_personnel_count ?? 0;
-    const maxStaff = vehicle.max_personnel_override ?? vType.maxPersonnel;
-
     if (maxStaff > 0) {
-      console.log(`vehicle ${vehicle.id} assigned_personnel_count: ${assStaff}, max_personnel_override: ${vehicle.max_personnel_override}, vType.maxPersonnel: ${vType.maxPersonnel}`);
       if (assStaff !== maxStaff) {
         row += `<td class='text-warning text-center' style='width: 11ch;'>`
       } else {
@@ -375,21 +559,30 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
     $(tbody).append(row);
   });
 
-  // 3. Inventar-Check gegen die Vorlage
+  // Cell less vehicles
   const less = tags.inventory?.less;
   if (!less) return;
-  Object.entries(less).forEach(([typeId, quantity]) => {
-    const type = vehicleTypes[typeId];
+  Object.entries(less).forEach(([id, quantity]) => {
+    const vTypeID = Number(id);
+    const vType = getType({ vehicle_type: vTypeID }, vehicleTypes);
+    const needUnlock = exTypes.findIndex(exType => exType.unlocksVehicleTypes?.includes(vTypeID));
+    const isUnlocked = needUnlock !== -1 ? extensions.find(extension => extension.type_id === needUnlock) : true;
     for (let i = 0; i < quantity; i++) {
       let row = '';
       row += `<tr data-line='${rc++}' style="display: table; width: 100%; table-layout: fixed; opacity: 0.85;">`;
-      row += `<td class="text-center" style="vertical-align: middle; width: 175px;">`;
-      // if (unlockt)
-      row += `<a class="btn btn-default btn-xs disabled">${type.caption}</a>`;
+      row += `<td class="text-center" style="vertical-align: middle; width: 200px;">`;
+      row += `<a class="btn btn-default btn-xs disabled">${vType.caption}</a>`;
       row += `</td>`;
       row += `<td style="width: 40ch;" class="text-center text-warning">`;
-      row += `<a  data-remote='true 'href="/buildings/${building.id}/vehicle/${building.id}/${typeId}/credits">`;
-      row += `<em>Fahrzeug fehlt laut Vorlage</em></a>`;
+      if (isUnlocked) {
+        row += `<a  data-remote='true' data-building='${building.id}' data-type='${vTypeID}' data-credits='vehicle'
+          href="/buildings/${building.id}/vehicle/${building.id}/${vTypeID}/credits"
+          style="color: inherit; text-decoration: none;">`;
+        row += `Fahrzeug fehlt laut Vorlage`;
+        row += `</a>`;
+      } else {
+        row += `Fahrzeug fehlt laut Vorlage`;
+      }
       row += `</td>`;
       row += `</tr>`;
       $(tbody).append(row);
@@ -398,67 +591,77 @@ tab.inventory.less.forEac       | <a class="btn btn-waning btn-xs">${vehicleType
 }
 
 let currentFilterVehicles;
-let lastQueryBuildings
-async function renderPanelsVehicles(buildings = currentFilterBuildings) {
-  if (!buildings?.length) return;
+let vehicleMapBuildings;
+async function renderPanelsVehicles(visibleBuildings) {
+  const accordion = modal.accordionVehicles;
+  accordion.replaceChildren();
+  if (!visibleBuildings?.length) return;
 
   parkingLots();
 
-  const accordion = modal.accordionVehicles;
-
-  console.log(buildings)
-  const timestamp = buildings.lastQuery;
-  console.log(timestamp)
-
-  if (!timestamp || timestamp !== lastQueryBuildings) {
-    console.log('new map')
-    /*
-    const min = Math.min(buildings.building_id);
-    const max = Math.max(buildings.building_id);
-    const range = IDBKeyRange.bound(min, max, false, false);
-    const match = [...new Set(updatedVehicles.map(v => v.building_id))];
-    */
-    vehicles = await getVehicles(false);
-    lastQueryBuildings = timestamp;
+  if (!vehicleMapBuildings || vehicleMapBuildings !== buildings) {
+    const buildingIds = new Set(
+      buildings.map(building => Number(building.id))
+    );
+    const minId = Math.min(...buildingIds);
+    const maxId = Math.max(...buildingIds);
+    vehicles = await getVehicles(
+      false, 'building', IDBKeyRange.bound(minId, maxId), vehicle => buildingIds.has(Number(vehicle.building_id))
+    );
+    console.log(`${vehicles.length} vehicles loaded for buildings ${minId} to ${maxId}`);
     currentFilterVehicles = vehicles;
+    vehicleMapBuildings = buildings;
 
     vehiclesByBuilding = new Map();
     vehicles.forEach(vehicle => {
-      const buildingId = Number(vehicle.building_id);
-      if (!vehiclesByBuilding.has(buildingId)) {
-        vehiclesByBuilding.set(buildingId, []);
+      const bID = vehicle.building_id;
+      if (!vehiclesByBuilding.has(bID)) {
+        vehiclesByBuilding.set(bID, []);
       }
-      vehiclesByBuilding.get(buildingId).push(vehicle);
+      vehiclesByBuilding.get(bID).push(vehicle);
     });
   }
-  accordion.replaceChildren();
 
   let countBuildings = 0;
-  buildings.forEach(building => {
+  visibleBuildings.forEach(building => {
     countBuildings++;
-    const id = Number(building.id)
-    const building_type = Number(building.building_type);
-    const buildingType = buildingTypes[building_type];
+    const bID = Number(building.id)
+    const bCaption = building.caption;
+    const bTypeID = Number(building.building_type);
+    const bType = getType(building, buildingTypes);
 
     let containerLots = 0;
     let trailerLots = 0;
-    let vehicleLots = buildingType?.startParkingLots;
+    let vehicleLots = bType?.startParkingLots;
     if (!vehicleLots) return;
 
     const tags = building.tags ? building.tags : building.tags = {};
     tags.missingVehicle = false;
     tags.moreVehicles = false;
+    tags.assignedPersonnel = true;
+    tags.needTraining = false;
+    tags.fms6 = false;
 
-    if (!building.template) {
-      const selector = profileSelector(building)
-      building.template = selector.select;
-    }
+    const vehiclesThisBuilding = vehiclesByBuilding.get(bID) || [];
+    vehiclesThisBuilding.forEach(vehicle => {
+      const vType = getType(vehicle, vehicleTypes);
+      const maxStaff = vType.staff.max;
+      const assigned = vehicle.assigned_personnel_count;
+      const maxOverride = vehicle?.max_personnel_override;
+      const max = maxOverride ?? maxStaff;
+      const training = vType.staff?.training ? true : false;
 
-    const extensionsTypes = buildingType.extensions;
-    const template = building.template;
-    const planned = template.vehicles ?? [];
+      if (assigned < max) {
+        tags.assignedPersonnel = false;
+        if (training === true) { tags.needTraining = true; }
+      }
+      if (vehicle.fms_real === 6) { tags.fms6 = true; }
+    });
 
-    const vehiclesThisBuilding = vehiclesByBuilding.get(id) || [];
+    const exTypes = bType.extensions;
+    const template = profileSelector(building)?.select;
+    const planned = template?.vehicles ?? [];
+
     const totalCount = vehiclesThisBuilding.length;
     const totalQuantity = planned.reduce((v, p) => v + p.quantity, 0);
 
@@ -480,58 +683,63 @@ async function renderPanelsVehicles(buildings = currentFilterBuildings) {
     const inventoryList = { ...typeCounts };
     const inventory = tags.inventory = { less: {}, more: {}, ok: {} };
     planned.forEach(type => {
-      const id = type.id;
+      const typeId = type.id;
       const target = type.quantity || 0;
-      const current = typeCounts[id] || 0;
+      const current = typeCounts[typeId] || 0;
 
-      delete inventoryList[id];
+      delete inventoryList[typeId];
 
       if (target === current) {
-        inventory.ok[id] = current;
+        inventory.ok[typeId] = current;
       } else if (target < current) {
-        inventory.more[id] = current - target
+        inventory.more[typeId] = current - target
         tags.moreVehicles = true;
       } else if (target > current) {
-        inventory.less[id] = target - current
+        inventory.less[typeId] = target - current
         tags.missingVehicle = true;
       }
-    });
-    Object.entries(inventory).forEach(([type, count]) => {
-      inventory.more[type]
     });
 
     vehicleLots += building.level;
     building.extensions.forEach(extension => {
-      if (!extension.available === true) { console.log(`${building.id} ${extension.caption} ${extension.available_at ?? 'have a look'}`); return; }
+      if (!extension?.available || !extension?.available_at) return;
 
-      const type_id = Number(extension.type_id);
-      const extensionType = extensionsTypes[type_id];
-      const givesParkingLots = extensionType?.givesParkingLots;
-      if (!givesParkingLots) return;
+      const exTypeID = Number(extension.type_id);
+      const exType = getType(extension, exTypes);
+      const givesParkingLots = exType.givesParkingLots;
+      // if (!givesParkingLots) return; // erweiterung ohne parkingLots? z.B. Zellen
 
       const containerLot = parkingLots
-        ?.containerLots[building_type][type_id] ?? false;
+        ?.containerLots[bTypeID][exTypeID] ?? false;
       const trailerLot = parkingLots
-        ?.trailerLots[building_type][type_id] ?? false;
+        ?.trailerLots[bTypeID][exTypeID] ?? false;
       const vehicleLot = parkingLots
-        ?.vehicleLots[building_type][type_id] ?? false;
+        ?.vehicleLots[bTypeID][exTypeID] ?? false;
 
       if (containerLot) containerLots += containerLot;
       if (trailerLot) trailerLots += trailerLot;
       if (vehicleLot) vehicleLots += vehicleLot;
     });
 
-    const panelId = `${prefix}-panel-vehicles-${building.id}`
+    const panelId = `${prefix}-panel-vehicles-${bID}`
     const panelContentId = `${panelId}-content`;
     let panel = '';
-    panel += `<div id='${panelId}' class='building-list building_searchable panel panel-default' data-building-id='${building.id}'
-                        search_attribute='${building.caption}' building_type_id='${building.building_type}' building_id='${building.id}' dispatch_id='${building.leitstelle_building_id}'>`;
-    panel += `  <div class="panel-heading row" building_id='${building.id}' href='#${panelContentId}' data-toggle='collapse' aria-expanded='false' aria-controls='${panelContentId}'>`;
+    panel += `<div id='${panelId}' class='building-list building_searchable panel panel-default' data-building-id='${bID}'
+                        search_attribute='${bCaption}' building_type_id='${bTypeID}' building_id='${bID}' dispatch_id='${building.leitstelle_building_id}'>`;
+    panel += `  <div class="panel-heading row" building_id='${bID}' href='#${panelContentId}' data-toggle='collapse' aria-expanded='false' aria-controls='${panelContentId}'>`;
     panel += `    <div class='col-xs-6 col-sm-1 text-right'>`;
-    panel += `      <a class='btn btn-default btn-xs disabled'>${buildingType.caption}</a>`;
+    panel += `      <a class='btn btn-default btn-xs disabled'>${bType.caption}</a>`;
     panel += `    </div>`;
     panel += `    <div class='col-xs-6 col-sm-2'>`;
-    panel += `      <a class='lightbox-open' href='/buildings/${building.id}'>${building.caption}</a>`;
+    panel += `      <a class='lightbox-open' href='/buildings/${bID}'>${bCaption}</a>`;
+    panel += `    </div>`;
+    panel += `    <div class='col-xs-6 col-sm-1'>`;
+    if (template?.name) {
+      let templateText = template?.defaultProfile === true ? `default ${template.name}` : `${template.name}`
+      panel += `          <small>${templateText}</small>`;
+    } else {
+      panel += `          <small>Keine Vorlage gefunden</small>`;
+    }
     panel += `    </div>`;
     panel += `    <div class='col-xs-6 col-sm-2 text-center'>`;
     panel += `      <span class='label label-default'>${vehicleCount} von ${vehicleLots} Fahrzeugen</span>`;
@@ -542,61 +750,71 @@ async function renderPanelsVehicles(buildings = currentFilterBuildings) {
     }
     panel += `    </div>`;
     panel += `    <div class='col-xs-6 col-sm-2 text-center'>`;
-    //panel += `          <span class='label label-default'>PLACEHOLDER EXAMPLE</span>`;
-    panel += `    </div>`;
-    panel += `    <div class='col-xs-6 col-sm-2 text-center'>`;
     if (tags.missingVehicle === true && tags.moreVehicles === false) {
       panel += `    <span class='label label-warning'>Fahrzeuge fehlen</span>`;
     }
     if (tags.missingVehicle === true && tags.moreVehicles === true) {
-      panel += `    <span class='label label-danger'>Fahrzeuge fehle und sind zuviel</span>`;
+      panel += `    <span class='label label-danger'>Fahrzeuge fehlen und sind zuviel</span>`;
     }
     if (tags.missingVehicle === false && tags.moreVehicles === true) {
       panel += `    <span class='label label-info'>Fahrzeuge überbestand</span>`;
     }
     panel += `    </div>`;
     panel += `    <div class='pull-right'>`;
-    //panel += `      <span class="label label-default ">${parkingABLots} AB-Stellplätze - ${freeABLots} frei</span>`;
-    panel += `      <button type="button" class='btn btn-success btn-xs' style='width: 18ch;' data-building-id="${building.id}">{credits} Credits</button>`;
+    if (tags.missingVehicle) {
+      panel += `      <button type="button" class='btn btn-success btn-xs' style='width: 18ch;' data-building-id="${building.id}">comming soon</button>`;
+    }
     panel += `    </div>`;
     panel += `  </div>`;
-    panel += `<div id='${panelContentId}' class='panel-collapse collapse' data-building-id='${building.id}'>`;
+    panel += `<div id='${panelContentId}' class='panel-collapse collapse' data-building-id='${bID}'>`;
 
 
-    panel += `<div class='panel-body' building_id='${building.id}'>`;
+    panel += `<div class='panel-body' building_id='${bID}'>`;
     panel += `  <div class='row list-container' style='display: flex; gap: 50px; width: 100%;'>`;
 
     panel += `    <div class='left-colum' style='flex:1;'>`;
     if (tags.missingVehicle === true) {
       panel += `    <h4>Fehlende Fahrzeuge</h4>`
-      Object.entries(tags.inventory.less).forEach(([type, count]) => {
+      Object.entries(tags.inventory.less).forEach(([vTypeID, count]) => {
         panel += `  <ul style='flex: 1; padding-left: 20px; margin: 10px'>`;
-        panel += `    <li>${count} x ${vehicleTypes[type].caption} </li>`;
+        panel += `    <li>${count} x ${getType({ vehicle_type: Number(vTypeID) }, vehicleTypes).caption} </li>`;
         panel += `  </ul>`;
       });
     }
     panel += `    </div>`
+    panel += `    <div class='middle-colum' style='flex:1;'>`;
+    panel += `    <h4>Fahrzeug plannung</h4>`
+    template?.vehicles?.forEach(item => {
+      const vTypeID = item.id;
+      const quantity = item.quantity;
+      panel += `  <ul style='flex: 1; padding-left: 20px; margin: 10px'>`;
+      panel += `    <li>${quantity} x ${getType({ vehicle_type: vTypeID }, vehicleTypes).caption}</li>`;
+      panel += `  </ul>`;
+    });
+
+    panel += `    </div>`;
     panel += `    <div class='right-colum' style='flex:1;'>`;
     if (tags.moreVehicles === true) {
       panel += `    <h4>Fahrzeuge überbestand</h4>`
-      Object.entries(tags.inventory.more).forEach(([type, count]) => {
+      Object.entries(tags.inventory.more).forEach(([vTypeID, count]) => {
         panel += `  <ul style='flex: 1; padding-left: 20px; margin: 10px'>`;
-        panel += `    <li>${count} x ${vehicleTypes[type].caption}</li>`;
+        panel += `    <li>${count} x ${getType({ vehicle_type: Number(vTypeID) }, vehicleTypes).caption}</li>`;
         panel += `  </ul>`;
       });
     }
     panel += `    </div>`
     panel += `  </div>`
 
-    panel += `  <table class='table table-striped' id='vehicle_table_${building.id}'>`;
+    panel += `  <table class='table table-striped' id='vehicle_table_${bID}'>`;
     panel += `    <thead>`;
     panel += `      <tr class="tablesorter-headerRow" role="row" style='display: table; width: 100%; table-layout: fixed;'>`;
-    panel += `        <th class='text-center' style='vertical-align: middle; width: 175px;'>Fahrzeugtyp</th>`;
-    panel += `        <th class='sorter-false' style='vertical-align: middle; width: 40ch;'>Fahrzeug</th>`;
-    panel += `        <th class='sorter-false' style='vertical-align: middle; width: 40ch;'>Anhänger</th>`;
-    panel += `        <th class='text-center' style='vertical-align: middle; width: 175px;'></th>`;
-    panel += `        <th class='text-center sorter-false' style='vertical-align: middle; width: 3ch;'>FMS</th>`;
-    panel += `        <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>Besatzung</th>`;
+    panel += `        <th style='text-center' style='vertical-align: middle; width: 200px;'>Fahrzeugtyp</th>`;
+    panel += `        <th class='text-center' style='vertical-align: middle; width: 40ch;'>Fahrzeug</th>`;
+    panel += `        <th class='text-center' style='vertical-align: middle; width: 40ch;'>Anhänger</th>`;
+    panel += `        <th class='text-center' style='vertical-align: middle; width: 200px;'></th>`;
+    panel += `        <th></th>`;
+    panel += `        <th class='text-center' style='vertical-align: middle; width: 5ch;'>FMS</th>`;
+    panel += `        <th class='text-center' style='vertical-align: middle; width: 11ch;'>Besatzung</th>`;
     panel += `       </tr>`;
     panel += `     </thead>`;
     panel += `    <tbody data-rendered='false'>`;
@@ -614,8 +832,7 @@ async function renderPanelsVehicles(buildings = currentFilterBuildings) {
 }
 
 let currentFilterBuildings = [];
-async function renderTableBuildings(buildings = currentFilterBuildings) {
-  console.log('run renderTabelsBuildings')
+async function renderTableBuildings(buildings) {
   const tbody = modal.buildingTableBody;
   currentFilterBuildings = buildings;
   const table = tbody.closest('table');
@@ -624,37 +841,31 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
 
   let count = 0;
   buildings.forEach(building => {
-    if (building.id === 'lastUpdate' || building.id === 'lastQuery') { console.log('last...    return'); return; }
-    building.tags ? building.tags : building.tags = {};
-    if (!building.template) {
-      const selector = profileSelector(building)
-      building.template = selector.select;
-    }
-    const template = building.template;
     count++;
-    console.log(building)
-    const buildingType = buildingTypes[building.building_type];
+    const bID = Number(building.id);
+    const bCaption = building.caption;
+    const selector = profileSelector(building);
+    const template = selector.select;
+    const profiles = selector.profiles;
+    const bType = getType(building, buildingTypes);
+    building.tags ? building.tags : building.tags = {};
+    building.tags.withoutAssignment = false;
+    building.tags.withoutAssignment = template.id === 'none';
 
     let row = `<tr style='display: table; width: 100%; table-layout: fixed;'>`;
-    row += `<td class='digit-cell' data-digit=${building.id} style='width: 3ch;'>`; // cell id -- tabelsorter
+    row += `<td class='digit-cell' data-digit=${bID} style='width: 3ch;'>`; // cell id -- tabelsorter
     row += `</td>`;
 
-    row += `<td class='text-right' data-text='${buildingType.caption}' style='middle; width: 175px;'>`; // cell building Type -- tabelsorter
-    row += `<a class='btn btn-default btn-xs disabled'>${buildingType.caption}</a>`;
+    row += `<td class='text-right' data-text='${bType.caption}' style='middle; width: 175px;'>`; // cell building Type -- tabelsorter
+    row += `<a class='btn btn-default btn-xs disabled'>${bType.caption}</a>`;
     row += `</td>`;
 
     row += `<td style='width: 40ch;'>`; // cell building caption -- tabelsorter
-    row += `<a class='lightbox-open' href='/buildings/${building.id}'>${building.caption}</a>`;
+    row += `<a class='lightbox-open' href='/buildings/${bID}'>${bCaption}</a>`;
     row += `</td>`;
 
     row += `<td style='width: 40ch;'>`; // cell dropdown
-    const selector = profileSelector(building);
-    const profiles = selector.profiles;
-    building.tags.withoutAssignment = false;
 
-    if (template === 'none') {
-      building.tags.withoutAssignment = true;
-    }
 
     if (profiles.length > 0 && template.id !== 'none') {
       row += `<select data-action='profile-assignment' style='width: 100%;'>`;
@@ -668,8 +879,8 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
       });
       row += `</select>`;
     } else {
-      if (template.defaultProfile === true) {
-        row += `${template.name}`;
+      if (template?.defaultProfile === true) {
+        row += `default: ${template.name}`;
       } else {
         row += `keine Vorlage gefunden`;
       }
@@ -678,12 +889,13 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
 
     row += `<td class='text-center' style='width: 19ch;'>`; // cell level
     const level = building?.level ?? 0;
-    const maxLevel = buildingType?.maxLevel ?? 0;
+    const maxLevel = bType.maxLevel ?? 0;
     if (level >= 0 && maxLevel > 0) {
       row += `${level}`;
       if (level < maxLevel) {
-        row += `<a class='btn btn-xs btn-danger disable_after_click' data-remote='true' data-building='${building.id}' data-link-tag='level'
-                data-level='${level}' href='/buildings/${building.id}/expand_do/credits?level=${level}'>${level + 1}`;
+        row += `<a class='btn btn-xs btn-danger disable_after_click'
+          data-remote='true' data-building='${building.id}' data-level='${level}' data-credits='level'
+                href='/buildings/${building.id}/expand_do/credits?level=${level}'>${level + 1}`;
         row += `</a>`;
       }
     }
@@ -696,64 +908,74 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
      *  blau   = label-info    ===          in progress           === build
      */
     row += `<td>`; // cell extensions
-    const types = buildingType.extensions ?? [];
+    const exTypes = bType.extensions ?? [];
     const real = building.extensions ?? [];
     const plan = template.extensions;
-    const planCount = countDuplicates(plan); //console.log('plan', planCount)
-    const realCount = countDuplicates(real); //console.log('real', realCount)
+    const planCount = countDuplicates(plan);
+    const realCount = countDuplicates(real);
     building.tags.allExtensionsActiv = true;
     building.tags.missingExtension = false;
-    types.forEach((type, index) => {
-      if (!type?.caption) { return; }
-      const caption = type.caption;
-      const planned = plan.find(item => item.id === index);
-      const current = real.find(item => item.type_id === index);
+    exTypes.forEach((exType, exTypeID) => {
+      if (!exType?.caption) { return; }
+      const exTypeCaption = exType.caption;
+      const planned = plan.find(item => item.id === exTypeID);
+      const current = real.find(item => item.type_id === exTypeID);
 
       if (current) {
         if (current?.enabled === false) { // dead
           building.tags.allExtensionsActiv = false;
-          row += `<a data-remote='true' data-method='post' data-building='${building.id}' data-link-tag='activate'
-                  data-extension='${index}' href="/buildings/${building.id}/extension_ready/${index}/${building.id}">`;
-          row += `<span title='${caption ?? "caption nicht lesbar"}`;
+          row += `<a data-remote='true' data-method='post' data-building='${bID}' data-type='${exTypeID}' data-action='activate'
+                  data-extension='${exTypeID}' href="/buildings/${bID}/extension_ready/${exTypeID}/${bID}">`;
+          row += `<span title='${exTypeCaption ?? "caption nicht lesbar"}`;
           row += ` nicht aktiv`;
           row += `' class='label label-warning' style='font-size: 12px;'>`;
-          row += `${index}</span>`;
+          row += `${exTypeID}</span>`;
           row += `</a>`;
         }
         if (current?.available_at) { // build
           const date = new Date(current.available_at);
-          row += `<span title='${caption}`;
+          row += `<span title='${exTypeCaption}`;
           row += ` fertig am ${date.toLocaleString()}`;
           row += `' class='label label-info' style='font-size: 8px;'>`;
-          row += `${index}</span>`;
+          row += `${exTypeID}</span>`;
         }
         if ((current?.enabled === true)
           && (current?.available === true)) {
-          row += `<span title='${caption}`;
+          row += `<span title='${exTypeCaption}`;
           row += `' class='label label-success' style='font-size: 8px;'>`;
-          row += `${index}</span>`;
+          row += `${exTypeID}</span>`;
         }
       }
       if (!current && !planned) {
-        row += `<span title='${caption}`;
+        row += `<span title='${exTypeCaption}`;
         row += `' class='label label-default' style='font-size: 8px;'>`
-        row += `${index}</span>`;
+        row += `${exTypeID}</span>`;
       }
       if (!current && planned) {
-        if ((realCount[caption] ?? 0) >= planCount[caption]) {
-          row += `<span title='${caption}`;
+        if ((realCount[exTypeCaption] ?? 0) >= planCount[exTypeCaption]) {
+          row += `<span title='${exTypeCaption}`;
           row += `' class='label label-default' style='font-size: 8px;'>`
-          row += `${index}</span>`;
+          row += `${exTypeID}</span>`;
         } else {
-          row += `<a data-remote='true' data-method='post' data-building='${building.id}' data-link-tag='credits'
-                  data-extension='${index}' href="/buildings/${building.id}/extension/credits/${index}?redirect_building_id=${building.id}">`
-          row += `<span title='${caption}`;
-          const formatNumber = new Intl.NumberFormat(`${international[lang].langcode}`, { maximumFractionDigits: 0 });
-          const credits = formatNumber.format(type.credits)
-          row += ` bauen für ${credits} dauer ${type.duration}`;
-          row += `' class='label label-danger' style='font-size: 12px'>`;
-          row += `${index}</span>`;
-          row += `</a>`;
+          const requiredExtensions = exType.requiredExtensions ?? [];
+          const requirementsMet = requiredExtensions.every(requiredTypeId =>
+            real.some(extension => extension.type_id === requiredTypeId)
+          );
+          if (requirementsMet) {
+            row += `<a data-remote='true' data-method='post' data-building='${bID}' data-credits='extension' data-type='${exTypeID}'
+              href="/buildings/${bID}/extension/credits/${exTypeID}?redirect_building_id=${bID}">`
+            row += `<span title='${exTypeCaption}`;
+            const formatNumber = new Intl.NumberFormat(`${international[lang].langcode}`, { maximumFractionDigits: 0 });
+            const credits = formatNumber.format(exType.credits)
+            row += ` bauen für ${credits} dauer ${exType.duration}`;
+            row += `' class='label label-danger' style='font-size: 12px'>`;
+            row += `${exTypeID}</span>`;
+            row += `</a>`;
+          } else {
+            row += `<span title='${exTypeCaption}`;
+            row += `' class='label label-danger' style='font-size: 8px;'>`
+            row += `${exTypeID}</span>`;
+          }
           building.tags.missingExtension = true;
         }
       }
@@ -785,7 +1007,7 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
      */
     const personnelCount = building.personal_count;
     const personnelTarget = building.personal_count_target;
-    const personnelSetPoint = building.template.personnelSetPoint ?? null;
+    const personnelSetPoint = template.personnelSetPoint ?? null;
     building.tags.personnel_target = true;
     /*
     const hiring_automatic =
@@ -794,7 +1016,7 @@ async function renderTableBuildings(buildings = currentFilterBuildings) {
     building.personnel_target = true;
     */
 
-    if (buildingType?.startPersonnel >= 0) {
+    if (bType.startPersonnel >= 0) {
       //if (personnelSetPoint) { building.personal_count_setPoint = personnelSetPoint; }
 
       if (personnelCount === personnelTarget) {
@@ -850,17 +1072,17 @@ async function functionArea() {
   const area = modal.functionArea;
   buildings = [];
   const dispatchCenterTypeEntry = Object.entries(buildingTypes).find(
-    ([, buildingType]) => buildingType.isDispatchCenter
+    ([, bType]) => bType.isDispatchCenter
   );
-  const dispatchCenterType = Number(dispatchCenterTypeEntry[0]);
-  if (dispatchCenterType) {
-    dispatchCenters = await getBuildings(false, 'type', dispatchCenterType);
+  const dispatchCenterBTypeID = Number(dispatchCenterTypeEntry[0]);
+  if (Number.isFinite(dispatchCenterBTypeID)) {
+    dispatchCenters = await getBuildings(false, 'type', dispatchCenterBTypeID);
     dispatchCenters.sort((a, b) => a.caption.localeCompare(b.caption));
   }
   const dispatch = () => {
     let string = `
         <select id='${prefix}-dispatchCenters'>
-            <option value='none'>Leitstelle auswählen</option>
+            <option value='none' selected disabled hidden>Leitstelle auswählen</option>
             <option value='all'>alle Leitstellen</option>
         `;
     dispatchCenters.forEach(dc => {
@@ -883,8 +1105,9 @@ async function functionArea() {
       string += `<option value='${group}'>${group}</option>`;
 
       info.buildings.forEach(type => {
-        const caption = buildingTypes[type].caption;
-        if (caption === "Verbandszellen") return;
+        if (international[lang].notSupportedBuildings.includes(type)) return;
+        const bType = getType({ building_type: Number(type) }, buildingTypes);
+        const caption = bType.caption;
         string += `<option value='${type}'>&nbsp;&nbsp;&nbsp;&nbsp;${caption}</option>`;
       });
     });
@@ -911,7 +1134,7 @@ async function functionArea() {
     searchBuilding
   );
 
-  let dispathCenterId = 'none';
+  let dispathCenterID = 'none';
   let filter = 'all';
   area.addEventListener('change', async event => {
     const id = event.target.id;
@@ -920,9 +1143,9 @@ async function functionArea() {
       && id !== `${prefix}-buildingCategories`) return;
 
     if (id === `${prefix}-dispatchCenters`) {
-      dispathCenterId = value;
+      dispathCenterID = value;
     }
-    if (dispathCenterId === 'none') return;
+    if (dispathCenterID === 'none') return;
 
     if (id === `${prefix}-buildingCategories`) {
       const group = buildingCategories[value];
@@ -934,13 +1157,13 @@ async function functionArea() {
     }
 
     let data;
-    if (Number(filter) === dispatchCenterType) {
+    if (Number(filter) === dispatchCenterTypeID) {
       buildings = await getBuildings(false, 'type', Number(filter));
     } else {
-      if (dispathCenterId === 'all') {
+      if (dispathCenterID === 'all') {
         data = await getBuildings(false);
       } else {
-        data = await getBuildings(false, 'dispatchCenter', Number(dispathCenterId));
+        data = await getBuildings(false, 'dispatchCenter', Number(dispathCenterID));
       }
       if (filter !== 'all') {
         const active = Array.isArray(filter) ? filter : [Number(filter)]
@@ -948,14 +1171,16 @@ async function functionArea() {
         data = filtered;
       }
       buildings = data.filter(building =>
-        building.building_type !== dispatchCenterType);
+        Number(building.building_type) !== dispatchCenterBTypeID
+      );
+      buildings.sort((a, b) => a.caption.localeCompare(b.caption));
     }
+
     if (modal.activeTab === 'buildings') {
       await renderTableBuildings(buildings);
     }
     if (modal.activeTab === 'vehicles') {
       await renderPanelsVehicles(buildings)
-      currentFilterBuildings = buildings;
     }
   });
 }
@@ -977,147 +1202,165 @@ async function initialize() {
 }
 
 function createModal() {
-  const html =
-    /* HTML */`
-    <div id='${prefix}-modal' class='modal fade in' tabindex='-1' role='dialog' aria-labelledby='${prefix}-title' style='display: block;'>
-        <div class='modal-dialog' role='document' style='width: 95%; height: 90vh; margin: 7vh auto 3vh;'>
-            <div class='modal-content' style='height: 100%; display: flex; flex-direction: column;'>
-                <div class='modal-header' style='display: flex; align-items: center; justify-content: space-between; position: relative;'>
-                    <h4 id='${prefix}-title' class='modal-title' style='text-align: center; flex-grow: 1;'>${scriptName}</h4>
-                    <div style='display: flex; align-items: center; gap: 15px; position: absolute; right: 15px; top: 50%; transform: translateY(-50%);'>
-                        <span style='font-size: 0.8em; font-weight: normal; white-space: nowrap;'>v${version}</span>
-                        <button type='button' class='close' data-dismiss='modal' aria-label='close'>
-                            <span aria-hidden='true'>×</span>
-                        </button>
-                    </div>
-                </div>
-                <div class='modal-body' style='display: flex; flex-direction: column; min-height: 0; max-height: none; flex: 1 1 auto; overflow-y: hidden;'>
-                    <div id='${prefix}-control' class='panel-heading row' style='min-height: 50px;'></div>
-                    <div id='${prefix}-filters' style='min-height: 25px;'>
-                        <div data-tab-controls='buildings'>
-                            <button type='button' data-action='save-profiles' class='btn btn-default btn-xs' style='width: 175px;'>
-                                Vorlagen zuordnung speichern
-                            </button>
-                            <button type='button' data-action='filter-unassigned' class='btn btn-default btn-xs' style='width: 175px;'>
-                                Wachen ohne Profil anzeigen
-                            </button>
-                            <button type='button' data-action='filter-missing-extensions' class='btn btn-default btn-xs' style='width: 175px;'>
-                                Fehlende Erweiterungen
-                            </button>
-                            <button type='button' data-action='filter-inactive-extensions' class='btn btn-default btn-xs' style='width: 175px;'
-                                title='Aktivieren direkt auf den gelben Button klicken'>
-                                Erweiterung nicht aktiv
-                            </button>
-                            <button type='button' data-action='filter-personnel-target' class='btn btn-default btn-xs' style='width: 175px;'
-                                title='Achtung: Es werden nur Gebäude mit einem Profil angezeigt'>
-                                Abweichendes Personalsoll
-                            </button>
-                            <button type='button' data-action='fix-personnel-target' class='btn btn-default btn-xs glyphicon glyphicon-ok'
-                                title='Personalsoll für die aktuellen Gebäude setzen. Achtung: Es werden nur zwei Gebäude pro Sekunde abgearbeitet. Wachen ohne Profil können nicht verarbeitet werden!'>
-                            </button>
-                            <button type='button' data-action='filter-hire-automatic' class='btn btn-default btn-xs' style='width: 175px;'>
-                                Kein automatisches Werben
-                            </button>
-                            <button type='button' data-action='fix-hire-automatic' class='btn btn-default btn-xs glyphicon glyphicon-ok'
-                                title='Automatisches Personalwerben für die aktuellen Gebäude aktivieren. Achtung: Es werden nur zwei Gebäude pro Sekunde abgearbeitet.'>
-                            </button>
-                        </div>
-                        <div data-tab-controls='vehicles' style='display: none;'></div>
-                    </div>
-                    <ul class='nav nav-tabs' role='tablist' id='${prefix}-tabList'>
-                        <li role='presentation' class='active'>
-                            <a href='#${prefix}-tab-buildings' aria-controls='${prefix}-tab-buildings' role='tab' data-toggle='tab'>Gebäude</a>
-                        </li>
-                        <li role='presentation'>
-                            <a href='#${prefix}-tab-vehicles' aria-controls='${prefix}-tab-vehicles' role='tab' data-toggle='tab'>Fahrzeuge</a>
-                        </li>
-                    </ul>
-                    <div class='tab-content' style='padding-top: 15px; flex: 1 1 0; min-height: 0; overflow: hidden;'>
-                        <div id='${prefix}-tab-buildings' class='tab-pane active' role='tabpanel' style='height: 100%; min-height: 0;'>
-                            <table class='table table-striped tablesorter tablesorter-default' id='${prefix}-buildings-table' role='grid' style='width: 100%; display: flex; flex-direction: column; height: 100%; min-height: 0; margin-bottom: 0;'>
-                                <thead style='display: block; flex: 0 0 auto;'>
-                                    <tr style='display: table; width: 100%; table-layout: fixed;'>
-                                        <th class='sorter-digit' style='vertical-align: middle; width: 3ch; background-position: right -1ch center;'
-                                            title='alt - neu'>
-                                        </th>
-                                        <th class='text-center' style='vertical-align: middle; width: 175px;'>
-                                            Wachentyp
-                                        </th>
-                                        <th class='text-center' style='vertical-align: middle; width: 40ch;'>
-                                            Wache
-                                        </th>
-                                        <th class='sorter-false' style='vertical-align: middle; width: 40ch;'></th>
-                                        <th class='text-center sorter-false' style='vertical-align: middle; width: 19ch;'>Ausbaustufe</th>
-                                        <th class='sorter-false text-center' style='vertical-align: middle;'>
-                                            Erweiterungen
-                                        </th>
-                                        <!--<th class='sorter-false text-center' style='vertical-align: middle; width: 13ch;'>
-                                            Stellplätze
-                                            <small style='font-weight: normal;'>
-                                            Fzg - Anh - AB
-                                            </small>
-                                        </th>
-                                        <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>
-                                            Lager
-                                        </th>-->
-                                        <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>
-                                            Personal
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody aria-live='polite' aria-relevant='all' style='display: block; min-height: 0; overflow-y: auto; width: 100%; box-sizing: border-box;'>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id='${prefix}-tab-vehicles' class='tab-pane' role='tabpanel' style='height: 100%; min-height: 0; overflow: hidden;'>
-                            <div id='${prefix}-vehicle-accordion' class='panel-group' style='height: 100%; overflow-y: auto; overflow-x: hidden'></div>
-                        </div>
-                    </div>
-                </div>
-                <div id='${prefix}-footer' class='modal-footer' style='text-align: left;'>
-                    <div data-tab-controls='buildings'>
-                        <button type='button' data-action='reload-buildings' class='btn btn-default btn-xs'>
-                            Gebäude neuladen
-                        </button>
-                        <span id='${prefix}-textLastUpdateBuildings'>
-                            Lade Gebäudeliste ...
-                        </span>
-                        <span>
-                            -- Der Update-Button zeigt nur Gebäude, die sich in den letzten 24 Stunden verändert haben.
-                        </span>
-                    </div>
-                    <div data-tab-controls='vehicles' style='display: none;'>
-                        <button type='button' data-action='reload-vehicles' class='btn btn-default btn-xs'>
-                            Fahrzeuge neuladen
-                        </button>
-                        <span id='${prefix}-textLastUpdateVehicles'>
-                            Lade Fahrzeugliste ...
-                        </span>
-                    </div>
-                </div>
-            </div>
+  const html = /* HTML */ `
+  <div id='${prefix}-modal' class='modal fade in' tabindex='-1' role='dialog' aria-labelledby='${prefix}-title' style='display: block;'>
+    <div class='modal-dialog' role='document' style='width: 95%; height: 90vh; margin: 7vh auto 3vh;'>
+      <div class='modal-content' style='height: 100%; display: flex; flex-direction: column;'>
+        <div class='modal-header' style='display: flex; align-items: center; justify-content: space-between; position: relative;'>
+          <h4 id='${prefix}-title' class='modal-title' style='text-align: center; flex-grow: 1;'>${scriptName}</h4>
+          <div style='display: flex; align-items: center; gap: 15px; position: absolute; right: 15px; top: 50%; transform: translateY(-50%);'>
+            <span style='font-size: 0.8em; font-weight: normal; white-space: nowrap;'>v${version}</span>
+            <button type='button' class='close' data-dismiss='modal' aria-label='close'>
+              <span aria-hidden='true'>×</span>
+            </button>
+          </div>
         </div>
-    </div>`;
+        <div class='modal-body' style='display: flex; flex-direction: column; min-height: 0; max-height: none; flex: 1 1 auto; overflow-y: hidden;'>
+          <div id='${prefix}-control' class='panel-heading row' style='min-height: 50px;'></div>
+          <div id='${prefix}-filters' style='min-height: 25px;'>
+            <div data-tab-controls='buildings'>
+              <button type='button' data-action='save-profiles' class='btn btn-default btn-xs' style='width: 175px;'>
+                Vorlagen zuordnung speichern
+              </button>
+              <button type='button' data-action='filter-unassigned' class='btn btn-default btn-xs' style='width: 175px;'>
+                Wachen ohne Profil anzeigen
+              </button>
+              <button type='button' data-action='filter-missing-extensions' class='btn btn-default btn-xs' style='width: 175px;'>
+                Fehlende Erweiterungen
+              </button>
+              <button type='button' data-action='filter-inactive-extensions' class='btn btn-default btn-xs' style='width: 175px;'
+                  title='Aktivieren direkt auf den gelben Button klicken'>
+                Erweiterung nicht aktiv
+              </button>
+              <button type='button' data-action='filter-personnel-target' class='btn btn-default btn-xs' style='width: 175px;'
+                  title='Achtung: Es werden nur Gebäude mit einem Profil angezeigt'>
+                Abweichendes Personalsoll
+              </button>
+              <button type='button' data-action='fix-personnel-target' class='btn btn-default btn-xs glyphicon glyphicon-ok'
+                 title='Personalsoll für die aktuellen Gebäude setzen. Achtung: Es werden nur zwei Gebäude pro Sekunde abgearbeitet. Wachen ohne Profil können nicht verarbeitet werden!'>
+              </button>
+              <button type='button' data-action='filter-hire-automatic' class='btn btn-default btn-xs' style='width: 175px;'>
+                Kein automatisches Werben
+              </button>
+              <button type='button' data-action='fix-hire-automatic' class='btn btn-default btn-xs glyphicon glyphicon-ok'
+                  title='Automatisches Personalwerben für die aktuellen Gebäude aktivieren. Achtung: Es werden nur zwei Gebäude pro Sekunde abgearbeitet.'>
+              </button>
+            </div>
+            <div data-tab-controls='vehicles' style='display: none;'>
+              <button type='button' data-action='filter-missingVehicle' class='btn btn-default btn-xs' style='width: 175px;'>
+                Fahrzeuge fehlen
+              </button>
+              <button type='button' data-action='filter-moreVehicles' class='btn btn-default btn-xs' style='width: 175px;'>
+                Fahrzeuge überbestand
+              </button>
+              <button type='button' data-action='filter-fms6' class='btn btn-default btn-xs' style='width: 175px;'>
+                Fahrzeuge FMS 6
+              </button>
+              <button type='button' data-action='filter-assignedPersonnel' class='btn btn-default btn-xs' style='width: 175px;'>
+                Personalzuweisung
+              </button>
+              <input type='checkbox' id='filter-onlyTraining' data-action='filter-vehicle-personnel'>
+                <label for='filter-vehicle-personnel'>
+                  Nur Fahrzeuge die Ausbildungen benötigen
+                </label>
+              </input>
+            </div>
+          </div>
+          <ul class='nav nav-tabs' role='tablist' id='${prefix}-tabList'>
+            <li role='presentation' class='active'>
+              <a href='#${prefix}-tab-buildings' aria-controls='${prefix}-tab-buildings' role='tab' data-toggle='tab'>Gebäude</a>
+            </li>
+            <li role='presentation'>
+              <a href='#${prefix}-tab-vehicles' aria-controls='${prefix}-tab-vehicles' role='tab' data-toggle='tab'>Fahrzeuge</a>
+            </li>
+          </ul>
+          <div class='tab-content' style='padding-top: 15px; flex: 1 1 0; min-height: 0; overflow: hidden;'>
+            <div id='${prefix}-tab-buildings' class='tab-pane active' role='tabpanel' style='height: 100%; min-height: 0;'>
+              <table class='table table-striped tablesorter tablesorter-default' id='${prefix}-buildings-table' role='grid' style='width: 100%; display: flex; flex-direction: column; height: 100%; min-height: 0; margin-bottom: 0;'>
+                <thead style='display: block; flex: 0 0 auto;'>
+                  <tr style='display: table; width: 100%; table-layout: fixed;'>
+                    <th class='sorter-digit' style='vertical-align: middle; width: 3ch; background-position: right -1ch center;' title='alt - neu'>
+                    </th>
+                    <th class='text-center' style='vertical-align: middle; width: 175px;'>
+                      Wachentyp
+                    </th>
+                    <th class='text-center' style='vertical-align: middle; width: 40ch;'>
+                      Wache
+                    </th>
+                    <th class='sorter-false' style='vertical-align: middle; width: 40ch;'></th>
+                    <th class='text-center sorter-false' style='vertical-align: middle; width: 19ch;'>Ausbaustufe</th>
+                    <th class='sorter-false text-center' style='vertical-align: middle;'>
+                      Erweiterungen
+                    </th>
+                    <!--<th class='sorter-false text-center' style='vertical-align: middle; width: 13ch;'>
+                      Stellplätze
+                      <small style='font-weight: normal;'>
+                        Fzg - Anh - AB
+                      </small>
+                    </th>
+                    <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>
+                      Lager
+                    </th>-->
+                    <th class='sorter-false text-center' style='vertical-align: middle; width: 11ch;'>
+                      Personal
+                    </th>
+                  </tr>
+                </thead>
+                <tbody aria-live='polite' aria-relevant='all' style='display: block; min-height: 0; overflow-y: auto; width: 100%; box-sizing: border-box;'>
+                </tbody>
+              </table>
+            </div>
+            <div id='${prefix}-tab-vehicles' class='tab-pane' role='tabpanel' style='height: 100%; min-height: 0; overflow: hidden;'>
+              <div id='${prefix}-vehicle-accordion' class='panel-group' style='height: 100%; overflow-y: auto; overflow-x: hidden'>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='${prefix}-footer' class='modal-footer' style='text-align: left;'>
+          <div data-tab-controls='buildings'>
+            <button type='button' data-action='reload-buildings' class='btn btn-default btn-xs'>
+              Gebäude neuladen
+            </button>
+              <span id='${prefix}-textLastUpdateBuildings'>
+                Lade Gebäudeliste ...
+              </span>
+              <span>
+                -- Der Update-Button zeigt nur Gebäude, die sich in den letzten 24 Stunden verändert haben.
+              </span>
+            </div>
+            <div data-tab-controls='vehicles' style='display: none;'>
+              <button type='button' data-action='reload-vehicles' class='btn btn-default btn-xs'>
+                Fahrzeuge neuladen
+              </button>
+              <span id='${prefix}-textLastUpdateVehicles'>
+                Lade Fahrzeugliste ...
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  ` /* END HTML */;
 
   const dom = new DOMParser().parseFromString(html, 'text/html');
   const modal = dom.body.firstElementChild;
   document.body.append(modal);
 
-  const functionArea = modal.querySelector(`#${prefix}-control`)
+
   const accordionVehicles = modal.querySelector(`#${prefix}-vehicle-accordion`);
   $(accordionVehicles).on('show.bs.collapse', '.panel-collapse', async function () {
     const tbody = this.querySelector('tbody');
 
     if (!tbody || tbody.dataset.rendered === 'true') return;
 
-    const buildingId = Number(this.dataset.buildingId);
-    const building = buildings.find(item => Number(item.id) === buildingId);
+    const bID = Number(this.dataset.buildingId);
+    const building = buildings.find(item => Number(item.id) === bID);
 
-    const vehiclesThisbuilding = vehiclesByBuilding.get(buildingId) ?? [];
+    const vehiclesThisbuilding = vehiclesByBuilding.get(bID) ?? [];
 
     await renderVehicleRows(
       tbody,
-      buildingId
+      bID
     );
     tbody.dataset.rendered = 'true';
   });
@@ -1127,11 +1370,11 @@ function createModal() {
     const select = event.target.closest(`select[data-action='profile-assignment']`);
     if (!select) return;
     const cell = select.closest('tr').querySelector('.digit-cell');
-    const buildingId = Number(cell.dataset.digit);
+    const bID = Number(cell.dataset.digit);
     if (select.value === 'none') {
-      delete assignments[buildingId];
+      delete assignments[bID];
     } else {
-      assignments[buildingId] = select.value;
+      assignments[bID] = select.value;
     }
   });
 
@@ -1153,30 +1396,75 @@ function createModal() {
       controls.style.display = controls.dataset.tabControls === modal.activeTab ? '' : 'none';
     });
     if (modal.activeTab === 'vehicles') {
+      await renderPanelsVehicles(buildings);
     }
     if (modal.activeTab === 'buildings') {
-      await renderTableBuildings();
+      await renderTableBuildings(buildings);
     }
   });
 
   modal.addEventListener('click', async event => {
-    const extensionLink = event.target.closest(`a[data-link-tag='credits']`);
-    if (extensionLink) {
-      if (extensionLink.dataset.pending === 'true') {
+    const link = event.target.closest(`a[data-credits], a[data-action='activate']`);
+    const button = event.target.closest('[data-action]');
+    if (link) {
+      if (link.dataset.pending === 'true') {
         event.preventDefault();
         event.stopPropagation();
         return;
       }
-      extensionLink.dataset.pending = 'true';
+      link.dataset.pending = 'true';
       return;
     }
+    if (button?.dataset?.action === 'refresh-buildings') {
+      if (modal.activeTab === 'buildings') {
+        await renderTableBuildings(buildings);
+      }
+      if (modal.activeTab === 'vehicles') {
+        await renderPanelsVehicles(buildings);
+      }
+    }
 
+  });
+
+  const functionArea = modal.querySelector(`#${prefix}-control`)
+  const filterArea = modal.querySelector(`#${prefix}-filters`);
+  filterArea.addEventListener('click', async event => {
     const button = event.target.closest('[data-action]');
     if (!button || !modal.contains(button)) return;
 
-    if (button.dataset.action === 'refresh-buildings') {
-      await renderTableBuildings(buildings);
+    // tab equipment
+
+    // tab vehicles
+    if (button.dataset.action === 'filter-missingVehicle') {
+      const missingVehicle = buildings.filter(building =>
+        building.tags?.missingVehicle === true
+      );
+      await renderPanelsVehicles(missingVehicle);
     }
+    if (button.dataset.action === 'filter-moreVehicles') {
+      const moreVehicles = buildings.filter(building =>
+        building.tags?.moreVehicles === true
+      );
+      await renderPanelsVehicles(moreVehicles);
+    }
+    if (button.dataset.action === 'filter-fms6') {
+      const fms6Vehicles = buildings.filter(building =>
+        building.tags?.fms6 === true
+      );
+      await renderPanelsVehicles(fms6Vehicles);
+    }
+    if (button.dataset.action === 'filter-assignedPersonnel') {
+      const onlyTraining = filterArea.querySelector(
+        '#filter-onlyTraining'
+      ).checked;
+      const assignedPersonnel = buildings.filter(building =>
+        building.tags?.assignedPersonnel === false
+        && (!onlyTraining || building.tags?.needTraining === true)
+      );
+      await renderPanelsVehicles(assignedPersonnel);
+    }
+
+    // tab buildings
     if (button.dataset.action === 'save-profiles') {
       button.disabled = true;
       button.blur();
@@ -1187,24 +1475,29 @@ function createModal() {
         button.textContent = 'Vorlagen zuordnung speichern';
       } finally {
         button.disabled = false;
+        await renderTableBuildings(buildings);
       }
     }
     if (button.dataset.action === 'filter-unassigned') {
-      await renderenderTableBuildings(buildings.filter(building =>
-        building.tags.withoutAssignment === true));
+      const withoutAssignment = buildings.filter(building =>
+        building.tags?.withoutAssignment === true);
+      await renderTableBuildings(withoutAssignment);
     }
     if (button.dataset.action === 'filter-missing-extensions') {
-      await renderTableBuildings(buildings.filter(building =>
-        building.tags.missingExtension === true));
+      const missingExtensions = buildings.filter(building =>
+        building.tags?.missingExtension === true);
+      await renderTableBuildings(missingExtensions);
     }
     if (button.dataset.action === 'filter-inactive-extensions') {
-      await renderTableBuildings(buildings.filter(building =>
-        building.tags.allExtensionsActiv === false));
+      const inactiveExtensions = buildings.filter(building =>
+        building.tags?.allExtensionsActiv === false);
+      await renderTableBuildings(inactiveExtensions);
     }
     if (button.dataset.action === 'filter-personnel-target') {
-      await renderTableBuildings(buildings.filter(building =>
-        building.tags.personnel_target === false
-        && building.tags.withoutAssignment !== true));
+      const personnelTarget = buildings.filter(building =>
+        building.tags?.personnel_target === false
+        && building.tags.withoutAssignment !== true);
+      await renderTableBuildings(personnelTarget);
     }
     if (button.dataset.action === 'fix-personnel-target') {
       button.disabled = true;
@@ -1215,7 +1508,8 @@ function createModal() {
         for (const building of fixBuildings) {
           await delay(500);
           const token = document.querySelector(`meta[name='csrf-token']`).content;
-          const personnelSetPoint = building.template.personnelSetPoint;
+          const template = profileSelector(building)?.select;
+          const personnelSetPoint = template?.personnelSetPoint;
           const body = new URLSearchParams({
             utf8: '✓',
             _method: 'patch',
@@ -1243,10 +1537,11 @@ function createModal() {
       }
     }
     if (button.dataset.action === 'filter-hire-automatic') {
-      await renderTableBuildings(buildings.filter(building =>
+      const hireAutomatic = buildings.filter(building =>
         building.hiring_automatic === false
         && building.personal_count_target !== 0
-        && building.hire_phase === 0));
+        && building.hire_phase === 0);
+      await renderTableBuildings(hireAutomatic);
     }
     if (button.dataset.action === 'fix-hire-automatic') {
       button.disabled = true;
@@ -1275,33 +1570,41 @@ function createModal() {
         button.disabled = false;
       }
     }
-    if (button.dataset.action === 'reload-buildings') {
+  });
+
+  const footer = modal.querySelector(`#${prefix}-footer`);
+  footer.addEventListener('click', async event => {
+    const button = event.target.closest('[data-action]');
+    if (button?.dataset?.action === 'reload-buildings') {
       button.disabled = true;
       const status = modal.querySelector(`#${prefix}-textLastUpdateBuildings`);
       status.textContent = 'Lade Gebäudeliste ...';
       try {
         const updatedBuildings = await getBuildings(false, 'update');
         status.textContent = `Letztes Update: ${await showLastUpdate('buildings')}`;
-        await delay(1000);
         await renderTableBuildings(updatedBuildings);
       } finally {
         button.disabled = false;
         button.blur();
       }
     }
-    if (button.dataset.action === 'reload-vehicles') {
+    if (button?.dataset?.action === 'reload-vehicles') {
       button.disabled = true;
       const status = modal.querySelector(`#${prefix}-textLastUpdateVehicles`);
       status.textContent = 'Lade Fahrzeugliste ...';
       try {
-        const updatedVehicles = await getVehicles(true);
+        const updatedVehicles = await getVehicles(false, 'update');
+        let updatedBuildings = [];
+        if (updatedVehicles.length > 0) {
+          const buildingIds = new Set(
+            updatedVehicles.map(vehicle => Number(vehicle.building_id))
+          );
+          updatedBuildings = buildings.filter(
+            building => buildingIds.has(Number(building.id))
+          );
+        }
         status.textContent = `Letztes Update: ${await showLastUpdate('vehicles')}`;
-        const min = Math.min(updatedVehicles.building_id);
-        const max = Math.max(updatedVehicles.building_id);
-        //const range = IDBKeyRange.bound(min, max, false, false);
-        //const match = [...new Set(updatedVehicles.map(v => v.building_id))];
-        //const updatedBuildings = await getBuildingCategories(false, 'id', range, match);
-        await delay(1000);
+        vehicleMapBuildings = null;
         await renderPanelsVehicles(updatedBuildings);
       } finally {
         button.disabled = false;
@@ -1310,64 +1613,80 @@ function createModal() {
     }
   });
 
-  const links = ['/extension/credits/', '/extension_ready/', '/expand_do/credits',];
+  const pendingLinks = new WeakMap();
+  const links = ['/extension/credits/', '/extension_ready/', '/expand_do/credits', '/credits',];
+  $(modal).on('ajax:beforeSend', `a[data-credits], a[data-action='activate']`, function (event, xhr, settings) {
+    if (!links.some(link => settings.url.includes(link))) return;
+    const row = this.closest('tr[data-line]');
+    pendingLinks.set(xhr, {
+      link: this,
+      action: this.dataset.action,
+      credits: this.dataset.credits,
+      bID: Number(this.dataset.building),
+      typeID: Number(this.dataset.type),
+      line: row ? Number(row.dataset.line) : null,
+    })
+  });
   $(document).ajaxComplete(async function (event, xhr, settings) {
     if (!links.some(link => settings.url.includes(link))) return;
-
-    const extension = settings.url.match(
-      /\/buildings\/(\d+)\/extension(?:_ready|\/credits)\/(\d+)(?:[\/?].*)?/
-    );
-    const level = settings.url.match(
-      /\/buildings\/(\d+)\/expand_do\/credits\?level=(\d+)/
-    );
-    if (!extension && !level) return;
-
-    let id;
-    let typeId;
-    let link;
-    if (['/extension/credits/', '/extension_ready/'].some(link => settings.url.includes(link))) {
-      id = Number(extension[1]);
-      typeId = Number(extension[2]);
-      link = modal.querySelector(
-        `a[data-building='${extension[1]}'][data-extension='${extension[2]}']`
-      );
-    }
-    if (settings.url.includes('/expand_do/credits')) {
-      id = Number(level[1]);
-      link = modal.querySelector(
-        `a[data-building='${level[1]}'][ data-level='${level[2]}']`
-      );
-
-    }
-
-    console.log(id)
-    const building = buildings.find(item => Number(item.id) === id);
-    console.log(building);
-    if (!building) return;
-
+    const pending = pendingLinks.get(xhr);
+    if (!pending) return;
+    console.log('ajaxComplete', pending);
     if (xhr.status !== 200) {
-      link?.removeAttribute('data-pending');
+      pending?.link?.removeAttribute('data-pending');
       console.error('Error: response not Ok');
       return;
     }
 
-    if (settings.url.includes('/extension_ready/')) {
+    const bID = pending.bID;
+    const typeID = pending.typeID;
+    const credits = pending.credits;
+    const action = pending.action;
+
+    const building = buildings.find(item => Number(item.id) === bID);
+    if (!building) return;
+
+    if (action === 'activate') {
+      const exTypeID = typeID;
       const extension = building.extensions.find(item =>
-        item.type_id === typeId);
+        item.type_id === exTypeID);
       if (extension) extension.enabled = true;
     }
-    if (settings.url.includes('/extension/credits/')) {
-      const extensionType = buildingTypes[building.building_type]
-        .extensions[typeId];
-      const duration = extensionType.duration.match(/(\d+)/);
+
+    if (credits === 'vehicle') {
+      const status = modal.querySelector(
+        `#${prefix}-textLastUpdateVehicles`
+      );
+      const previousText = status.textContent;
+      const bCaption = building.caption ?? '';
+      const vTypeID = typeID;
+      const vCaption = getType({ vehicle_type: vTypeID }, vehicleTypes).caption;
+      status.textContent = `Fahrzeug ${vCaption} in Gebäude ${bCaption} gekauft`;
+      await delay(3500);
+      status.textContent = previousText;
+      return;
+    }
+
+    if (credits === 'extension') {
+      const bType = getType(building, buildingTypes);
+      const exTypeID = typeID;
+      const exTypes = bType.extensions;
+      const exType = getType({ type_id: exTypeID }, exTypes);
+      const duration = exType.duration.match(/(\d+)/);
       const period = Number(duration[1]) * 24 * 60 * 60 * 1000;
+      const latestDate = building.extensions.reduce((latest, ext) => {
+        if (!ext.available_at) return latest;
+        if (!latest) return ext;
+        return new Date(ext.available_at) > new Date(latest.available_at) ? ext : latest;
+      }, null);
+      const finishedDate = latestDate ? new Date(lastetDate.available_at) : new Date();
       building.extensions.push({
-        type_id: typeId,
-        caption: extensionType.caption,
-        available_at: date(Date.now() + period),
+        type_id: exTypeID,
+        caption: exType.caption,
+        available_at: date(finishedDate.getTime() + period),
       });
     }
-    if (settings.url.includes('/expand_do/credits')) {
+    if (credits === 'level') {
       const fromLevel = building.level;
       const toLevel = fromLevel + 1;
       building.level = toLevel;
@@ -1381,6 +1700,8 @@ function createModal() {
   modal.activeTab = 'buildings';
   modal.buildingTableBody = buildingTableBody;
   modal.functionArea = functionArea;
+  modal.filterArea = filterArea;
+  modal.footer = footer;
   return modal;
 }
 

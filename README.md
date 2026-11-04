@@ -5,16 +5,6 @@ Modulare Open-Source Userscripts und Bibliotheken für das Leitstellenspiel.
 Dieses Projekt entwickelt Werkzeuge zur Erweiterung und Verbesserung der Spielverwaltung.
 Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederverwendbaren Modulen.
 
-## Verbindliche Arbeitsregeln für Codex
-
-- Bearbeite ausschließlich den Auftrag, den der Nutzer gerade ausdrücklich erteilt hat. Führe keine naheliegenden Folgearbeiten oder vermuteten nächsten Schritte eigenständig aus.
-- Eine Frage nach Ursache oder Erklärung ist keine Erlaubnis, den Code zu ändern. Ein Auftrag, einen konkreten Fehler zu beheben, erlaubt nur die dafür nötige Änderung – nicht die Fertigstellung angrenzender Funktionen.
-- Wenn der Umfang einer Anweisung wie „den letzten Punkt beheben“ mehrdeutig ist, kläre zuerst, welcher Punkt gemeint ist und wie weit die Änderung gehen soll.
-- Nenne angrenzende offene Probleme als Hinweis, behandle sie aber nicht als Arbeitsauftrag.
-- Halte Änderungen auf die betroffene Stelle begrenzt. Keine zusätzlichen Umstrukturierungen, Bereinigungen, Tests oder Änderungen an anderen Dateien ohne ausdrücklichen Auftrag.
-- Ändere keine Datei, an der der Nutzer gerade arbeitet oder die noch geöffnet ist. Warte, bis der Nutzer bestätigt, dass die Datei geschlossen ist. Erhalte vorhandene Änderungen und überschreibe keine ganze Datei für eine kleine Korrektur.
-- Berichte knapp, was geändert wurde und was offen bleibt. Behaupte nicht, etwas getestet zu haben, wenn es nicht tatsächlich ausgeführt wurde.
-
 <!-- BEGIN DIST SCRIPTS -->
 ## Skripte in `dist`
 
