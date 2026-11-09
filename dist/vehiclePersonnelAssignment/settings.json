@@ -1,0 +1,188 @@
+{
+    // "0": {                                      // exaple
+    //     "caption": "LF 20",                     // caption is not need, but helpfull for human
+    //     "staff": {                              // you can overwirte every settings in staff, every settings not need to overwirte
+    //         "min": 3,                           // missing settings will get from lss-mangager.de vehicles file, thanks for your work to the team
+    //         "training": {                       // if you change setting in training sector, you have to set original training too
+    //             "key_word": { "all": true },    // if there are following objects, you need comma separates
+    //             "ex_ample": { "min": 1 }        // "key_word": {  all: true } means that all persons need this trainin
+    //         }
+    //     }                                       // have a look for trainings keyword at https://api.lss-manger.de de_DE schoolings
+    // },
+    "reverse": true,                               // this can select personal by seniors first
+    "11": {
+        "calption": "GW-L2-Wasser",
+        "staff": {
+            "training": {
+                "Feuerwehr": {
+                    "gw_hoehenrettung": { "min": 1 }
+                }
+            }
+        }
+    },
+    "46": {
+        "calption": "WLF",
+        "staff": {
+            "training": {
+                "Feuerwehr": {
+                    "wechsellader": { "all": true },
+                    "gw_gefahrgut": { "min": 1 },
+                    "elw2": { "min": 1 },
+                    "energy_supply": { "min": 1 },
+                    "fire_drone": { "min": 3 },
+                    "fire_care_service": { "min": 1 },
+                    "care_service_equipment": { "min": 2 },
+                    "railway_fire": { "min": 1 },
+                    "wildfire": { "min": 1 }
+                }
+            }
+        }
+    },
+    "53": {
+        "caption": "Dekon-P",
+        "staff": {
+            "min": 6,
+            "training": {
+                "Feuerwehr": {
+                    "dekon_p": { "min": 6 }
+                }
+            }
+        }
+    },
+    "63": {
+        "caption": "GW-Wasserrettung",
+        "staff": {
+            "min": 4,
+            "training": {
+                "Feuerwehr": {
+                    "gw_wasserrettung": { "min": 4 }
+                }
+            }
+        }
+    },
+    "61": {
+        "calption": "Polizeihubschrauber",
+        "staff": {
+            "training": {
+                "Polizei": {
+                    "polizeihubschrauber": { "all": true },
+                    "police_firefighting": { "min": 1 },
+                    "police_helicopter_lift": { "min": 1 }
+                }
+            }
+        }
+    },
+    "65": {
+        "caption": "LKW 7 Lkr 19 tm",
+        "staff": {
+            "training": {
+                "THW": {
+                    "gw_wasserrettung": { "min": 2 }
+                }
+            }
+        }
+    },
+    "93": {
+        "caption": "MTW-O",
+        "staff": {
+            "training": {
+                "THW": {
+                    "thw_rescue_dogs": { "min": 4 }
+                }
+            }
+        }
+    },
+    "104": {
+        "calption": "GW-L1",
+        "staff": {
+            "min": 6,
+            "training": {
+                "Feuerwehr": {
+                    "dekon_p": { "min": 6 },
+                    "gw_gefahrgut": { "min": 1 },
+                    "gw_hoehenrettung": { "min": 1 },
+                    "fire_drone": { "min": 4 },
+                    "railway_fire": { "min": 1 },
+                    "wildfire": { "min": 1 }
+                }
+            }
+        }
+    },
+    "105": {
+        "calption": "GW-L2",
+        "staff": {
+            "min": 2,
+            "training": {
+                "Feuerwehr": {
+                    "gw_hoehenrettung": { "min": 1 },
+                    "gw_taucher": { "min": 2 }
+                }
+            }
+        }
+    },
+    "122": {
+        "caption": "LKW 7 Lbw (FGr E)",
+        "staff": {
+            "training": {
+                "THW": {
+                    "thw_energy_supply": { "min": 1 }
+                }
+            }
+        }
+    },
+    "123": {
+        "caption": "LKW Lbw (FGr WP)",
+        "staff": {
+            "training": {
+                "THW": {
+                    "water_damage_pump": { "min": 1 }
+                }
+            }
+        }
+    },
+    "135": {
+        "caption": "Pferdetransporter groß",
+        "staff": {
+            "min": 2,
+            "training": {
+                "Polizei": {
+                    "police_horse": { "min": 2 }
+                }
+            }
+        }
+    },
+    "137": {
+        "caption": "Zugfahrzeug Pferdetransport",
+        "staff": {
+            "min": 2,
+            "training": {
+                "Polizei": {
+                    "police_horse": { "min": 2 }
+                }
+            }
+        }
+    },
+    "150": {
+        "calption": "GW-Bergrettung",
+        "staff": {
+            "min": 4,
+            "training": {
+                "Rettungsdienst": {
+                    "mountain_height_rescue": { "min": 4 }
+                }
+            }
+        }
+    },
+    "156": {
+        "calption": "Polizeihubschrauber mit verbauter Winde",
+        "staff": {
+            "training": {
+                "Polizei": {
+                    "polizeihubschrauber": { "min": 1 },
+                    "police_firefighting": { "min": 1 },
+                    "police_helicopter_lift": { "min": 1 }
+                }
+            }
+        }
+    }
+}

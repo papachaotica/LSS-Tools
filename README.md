@@ -19,6 +19,7 @@ Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederve
 - [`[LSS] showAddress`](dist/ShowAddress.user.js) — zeigt die Adresse der Wache im Gebäude an
 - [`* Wachenbaupläne`](dist/teplateEditor.js) — Verwaltet Baupläne für benutzerdefinierte Vorlagen, wie Wachen ausgebaut und ausgestattet werden sollen
 - [`[ LSS ] erweiterter Lehrgangszuweiser`](dist/trainingPersonalSelector.user.js) — Fügt Buttons hinzu, um Personal einer Wache gesammelt einem Lehrgang zuzuweisen. Behebt wechselwirkung mit Ausbildungsmausschoner und erweitert um Vollausblidungs Feature
+- [`Fahrzeugzuweisung Wachenweise`](dist/vehiclePersonnelAssignment/vehiclePersonnelAssignment.user.js) — Prüft und korrigiert Zuweisungen einer Wache, setzt FMS 2/6.
 - [`* Wachenbaupläne`](dist/Wachenbaupläne.user.js) — Verwaltet Baupläne für benutzerdefinierte Vorlagen, wie Wachen ausgebaut und ausgestattet werden sollen
 <!-- END DIST SCRIPTS -->
 ## libarys
