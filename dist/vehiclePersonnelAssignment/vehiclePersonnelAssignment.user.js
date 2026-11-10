@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name            Fahrzeugzuweisung Wachenweise
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.7.2.261111.1740
+// @version         0.7.2.261110
 // @description     Prüft und korrigiert Zuweisungen einer Wache, setzt FMS 2/6.
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://*.leitstellenspiel.de/buildings/*
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261105
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261105
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261110
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261110
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -408,7 +408,7 @@ if (!document.querySelector('.vehicleAssign')) {
         '.dl-horizontal > dd a[href$="/personals"]'
     );
     if (!personal) return;
-    const dd = document.createElement('dd');
+    const div = document.createElement('div');
     const worker = document.createElement('button');
     worker.className = 'btn btn-default btn-xs vehicleAssign';
     worker.textContent = "Personal auf Fahrzeuge zuweisen";
@@ -465,6 +465,6 @@ if (!document.querySelector('.vehicleAssign')) {
     });
 
     progress.append(progressBar);
-    dd.append(worker, settings, progress);
-    dl.append(dd);
+    div.append(worker, settings, progress);
+    dl.after(div);
 }
