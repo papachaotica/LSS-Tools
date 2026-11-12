@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name            Fahrzeugzuweisung Wachenweise
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.7.2.261110
+// @version         0.7.2.261112
 // @description     Prüft und korrigiert Zuweisungen einer Wache, setzt FMS 2/6.
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://*.leitstellenspiel.de/buildings/*
 // @exclude-match   https://forum.leitstellenspiel.de
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261110
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261110
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261112
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261112
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -360,9 +360,14 @@ async function main(progress) {
         done++;
         const vID = vehicle.id;
         const vTypeID = vehicle.type
-
         let assigned = assignmetns.get(vID);
-        const fms_real = vehicles.find(v => v.id === vID).fms_real;
+        const assignCount = assigned.length;
+        const realVehicle = vehicles.find(v => v.id === vID);
+
+        const fms_real = realVehicle.fms_real;
+        const fms_show = realVehicle.fms_show;
+        const assigned_personnel_count = realVehicle.assigned_personnel_count;
+        if (assigned_personnel_count !== assignCount) realVehicle.assigned_personnel_count = assignCount;
         let tractive;
         let min = vehicle.min;
         if (vehicleTypes[vTypeID].isTrailer) {
@@ -379,13 +384,18 @@ async function main(progress) {
                 await progress(done, vehiclesTotal, "FMS 2");
                 console.log(`set ${vehicle.caption} to FMS 2`);
                 await setFMS(2, vehicle);
+                realVehicle.fms_real = 2;
+                realVehicle.fms_show = 2;
             }
         } else if (fms_real === 2) {
             await progress(done, vehiclesTotal, "FMS 6");
             console.log(`set ${vehicle.caption} to FMS 6`);
             await setFMS(6, vehicle);
+            realVehicle.fms_real = 6;
+            realVehicle.fms_show = 6;
         }
     };
+    await saveAll(vehicles, 'vehicles', configDB);
 };
 
 async function updateProgress(done, total, message) {

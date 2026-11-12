@@ -1,16 +1,16 @@
 // ==UserScript==
 // @name            Gebietsleiter - Zentrale Leitstelle
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.25.0.261105
+// @version         0.25.0.261112
 // @description:de  Zentrale Verwaltung aller Gebäude und Fahrzeuge
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
 // @match           https://leitstellenspiel.de
 // @match           https://www.leitstellenspiel.de
 // @exclude-match   https://forum.leitstellenspiel.de
-// @updateURL       https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/dist/gebietsleitung.user.js
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261105
-// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261105
+// @updateURL       https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/dist/areaManagement/areaManager.user.js
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/indexedDB.js?v261112
+// @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261112
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
@@ -248,7 +248,7 @@ const defaults = {
 
 const prefix = "gl";
 const scriptName = "Gebietsleitung - Zentrale Leitstelle";
-const version = "0.25.0.261105";
+const version = "0.25.0.261112";
 
 const lang = I18n.locale ? I18n.locale : 'de_DE';
 const international = {

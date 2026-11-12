@@ -1,0 +1,77 @@
+# todo
+  - manuell Abweichungen vom Profi freigeben mit Gültigkeitsverlust bei nächster Profiländerung
+  - Template Tabelle rendern
+  - Link zu CentralSettings bauen (Zugfahrzeug Zuordnung, DGL ELW GRTW Einstellungen)
+  - Equipment auf Machbarkeit prüfen
+  - storage_upgrades vor dem Zugriff prüfen
+  -[x] Lagergröße und verfügbar anzeigen
+  - progressbar
+  - table-style sort header above vehicle accordion. Column clicks will reorder existing panels without re-rendering them.
+  - regex search with a one-second debounce. Search will stay within the buildings selected in the dropdown,
+    the Buildings tab searches building names, while the Vehicles tab searches building and vehicle names.
+    Skip vehicle-name matching safely until vehicle data is loaded.
+
+# todo bugfix
+  - lastUpdate wird beim Fahrzeugkauf versehendlich überschrieben -- fix is planned with progressbar
+  - filter Wachen ohne Profil defekt
+
+# 0.25.2.261112
+  - fix parkingLots Count in renderPanelsVehicles
+  - fix missing more flag for vehicles thats not planned
+
+# 0.25.1.261110
+  - Updated the shared data-handler dependency. It now supports fetching vehicle data for a single building.
+  - AJAX-URL-Match und Gebäude vor dem Zugriff prüfen
+  - Ereignisparameter im Menü-Click-Handler explizit übernehmen
+  - Kauf gegen Doppelklick absichern und Tabelle nach Erfolg aktualisieren
+
+# 0.24.0.261105
+  - Completed the vehicle tab design and core logic, including per-building panels, vehicle inventory comparisons, staffing and FMS status, and vehicle actions.
+  - Corrected building filtering so dispatch centers are excluded from the regular building list.
+
+# 0.23.0.261103
+  - geplante Fahrzeuge vergleichen und Abweichungen anzeigen
+  - change-Listener der Gebäudetabelle nur einmal registrieren
+
+# 0.20.8.261102
+  - Introduced the vehicle tab for pre-release testing, with vehicle tables grouped by building and tractor-trailer relationships represented in the rows.
+  - Stellplätze ermitteln und verfügbare anzeigen
+
+# 0.20.7.261026
+  - Added personnel target correction and automatic hiring controls, with progress and error handling for bulk actions.
+
+# 0.18.6.261026
+  - Added grouped building-category selection and filtering.
+  - Improved personnel target handling and guarded extension updates against missing buildings or unmatched requests.
+
+# 0.17.1.261024
+  -[x] Gekaufte Erweiterung nach erfolgreicher AJAX-Antwort in IndexedDB speichern
+
+# 0.16.9.261023
+  - Erweiterungen aktivieren ermöglichen
+  - Erweiterungen kaufen ermöglichen
+
+# 0.14.1.261022
+  - Integrated the `caseOfCaddy` cache lookup and refined building-table rendering and sorting.
+
+# 0.14.0.261020
+  - Reworked the interface around injected HTML and added sortable building-table columns, profile matching, and building status filters.
+
+# 0.10.0.261017
+  - Started the new Gebietsleiter development script with a building-management modal, blueprint import and matching, saved manual profile assignments, extension and personnel status, and dispatch-center selection.
+
+# 0.8.0.261014
+  - Leitstelle erkennen
+  - Auswahl dropdown auf Leitstelle Übergabe an renderTableBuildings
+
+# 0.7.2.260910
+  - Wachenbaupläne importieren
+  - Manuelle Profil Zuordnung und persistent speichern
+  - Blueprint auf regex zuordnen oder Default setzen
+  - Blueprint auf Erweiterungen anwenden
+  
+# 0.5.0.260905
+  - Gebäudetabelle rendern mit Erweiterungen
+
+# 0.2.8.260815
+  - modal bauen

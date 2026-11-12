@@ -1,0 +1,9 @@
+# 0.13.2.261112
+  - new function keyPath: retunrn keyPath for indicies, for filtering in not use db case
+
+# 0.13.1.261022
+- Added `caseOfCaddy` for safely reading an optional external IndexedDB without creating it when it does not exist.
+- Improved schema initialization so missing stores or indexes trigger a database upgrade; made `saveKey` support the store key path by default.
+
+# 0.12.7.261011.0154
+- Added the shared IndexedDB helper with configured stores and indexes, keyed and indexed reads, cursor queries, counts, bulk save/clear operations, and database export/import helpers.

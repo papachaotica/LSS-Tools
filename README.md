@@ -8,8 +8,8 @@ Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederve
 <!-- BEGIN DIST SCRIPTS -->
 ## Skripte in `dist`
 
+- [`Gebietsleiter - Zentrale Leitstelle`](dist/areaManagement/areaManager.user.js)
 - [`[LSS] Ersthelfer`](dist/FirstResponder.user.js) — Wählt das nächstliegende Ersthelferfahrzeug aus; Fahrzeuge können über ein Menü konfiguriert werden.
-- [`Gebietsleiter - Zentrale Leitstelle`](dist/gebietsleitung.user.js)
 - [`[ LSS  ] Hide elemnts`](dist/killmap.user.js) — Löscht die Karte vollständig aus dem Speicher, um CPU-Last zu sparen.
 - [`LSS Massenentlassungen`](dist/LSS Massenentlassungen.user.js) — Ermöglicht das massenhafte Entlassen von Personal
 - [`[LSS] Layout 04`](dist/lssm-layout-04.user.js) — Kompaktes Layout für das Leitstellenspiel (Basiert auf LSSM v3)

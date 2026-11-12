@@ -1,0 +1,18 @@
+# 0.7.3.261112
+  - Added support for fetching vehicle data for the current building through the updated shared API helper.
+  - Persisted calculated personnel counts and FMS changes to the vehicle cache after assignment processing.
+  - change position of button, there was a crash with lssm3 extend building modul
+
+# 0.7.2.261109
+    - set FMS 2 or 6 based on minimum staffing.
+
+# 0.6.0.261107
+  - add buttons and progressbar
+  - valid vehicles from cache with html parsing
+
+# 0.4.5.261105
+  - add defaults and settings.json
+  - after multiple failed try's run personal assing in 4 steps for each vehicle
+
+# 0.1.1.261031
+  - analysing fetch for get personals

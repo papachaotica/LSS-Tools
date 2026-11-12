@@ -1,0 +1,37 @@
+# 0.17.2.261112
+  - fix handling range and match in getVehicles, in case of fetch
+  - fix chache handling for deleted vehicles > maxAge = reload true
+  - fix age handling in getBuildingCategories
+
+# 0.17.1.261110
+- Fixed single-building vehicle fetches to use the building-specific fallback endpoint and avoid
+  clearing the full vehicle store during a building-only reload.
+- Corrected cached age checks for building categories and made cached metadata reads safer when
+  values are absent.
+
+# 0.17.0.261110
+- Added building-scoped vehicle fetching and vehicle-category caching; reworked vehicle cache
+  refresh and update handling.
+
+# 0.16.6.261031
+- Refined building and vehicle retrieval with optional result predicates, small-building mapping,
+  and consistent filtering of cache metadata from returned records.
+
+# 0.16.0.261026
+- Added cached retrieval of LSS Manager building categories.
+
+# 0.15.5.261024
+- Improved incremental building and vehicle updates using stored timestamps and expanded indexed
+  queries with optional result filtering.
+
+# 0.15.4.261019
+- Updated fetch and cache handling for paginated building and vehicle data, including API fallback
+  behavior and cached type metadata.
+
+# 0.15.4.261012
+- Integrated the fetch and IndexedDB helpers into the current library structure for buildings,
+  vehicles, building and vehicle types, small-building mappings, and mission types.
+
+# 0.0.4.261012.1927
+- Initial API-fetch library with paginated building and vehicle requests, IndexedDB caching, and
+  cached building, vehicle, and mission metadata.
