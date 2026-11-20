@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name            Fahrzeugzuweisung Wachenweise
 // @namespace       papachaotica.leitstellenspiel.de
-// @version         0.7.2.261112
+// @version         0.7.3.261120
 // @description     Prüft und korrigiert Zuweisungen einer Wache, setzt FMS 2/6.
 // @author          papachaotica
 // @homepage        https://github.com/papachaotica
@@ -114,17 +114,22 @@ async function main(progress) {
     await progress(0, 1, 'Load vehicles');
     for (const row of document
         .querySelectorAll(`#vehicle_table > tbody > tr`)) {
-
+        const vehicleLink = row.querySelector(`a[href^='/vehicles/']`);
+        const vID = Number(
+            vehicleLink?.pathname?.match(/^\/vehicles\/(\d+)(?:\/|$)/)?.[1]
+        );
+        /*
         const vTypeID = Number(row.cells[0]
             .firstElementChild
             .getAttribute('vehicle_type_id')
         );
-        const vID = Number(row.cells[1]
-            .firstElementChild
-            .getAttribute('href')
-            .match(/\/vehicles\/(\d+)/)?.[1]
+        */
+        const fmsElement = row.querySelector('.building_list_fms');
+        const fmsClass = [...(fmsElement?.classList ?? [])]
+            .find(className => /^building_list_fms_\d+$/.test(className));
+        const fms = Number(
+            fmsClass?.match(/^building_list_fms_(\d+)$/)?.[1]
         );
-        const fms = Number(row.cells[3]?.textContent.trim())
 
         let vehicle = vehicles.find(v => v.id === vID);
         if (!vehicle) {
@@ -156,6 +161,7 @@ async function main(progress) {
     for (const row of rows) {
         done++;
         await progress(done, personalTotal, "verarbeite Mitarbeiter infos ");
+
         const id = Number(row.getAttribute('id')
             .replace('personal_', '')
         );
