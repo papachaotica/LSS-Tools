@@ -11,6 +11,7 @@
 // @require         https://raw.githubusercontent.com/papachaotica/LSS-Tools/dev/lib/api-fetch-database-handler.js?v261112
 // @run-at          document-idle
 // @license         AGPL-3.0-or-later
+// @ai              assisted
 // ==/UserScript==
 
 'use strict'

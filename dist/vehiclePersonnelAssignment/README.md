@@ -8,6 +8,30 @@ Userscript für das Leitstellenspiel, das Personal einer Wache auf Fahrzeuge ver
 - Tampermonkey und das installierte Userscript.
 - Eine Gebäudeseite mit Personalbereich und Fahrzeugen.
 
+> ## ⚠️ Wichtiger Nutzungshinweis
+>
+> Dieses Script führt nach dem Start eine Sammelaktion für die aktuell geöffnete
+> Wache aus. Es wird **keine Vorschau** der geplanten Personalzuweisungen oder
+> FMS-Änderungen angezeigt und vor dem Start keine zusätzliche Bestätigung
+> eingeholt.
+>
+> Das Script kann mehrere Personalzuweisungen ändern, bestehende Zuweisungen
+> aufheben und den FMS-Status von Fahrzeugen anpassen. Prüfe deshalb vor dem
+> Start, ob die aktuelle Wache, die importierten Einstellungen und die
+> angezeigten Fahrzeugdaten korrekt sind.
+>
+> Ein Neuladen der Seite mit `F5` beendet in der Regel die weitere
+> clientseitige Verarbeitung. Bereits an den Spielserver gesendete Anfragen
+> werden dadurch jedoch nicht zurückgenommen und können weiterhin verarbeitet
+> werden. Bereits ausgeführte Änderungen lassen sich durch `F5` nicht
+> automatisch rückgängig machen.
+>
+> Die Nutzung erfolgt auf eigene Verantwortung. Lies vor der Verwendung die
+> [Richtlinie für Scripte und Zusatzprogramme](../../docs/richtlinie-scripte-zusatzprogramme.md)
+> sowie den
+> [Nutzungs-, Daten- und Risikohinweis](../../docs/nutzungs-und-datenhinweis.md).
+
+
 ## Bedienung
 
 Auf der Gebäudeseite erscheinen im Informationsbereich zwei Buttons:
@@ -87,3 +111,41 @@ Für Importdateien wird gültiges JSON empfohlen.
 - Lehrgangsspezifische Mindestanzahlen werden eingelesen, aber bei der Auswahl nicht als erreichte Kontingente gezählt.
 - Die Fortschrittsanzeige bezieht sich auf einzelne Verarbeitungsschritte. Sie ist kein durchgehender Gesamtfortschritt und erreicht nicht in jeder Phase 100 Prozent.
 - Fehler einzelner Zuweisungs- oder FMS-Requests werden in der Konsole protokolliert und innerhalb der jeweiligen Funktion abgefangen. Ein bis zum Ende laufender Durchgang bestätigt deshalb nicht, dass sämtliche Änderungen erfolgreich übertragen wurden. Die FMS-Entscheidung basiert auf der berechneten Besetzung.
+- Es gibt derzeit keine Vorschau, keine Bestätigungsabfrage und keinen programminternen Abbruch während der Sammelaktion. `F5` kann die weitere Verarbeitung unterbrechen, garantiert aber nicht, dass bereits gesendete Anfragen gestoppt oder Rückgängig gemacht werden.
+
+## Speicherung und verarbeitete Daten
+
+Das Script verwendet die lokale IndexedDB-Datenbank `leitstellenspiel` im
+Browserprofil. Es werden keine Daten auf einem Server des Script-Autors
+gespeichert.
+
+Lokal verwendet werden insbesondere:
+
+- der Store `main` für importierte Einstellungen unter dem Schlüssel
+  `settings-personalassign`,
+- der Store `main` für zwischengespeicherte Fahrzeugtypdaten,
+- der Store `vehicles` für Fahrzeugdaten und lokal aktualisierte Werte zur
+  Besetzung und zum FMS-Status.
+
+Die aus einer JSON-Datei importierten Einstellungen werden vollständig unter
+`settings-personalassign` gespeichert. Ein späterer Import ersetzt diesen
+Einstellungsdatensatz vollständig. Die Einstellungen können dadurch
+benutzerdefinierte Fahrzeug-, Besetzungs- und Lehrgangsvorgaben enthalten.
+
+Personal-, Ausbildungs- und aktuelle Zuweisungsdaten werden während der
+Berechnung aus der geöffneten Spielseite gelesen und im Arbeitsspeicher
+verarbeitet. Das Script speichert diese Personaldaten nicht dauerhaft in
+seiner eigenen IndexedDB-Konfiguration. Verarbeitete Daten können zur
+Fehleranalyse in der Browserkonsole erscheinen.
+
+Die Fahrzeug- und Fahrzeugtypdaten werden zur Wiederverwendung lokal
+zwischengespeichert. Ein Cache kann deshalb vorübergehend ältere Daten
+enthalten und wird abhängig von den verwendeten Datenabrufen aktualisiert.
+
+Das Script fragt keine Passwörter oder E-Mail-Adressen ab und übermittelt
+keine Login-Daten an den Script-Autor. Spielbezogene Anfragen werden im
+angemeldeten Browserkontext an die Server des Leitstellenspiels gesendet.
+Allgemeine Fahrzeugtypdaten können zusätzlich von
+`api.lss-manager.de` abgerufen werden.
+
+@ai assisted -- 21.11.2026
