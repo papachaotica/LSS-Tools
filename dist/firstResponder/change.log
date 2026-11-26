@@ -1,0 +1,35 @@
+## Version 2.0.0-rc2 – 26.11.2026
+
+- Neue veröffentlichte Fassung unter
+  `dist/firstResponder/FirstResponder.user.js` dokumentiert.
+- READEME und change.log erstellt
+
+## Version 2.0.0-rc1 – 24.07.2026
+
+- Download- und Update-URLs auf den damaligen Veröffentlichungspfad unter
+  `dist/FirstResponder.user.js` angepasst.
+
+## Version 2.0.0-rc1 – 22.07.2026
+
+- Das ursprüngliche Ersthelfer-Script wurde aus der Archivfassung
+  weiterentwickelt und als `2.0.0-rc1` unter `dist/FirstResponder.user.js`
+  veröffentlicht.
+- Die feste Fahrzeugtypliste wurde durch eine konfigurierbare Auswahl ersetzt.
+- Fahrzeugtypen werden beim Öffnen der Konfiguration aus der
+  LSS-Manager-API geladen.
+- Die Auswahl erlaubter Fahrzeugtypen wird dauerhaft im Userscript-Manager
+  gespeichert.
+- Ein Profilmenüeintrag mit Overlay, Speichern- und Abbrechen-Funktion wurde
+  ergänzt.
+- Die ursprüngliche Auswahl-Logik von BOS-Ernie wurde in die Erweiterung
+  übernommen und um die Konfiguration ergänzt.
+
+## Version 1.1.0 – 21.07.2026
+
+- Ursprüngliche Archivfassung von BOS-Ernie.
+- Eine feste Liste erlaubter Fahrzeugtypen wurde im Script gepflegt.
+- Auf der Einsatzseite wurde das erste verfügbare Fahrzeug eines erlaubten
+  Typs ausgewählt.
+- Diese Fassung steht unter der BSD-3-Clause-Lizenz und ist im Archiv unter
+  [`archive/BOS-Ernie/Ersthelfer.user.js`](../../archive/BOS-Ernie/Ersthelfer.user.js)
+  erhalten.

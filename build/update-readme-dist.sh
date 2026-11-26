@@ -47,7 +47,6 @@ is_ignored_script() {
 
 {
     printf '%s\n' "$begin_marker"
-    printf '## Skripte in `dist`\n\n'
 
     script_count=0
     library_count=0

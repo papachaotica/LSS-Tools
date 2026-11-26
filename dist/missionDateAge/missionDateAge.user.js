@@ -6,8 +6,8 @@
 // @ai           generated
 // @match        https://www.leitstellenspiel.de/missions/*
 // @match        https://leitstellenspiel.de/missions/*
-// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
-// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
+// @downloadURL  http://raw.githubusercontent.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
+// @updateURL    http://raw.githubusercontent.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
 // @license         AGPL-3.0-or-later
 // ==/UserScript==
 
