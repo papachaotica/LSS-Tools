@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         [LSS] Ersthelfer
 // @namespace    papachaotica.leitstellenspiel.de
-// @version      2.0.0-rc1
+// @version      2.0.0-rc2
 // @license      AGPL-3.0-or-later
 // @author       BOS-Ernie (Orginal) / papachaotica (Erweiterung)
 // @description  Wählt das nächstliegende Ersthelferfahrzeug aus; Fahrzeuge können über ein Menü konfiguriert werden.
@@ -11,8 +11,8 @@
 // @grant        GM_getValue
 // @grant        GM_xmlhttpRequest
 // @connect      api.lss-manager.de
-// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/FirstResponder.user.js
-// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/FirstResponder.user.js
+// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/firstResponder/FirstResponder.user.js
+// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/firstResponder/FirstResponder.user.js
 // ==/UserScript==
 
 /*
@@ -75,21 +75,21 @@
 
         document.body.appendChild(overlay);
         const tableBody =
-              overlay.querySelector("#vehicleTable tbody");
+            overlay.querySelector("#vehicleTable tbody");
         fetchVehicles(tableBody);
         overlay
             .querySelector("#saveConfig")
             .addEventListener(
-            "click",
-            saveConfig
-        );
+                "click",
+                saveConfig
+            );
 
         overlay
             .querySelector("#closeConfig")
             .addEventListener(
-            "click",
-            () => overlay.remove()
-        );
+                "click",
+                () => overlay.remove()
+            );
     }
 
     /**
@@ -100,17 +100,17 @@
         GM_xmlhttpRequest({
             method: "GET",
             url: "https://api.lss-manager.de/de_DE/vehicles",
-            onload: function(response) {
+            onload: function (response) {
                 const vehicles = JSON.parse(response.responseText);
                 Object.entries(vehicles)
                     .sort(([a], [b]) => Number(a) - Number(b))
                     .forEach(([id, vehicle]) => {
-                    addVehiclesToTable(
-                        Number(id),
-                        vehicle.caption,
-                        tableBody
-                    );
-                });
+                        addVehiclesToTable(
+                            Number(id),
+                            vehicle.caption,
+                            tableBody
+                        );
+                    });
             }
         });
     }
@@ -121,8 +121,8 @@
     */
     function addVehiclesToTable(vehicleId, caption, tableBody) {
         const checked = firstResponderVehicleTypeIds.includes(vehicleId)
-        ? "checked"
-        : "";
+            ? "checked"
+            : "";
         const row = document.createElement("tr");
         row.innerHTML = `
         <td>${vehicleId}</td>
@@ -148,15 +148,15 @@
             .ownerDocument
             .querySelectorAll(".vehicleConfig:checked")
             .forEach(cb => {
-            selected.push(Number(cb.value));
-        });
+                selected.push(Number(cb.value));
+            });
         GM_setValue(
             "lss_first_responder_ids",
             JSON.stringify(selected)
         );
         alert("Konfiguration gespeichert");
         location.reload();
-        
+
     }
 
     /**   
@@ -207,7 +207,7 @@
     *
     * Original license: BSD-3-Clause
     */
-    
+
     /**
     * Initialisiert das Script nach dem Laden der Seite.
     * Aktiviert Menü, Einsatzbutton und Tastatursteuerung.
@@ -219,7 +219,7 @@
         if (document.querySelector("#iframe-bottom-content")) {
             addSelectButton();
 
-            document.addEventListener("keydown", function(event) {
+            document.addEventListener("keydown", function (event) {
                 if (event.key !== "f") {
                     return;
                 }
@@ -237,13 +237,13 @@
             });
         }
     }
-    
-   //
-   // Ab hier basiert der Code weiterhin auf der Version von BOS-Ernie.
-   // Die ursprüngliche Auswahl-Logik wurde beibehalten und lediglich dokumentiert.
-   // Die Fahrzeugkonfiguration erfolgt jetzt über die Erweiterung von papachaotica.
-   //
-    
+
+    //
+    // Ab hier basiert der Code weiterhin auf der Version von BOS-Ernie.
+    // Die ursprüngliche Auswahl-Logik wurde beibehalten und lediglich dokumentiert.
+    // Die Fahrzeugkonfiguration erfolgt jetzt über die Erweiterung von papachaotica.
+    //
+
     /**
     * Erstellt den Ersthelfer-Button im Einsatzfenster.
     * Fügt den Button neben vorhandenen Einsatzaktionen ein.

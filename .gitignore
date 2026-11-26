@@ -5,3 +5,7 @@
 *.swo
 *.swn
 *.un~
+
+api/
+tmp/
+static/**
