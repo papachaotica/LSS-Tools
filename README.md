@@ -10,7 +10,8 @@ Der Schwerpunkt liegt auf einer sauberen, erweiterbaren Architektur mit wiederve
 <!-- BEGIN DIST SCRIPTS -->
 ## Skripte in `dist`
 
-_Keine Userscripts in `dist` gefunden._
+- [`[LSS] Ersthelfer`](dist/firstResponder/FirstResponder.user.js) — Wählt das nächstliegende Ersthelferfahrzeug aus; Fahrzeuge können über ein Menü konfiguriert werden.
+- [`LSS Einsatz-Generierungszeitpunkt`](dist/missionDateAge/missionDateAge.user.js) — Zeigt den Erstellungszeitpunkt und das Alter des Einsatzes an (Rot ab 24h um 01:00 Uhr nachts).
 <!-- END DIST SCRIPTS -->
 
 ## libarys

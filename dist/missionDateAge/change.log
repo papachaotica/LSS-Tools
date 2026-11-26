@@ -1,0 +1,15 @@
+## 1.1.2 – 2026.11.26
+
+- Userscript-Header ergänzt um die verantwortliche Person `papachaotica`, die
+  KI-Kennzeichnung `@ai generated` und die Lizenz `AGPL-3.0-or-later`.
+
+
+## 1.1.1 - 2026.11.26
+
+- Veröffentlichung des Scripts unter `dist/missionDateAge/missionDateAge.user.js`
+  vorbereitet.
+- Download- und Update-URL auf den neuen Veröffentlichungspfad angepasst.
+
+## 1.1.0 - 2026.09.13
+
+- initiale Version, script mit gemini generiert

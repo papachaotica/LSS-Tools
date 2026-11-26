@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         LSS Einsatz-Generierungszeitpunkt
-// @version      1.1.0
+// @version      1.1.1
 // @description  Zeigt den Erstellungszeitpunkt und das Alter des Einsatzes an (Rot ab 24h um 01:00 Uhr nachts).
 // @author       gemini
 // @match        https://www.leitstellenspiel.de/missions/*
 // @match        https://leitstellenspiel.de/missions/*
+// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
+// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/missionDateAge/missionDateAge.user.js
 // ==/UserScript==
 
 /* global I18n, $ */
@@ -51,8 +53,8 @@
     }
 
     let $h1 = $('#missionH1');
-    let missionDate = $h1.length > 0 
-        ? ($h1.data('original-title') || $h1.attr('data-original-title') || $h1.attr('title')) 
+    let missionDate = $h1.length > 0
+        ? ($h1.data('original-title') || $h1.attr('data-original-title') || $h1.attr('title'))
         : null;
 
     if (missionDate) {
