@@ -1,11 +1,14 @@
 // ==UserScript==
 // @name         LSS Massenentlassungen
 // @namespace    www.leitstellenspiel.de
-// @version      1.1.0
+// @version      1.1.1
 // @description  Ermöglicht das massenhafte Entlassen von Personal
 // @author       MissSobol
 // @contributor  papachaotica
+// @ai           none
 // @match        https://www.leitstellenspiel.de/buildings/*/personals
+// @downloadURL  http://raw.github.com/papachaotica/LSS-Tools/main/dist/massenentlassungen/massenentlassungen.user.js
+// @updateURL    http://raw.github.com/papachaotica/LSS-Tools/main/dist/massenentlassungen/massenentlassungen.user.js
 // @grant        none
 // ==/UserScript==
 

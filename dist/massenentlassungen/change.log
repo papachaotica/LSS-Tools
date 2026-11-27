@@ -1,0 +1,22 @@
+## Version 1.1.1 – 27.11.2026
+
+- `@ai none`, `@downloadURL` und `@updateURL` im Userscript-Header ergänzt.
+- README und Change-Log erstellt.
+
+## Version 1.1.0 – 12.10.2026
+
+- Auf die vorhandenen `personal-delete-checkbox`-Elemente der Spielseite umgestellt.
+- Das frühere Ein-/Ausblenden eigener Checkboxen entfiel.
+- Der frühere direkte Entlassungs-Button mit Bestätigungsdialog und eigenen POST-Anfragen entfiel; Entlassungen werden im aktuellen Stand nicht automatisch versendet.
+- Zähler für aktuell markierte Personen ergänzt.
+- Auswahlbuttons für fehlende Ausbildung, fehlende Bindung sowie beides und die Zurücksetzen-Funktion beibehalten.
+
+## Version 1.0 – archivierter Ausgangsstand
+
+- Der archivierte Stand unter `archive/Sobol0202/LSS Massenentlassungen.user.js` erzeugte eigene Auswahl-Checkboxen.
+- Ein Button blendete diese Checkboxen ein und wieder aus.
+- Personal konnte nach fehlender Ausbildung, fehlender Bindung oder beiden Kriterien ausgewählt werden.
+- Über `Ausgewähltes Personal entlassen` wurden die ausgewählten Personen nach Bestätigung nacheinander per POST-Anfrage entlassen.
+- Erfolgreich beantwortete Zeilen wurden entfernt; nach dem letzten Versuch wurde die Seite neu geladen.
+
+- als Fork von Sobol0202 übernommen.
